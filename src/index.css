@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@keyframes aboutAlbumAutoScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.about-album-track {
+  animation: aboutAlbumAutoScroll 26s linear infinite;
+}
