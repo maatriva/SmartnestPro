@@ -19,8 +19,7 @@ export default function TrendingSideNav() {
       { kind: "route", to: "/survey", label: "Survey" },
       { kind: "route", to: "/about", label: "About Us" },
       { kind: "route", to: "/contact", label: "Contact Us" }
-    ],
-    []
+    ]
   );
 
   const sectionIds = useMemo(

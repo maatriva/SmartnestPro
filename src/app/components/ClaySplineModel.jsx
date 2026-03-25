@@ -39,7 +39,9 @@ export default function ClaySplineModel({ title = "3D Model" }) {
         <div className="flex items-center justify-between gap-4 mb-4 px-2">
           <div>
             <div className="text-sm font-semibold text-gray-900">{title}</div>
-            <div className="text-xs text-gray-500">Celestial clay look (demo embed)</div>
+            <div className="text-xs text-gray-500">
+              Celestial clay look (Spline / Dora AI embed)
+            </div>
           </div>
           <div className="text-xs px-3 py-1 rounded-full bg-white/70 border border-black/5 text-gray-600">
             emerge on scroll

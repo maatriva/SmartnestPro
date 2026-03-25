@@ -106,10 +106,22 @@ export default function Survey() {
               </div>
             </div>
 
-            <div className="space-y-5">
-              <h2 className="text-2xl font-semibold text-gray-900">
-                1) Tech Involvement
-              </h2>
+            <div
+              id="form-section1"
+              className="form-section1 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 space-y-5"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-50 text-purple-700 rounded-full text-sm font-semibold">
+                1
+                <span>Tech Involvement</span>
+              </div>
+              <div>
+                <h2 className="text-2xl font-semibold text-gray-900 mb-2">
+                  Would you enjoy using AI features?
+                </h2>
+                <p className="text-gray-600">
+                  Pick the closest option for each question.
+                </p>
+              </div>
 
               <div className="space-y-4">
                 <div>
@@ -159,10 +171,22 @@ export default function Survey() {
               </div>
             </div>
 
-            <div className="space-y-5">
-              <h2 className="text-2xl font-semibold text-gray-900">
-                2) Acceptability
-              </h2>
+            <div
+              id="form-section2"
+              className="form-section2 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 space-y-5"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-pink-50 text-pink-700 rounded-full text-sm font-semibold">
+                2
+                <span>Acceptability</span>
+              </div>
+              <div>
+                <h2 className="text-2xl font-semibold text-gray-900 mb-2">
+                  Is this comfortable to use at home?
+                </h2>
+                <p className="text-gray-600">
+                  Choose what feels most accurate.
+                </p>
+              </div>
 
               <div className="space-y-4">
                 <div>
@@ -197,10 +221,22 @@ export default function Survey() {
               </div>
             </div>
 
-            <div className="space-y-5">
-              <h2 className="text-2xl font-semibold text-gray-900">
-                3) Would You Buy
-              </h2>
+            <div
+              id="form-section3"
+              className="form-section3 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 space-y-5"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-semibold">
+                3
+                <span>Would You Buy</span>
+              </div>
+              <div>
+                <h2 className="text-2xl font-semibold text-gray-900 mb-2">
+                  Would you buy it?
+                </h2>
+                <p className="text-gray-600">
+                  This helps us validate pricing and features.
+                </p>
+              </div>
 
               <div className="space-y-4">
                 <div>

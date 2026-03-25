@@ -17,7 +17,8 @@ export function LiveDemo() {
             </span>
           </h2>
           <p className="text-xl text-gray-600">
-            The 3D clay model “emerges from the side” when you scroll to it.
+            The 3D clay model “emerges from the side” on scroll (Spline / Dora
+            AI style).
           </p>
         </div>
 

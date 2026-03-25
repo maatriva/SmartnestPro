@@ -39,9 +39,9 @@ const plans = [
     name: "Bulk",
     badge: "Coming Soon",
     price: "—",
-    description: "Direct bulk orders for retailers & clinics.",
+    description: "Bulk direct contact for retailers & clinics (coming soon).",
     popular: false,
-    cta: "Direct contact (coming soon)",
+    cta: "Bulk Direct Contact (Coming Soon)",
     disabledCta: true,
     features: [
       "Bulk pricing & scheduling",
