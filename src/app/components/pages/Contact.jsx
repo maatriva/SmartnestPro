@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "motion/react";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -23,34 +24,39 @@ export default function Contact() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50 px-6 py-16">
-      <div className="max-w-3xl mx-auto">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/70 border border-black/5 backdrop-blur rounded-full text-purple-700 text-sm font-semibold mb-5">
+    <div className="min-h-screen bg-[var(--bg-secondary)] px-6 py-16 text-[var(--text)]">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="max-w-3xl mx-auto"
+      >
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--bg-glass)] border border-[var(--border)] backdrop-blur rounded-full text-[var(--primary)] text-sm font-semibold mb-5">
           Contact Us
         </div>
-        <h1 className="text-4xl font-bold text-gray-900 mb-5">Let’s talk</h1>
-        <p className="text-gray-700 text-lg leading-relaxed mb-6">
+        <h1 className="text-4xl font-bold text-[var(--text-dark)] mb-5">Let’s talk</h1>
+        <p className="text-[var(--text)] text-lg leading-relaxed mb-6">
           Have questions about bulk orders, partnerships, or product support? Send
           us a message.
         </p>
 
-        <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-8">
+        <div className="bg-[var(--bg-glass)] backdrop-blur-xl rounded-[var(--radius-lg)] border border-[var(--border)] shadow-[var(--shadow)] p-8">
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="block text-sm font-medium text-gray-800 mb-2">
+              <label className="block text-sm font-medium text-[var(--text-dark)] mb-2">
                 Name
               </label>
               <input
                 value={form.name}
                 onChange={setField("name")}
                 required
-                className="w-full px-4 py-3 rounded-2xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-4 py-3 rounded-[var(--radius)] border border-[var(--border)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)] bg-[var(--bg-glass)] backdrop-blur-xl text-[var(--text-dark)]"
                 placeholder="John Doe"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-800 mb-2">
+              <label className="block text-sm font-medium text-[var(--text-dark)] mb-2">
                 Email
               </label>
               <input
@@ -58,13 +64,13 @@ export default function Contact() {
                 type="email"
                 onChange={setField("email")}
                 required
-                className="w-full px-4 py-3 rounded-2xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-4 py-3 rounded-[var(--radius)] border border-[var(--border)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)] bg-[var(--bg-glass)] backdrop-blur-xl text-[var(--text-dark)]"
                 placeholder="john@example.com"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-800 mb-2">
+              <label className="block text-sm font-medium text-[var(--text-dark)] mb-2">
                 Message
               </label>
               <textarea
@@ -72,22 +78,21 @@ export default function Contact() {
                 onChange={setField("message")}
                 required
                 rows={6}
-                className="w-full px-4 py-3 rounded-2xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none"
+                className="w-full px-4 py-3 rounded-[var(--radius)] border border-[var(--border)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)] bg-[var(--bg-glass)] backdrop-blur-xl text-[var(--text-dark)] resize-none"
                 placeholder="Tell us what you need..."
               />
             </div>
 
             <button
               type="submit"
-              className="w-full py-4 rounded-full font-semibold text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:shadow-lg transition-all"
+              className="w-full py-4 rounded-full font-semibold text-[var(--white)] bg-[var(--primary)] hover:bg-[var(--primary-hover)] hover:shadow-[var(--shadow-primary)] transition-all"
               disabled={submitted}
             >
               {submitted ? "Sent (demo)" : "Send Message"}
             </button>
           </form>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
-

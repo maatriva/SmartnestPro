@@ -70,46 +70,59 @@ const diseaseData = [
   },
 ];
 
+import { motion } from "motion/react";
+
 export default function DetailedDiseases() {
   const [openCard, setOpenCard] = useState(null);
 
   return (
-    <div className="min-h-screen bg-[#0b0f1a] text-white p-6">
+    <div className="min-h-screen bg-[var(--bg-secondary)] text-[var(--text)] p-6">
       
       {/* Title */}
-      <h1 className="text-4xl font-bold text-center mb-10">
+      <motion.h1 
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-4xl font-bold text-center mb-10 text-[var(--text-dark)]"
+      >
         Diseases We Monitor
-      </h1>
+      </motion.h1>
 
       {diseaseData.map((section, idx) => (
-        <div key={idx} className="mb-12">
+        <div key={idx} className="mb-12 ">
           
           {/* Category Title */}
-          <h2 className="text-2xl text-purple-400 mb-6">
+          <h2 className="text-2xl font-semibold text-[var(--primary)] mb-6">
             {section.category}
           </h2>
 
           {/* Cards */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: idx * 0.1 }}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
             {section.diseases.map((disease, i) => {
               const isOpen = openCard === disease.name;
 
               return (
                 <div
                   key={i}
-                  className="bg-[#141a2e] rounded-xl p-5 border border-gray-700 hover:border-purple-400 transition cursor-pointer"
+                  className="bg-[var(--bg-glass)] backdrop-blur-xl rounded-[var(--radius-lg)] p-5 border border-[var(--border)] hover:border-[var(--primary)] shadow-[var(--shadow)] transition cursor-pointer"
                   onClick={() =>
                     setOpenCard(isOpen ? null : disease.name)
                   }
                 >
                   {/* Disease Name */}
-                  <h3 className="text-lg font-semibold mb-2">
+                  <h3 className="text-lg font-semibold mb-2 text-[var(--text-dark)]">
                     {disease.name}
                   </h3>
 
                   {/* Short Preview */}
                   {!isOpen && (
-                    <p className="text-sm text-gray-400">
+                    <p className="text-sm text-[var(--text-light)]">
                       Click to view details →
                     </p>
                   )}
@@ -117,12 +130,12 @@ export default function DetailedDiseases() {
                   {/* Expanded Info */}
                   {isOpen && (
                     <div className="mt-4 space-y-3">
-                      <p className="text-sm text-gray-300">
+                      <p className="text-sm text-[var(--text)]">
                         {disease.description}
                       </p>
 
-                      <div className="bg-purple-600/20 p-3 rounded-lg border border-purple-500">
-                        <p className="text-sm text-purple-300">
+                      <div className="bg-[var(--bg-hover)] p-3 rounded-[var(--radius)] border border-[var(--primary-light)]">
+                        <p className="text-sm text-[var(--primary)] font-medium">
                           🤖 {disease.aiRole}
                         </p>
                       </div>
@@ -131,16 +144,16 @@ export default function DetailedDiseases() {
                 </div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       ))}
 
       {/* Warning Section */}
-      <div className="mt-16 bg-red-900/30 p-6 rounded-xl border border-red-500">
-        <h2 className="text-xl font-bold text-red-400 mb-3">
+      <div className="mt-16 bg-[#FFEBEB] p-6 rounded-[var(--radius-lg)] border border-[#FF4D4D]">
+        <h2 className="text-xl font-bold text-[#D00000] mb-3">
           ⚠️ Important Safety Notes
         </h2>
-        <ul className="list-disc pl-6 space-y-2 text-sm text-gray-300">
+        <ul className="list-disc pl-6 space-y-2 text-sm text-[#D00000]/90">
           <li>Not suitable for premature babies before skin development</li>
           <li>Avoid use with pacemakers or implants</li>
           <li>Do not expose directly to eyes for long durations</li>

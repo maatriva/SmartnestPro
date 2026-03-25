@@ -1,4 +1,5 @@
 import { Download, Settings, Zap, CheckCircle2 } from 'lucide-react';
+import { motion } from "motion/react";
 
 const steps = [
   {
@@ -31,12 +32,18 @@ export function HowItWorks() {
   return (
     <section 
       id="how-it-works" 
-      className="py-24 px-6  bg-white/50 backdrop-blur-sm text-[var(--text)]"
+      className="py-24 px-6 bg-white/50 backdrop-blur-sm text-[var(--text)] overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           
           <div className="inline-block px-4 py-2 
           bg-[var(--bg-glass)] rounded-full 
@@ -55,7 +62,7 @@ export function HowItWorks() {
           <p className="text-xl text-[var(--text-light)]">
             From unboxing to sweet dreams, we've made it incredibly easy to set up and use.
           </p>
-        </div>
+        </motion.div>
 
         {/* Steps */}
         <div className="relative">
@@ -66,11 +73,19 @@ export function HowItWorks() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
             {steps.map((step, index) => (
-              <div key={index} className="relative">
+              <motion.div 
+                key={index} 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
+                className="relative"
+              >
 
-                <div className="bg-[var(--white)] rounded-[var(--radius-lg)] p-8 
+                <div className="bg-[var(--bg-glass)] backdrop-blur-xl rounded-[var(--radius-lg)] p-8 
                 border border-[var(--border)] 
-                shadow-[var(--shadow)] hover:shadow-lg transition-all">
+                shadow-[var(--shadow)] hover:shadow-lg transition-all 
+                hover:-translate-y-1 duration-300">
 
                   {/* Step Number */}
                   <div className="absolute -top-4 -left-4 w-12 h-12 
@@ -101,7 +116,7 @@ export function HowItWorks() {
                   </p>
                 </div>
 
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
