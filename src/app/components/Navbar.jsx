@@ -12,6 +12,19 @@ const Navbar = () => {
             </Link>
           </div>
 
+          <ul className="flex gap-10 font-semibold text-lg">
+           <Link to="/">Home</Link>
+           <Link to="/survey" target="_blank">
+             Survey
+           </Link>
+           <Link to="/about" target="_blank">
+             About
+           </Link>
+           <Link to="/contact" target="_blank">
+             Contact us
+           </Link>
+          </ul>
+
           {/* Quick navigation happens via the left dot nav (TrendingSideNav). */}
           {/* This top bar keeps only the brand and main CTA. */}
 
