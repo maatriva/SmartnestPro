@@ -188,3 +188,32 @@
     transform: translateX(-50%);
   }
 }
+:root {
+  /* 🌈 Background System */
+  --bg: #F8F9FA;
+  --bg-secondary: #A8DADC;
+  --bg-glass: rgba(255, 255, 255, 0.7);
+  --bg-hover: #E9F5F6;
+
+  /* 💙 Primary (Brand / Buttons) */
+  --primary: #4A6FA5;
+  --primary-hover: #3A5A98;
+  --primary-light: #8FA8FF;
+
+  /* 🖤 Text */
+  --text: #4A4A4A;
+  --text-dark: #1D3557;
+  --text-light: #6B7280;
+
+  /* 🤍 UI */
+  --white: #FFFFFF;
+  --border: #E5E7EB;
+
+  /* ✨ Effects */
+  --shadow: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-primary: 0 6px 20px rgba(74,111,165,0.4);
+
+  /* 🔘 Radius */
+  --radius: 16px;
+  --radius-lg: 20px;
+}

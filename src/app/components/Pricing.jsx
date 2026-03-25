@@ -15,8 +15,7 @@ const plans = [
       "Temperature + environment checks",
       "Shared access (1 user)",
       "Standard warranty"
-    ],
-    gradient: "from-purple-500 to-pink-500"
+    ]
   },
   {
     name: "Mattress",
@@ -32,8 +31,7 @@ const plans = [
       "Health summary reports",
       "Shared access (3 users)",
       "Priority support"
-    ],
-    gradient: "from-blue-500 to-purple-600"
+    ]
   },
   {
     name: "Bulk",
@@ -49,92 +47,117 @@ const plans = [
       "Dedicated account manager",
       "Custom monitoring setup",
       "Install/support packages"
-    ],
-    gradient: "from-pink-500 to-purple-500"
+    ]
   }
 ];
 
 export function Pricing() {
   return (
-    <section id="pricing" className="py-24 px-6 bg-white/50 backdrop-blur-sm">
+    <section
+      id="pricing"
+      className="py-24 px-6  bg-white/50 backdrop-blur-sm text-[var(--text)]"
+    >
       <div className="max-w-7xl mx-auto">
+
+        {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 rounded-full text-purple-700 text-sm font-medium mb-4">
+
+          <div className="inline-flex items-center gap-2 px-4 py-2 
+          bg-[var(--bg-glass)] rounded-full 
+          text-[var(--primary)] text-sm font-medium mb-4 
+          border border-[var(--border)]">
             <Star className="w-4 h-4" />
             Pricing
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+
+          <h2 className="text-4xl md:text-5xl font-bold text-[var(--text-dark)] mb-6">
             Choose the perfect
             <br />
-            <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            <span className="text-[var(--primary)]">
               plan for your family
             </span>
           </h2>
-          <p className="text-xl text-gray-600">
+
+          <p className="text-xl text-[var(--text-light)]">
             Cradle and Mattress are available now. Bulk direct contact is coming soon.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        {/* Cards */}
+        <div className="grid md:grid-cols-3 gap-8 ">
           {plans.map((plan) => (
             <div
               key={plan.name}
               className={[
-                "relative rounded-3xl p-8 border transition-all duration-300",
+                "relative rounded-[var(--radius-lg)] p-8 border transition-all duration-300 bg-[var(--bg-secondary)]",
                 plan.popular
-                  ? "bg-white border-purple-300 shadow-2xl scale-105 md:scale-110"
-                  : "bg-white border-gray-200 hover:shadow-xl hover:scale-105"
+                  ? "bg-[var(--white)] border-[var(--primary)] shadow-[var(--shadow-primary)] scale-105 md:scale-110"
+                  : "bg-[var(--white)] border-[var(--border)] hover:shadow-[var(--shadow)] hover:scale-105"
               ].join(" ")}
             >
+              {/* Top */}
               <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-black/5 rounded-full text-sm font-semibold text-gray-700 mb-4">
+
+                <h3 className="text-2xl font-bold text-[var(--text-dark)] mb-2">
+                  {plan.name}
+                </h3>
+
+                <div className="inline-flex items-center gap-2 px-4 py-2 
+                bg-[var(--bg-secod)] border border-[var(--border)] 
+                rounded-full text-sm font-semibold text-[var(--text)] mb-4">
+
                   {plan.popular ? (
                     <>
-                      <Star className="w-4 h-4 fill-current text-purple-600" />
+                      <Star className="w-4 h-4 text-[var(--primary)]" />
                       {plan.badge}
                     </>
                   ) : (
-                    <span className="text-gray-600">{plan.badge}</span>
+                    <span>{plan.badge}</span>
                   )}
                 </div>
-                <p className="text-gray-600 mb-6">{plan.description}</p>
+
+                <p className="text-[var(--text-light)] mb-6">
+                  {plan.description}
+                </p>
 
                 <div className="flex items-baseline justify-center gap-2">
-                  <span className="text-5xl font-bold text-gray-900">
+                  <span className="text-5xl font-bold text-[var(--text-dark)]">
                     {plan.price === "—" ? "—" : `$${plan.price}`}
                   </span>
-                  {plan.price === "—" ? null : <span className="text-gray-600">USD</span>}
+                  {plan.price !== "—" && (
+                    <span className="text-[var(--text-light)]">USD</span>
+                  )}
                 </div>
               </div>
 
+              {/* Features */}
               <ul className="space-y-4 mb-8">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
-                    <div
-                      className={[
-                        "flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-r",
-                        plan.gradient,
-                        "flex items-center justify-center mt-0.5"
-                      ].join(" ")}
-                    >
+                    
+                    <div className="flex-shrink-0 w-6 h-6 rounded-full 
+                    bg-[var(--primary)] flex items-center justify-center mt-0.5">
                       <Check className="w-4 h-4 text-white" strokeWidth={3} />
                     </div>
-                    <span className="text-gray-700">{feature}</span>
+
+                    <span className="text-[var(--text)]">
+                      {feature}
+                    </span>
                   </li>
                 ))}
               </ul>
 
+              {/* Button */}
               <button
                 type="button"
                 disabled={plan.disabledCta}
                 className={[
                   "w-full py-4 rounded-full font-medium transition-all whitespace-nowrap",
                   plan.disabledCta
-                    ? "bg-gray-200 text-gray-500 cursor-not-allowed"
+                    ? "bg-[var(--border)] text-[var(--text-light)] cursor-not-allowed"
                     : plan.popular
-                      ? `bg-gradient-to-r ${plan.gradient} text-white shadow-lg hover:shadow-xl`
-                      : "bg-gray-900 text-white hover:bg-gray-800"
+                      ? "bg-[var(--primary)] text-white hover:bg-[var(--primary-hover)] shadow-[var(--shadow-primary)]"
+                      : "bg-[var(--text-dark)] text-white hover:bg-[var(--primary)]"
                 ].join(" ")}
               >
                 {plan.cta}
@@ -143,7 +166,8 @@ export function Pricing() {
           ))}
         </div>
 
-        <div className="mt-12 text-center text-sm text-gray-600">
+        {/* Footer */}
+        <div className="mt-12 text-center text-sm text-[var(--text-light)]">
           Want a custom bulk quote? Use the Contact page and we’ll reach out (coming soon).
         </div>
       </div>

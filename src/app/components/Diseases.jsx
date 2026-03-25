@@ -9,29 +9,55 @@ const tickerData = [
   { name: "Arrhythmias", short: "Irregular heart rhythms" }
 ];
 
-
 const Diseases = () => {
   return (
-    <div id="diseases" className="overflow-hidden bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 text-white py-3 rounded-xl shadow-md">
+    <div
+      id="diseases"
+      className="overflow-hidden 
+      bg-white/50 backdrop-blur-sm  border border-white/40 shadow-[var(--shadow)]
+      text-[var(--text)] 
+      py-6 "
+    >
 
-<h1 className="text-2xl font-bold text-black text-center p-5 underline">Diseases That are Monitored by us </h1>
-      <div className="flex whitespace-nowrap  marquee hover:[animation-play-state:paused]">
+      {/* Heading */}
+      <h1 className="text-2xl font-bold text-[var(--text-dark)] text-center p-5">
+        Diseases That are Monitored by us
+      </h1>
+
+      {/* Marquee */}
+      <div className="flex whitespace-nowrap marquee hover:[animation-play-state:paused]">
         {[...tickerData, ...tickerData].map((item, i) => (
-          <div key={i} className="mx-8 text-lg border border-gray-300 rounded-full px-4 py-2 bg-white/20 backdrop-blur-sm">
-            <div className="font-bold">{item.name}</div>
-            <span className="opacity-90">{item.short}</span>
-            <span className="mx-6">•</span>
+          <div
+            key={i}
+            className="mx-8 text-sm md:text-base 
+            border border-[var(--border)] 
+            rounded-full px-4 py-2 
+            bg-[var(--bg-secondary)] backdrop-blur"
+          >
+            <div className="font-semibold text-[var(--text-dark)]">
+              {item.name}
+            </div>
+            <span className="text-[var(--text-light)]">
+              {item.short}
+            </span>
+            <span className="mx-6 text-[var(--text-light)]">•</span>
           </div>
         ))}
       </div>
+
+      {/* Button */}
       <div className="flex w-full justify-center mt-6">
-            <button
-              to="/login"
-              className="px-5 py-2.5 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:shadow-lg transition-all font-semibold"
-            >
-              Know more  
-            </button>
-          </div>
+        <button
+          className="px-5 py-2.5 
+          bg-[var(--primary)] text-white 
+          rounded-full 
+          hover:bg-[var(--primary-hover)] 
+          hover:shadow-[var(--shadow-primary)] 
+          transition-all font-semibold"
+        >
+          Know more
+        </button>
+      </div>
     </div>
   );
 };

@@ -16,9 +16,6 @@ export default function TrendingSideNav() {
       { kind: "section", id: "pricing", label: "Pricing" },
       { kind: "section", id: "testimonials", label: "Testimonials" },
       { kind: "section", id: "footer", label: "Footer" },
-      { kind: "route", to: "/survey", label: "Survey" },
-      { kind: "route", to: "/about", label: "About Us" },
-      { kind: "route", to: "/contact", label: "Contact Us" }
     ]
   );
 
@@ -66,56 +63,67 @@ export default function TrendingSideNav() {
   }
 
   return (
-    <aside
-      className="fixed left-5 top-1/2 -translate-y-1/2 z-50 hidden md:block"
-      aria-label="Trending navigation"
-    >
-      <div className="rounded-2xl bg-white/60 backdrop-blur border border-black/5 shadow-sm px-3 py-4 max-h-[70vh] overflow-y-auto">
-        <div className="text-[11px] font-semibold text-gray-500 tracking-wide mb-3 text-center">
-          Trending
-        </div>
+   <aside
+  className="fixed left-5 top-1/2 -translate-y-1/2 z-50 hidden md:block"
+  aria-label="Trending navigation"
+>
+  <div className="rounded-2xl 
+  bg-[var(--bg-glass)] backdrop-blur 
+  border border-[var(--border)] 
+  shadow-[var(--shadow)] px-3 py-4 max-h-[70vh] overflow-y-auto">
 
-        <div className="flex flex-col items-center gap-4">
-          {items.map((item, idx) => {
-            const active =
-              item.kind === "section"
-                ? location.pathname === "/" && activeSectionId === item.id
-                : location.pathname === item.to;
+    {/* Title */}
+    <div className="text-[11px] font-semibold text-[var(--text-light)] tracking-wide mb-3 text-center">
+      Trending
+    </div>
 
-            const dotClasses = active
-              ? "w-3.5 h-3.5 bg-purple-600 shadow-[0_0_0_5px_rgba(124,58,237,0.18)]"
-              : "w-2.5 h-2.5 bg-gray-300 hover:bg-purple-300 transition-colors";
+    {/* Dots */}
+    <div className="flex flex-col items-center gap-4">
+      {items.map((item, idx) => {
+        const active =
+          item.kind === "section"
+            ? location.pathname === "/" && activeSectionId === item.id
+            : location.pathname === item.to;
 
-            if (item.kind === "route") {
-              return (
-                <Link key={`${item.to}-${idx}`} to={item.to} aria-label={item.label}>
-                  <span className={dotClasses + " rounded-full block"} title={item.label} />
-                </Link>
-              );
-            }
+       const dotClasses = active
+  ? "w-3.5 h-3.5 bg-[var(--primary)] shadow-[0_0_0_6px_rgba(74,111,165,0.25)]"
+  : "w-2.5 h-2.5 bg-[var(--text-light)] hover:bg-[var(--primary)] transition-colors";
 
-            return (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() => scrollToSection(item.id)}
-                className="focus:outline-none"
-                aria-label={item.label}
+        if (item.kind === "route") {
+          return (
+            <Link key={`${item.to}-${idx}`} to={item.to} aria-label={item.label}>
+              <span
+                className={dotClasses + " rounded-full block"}
                 title={item.label}
-              >
-                <span className={dotClasses + " rounded-full block"} />
-              </button>
-            );
-          })}
-        </div>
+              />
+            </Link>
+          );
+        }
 
-        <div className="mt-4 h-px bg-black/5 w-full" />
+        return (
+          <button
+            key={item.id}
+            type="button"
+            onClick={() => scrollToSection(item.id)}
+            className="focus:outline-none"
+            aria-label={item.label}
+            title={item.label}
+          >
+            <span className={dotClasses + " rounded-full block"} />
+          </button>
+        );
+      })}
+    </div>
 
-        <div className="mt-3 text-[11px] text-gray-500 text-center leading-tight">
-          Scroll to explore
-        </div>
-      </div>
-    </aside>
+    {/* Divider */}
+    <div className="mt-4 h-px bg-[var(--border)] w-full" />
+
+    {/* Footer Text */}
+    <div className="mt-3 text-[11px] text-[var(--text-light)] text-center leading-tight">
+      Scroll to explore
+    </div>
+  </div>
+</aside>
   );
 }
 

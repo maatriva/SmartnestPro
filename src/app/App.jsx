@@ -1,4 +1,5 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
+import "../index.css"
 import { Hero } from "./components/Hero";
 import { Features } from "./components/Features";
 import { HowItWorks } from "./components/HowItWorks";
@@ -12,15 +13,14 @@ import Survey from "./components/pages/Survey";
 import About from "./components/pages/About";
 import Navbar from "./components/Navbar";
 import Contact from "./components/pages/Contact";
+import DetailedDiseases from "./components/DetailedDiseases";
 
 function Home() {
   return (
-    <div>
-      <Navbar />
+    <div className="relative bg-[var(--bg-secondary)] text-[var(--text)]">
       <Hero />
       <Diseases />
       <Features />
-      {/* <TechAcceptBuyForm /> */}
       <HowItWorks />
       <LiveDemo />
       <Pricing />
@@ -31,16 +31,23 @@ function Home() {
 }
 
 export default function App() {
+  const location = useLocation();
+
   return (
-    <div className="relative">
-      <TrendingSideNav />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/survey" element={<Survey />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-    </div>
+    <div className="relative bg-[var(--bg-secondary)] text-[var(--text)]">
+  <Navbar />
+
+  {location.pathname === "/" && <TrendingSideNav />}
+
+  <div className="pt-28">
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/survey" element={<Survey />} />
+    <Route path="/about" element={<About />} />
+    <Route path="/contact" element={<Contact />} />
+    <Route path="/detailed-diseases" element={<DetailedDiseases />} />
+  </Routes>
+</div>
+</div>
   );
 }
-

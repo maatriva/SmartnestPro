@@ -4,89 +4,99 @@ const features = [
   {
     icon: Brain,
     title: 'AI Learning',
-    description: 'Adapts to your baby\'s unique sleep patterns and preferences over time.',
-    color: 'from-purple-500 to-purple-600',
-    bgColor: 'bg-purple-100'
+    description: 'Adapts to your baby\'s unique sleep patterns and preferences over time.'
   },
   {
     icon: Moon,
     title: 'Smart Soothing',
-    description: 'Automatic rocking, white noise, and lullabies when baby needs comfort.',
-    color: 'from-blue-500 to-blue-600',
-    bgColor: 'bg-blue-100'
+    description: 'Automatic rocking, white noise, and lullabies when baby needs comfort.'
   },
   {
     icon: Smartphone,
     title: 'App Control',
-    description: 'Monitor and control everything from your phone, anywhere, anytime.',
-    color: 'from-pink-500 to-pink-600',
-    bgColor: 'bg-pink-100'
+    description: 'Monitor and control everything from your phone, anywhere, anytime.'
   },
   {
     icon: Shield,
     title: 'Safe & Secure',
-    description: 'Medical-grade materials with built-in safety sensors and alerts.',
-    color: 'from-green-500 to-green-600',
-    bgColor: 'bg-green-100'
+    description: 'Medical-grade materials with built-in safety sensors and alerts.'
   },
   {
     icon: Music,
     title: 'Sound Library',
-    description: '100+ curated lullabies and white noise options for better sleep.',
-    color: 'from-indigo-500 to-indigo-600',
-    bgColor: 'bg-indigo-100'
+    description: '100+ curated lullabies and white noise options for better sleep.'
   },
   {
     icon: ThermometerSun,
     title: 'Climate Control',
-    description: 'Monitors temperature and humidity for optimal sleeping conditions.',
-    color: 'from-orange-500 to-orange-600',
-    bgColor: 'bg-orange-100'
+    description: 'Monitors temperature and humidity for optimal sleeping conditions.'
   }
 ];
 
 export function Features() {
   return (
-    <section id="features" className="py-24 px-6">
+    <section id="features" className="py-24 px-6 bg-[var(--bg-secondary)] text-[var(--text)]">
       <div className="max-w-7xl mx-auto">
+
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-block px-4 py-2 bg-purple-100 rounded-full text-purple-700 text-sm font-medium mb-4">
+          <div className="inline-block px-4 py-2 
+          bg-[var(--bg-secondary)] rounded-full 
+          text-[var(--primary)] text-sm font-medium mb-4">
             Features
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+
+          <h2 className="text-4xl md:text-5xl font-bold text-[var(--text-dark)] mb-6">
             Everything you need for
             <br />
-            <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            <span className="text-[var(--primary)]">
               peaceful parenting
             </span>
           </h2>
-          <p className="text-xl text-gray-600">
+
+          <p className="text-xl text-[var(--text-light)]">
             Cutting-edge technology designed with your baby's comfort and your peace of mind at heart.
           </p>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 ">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="group relative bg-white rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 border border-gray-100"
+              className="group relative 
+              bg-[var(--bg-glass)] 
+              rounded-[var(--radius-lg)] p-8 
+              border border-[var(--border)] 
+              hover:shadow-[var(--shadow)] 
+              transition-all duration-300"
             >
-              <div className={`w-16 h-16 ${feature.bgColor} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                <feature.icon className={`w-8 h-8 bg-gradient-to-r ${feature.color} bg-clip-text text-transparent`} strokeWidth={2.5} />
+              {/* Icon */}
+              <div className="w-16 h-16 
+              bg-[var(--primary-light)] 
+              rounded-2xl flex items-center justify-center mb-6 
+              group-hover:scale-110 transition-transform">
+
+                <feature.icon
+                  className="w-8 h-8 text-[var(--primary)]"
+                  strokeWidth={2.5}
+                />
               </div>
-              
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+
+              {/* Title */}
+              <h3 className="text-xl font-semibold text-[var(--text-dark)] mb-3">
                 {feature.title}
               </h3>
-              
-              <p className="text-gray-600 leading-relaxed">
+
+              {/* Description */}
+              <p className="text-[var(--text-light)] leading-relaxed">
                 {feature.description}
               </p>
 
-              {/* Decorative gradient */}
-              <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${feature.color} rounded-b-3xl opacity-0 group-hover:opacity-100 transition-opacity`}></div>
+              {/* Bottom Accent Line */}
+              <div className="absolute bottom-0 left-0 right-0 h-1 
+              bg-[var(--primary)] rounded-b-[var(--radius-lg)] 
+              opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
           ))}
         </div>
