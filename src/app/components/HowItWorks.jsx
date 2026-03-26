@@ -1,5 +1,10 @@
 import { Download, Settings, Zap, CheckCircle2 } from 'lucide-react';
 import { motion } from "motion/react";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const steps = [
   {
@@ -29,6 +34,88 @@ const steps = [
 ];
 
 export function HowItWorks() {
+  const gridRef = useRef(null);
+
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+
+    const ctx = gsap.context(() => {
+      const cards = gsap.utils.toArray(".hiw-card");
+      if (!cards.length) return;
+
+      const first = cards[0];
+      if (!first) return;
+
+      // Make it look like "one card" initially by overlapping others onto the first card.
+      // Layout stays the same; only transforms/opacity change.
+      const firstRect = first.getBoundingClientRect();
+
+      const overlapStates = cards.map((card, i) => {
+        const r = card.getBoundingClientRect();
+        const dx = firstRect.left - r.left;
+        const dy = firstRect.top - r.top;
+        return {
+          x: dx,
+          y: dy,
+          rotation: (i - 2) * 8,
+          scale: i === 0 ? 1 : 0.98,
+          opacity: i === 0 ? 1 : 0,
+        };
+      });
+
+      gsap.set(cards, {
+        transformOrigin: "center",
+        transformPerspective: 600,
+        willChange: "transform,opacity",
+      });
+      cards.forEach((card, i) => gsap.set(card, overlapStates[i]));
+
+      let expanded = false;
+      const expandToNormal = () => {
+        if (expanded) return;
+        expanded = true;
+
+        gsap.to(cards, {
+          x: 0,
+          y: 0,
+          rotation: 0,
+          scale: 1,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power3.out",
+          stagger: { each: 0.06, from: "start" },
+          overwrite: "auto",
+          clearProps: "transform,opacity,willChange",
+        });
+      };
+
+      // Trigger on scroll (once)
+      ScrollTrigger.create({
+        trigger: grid,
+        start: "top 80%",
+        once: true,
+        onEnter: expandToNormal,
+      });
+
+      // Also allow hover to expand (once)
+      const onHover = () => expandToNormal();
+      first.addEventListener("mouseenter", onHover);
+
+      return () => {
+        first.removeEventListener("mouseenter", onHover);
+      };
+    }, grid);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section 
       id="how-it-works" 
@@ -71,7 +158,7 @@ export function HowItWorks() {
           <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-[2px] 
           bg-[var(--border)] -translate-y-1/2"></div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+          <div ref={gridRef} className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
             {steps.map((step, index) => (
               <motion.div 
                 key={index} 
@@ -82,10 +169,11 @@ export function HowItWorks() {
                 className="relative"
               >
 
-                <div className="bg-[var(--bg-glass)] backdrop-blur-xl rounded-[var(--radius-lg)] p-8 
+                <div className="hiw-card bg-[var(--bg-glass)] backdrop-blur-xl rounded-[var(--radius-lg)] p-8 
                 border border-[var(--border)] 
                 shadow-[var(--shadow)] hover:shadow-lg transition-all 
-                hover:-translate-y-1 duration-300">
+                hover:-translate-y-1 duration-300"
+                >
 
                   {/* Step Number */}
                   <div className="absolute -top-4 -left-4 w-12 h-12 

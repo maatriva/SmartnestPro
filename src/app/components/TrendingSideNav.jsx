@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import Tilt from "react-parallax-tilt";
 import { Link, useLocation } from "react-router-dom";
 
 
@@ -72,10 +73,10 @@ export default function TrendingSideNav() {
   border border-[var(--border)] 
   shadow-[var(--shadow)] px-3 py-4 max-h-[70vh] overflow-y-auto">
 
-    {/* Title */}
+    {/* Title
     <div className="text-[11px] font-semibold text-[var(--text-light)] tracking-wide mb-3 text-center">
       Trending
-    </div>
+    </div> */}
 
     {/* Dots */}
     <div className="flex flex-col items-center gap-4">
@@ -101,27 +102,29 @@ export default function TrendingSideNav() {
         }
 
         return (
-          <button
-            key={item.id}
-            type="button"
-            onClick={() => scrollToSection(item.id)}
-            className="focus:outline-none"
-            aria-label={item.label}
-            title={item.label}
-          >
-            <span className={dotClasses + " rounded-full block"} />
-          </button>
+          <Tilt options={{ max: 15, scale: 1.05, speed: 300 }}>
+  <button
+    key={item.id || idx}
+    type="button"
+    onClick={() => scrollToSection(item.id)}
+    className="focus:outline-none"
+    aria-label={item.label}
+    title={item.label}
+  >
+    <span className={dotClasses + " rounded-full block"} />
+  </button>
+</Tilt>
         );
       })}
     </div>
 
-    {/* Divider */}
+    {/* Divider
     <div className="mt-4 h-px bg-[var(--border)] w-full" />
 
-    {/* Footer Text */}
+    Footer Text
     <div className="mt-3 text-[11px] text-[var(--text-light)] text-center leading-tight">
       Scroll to explore
-    </div>
+    </div> */}
   </div>
 </aside>
   );

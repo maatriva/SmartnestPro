@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 
+    <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-2 
     bg-[var(--bg-secondary)] text-[var(--text)]">
       
       <div className="max-w-7xl mx-auto flex items-center justify-between h-20 px-8 rounded-[var(--radius-lg)] 
@@ -26,13 +26,8 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/about" className="hover:text-[var(--text-dark)] transition duration-200">
-              About
-            </Link>
-          </li>
-          <li>
-            <Link to="/contact" className="hover:text-[var(--text-dark)] transition duration-200">
-              Contact
+            <Link to="/about-us" className="hover:text-[var(--text-dark)] transition duration-200">
+              About Us
             </Link>
           </li>
           <li>

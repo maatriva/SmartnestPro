@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { motion } from "motion/react";
+import gsap from "gsap";
 
 const diseaseData = [
   {
@@ -70,50 +72,109 @@ const diseaseData = [
   },
 ];
 
-import { motion } from "motion/react";
-
 export default function DetailedDiseases() {
   const [openCard, setOpenCard] = useState(null);
+  const [currentIndices, setCurrentIndices] = useState(() =>
+    Object.fromEntries(diseaseData.map((_, i) => [i, 0]))
+  );
+  const sectionCardRefs = useRef([]);
+
+  useEffect(() => {
+    diseaseData.forEach((_, sectionIdx) => {
+      const items = (sectionCardRefs.current[sectionIdx] || []).filter(Boolean);
+      if (!items.length) return;
+
+      const currentIndex = currentIndices[sectionIdx] ?? 0;
+
+      items.forEach((item, i) => {
+        const offset = i - currentIndex;
+        gsap.to(item, {
+          rotateY: offset * -30,
+          z: offset === 0 ? 50 : -Math.abs(offset) * 30,
+          scale: offset === 0 ? 1.2 : 0.85,
+          duration: 0.2,
+          ease: "back.out(1.4)",
+          overwrite: "auto",
+        });
+      });
+    });
+  }, [currentIndices]);
+
+  useEffect(() => {
+    return () => {
+      sectionCardRefs.current
+        .flat()
+        .filter(Boolean)
+        .forEach((item) => gsap.killTweensOf(item));
+    };
+  }, []);
+
+  const setActiveIndex = (sectionIdx, cardIdx) => {
+    setCurrentIndices((prev) => ({
+      ...prev,
+      [sectionIdx]: cardIdx,
+    }));
+  };
 
   return (
-    <div className="min-h-screen bg-[var(--bg-secondary)] text-[var(--text)] p-6">
-      
-      {/* Title */}
-      <motion.h1 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="text-4xl font-bold text-center mb-10 text-[var(--text-dark)]"
-      >
-        Diseases We Monitor
-      </motion.h1>
+    <div className="min-h-screen bg-[var(--bg-secondary)] text-[var(--text)] px-6 py-10 md:py-14 shadow-2xl">
+      <div className="max-w-7xl mx-auto">
+        {/* Title */}
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl font-bold text-center mb-4 text-[var(--text-dark)]"
+        >
+          Diseases We Monitor
+        </motion.h1>
+        <p className="text-center text-[var(--text-light)] mb-10">
+          Hover a card to focus it. Click to see details.
+        </p>
 
-      {diseaseData.map((section, idx) => (
-        <div key={idx} className="mb-12 ">
-          
-          {/* Category Title */}
-          <h2 className="text-2xl font-semibold text-[var(--primary)] mb-6">
-            {section.category}
-          </h2>
-
-          {/* Cards */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: idx * 0.1 }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+        {diseaseData.map((section, idx) => (
+          <section
+            key={idx}
+            className="mb-10 md:mb-12 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-glass)] backdrop-blur-xl p-6 md:p-8 shadow-[var(--shadow)]"
           >
+            {/* Category Title */}
+            <div className="flex items-center justify-between gap-4 mb-6">
+              <h2 className="text-2xl font-semibold text-[var(--primary)]">
+                {section.category}
+              </h2>
+              <div className="text-xs text-[var(--text-light)]">
+                {section.diseases.length} conditions
+              </div>
+            </div>
+
+            {/* Cards */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="grid md:grid-cols-2 xl:grid-cols-4 gap-5 md:gap-6"
+              style={{ perspective: "900px" }}
+            >
             {section.diseases.map((disease, i) => {
               const isOpen = openCard === disease.name;
 
               return (
                 <div
                   key={i}
-                  className="bg-[var(--bg-glass)] backdrop-blur-xl rounded-[var(--radius-lg)] p-5 border border-[var(--border)] hover:border-[var(--primary)] shadow-[var(--shadow)] transition cursor-pointer"
+                  ref={(el) => {
+                    if (!sectionCardRefs.current[idx]) {
+                      sectionCardRefs.current[idx] = [];
+                    }
+                    sectionCardRefs.current[idx][i] = el;
+                  }}
+                  className="card bg-[var(--bg-glass)] backdrop-blur-xl rounded-[var(--radius-lg)] p-5 border border-[var(--border)] hover:border-[var(--primary)] shadow-[var(--shadow)] hover:shadow-2xl transition cursor-pointer [transform-style:preserve-3d] min-h-[170px] outline-none focus:border-[var(--primary)]"
+                  onMouseEnter={() => setActiveIndex(idx, i)}
+                  onFocus={() => setActiveIndex(idx, i)}
                   onClick={() =>
                     setOpenCard(isOpen ? null : disease.name)
                   }
+                  tabIndex={0}
                 >
                   {/* Disease Name */}
                   <h3 className="text-lg font-semibold mb-2 text-[var(--text-dark)]">
@@ -144,20 +205,21 @@ export default function DetailedDiseases() {
                 </div>
               );
             })}
-          </motion.div>
-        </div>
-      ))}
+            </motion.div>
+          </section>
+        ))}
 
-      {/* Warning Section */}
-      <div className="mt-16 bg-[#FFEBEB] p-6 rounded-[var(--radius-lg)] border border-[#FF4D4D]">
-        <h2 className="text-xl font-bold text-[#D00000] mb-3">
-          ⚠️ Important Safety Notes
-        </h2>
-        <ul className="list-disc pl-6 space-y-2 text-sm text-[#D00000]/90">
-          <li>Not suitable for premature babies before skin development</li>
-          <li>Avoid use with pacemakers or implants</li>
-          <li>Do not expose directly to eyes for long durations</li>
-        </ul>
+        {/* Warning Section */}
+        <div className="mt-12 bg-[#FFEBEB] p-6 rounded-[var(--radius-lg)] border border-[#FF4D4D]">
+          <h2 className="text-xl font-bold text-[#D00000] mb-3">
+            ⚠️ Important Safety Notes
+          </h2>
+          <ul className="list-disc pl-6 space-y-2 text-sm text-[#D00000]/90">
+            <li>Not suitable for premature babies before skin development</li>
+            <li>Avoid use with pacemakers or implants</li>
+            <li>Do not expose directly to eyes for long durations</li>
+          </ul>
+        </div>
       </div>
     </div>
   );

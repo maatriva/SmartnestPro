@@ -1,5 +1,9 @@
 import "../../styles/theme.css";
-import { motion } from "motion/react";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const tickerData = [
   { name: "Cystic Fibrosis", short: "Thick mucus buildup in lungs" },
@@ -11,6 +15,134 @@ const tickerData = [
 ];
 
 const Diseases = () => {
+  const headingRef = useRef(null);
+  const marqueeRef = useRef(null);
+  const buttonWrapRef = useRef(null);
+  const chipRefs = useRef([]);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const headingEl = headingRef.current;
+      const marqueeEl = marqueeRef.current;
+      const buttonEl = buttonWrapRef.current;
+      const chips = chipRefs.current.filter(Boolean);
+
+      if (!headingEl || !marqueeEl || !buttonEl || chips.length === 0) return;
+
+      // Initial states (avoid flicker)
+      gsap.set(headingEl, { opacity: 0, y: -10 });
+      gsap.set(marqueeEl, { opacity: 0 });
+      gsap.set(buttonEl, { opacity: 0, y: 20 });
+      gsap.set(chips, { opacity: 0, y: 12 });
+
+      // Heading: fade + slight upward motion (once)
+      gsap.to(headingEl, {
+        opacity: 1,
+        y: 0,
+        duration: 0.9,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: headingEl,
+          start: "top 85%",
+          once: true,
+        },
+      });
+
+      // Marquee container: fade in (no Y transform to avoid conflicts with CSS marquee)
+      gsap.to(marqueeEl, {
+        opacity: 1,
+        duration: 0.9,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: marqueeEl,
+          start: "top 85%",
+          once: true,
+        },
+      });
+
+      // Chips: staggered fade + upward motion (once)
+      gsap.to(chips, {
+        opacity: 1,
+        y: 0,
+        duration: 1.0,
+        ease: "power3.out",
+        stagger: { each: 0.03, from: "start" },
+        scrollTrigger: {
+          trigger: marqueeEl,
+          start: "top 85%",
+          once: true,
+        },
+      });
+
+      // Button wrapper: fade + slight upward (once)
+      gsap.to(buttonEl, {
+        opacity: 1,
+        y: 0,
+        duration: 0.85,
+        ease: "power3.out",
+        delay: 0.08,
+        scrollTrigger: {
+          trigger: buttonEl,
+          start: "top 85%",
+          once: true,
+        },
+      });
+
+      // Hover micro-interactions (premium feel)
+      const button = buttonEl.querySelector("button");
+      const tweenIn = (el) =>
+        gsap.to(el, {
+          scale: 1.04,
+          duration: 0.22,
+          ease: "power3.out",
+          overwrite: "auto",
+        });
+      const tweenOut = (el) =>
+        gsap.to(el, {
+          scale: 1,
+          duration: 0.22,
+          ease: "power3.out",
+          overwrite: "auto",
+        });
+
+      const chipHandlers = chips.map((chip) => {
+        const onEnter = () => tweenIn(chip);
+        const onLeave = () => tweenOut(chip);
+        chip.addEventListener("mouseenter", onEnter);
+        chip.addEventListener("mouseleave", onLeave);
+        return { chip, onEnter, onLeave };
+      });
+
+      let buttonHandlers = null;
+      if (button) {
+        const onEnter = () => tweenIn(button);
+        const onLeave = () => tweenOut(button);
+        button.addEventListener("mouseenter", onEnter);
+        button.addEventListener("mouseleave", onLeave);
+        buttonHandlers = { button, onEnter, onLeave };
+      }
+
+      return () => {
+        chipHandlers.forEach(({ chip, onEnter, onLeave }) => {
+          chip.removeEventListener("mouseenter", onEnter);
+          chip.removeEventListener("mouseleave", onLeave);
+        });
+        if (buttonHandlers) {
+          buttonHandlers.button.removeEventListener(
+            "mouseenter",
+            buttonHandlers.onEnter
+          );
+          buttonHandlers.button.removeEventListener(
+            "mouseleave",
+            buttonHandlers.onLeave
+          );
+        }
+      };
+    }, marqueeRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <div
       id="diseases"
@@ -19,29 +151,25 @@ const Diseases = () => {
       text-[var(--text)] 
       py-6 "
     >
-
       {/* Heading */}
-      <motion.h1 
-        initial={{ opacity: 0, y: -10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+      <h1
+        ref={headingRef}
         className="text-2xl font-bold text-[var(--text-dark)] text-center p-5"
       >
         Diseases That are Monitored by us
-      </motion.h1>
+      </h1>
 
       {/* Marquee */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.2 }}
+      <div
+        ref={marqueeRef}
         className="flex whitespace-nowrap marquee hover:[animation-play-state:paused]"
       >
         {[...tickerData, ...tickerData].map((item, i) => (
           <div
             key={i}
+            ref={(el) => {
+              chipRefs.current[i] = el;
+            }}
             className="mx-8 text-sm md:text-base 
             border border-[var(--border)] 
             rounded-full px-4 py-2 
@@ -50,22 +178,14 @@ const Diseases = () => {
             <div className="font-semibold text-[var(--text-dark)]">
               {item.name}
             </div>
-            <span className="text-[var(--text-light)]">
-              {item.short}
-            </span>
+            <span className="text-[var(--text-light)]">{item.short}</span>
             <span className="mx-6 text-[var(--text-light)]">•</span>
           </div>
         ))}
-      </motion.div>
+      </div>
 
       {/* Button */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-        className="flex w-full justify-center mt-6"
-      >
+      <div ref={buttonWrapRef} className="flex w-full justify-center mt-6">
         <button
           className="px-5 py-2.5 
           bg-[var(--primary)] text-white 
@@ -76,9 +196,10 @@ const Diseases = () => {
         >
           Know more
         </button>
-      </motion.div>
+      </div>
     </div>
   );
 };
 
 export default Diseases;
+

@@ -1,5 +1,6 @@
 import { Routes, Route, useLocation } from "react-router-dom";
-import "../index.css"
+import "../index.css";
+
 import { Hero } from "./components/Hero";
 import { Features } from "./components/Features";
 import { HowItWorks } from "./components/HowItWorks";
@@ -10,14 +11,14 @@ import Diseases from "./components/Diseases";
 import { LiveDemo } from "./components/LiveDemo";
 import TrendingSideNav from "./components/TrendingSideNav";
 import Survey from "./components/pages/Survey";
-import About from "./components/pages/About";
+import AboutUs from "./components/pages/AboutUs";
 import Navbar from "./components/Navbar";
-import Contact from "./components/pages/Contact";
 import DetailedDiseases from "./components/DetailedDiseases";
+import FloatingParticles from "./components/FloatingParticles";
 
 function Home() {
   return (
-    <div className="relative bg-[var(--bg-secondary)] text-[var(--text)]">
+    <div className="relative bg-[var(--bg-secondary)] text-[var(--text)] fade-in">
       <Hero />
       <Diseases />
       <Features />
@@ -35,19 +36,22 @@ export default function App() {
 
   return (
     <div className="relative bg-[var(--bg-secondary)] text-[var(--text)]">
-  <Navbar />
+      <FloatingParticles />
+      <Navbar />
+      {location.pathname === "/" && <TrendingSideNav />}
 
-  {location.pathname === "/" && <TrendingSideNav />}
-
-  <div className="pt-28">
-  <Routes>
-    <Route path="/" element={<Home />} />
-    <Route path="/survey" element={<Survey />} />
-    <Route path="/about" element={<About />} />
-    <Route path="/contact" element={<Contact />} />
-    <Route path="/detailed-diseases" element={<DetailedDiseases />} />
-  </Routes>
-</div>
-</div>
+      <div className={`${location.pathname === "/" ? "" : "pt-32"} relative z-10`}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/survey" element={<Survey />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route
+            path="/detailed-diseases"
+            element={<DetailedDiseases />}
+          />
+        </Routes>
+      </div>
+    </div>
   );
 }
+

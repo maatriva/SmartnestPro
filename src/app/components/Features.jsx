@@ -1,5 +1,10 @@
 import { Brain, Moon, Smartphone, Shield, Music, ThermometerSun } from 'lucide-react';
 import { motion } from "motion/react";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const features = [
   {
@@ -35,6 +40,40 @@ const features = [
 ];
 
 export function Features() {
+  const gridRef = useRef(null);
+
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+
+    const ctx = gsap.context(() => {
+      const items = gsap.utils.toArray(".grid-item");
+      if (!items.length) return;
+
+      gsap.from(items, {
+        scale: 0,
+        opacity: 0,
+        duration: 0.4,
+        stagger: { amount: 0.6, from: "center" },
+        ease: "back.out(1.7)",
+        scrollTrigger: {
+          trigger: grid,
+          start: "top 80%",
+          once: true,
+        },
+        clearProps: "transform,opacity",
+      });
+    }, grid);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section id="features" className="py-24 px-6 bg-[var(--bg-secondary)] text-[var(--text)] overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -67,16 +106,12 @@ export function Features() {
         </motion.div>
 
         {/* Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 ">
+        <div ref={gridRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 grid">
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -5 }}
-              className="group relative 
+              className="grid-item group relative 
               bg-[var(--bg-glass)] 
               rounded-[var(--radius-lg)] p-8 
               border border-[var(--border)] 
