@@ -42,7 +42,7 @@ export default function AboutUs() {
       <Navbar />
         <AboutSideNav />
 
-      <main className="px-6 pt-36 pb-16">
+      <main className="px-6 pt-3 pb-16">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

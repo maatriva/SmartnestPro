@@ -78,7 +78,7 @@ export function Hero() {
       
       <Parallax y={[-20, 20]}>
         <div
-          className="max-w-7xl mx-auto px-6 pt-20 pb-20 md:pt-24 md:pb-32 
+          className="max-w-7xl mx-auto px-6  pb-20 md:pt-12 md:pb-32 
           bg-[var(--bg-secondary)] rounded-[var(--radius-lg)]"
         >
           <div className="grid md:grid-cols-2 gap-12 items-center">

@@ -29,11 +29,6 @@
 }
 
 /* Navbar Link Underline Animation */
-.nav-link {
-  position: relative;
-  text-decoration: none;
-}
-
 .nav-link::after {
   content: '';
   position: absolute;
@@ -44,4 +39,15 @@
   background-color: var(--primary);
   /* background-color: currentColor; */
   transition: width 0.3s ease;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }

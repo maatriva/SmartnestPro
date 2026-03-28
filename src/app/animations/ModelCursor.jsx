@@ -40,7 +40,7 @@ const ModelCursor = () => {
 
     const loader = new GLTFLoader();
     loader.load(
-      "../../../dist/public/model.glb",
+      "../../../dist/public/3Dmodel.glb",
       (gltf) => {
         model = gltf.scene;
 

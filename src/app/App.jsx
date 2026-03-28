@@ -42,9 +42,10 @@ export default function App() {
 
       <div className={`${location.pathname === "/" ? "" : "pt-32"} relative z-10`}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/survey" element={<Survey />} />
           <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/diseases" element={<DetailedDiseases />} />
           <Route
             path="/detailed-diseases"
             element={<DetailedDiseases />}

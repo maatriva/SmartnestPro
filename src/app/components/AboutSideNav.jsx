@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Tilt from "react-parallax-tilt";
+
 export default function AboutSideNav() {
-  const location = useLocation(); // not used for now but kept for consistency
+  const location = useLocation();
 
   const items = useMemo(
     () => [
@@ -16,58 +17,88 @@ export default function AboutSideNav() {
 
   const [activeSectionId, setActiveSectionId] = useState(sectionIds[0]);
 
+  // ✅ SMOOTH SCROLL DETECTION (NO FLICKER)
   useEffect(() => {
-    const observers = [];
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setActiveSectionId(id);
-          }
-        },
-        { root: null, rootMargin: "0px", threshold: 0.6 }
-      );
-      observer.observe(el);
-      observers.push(observer);
-    });
-    return () => {
-      observers.forEach((obs) => obs.disconnect());
+    const handleScroll = () => {
+      let currentSection = sectionIds[0];
+      let minDistance = Infinity;
+
+      sectionIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+
+        const rect = el.getBoundingClientRect();
+        const distance = Math.abs(rect.top);
+
+        if (
+          distance < minDistance &&
+          rect.top <= window.innerHeight * 0.5
+        ) {
+          minDistance = distance;
+          currentSection = id;
+        }
+      });
+
+      setActiveSectionId(currentSection);
     };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // run once on load
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [sectionIds]);
 
+  // ✅ SMOOTH SCROLL CLICK
   function scrollToSection(id) {
     const el = document.getElementById(id);
     if (!el) return;
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    el.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   }
 
   return (
     <aside
-      className="fixed left-5 top-1/2 -translate-y-1/2 z-50 hidden md:block"
+      className="fixed right-5 top-1/2 -translate-y-1/2 z-50 hidden md:block"
       aria-label="About page navigation"
     >
       <div className="rounded-2xl bg-[var(--bg-glass)] backdrop-blur border border-[var(--border)] shadow-[var(--shadow)] px-3 py-4 max-h-[70vh] overflow-y-auto">
-        <div className="flex flex-col items-center gap-4">
+        <div className="flex flex-col items-center gap-5">
           {items.map((item) => {
             const active = activeSectionId === item.id;
+
             const dotClasses = active
-               ? "w-3.5 h-3.5 bg-[var(--primary)] shadow-[0_0_0_6px_rgba(74,111,165,0.25)] transition-shadow duration-300"
-               : "w-2.5 h-2.5 bg-[var(--text-light)] hover:bg-[var(--primary)] transition-colors duration-300";
+              ? "w-4 h-4 bg-[var(--primary)] shadow-[0_0_0_6px_rgba(74,111,165,0.25)] transition-all duration-300"
+              : "w-2.5 h-2.5 bg-[var(--text-light)] hover:bg-[var(--primary)] transition-all duration-300";
+
             return (
-              <Tilt options={{ max: 15, scale: 1.05, speed: 300 }}>
-  <button
-    key={item.id}
-    type="button"
-    onClick={() => scrollToSection(item.id)}
-    className="focus:outline-none"
-    aria-label={item.label}
-    title={item.label}
-  >
-    <span className={dotClasses + " rounded-full block"} />
-  </button>
-</Tilt>
+              <Tilt
+                key={item.id}
+                tiltMaxAngleX={15}
+                tiltMaxAngleY={15}
+                scale={1.1}
+                transitionSpeed={300}
+                gyroscope={true}
+              >
+                <button
+                  type="button"
+                  onClick={() => scrollToSection(item.id)}
+                  className="focus:outline-none group"
+                  aria-label={item.label}
+                >
+                  {/* Dot */}
+                  <span
+                    className={`${dotClasses} rounded-full block`}
+                  />
+
+                  {/* Tooltip */}
+                  <span className="absolute right-10 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition duration-300 text-xs bg-black text-white px-2 py-1 rounded">
+                    {item.label}
+                  </span>
+                </button>
+              </Tilt>
             );
           })}
         </div>

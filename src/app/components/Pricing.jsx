@@ -147,10 +147,10 @@ export function Pricing() {
             <div
               key={plan.name}
               className={[
-                "pricing-card relative rounded-[var(--radius-lg)] p-8 border transition-all duration-300 flex flex-col h-full",
+                "pricing-card group relative rounded-[var(--radius-lg)] p-8 border transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col h-full cursor-default",
                 plan.popular
-                  ? "bg-[var(--white)] border-[var(--primary)] shadow-[var(--shadow-primary)] scale-105 md:scale-110 z-10"
-                  : "bg-[var(--white)] border-[var(--border)] hover:shadow-[var(--shadow)] hover:scale-105"
+                  ? "bg-[var(--white)] border-[var(--primary)] shadow-[var(--shadow-primary)] scale-105 md:scale-110 z-10 hover:z-20 hover:scale-110 md:hover:scale-120 hover:shadow-2xl hover:-translate-y-12"
+                  : "bg-[var(--white)] border-[var(--border)] hover:border-[var(--primary)] hover:shadow-2xl hover:scale-110 hover:-translate-y-10 hover:z-20"
               ].join(" ")}
             >
               <div className="flex-grow">
@@ -208,12 +208,12 @@ export function Pricing() {
                 type="button"
                 disabled={plan.disabledCta}
                 className={[
-                  "w-full py-4 rounded-full font-medium transition-all whitespace-nowrap",
+                  "w-full py-4 rounded-full font-medium transition-all duration-300 whitespace-nowrap active:scale-95 hover:scale-105",
                   plan.disabledCta
                     ? "bg-[var(--border)] text-[var(--text-light)] cursor-not-allowed"
                     : plan.popular
-                      ? "bg-[var(--primary)] text-white hover:bg-[var(--primary-hover)] shadow-[var(--shadow-primary)]"
-                      : "bg-[var(--text-dark)] text-white hover:bg-[var(--primary)]"
+                      ? "bg-[var(--primary)] text-white hover:bg-[var(--primary-hover)] shadow-[var(--shadow-primary)] hover:shadow-xl"
+                      : "bg-[var(--text-dark)] text-white hover:bg-[var(--primary)] hover:shadow-xl"
                 ].join(" ")}
               >
                 {plan.cta}
