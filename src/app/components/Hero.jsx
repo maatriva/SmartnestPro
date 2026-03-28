@@ -214,22 +214,9 @@ export function Hero() {
                 rounded-[3rem] p-8 border border-white/60 shadow-2xl 
                 hover:scale-105 transition-all duration-300"
               >
-                {/* Image */}
                <div className="w-full h-[400px] flex items-center justify-center -z-40">
   <ModelCursor />
 </div>
-
-                {/* Optional Video (use instead of image) */}
-                {/*
-                <video
-                  ref={videoRef}
-                  muted
-                  autoPlay
-                  loop
-                  playsInline
-                  className="rounded-xl w-full"
-                />
-                */}
               </div>
             </motion.div>
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 const ModelCursor = () => {
   const mountRef = useRef(null);
@@ -26,6 +27,15 @@ const ModelCursor = () => {
     const light = new THREE.HemisphereLight(0xffffff, 0x444444, 2);
     scene.add(light);
 
+    // ✅ OrbitControls
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.rotateSpeed = 0.8;
+    controls.enableZoom = false; // Optional: keep zoom disabled if it messes with layout
+    controls.autoRotate = true; // Added autoRotate for better visibility
+    controls.autoRotateSpeed = 2.0;
+
     let model;
 
     const loader = new GLTFLoader();
@@ -35,7 +45,7 @@ const ModelCursor = () => {
         model = gltf.scene;
 
         // 🔥 Bigger model
-        model.scale.set(2.8, 2.8, 2.8);
+        model.scale.set(3.2, 3.2, 3.2);
 
         scene.add(model);
       },
@@ -45,43 +55,15 @@ const ModelCursor = () => {
       }
     );
 
-    let mouseX = 0;
-    let mouseY = 0;
-
-    // ✅ Mouse inside div only
-    const handleMouseMove = (event) => {
-      const rect = mountRef.current.getBoundingClientRect();
-
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
-
-      mouseX = (x / rect.width - 0.5) * 2;
-      mouseY = (y / rect.height - 0.5) * 2;
-    };
-
-    const handleMouseLeave = () => {
-      mouseX = 0;
-      mouseY = 0;
-    };
-
-    mountRef.current.addEventListener("mousemove", handleMouseMove);
-    mountRef.current.addEventListener("mouseleave", handleMouseLeave);
-
     const animate = () => {
       requestAnimationFrame(animate);
 
       if (model) {
-        // 🎯 Smooth rotation
-        model.rotation.y += (mouseX * 1.5 - model.rotation.y) * 0.05;
-        model.rotation.x += (mouseY * 1.0 - model.rotation.x) * 0.05;
-
-        // 🔥 Limit tilt
-        model.rotation.x = Math.max(-0.5, Math.min(0.5, model.rotation.x));
-
         // 🌊 Floating effect
         model.position.y = Math.sin(Date.now() * 0.001) * 0.2;
       }
 
+      controls.update();
       renderer.render(scene, camera);
     };
 
@@ -101,19 +83,19 @@ const ModelCursor = () => {
 
     // 🧹 Cleanup
     return () => {
-      mountRef.current.removeEventListener("mousemove", handleMouseMove);
-      mountRef.current.removeEventListener("mouseleave", handleMouseLeave);
       window.removeEventListener("resize", handleResize);
-
+      controls.dispose();
       renderer.dispose();
-      mountRef.current.removeChild(renderer.domElement);
+      if (mountRef.current) {
+        mountRef.current.removeChild(renderer.domElement);
+      }
     };
   }, []);
 
   return (
     <div
       ref={mountRef}
-      className="w-full h-[400px] flex items-center justify-center"
+      className="w-full h-[400px] flex items-center justify-center cursor-grab active:cursor-grabbing"
     />
   );
 };

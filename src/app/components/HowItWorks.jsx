@@ -119,7 +119,7 @@ export function HowItWorks() {
   return (
     <section 
       id="how-it-works" 
-      className="py-24 px-6 bg-white/50 backdrop-blur-sm text-[var(--text)] overflow-hidden"
+      className="py-24 px-6 bg-white/50 backdrop-blur-sm text-[var(--text)] overflow-x-hidden"
     >
       <div className="max-w-7xl mx-auto">
 
@@ -166,13 +166,13 @@ export function HowItWorks() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.15 }}
-                className="relative"
+                className="relative h-full"
               >
 
-                <div className="hiw-card bg-[var(--bg-glass)] backdrop-blur-xl rounded-[var(--radius-lg)] p-8 
+                <div className="hiw-card h-full bg-[var(--bg-glass)] backdrop-blur-xl rounded-[var(--radius-lg)] p-8 
                 border border-[var(--border)] 
                 shadow-[var(--shadow)] hover:shadow-lg transition-all 
-                hover:-translate-y-1 duration-300"
+                hover:-translate-y-1 duration-300 flex flex-col"
                 >
 
                   {/* Step Number */}

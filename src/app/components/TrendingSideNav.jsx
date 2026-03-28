@@ -65,7 +65,7 @@ export default function TrendingSideNav() {
 
   return (
    <aside
-  className="fixed left-5 top-1/2 -translate-y-1/2 z-50 hidden md:block"
+  className="fixed right-5 top-1/2 -translate-y-1/2 z-50 hidden md:block"
   aria-label="Trending navigation"
 >
   <div className="rounded-2xl 
