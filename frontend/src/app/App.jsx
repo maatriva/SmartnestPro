@@ -58,7 +58,7 @@ export default function App() {
         </Suspense>
       )}
 
-      <div className={`${location.pathname === "/" ? "" : "pt-32"} relative z-10`}>
+      <div className={`${location.pathname === "/" ? "" : "pt-24 md:pt-32"} relative z-10`}>
         <Suspense fallback={<LoadingFallback />}>
           <Routes>
             <Route path="/" element={<Home />} />

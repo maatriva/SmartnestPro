@@ -107,7 +107,7 @@ export function Hero() {
                 initial={{ opacity: 1, y: 0 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0 }}
-                className="text-5xl md:text-7xl font-bold text-[var(--text-dark)] leading-tight"
+                className="text-4xl sm:text-5xl md:text-7xl font-bold text-[var(--text-dark)] leading-tight"
               >
                 Sleep Better,
                 <br />

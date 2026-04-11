@@ -88,10 +88,12 @@ export default function DetailedDiseases() {
 
       items.forEach((item, i) => {
         const offset = i - currentIndex;
+        const isMobile = window.innerWidth < 768;
+        
         gsap.to(item, {
-          rotateY: offset * -30,
-          z: offset === 0 ? 50 : -Math.abs(offset) * 30,
-          scale: offset === 0 ? 1.2 : 0.85,
+          rotateY: isMobile ? 0 : offset * -30,
+          z: isMobile ? 0 : (offset === 0 ? 50 : -Math.abs(offset) * 30),
+          scale: offset === 0 ? 1.1 : 0.9,
           duration: 0.2,
           ease: "back.out(1.4)",
           overwrite: "auto",

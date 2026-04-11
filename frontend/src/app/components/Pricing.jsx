@@ -149,8 +149,8 @@ export function Pricing() {
               className={[
                 "pricing-card group relative rounded-[var(--radius-lg)] p-8 border transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col h-full cursor-default",
                 plan.popular
-                  ? "bg-[var(--white)] border-[var(--primary)] shadow-[var(--shadow-primary)] scale-105 md:scale-110 z-10 hover:z-20 hover:scale-110 md:hover:scale-120 hover:shadow-2xl hover:-translate-y-12"
-                  : "bg-[var(--white)] border-[var(--border)] hover:border-[var(--primary)] hover:shadow-2xl hover:scale-110 hover:-translate-y-10 hover:z-20"
+                  ? "bg-[var(--white)] border-[var(--primary)] shadow-[var(--shadow-primary)] scale-100 md:scale-110 z-10 hover:z-20 hover:scale-105 md:hover:scale-120 hover:shadow-2xl md:hover:-translate-y-12"
+                  : "bg-[var(--white)] border-[var(--border)] hover:border-[var(--primary)] hover:shadow-2xl hover:scale-105 md:hover:scale-110 md:hover:-translate-y-10 hover:z-20"
               ].join(" ")}
             >
               <div className="flex-grow">
