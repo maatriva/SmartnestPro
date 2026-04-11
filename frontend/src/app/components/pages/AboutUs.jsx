@@ -5,7 +5,7 @@ import Navbar from "../Navbar";
 import { Footer } from "../Footer";
 import withBabyImage from "../../images/withbaby.jpeg";
 import withoutBabyImage from "../../images/withoutbaby.jpeg";
-import withParentImage from "../../images/withparents.jpeg";
+import withParentImage from "../../images/withParents.jpeg";
 import { motion } from "motion/react";
 
 export default function AboutUs() {
