@@ -32,8 +32,8 @@ const ModelCursor = () => {
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
     controls.rotateSpeed = 0.8;
-    controls.enableZoom = false; // Optional: keep zoom disabled if it messes with layout
-    controls.autoRotate = true; // Added autoRotate for better visibility
+    controls.enableZoom = false;
+    controls.autoRotate = true; 
     controls.autoRotateSpeed = 2.0;
 
     let model;
@@ -41,7 +41,7 @@ const ModelCursor = () => {
 
     const loader = new GLTFLoader();
     loader.load(
-      "../../../dist/public/3Dmodel.glb",
+      "/3Dmodel.glb",
       (gltf) => {
         model = gltf.scene;
         model.scale.set(3.2, 3.2, 3.2);
