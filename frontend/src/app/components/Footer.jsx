@@ -1,6 +1,21 @@
+import React, { useState } from 'react';
 import { Sparkles, Facebook, Twitter, Instagram, Youtube, Mail } from 'lucide-react';
+import { validateEmail } from '../utils/validation';
 
 export function Footer() {
+  const [email, setEmail] = useState('');
+
+  const handleNewsletterSubmit = (e) => {
+    e.preventDefault();
+    if (!validateEmail(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+    // Simulation of success
+    alert("Thank you for joining our newsletter!");
+    setEmail('');
+  };
+
   return (
     <footer id="footer" className="bg-[var(--bg-glass)] backdrop-blur-xl text-[var(--text)] py-16 px-6 border-t border-[var(--border)]">
       <div className="max-w-7xl mx-auto">
@@ -71,7 +86,7 @@ export function Footer() {
               Subscribe to get notified about new features and safety updates.
             </p>
             
-            <form className="relative group flex flex-col gap-3">
+            <form onSubmit={handleNewsletterSubmit} className="relative group flex flex-col gap-3">
               <div className="relative">
                 <label htmlFor="newsletter-email" className="sr-only">Email Address</label>
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
@@ -84,6 +99,8 @@ export function Footer() {
                   name="email"
                   placeholder="email@example.com"
                   required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="w-full pl-12 pr-4 py-4 bg-[var(--bg-glass)] border border-[var(--border)] rounded-2xl text-[var(--text)] placeholder:text-[var(--text-light)]/50 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] transition-all"
                 />
               </div>

@@ -1,7 +1,12 @@
 import pool from "../db.js";
+import { validateEmail } from "../utils/validation.js";
 
 export const createSurvey = async (req, res) => {
   const { name, email, answers, user_id } = req.body;
+
+  if (!validateEmail(email)) {
+    return res.status(400).json({ error: "Invalid email format" });
+  }
 
   try {
     const result = await pool.query(

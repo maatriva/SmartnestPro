@@ -7,6 +7,7 @@ import withBabyImage from "../../images/withbaby.jpeg";
 import withoutBabyImage from "../../images/withoutbaby.jpeg";
 import withParentImage from "../../images/withParents.jpeg";
 import { motion } from "motion/react";
+import { validateEmail } from "../../utils/validation";
 
 export default function AboutUs() {
   const albumImages = [
@@ -31,6 +32,12 @@ export default function AboutUs() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+
+    if (!validateEmail(form.email)) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+
     setLoading(true);
 
     try {

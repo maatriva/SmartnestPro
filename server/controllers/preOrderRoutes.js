@@ -1,7 +1,12 @@
 import pool from "../db.js";
+import { validateEmail } from "../utils/validation.js";
 
 export const createPreorder = async (req, res) => {
   const { name, email, phone, address } = req.body;
+
+  if (!validateEmail(email)) {
+    return res.status(400).json({ error: "Invalid email format" });
+  }
 
   try {
     const result = await pool.query(

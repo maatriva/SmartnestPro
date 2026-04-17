@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { useAuth } from '../../../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import { Eye, EyeOff, Mail, Lock, User, ArrowRight } from 'lucide-react';
+import { validateEmail } from '../../../utils/validation';
 
 const Signup = () => {
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
@@ -20,6 +21,13 @@ const Signup = () => {
     e.preventDefault();
     setError('');
     setLoading(true);
+
+    if (!validateEmail(formData.email)) {
+      setError('Please enter a valid email address.');
+      setLoading(false);
+      return;
+    }
+
     try {
       await signup(formData.name, formData.email, formData.password);
       navigate('/');
@@ -68,7 +76,7 @@ const Signup = () => {
                 required
                 value={formData.name}
                 onChange={handleChange}
-                placeholder="John Doe"
+                placeholder="Enter Your Full Name"
                 className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
               />
             </div>
@@ -84,7 +92,7 @@ const Signup = () => {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="john@example.com"
+                placeholder="Enter Your Email"
                 className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
               />
             </div>
@@ -100,7 +108,7 @@ const Signup = () => {
                 required
                 value={formData.password}
                 onChange={handleChange}
-                placeholder="••••••••"
+                placeholder="Enter Your Password"
                 className="w-full pl-10 pr-12 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
               />
               <button
@@ -116,7 +124,7 @@ const Signup = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-primary text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-primary-hover transition-colors shadow-lg shadow-primary/25 disabled:opacity-70 disabled:cursor-not-allowed group"
+            className="w-full bg-primary text-gray-500 py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-primary-hover transition-colors shadow-lg shadow-primary/25 disabled:opacity-70 disabled:cursor-not-allowed group"
           >
             {loading ? 'Creating Account...' : 'Sign Up'}
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

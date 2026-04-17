@@ -1,5 +1,6 @@
 import { useState } from "react";
 import API from "../../utils/api";
+import { validateEmail } from "../../utils/validation";
 
 
 export default function PreOrderForm({ onClose }) {
@@ -19,6 +20,10 @@ export default function PreOrderForm({ onClose }) {
   const handleSubmit = async () => {
     if (!form.name || !form.email) {
       alert("Name and Email are required");
+      return;
+    }
+    if (!validateEmail(form.email)) {
+      alert("Please enter a valid email address");
       return;
     }
     try {
@@ -50,6 +55,7 @@ export default function PreOrderForm({ onClose }) {
         />
 
         <input
+          type="email"
           placeholder="Email"
           onChange={handleChange("email")}
           className="w-full border p-3 rounded"
