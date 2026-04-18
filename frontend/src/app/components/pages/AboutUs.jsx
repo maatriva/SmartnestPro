@@ -17,55 +17,6 @@ export default function AboutUs() {
     { src: withoutBabyImage, alt: "Smart Nest Pro setup view in room" }
   ];
 
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
-  const [submitted, setSubmitted] = useState(false);
-
-  function setField(key) {
-    return (e) => setForm((prev) => ({ ...prev, [key]: e.target.value }));
-  }
-
-  const [loading, setLoading] = useState(false);
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-
-    if (!validateEmail(form.email)) {
-        alert("Please enter a valid email address.");
-        return;
-    }
-
-    setLoading(true);
-
-    try {
-      const response = await fetch("http://localhost:5000/api/contacts", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-      });
-
-      if (response.ok) {
-        setSubmitted(true);
-        setTimeout(() => {
-          setSubmitted(false);
-          setForm({ name: "", email: "", message: "" });
-        }, 3000);
-      } else {
-        alert("Submission failed. Please try again later.");
-      }
-    } catch (error) {
-      console.error("Error submitting contact form:", error);
-      alert("Could not connect to server. Check if backend is running.");
-    } finally {
-      setLoading(false);
-    }
-  }
-
   return (
     <div id="about-us" className="min-h-screen bg-[var(--bg-secondary)] text-[var(--text)]">
       <Navbar />
@@ -169,83 +120,10 @@ export default function AboutUs() {
             >
               Take Survey
             </Link>
-            <a
-              href="#contact"
-              className="px-6 py-3 rounded-full font-semibold text-[var(--primary)] bg-[var(--bg-hover)] hover:bg-[var(--primary-light)] hover:text-white transition-colors"
-            >
-              Contact Us
-            </a>
           </div>
-
-          {/* Contact Section */}
-          <section id="contact" className="mt-16 scroll-mt-28">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--bg-glass)] border border-[var(--border)] backdrop-blur rounded-full text-[var(--primary)] text-sm font-semibold mb-5">
-              Contact Us
-            </div>
-            <h1 className="text-4xl font-bold text-[var(--text-dark)] mb-5">Let’s talk</h1>
-            <p className="text-[var(--text)] text-lg leading-relaxed mb-6">
-              Have questions about bulk orders, partnerships, or product support? Send
-              us a message.
-            </p>
-
-            <div className="max-w-3xl bg-[var(--bg-glass)] backdrop-blur-xl rounded-[var(--radius-lg)] border border-[var(--border)] shadow-[var(--shadow)] p-8">
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div>
-                  <label className="block text-sm font-medium text-[var(--text-dark)] mb-2">
-                    Name
-                  </label>
-                  <input
-                    value={form.name}
-                    onChange={setField("name")}
-                    required
-                    className="w-full px-4 py-3 rounded-[var(--radius)] border border-[var(--border)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)] bg-[var(--bg-glass)] backdrop-blur-xl text-[var(--text-dark)]"
-                    placeholder="John Doe"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-[var(--text-dark)] mb-2">
-                    Email
-                  </label>
-                  <input
-                    value={form.email}
-                    type="email"
-                    onChange={setField("email")}
-                    required
-                    className="w-full px-4 py-3 rounded-[var(--radius)] border border-[var(--border)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)] bg-[var(--bg-glass)] backdrop-blur-xl text-[var(--text-dark)]"
-                    placeholder="john@example.com"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-[var(--text-dark)] mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    value={form.message}
-                    onChange={setField("message")}
-                    required
-                    rows={6}
-                    className="w-full px-4 py-3 rounded-[var(--radius)] border border-[var(--border)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)] bg-[var(--bg-glass)] backdrop-blur-xl text-[var(--text-dark)] resize-none"
-                    placeholder="Tell us what you need..."
-                  />
-                </div>
-
-                  <button
-                    type="submit"
-                    className="w-full py-4 rounded-full font-semibold text-[var(--white)] bg-[var(--primary)] hover:bg-[var(--primary-hover)] hover:shadow-[var(--shadow-primary)] transition-all disabled:bg-gray-400"
-                    disabled={loading || submitted}
-                  >
-                    {loading ? "Sending..." : submitted ? "Sent!" : "Send Message"}
-                  </button>
-              </form>
-            </div>
-          </section>
 
         </motion.div>
       </main>
-
-      <Footer />
     </div>
   );
 }

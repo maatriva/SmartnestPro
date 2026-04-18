@@ -79,7 +79,7 @@ const Navbar = () => {
 
         {/* Logo */}
         <Link to="/" className="nav-logo inline-block text-xl md:text-2xl font-bold tracking-wide">
-          Smart Nest Pro
+          Maatriva
         </Link>
 
         {/* Desktop Links */}

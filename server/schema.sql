@@ -13,8 +13,7 @@ CREATE TABLE IF NOT EXISTS contacts (
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
   email TEXT NOT NULL,
-  category TEXT,
-  rating INTEGER,
+  phone TEXT,
   message TEXT NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

@@ -4,6 +4,64 @@ import jwt from "jsonwebtoken";
 import { validateEmail } from "../utils/validation.js";
 
 const JWT_SECRET = process.env.JWT_SECRET;
+import { OAuth2Client } from "google-auth-library";
+
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+
+export const googleLogin = async (req, res) => {
+  try {
+    const { token, isAccessToken } = req.body; // New flag to distinguish token types
+
+    let email, name;
+
+    if (isAccessToken) {
+       // ✅ Fetch user info using Access Token
+       const response = await fetch(`https://www.googleapis.com/oauth2/v3/userinfo?access_token=${token}`);
+       const data = await response.json();
+       
+       if (!data.email) throw new Error("Invalid access token");
+       
+       email = data.email;
+       name = data.name;
+    } else {
+       // ✅ Verify ID Token
+       const ticket = await client.verifyIdToken({
+         idToken: token,
+         audience: process.env.GOOGLE_CLIENT_ID,
+       });
+
+       const payload = ticket.getPayload();
+       email = payload.email;
+       name = payload.name;
+    }
+
+    // ✅ Check if user exists
+    let result = await pool.query("SELECT * FROM users WHERE email=$1", [email]);
+
+    let user;
+
+    if (result.rows.length === 0) {
+      // ✅ Create new user (no password)
+      const newUser = await pool.query(
+        "INSERT INTO users (name,email,password) VALUES ($1,$2,$3) RETURNING id,name,email,is_admin",
+        [name, email, null]
+      );
+
+      user = newUser.rows[0];
+    } else {
+      user = result.rows[0];
+    }
+
+    // ✅ Generate JWT
+    const jwtToken = jwt.sign({ id: user.id }, JWT_SECRET);
+
+    delete user.password;
+    res.json({ user, token: jwtToken });
+  } catch (error) {
+    console.error("Google login error:", error);
+    res.status(401).json({ error: "Google authentication failed" });
+  }
+};
 
 export const signup = async (req, res) => {
   const { name, email, password } = req.body;

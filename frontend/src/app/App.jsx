@@ -1,7 +1,7 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { Toaster } from "sonner";
-import "../index.css";
+
 
 import { Hero } from "./components/Hero";
 import Navbar from "./components/Navbar";
@@ -9,16 +9,31 @@ import FloatingParticles from "./components/FloatingParticles";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminRoute from "./components/AdminRoute";
 
-// Lazy loaded components
-const Features = lazy(() => import("./components/Features").then(m => ({ default: m.Features })));
-const HowItWorks = lazy(() => import("./components/HowItWorks").then(m => ({ default: m.HowItWorks })));
-const Pricing = lazy(() => import("./components/Pricing").then(m => ({ default: m.Pricing })));
-const Footer = lazy(() => import("./components/Footer").then(m => ({ default: m.Footer })));
+// ✅ Lazy loaded components (FIXED)
+const Features = lazy(() =>
+  import("./components/Features").then((m) => ({ default: m.Features }))
+);
+
+const HowItWorks = lazy(() =>
+  import("./components/HowItWorks").then((m) => ({
+    default: m.HowItWorks,
+  }))
+);
+
+const Pricing = lazy(() =>
+  import("./components/Pricing").then((m) => ({ default: m.Pricing }))
+);
+
+const Footer = lazy(() =>
+  import("./components/Footer").then((m) => ({ default: m.Footer }))
+);
+
 const Diseases = lazy(() => import("./components/Diseases"));
+const DetailedDiseases = lazy(() => import("./components/DetailedDiseases"));
 const TrendingSideNav = lazy(() => import("./components/TrendingSideNav"));
+
 const Survey = lazy(() => import("./components/pages/Survey"));
 const AboutUs = lazy(() => import("./components/pages/AboutUs"));
-const DetailedDiseases = lazy(() => import("./components/DetailedDiseases"));
 const AdminDashboard = lazy(() => import("./components/pages/AdminDashboard"));
 const Login = lazy(() => import("./components/pages/Auth/Login"));
 const Signup = lazy(() => import("./components/pages/Auth/Signup"));
@@ -38,74 +53,88 @@ function Home() {
         <Features />
         <HowItWorks />
         <Pricing />
-        <Footer />
       </Suspense>
     </div>
   );
 }
 
+// ✅ MAIN APP
 export default function App() {
   const location = useLocation();
 
   return (
     <div className="relative bg-[var(--bg-secondary)] text-[var(--text)]">
       <Toaster position="top-center" richColors />
+
       <FloatingParticles />
       <Navbar />
+
+      {/* Side Nav only on home */}
       {location.pathname === "/" && (
         <Suspense fallback={null}>
           <TrendingSideNav />
         </Suspense>
       )}
 
-      <div className={`${location.pathname === "/" ? "" : "pt-24 md:pt-32"} relative z-10`}>
+      <div
+        className={`${
+          location.pathname === "/" ? "" : "pt-24 md:pt-32"
+        } relative z-10`}
+      >
         <Suspense fallback={<LoadingFallback />}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route 
-              path="/survey" 
+
+            <Route
+              path="/survey"
               element={
                 <ProtectedRoute>
                   <Survey />
                 </ProtectedRoute>
-              } 
+              }
             />
-            <Route 
-              path="/about-us" 
+
+            <Route
+              path="/about-us"
               element={
                 <ProtectedRoute>
                   <AboutUs />
                 </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/diseases" 
-              element={
-                <ProtectedRoute>
-                  <DetailedDiseases />
-                </ProtectedRoute>
-              } 
-            />
-            <Route
-              path="/detailed-diseases"
-              element={
-                <ProtectedRoute>
-                  <DetailedDiseases />
-                </ProtectedRoute>
               }
             />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route 
-              path="/admin" 
+
+            <Route
+              path="/diseases"
+              element={<DetailedDiseases />}
+            />
+
+            <Route
+              path="/login"
+              element={<Login />}
+            />
+
+            <Route
+              path="/signup"
+              element={<Signup />}
+            />
+
+            <Route
+              path="/admin"
               element={
                 <AdminRoute>
                   <AdminDashboard />
                 </AdminRoute>
-              } 
+              }
             />
           </Routes>
         </Suspense>
+        
+        {/* Global Footer */}
+        {location.pathname !== "/login" && location.pathname !== "/signup" && (
+          <Suspense fallback={null}>
+            <Footer />
+          </Suspense>
+        )}
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
+const PORT = process.env.PORT
 
 import express from "express";
 import cors from "cors";
@@ -33,4 +34,4 @@ app.get("/", (req, res) => {
   res.send("API running 🚀");
 });
 
-app.listen(5000, () => console.log("Server running"));
+app.listen(PORT, () => console.log(`https://localhost:${PORT}`));

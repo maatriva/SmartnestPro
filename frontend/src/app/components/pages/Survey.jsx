@@ -438,7 +438,7 @@ export default function Survey() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#F8F9FA] via-[#E9F5F6] to-[#A8DADC]/30 flex items-center justify-center p-6">
+      <div className="min-h-screen bg-[#A8DADC] flex items-center justify-center p-6">
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -463,7 +463,7 @@ export default function Survey() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F8F9FA] via-[#E9F5F6] to-[#A8DADC]/30 px-4 py-12 md:py-20 font-sans text-[var(--text-dark)]">
+    <div className="min-h-screen bg-[#A8DADC] px-4 py-12 md:py-20 font-sans text-[var(--text-dark)]">
       <div className="max-w-4xl mx-auto relative">
         
         {/* Progress Header */}

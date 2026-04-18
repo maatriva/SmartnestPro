@@ -5,8 +5,10 @@ import App from "./app/App";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./app/context/AuthContext";
+import {GoogleOAuthProvider} from '@react-oauth/google'
 
 ReactDOM.createRoot(document.getElementById("root")).render(
+  <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
   <BrowserRouter>
     <ParallaxProvider>
       <AuthProvider>
@@ -14,4 +16,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       </AuthProvider>
     </ParallaxProvider>
   </BrowserRouter>
+  </GoogleOAuthProvider>
 );

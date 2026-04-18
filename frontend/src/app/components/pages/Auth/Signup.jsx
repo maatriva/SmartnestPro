@@ -1,22 +1,43 @@
+
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { useAuth } from '../../../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import { Eye, EyeOff, Mail, Lock, User, ArrowRight } from 'lucide-react';
 import { validateEmail } from '../../../utils/validation';
+import { GoogleLogin } from '@react-oauth/google';
 
 const Signup = () => {
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const { signup } = useAuth();
+
+  const { signup, googleLogin } = useAuth();
   const navigate = useNavigate();
 
+  // ✅ Handle Google Success
+  const handleGoogleSuccess = async (credentialResponse) => {
+    try {
+      setLoading(true);
+
+      // send ID token (credential) to backend
+      await googleLogin(credentialResponse.credential, true);
+
+      navigate('/');
+    } catch (err) {
+      setError('Google signup failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // ✅ Normal input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // ✅ Normal signup
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -40,7 +61,8 @@ const Signup = () => {
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 relative overflow-hidden">
-      {/* Background Decorative Elements */}
+      
+      {/* Background */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-secondary/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
 
@@ -50,11 +72,17 @@ const Signup = () => {
         transition={{ duration: 0.6 }}
         className="w-full max-w-md bg-white/80 backdrop-blur-xl p-8 rounded-[var(--radius-lg)] shadow-[var(--shadow)] border border-white/20 relative z-10"
       >
+        {/* Heading */}
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-[var(--text-dark)] mb-2">Create Account</h2>
-          <p className="text-[var(--text-light)]">Join SmartNestPro and start monitoring.</p>
+          <h2 className="text-3xl font-bold text-[var(--text-dark)] mb-2">
+            Create Account
+          </h2>
+          <p className="text-[var(--text-light)]">
+            Join SmartNestPro and start monitoring.
+          </p>
         </div>
 
+        {/* Error */}
         {error && (
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -65,9 +93,14 @@ const Signup = () => {
           </motion.div>
         )}
 
+        {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-5">
+          
+          {/* Name */}
           <div className="space-y-2">
-            <label className="text-sm font-medium text-[var(--text-dark)]">Full Name</label>
+            <label className="text-sm font-medium text-[var(--text-dark)]">
+              Full Name
+            </label>
             <div className="relative">
               <User className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
@@ -82,8 +115,11 @@ const Signup = () => {
             </div>
           </div>
 
+          {/* Email */}
           <div className="space-y-2">
-            <label className="text-sm font-medium text-[var(--text-dark)]">Email Address</label>
+            <label className="text-sm font-medium text-[var(--text-dark)]">
+              Email Address
+            </label>
             <div className="relative">
               <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
@@ -98,8 +134,11 @@ const Signup = () => {
             </div>
           </div>
 
+          {/* Password */}
           <div className="space-y-2">
-            <label className="text-sm font-medium text-[var(--text-dark)]">Password</label>
+            <label className="text-sm font-medium text-[var(--text-dark)]">
+              Password
+            </label>
             <div className="relative">
               <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
@@ -114,23 +153,41 @@ const Signup = () => {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
               >
-                {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                {showPassword ? <EyeOff /> : <Eye />}
               </button>
             </div>
           </div>
 
+          {/* Submit */}
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-primary text-gray-500 py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-primary-hover transition-colors shadow-lg shadow-primary/25 disabled:opacity-70 disabled:cursor-not-allowed group"
+            className="w-full bg-primary text-gray-500 py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-primary-hover transition-colors shadow-lg shadow-primary/25 disabled:opacity-70"
           >
             {loading ? 'Creating Account...' : 'Sign Up'}
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-5 h-5" />
           </button>
         </form>
 
+        {/* Divider */}
+        <div className="mt-6 relative flex items-center justify-center">
+          <div className="w-full h-px bg-gray-200" />
+          <span className="absolute bg-white px-4 text-xs text-gray-400 uppercase">
+            Or Continue With
+          </span>
+        </div>
+
+        {/* ✅ Google Login Button */}
+        <div className="mt-6 flex justify-center">
+          <GoogleLogin
+            onSuccess={handleGoogleSuccess}
+            onError={() => setError('Google Signup Failed')}
+          />
+        </div>
+
+        {/* Login Link */}
         <div className="mt-8 text-center">
           <p className="text-[var(--text-light)]">
             Already have an account?{' '}
@@ -139,6 +196,7 @@ const Signup = () => {
             </Link>
           </p>
         </div>
+
       </motion.div>
     </div>
   );

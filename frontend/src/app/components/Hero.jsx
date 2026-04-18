@@ -78,7 +78,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section id="home" className="relative overflow-hidden">
+    <section id="home" className="relative overflow-hidden mt-16 md:mt-24">
       <Parallax y={[-20, 20]}>
         <div
           className="max-w-7xl mx-auto px-6  pb-20 md:pt-12 md:pb-32 
@@ -178,7 +178,7 @@ export function Hero() {
 
               <div
                 className="relative bg-[var(--bg-glass)] backdrop-blur-sm 
-                rounded-[3rem] p-8 border border-white/60 shadow-2xl 
+                rounded-[3rem] p-8 m-5 border border-white/60 shadow-2xl 
                 hover:scale-105 transition-all duration-300"
               >
                 <div className="w-full h-[400px] flex items-center justify-center -z-40">
