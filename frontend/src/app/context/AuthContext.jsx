@@ -47,14 +47,30 @@ export const AuthProvider = ({ children }) => {
   };
 
 const googleLogin = async (googleToken) => {
-  const res = await API.post('/auth/google', {
-    token: googleToken
-  });
+  try {
+    const res = await fetch(
+      "https://smartnestpro.onrender.com/api/auth/google",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          token: googleToken,
+        }),
+      }
+    );
 
-  localStorage.setItem('token', res.data.token);
-  setToken(res.data.token);
-  setUser(res.data.user);
-  return res.data;
+    const data = await res.json();
+
+    localStorage.setItem("token", data.token);
+    setToken(data.token);
+    setUser(data.user);
+
+    return data;
+  } catch (err) {
+    console.error("Google login error:", err);
+  }
 };
 
   const logout = () => {

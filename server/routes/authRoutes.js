@@ -8,5 +8,6 @@ router.post("/signup", signup);
 router.post("/login", login);
 router.get("/me", authMiddleware, getMe);
 router.post("/google", googleLogin);
+router.post("/auth/google", googleLogin); // Alias for robustness
 
 export default router;

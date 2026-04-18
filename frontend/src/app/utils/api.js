@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'https://smartnestpro.onrender.com/api',
+  baseURL: import.meta.env.VITE_API_URL || 'https://smartnestpro.onrender.com/api',
 });
 
 // Add a request interceptor to include the token in headers
