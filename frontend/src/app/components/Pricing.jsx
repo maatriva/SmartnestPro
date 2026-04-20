@@ -7,51 +7,67 @@ gsap.registerPlugin(ScrollTrigger);
 
 const plans = [
   {
-    name: "Cradle",
-    badge: "Starter",
-    price: "599",
-    description: "Core AI monitoring for better sleep comfort.",
+    name: "AI Subscription",
+    badge: "Software Plan",
+    price: "15,000",
+    description: "AI-powered monitoring & insights subscription.",
     popular: false,
-    // cta: "Pre-Order Now",
+    type: "simple",
     features: [
-      "AI sleep & comfort monitoring",
-      "Smart soothing routines",
-      "Mobile app control",
-      "Temperature + environment checks",
-      "Shared access (1 user)",
-      "Standard warranty"
+      "AI sleep & health monitoring",
+      "Cloud-based insights",
+      "Real-time alerts",
+      "Mobile app access",
+      "Continuous updates",
+      "Data analytics dashboard"
     ]
   },
   {
-    name: "Mattress",
-    badge: "Most Popular",
-    price: "899",
-    description: "Deeper insights + enhanced comfort automation.",
+    name: "Smart Cradle",
+    badge: "Hardware",
+    price: "12,000",
+    description: "Choose your cradle model based on features.",
     popular: true,
-    // cta: "Get Pro",
+    type: "dropdown",
+    options: [
+      {
+        label: "Model A (Basic)",
+        price: "12,000",
+        details: "Auto-Swing + Cradle Frame"
+      },
+      {
+        label: "Model B (Cloud AI)",
+        price: "45,000 - 55,000",
+        details: "ESP Board + Sensors + Cloud AI"
+      },
+      {
+        label: "Model C (Edge AI)",
+        price: "65,000 - 70,000",
+        details: "Onboard AI + Full Sensors + Privacy Focus"
+      }
+    ],
     features: [
-      "Everything in Cradle",
-      "Advanced trend insights (demo UI)",
-      "Premium soothing library",
-      "Health summary reports",
-      "Shared access (3 users)",
-      "Priority support"
+      "Multiple cradle variants",
+      "Smart automation",
+      "Sensor integration",
+      "AI compatibility",
+      "Upgradeable system"
     ]
   },
   {
-    name: "Bulk",
-    badge: "Coming Soon",
-    price: "—",
-    description: "Bulk direct contact for retailers & clinics (coming soon).",
+    name: "Enterprise",
+    badge: "Industrial Use",
+    price: "Custom",
+    description: "For hospitals, clinics & daycare centers.",
     popular: false,
-    // cta: "Bulk Direct Contact",
-    disabledCta: true,
+    type: "contact",
     features: [
-      "Bulk pricing & scheduling",
-      "Clinic/retailer onboarding",
-      "Dedicated account manager",
-      "Custom monitoring setup",
-      "Install/support packages"
+      "Bulk deployment",
+      "Hospital-grade monitoring",
+      "Central dashboard",
+      "Dedicated support",
+      "Custom integrations",
+      "Installation services"
     ]
   }
 ];
@@ -179,10 +195,10 @@ export function Pricing() {
 
                   <div className="flex items-baseline justify-center gap-2">
                     <span className="text-5xl font-bold text-[var(--text-dark)]">
-                      {plan.price === "—" ? "—" : `$${plan.price}`}
+                      {plan.price === "—" ? "—" : `₹${plan.price}`}
                     </span>
                     {plan.price !== "—" && (
-                      <span className="text-[var(--text-light)]">USD</span>
+                      <span className="text-[var(--text-light)]">INR</span>
                     )}
                   </div>
                 </div>

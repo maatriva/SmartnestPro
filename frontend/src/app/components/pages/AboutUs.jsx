@@ -1,5 +1,4 @@
 import { useState } from "react";
-import AboutSideNav from "../AboutSideNav";
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar";
 import { Footer } from "../Footer";
@@ -20,7 +19,6 @@ export default function AboutUs() {
   return (
     <div id="about-us" className="min-h-screen bg-[var(--bg-secondary)] text-[var(--text)]">
       <Navbar />
-        <AboutSideNav />
 
       <main className="px-6 pt-3 pb-16">
         <motion.div 

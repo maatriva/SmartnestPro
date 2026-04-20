@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import FloatingParticles from "./components/FloatingParticles";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminRoute from "./components/AdminRoute";
+import ScrollToTop from "./components/ScrollToTop";
 
 // ✅ Lazy loaded components (FIXED)
 const Features = lazy(() =>
@@ -64,6 +65,7 @@ export default function App() {
 
   return (
     <div className="relative bg-[var(--bg-secondary)] text-[var(--text)]">
+      <ScrollToTop />
       <Toaster position="top-center" richColors />
 
       <FloatingParticles />

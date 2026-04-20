@@ -62,7 +62,7 @@ export default function FloatingParticles() {
             height: `${p.size}px`,
             background: p.color,
             opacity: p.opacity,
-            filter: "blur(0.4px)",
+            willChange: "transform, opacity",
           }}
         />
       ))}

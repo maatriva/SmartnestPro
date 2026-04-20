@@ -60,11 +60,10 @@ const Diseases = () => {
             ref={(el) => (chipRefs.current[i] = el)}
             onClick={() => handleClick(i)}
             className={`mx-8 cursor-pointer text-sm md:text-base border rounded-full px-4 py-2 backdrop-blur transition-all duration-300
-            ${
-              activeIndex === i
+            ${activeIndex === i
                 ? "bg-white text-black shadow-lg scale-110"
                 : "bg-[var(--bg-secondary)] border-[var(--border)]"
-            }`}
+              }`}
           >
             <div className="font-semibold">
               {item.name}

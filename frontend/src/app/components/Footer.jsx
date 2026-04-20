@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Sparkles, Facebook, Instagram, Youtube, Send, Linkedin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import ContactModal from "./ContactModal"; // 👈 NEW IMPORT
 import { validateEmail } from '../utils/validation';
 
@@ -119,11 +120,13 @@ export function Footer() {
 
           {/* MIDDLE */}
           <div className="lg:col-span-3">
-            <h4 className="font-bold uppercase text-xs mb-6">Product</h4>
-            <ul className="space-y-3">
-              <li><a href="#features">Features</a></li>
-              <li><a href="#how-it-works">How It Works</a></li>
-              <li><a href="#pricing">Pricing</a></li>
+            <h4 className="font-bold uppercase text-xs mb-6 text-[var(--text-dark)] opacity-60">Product</h4>
+            <ul className="space-y-4 font-medium">
+              <li><Link to="/diseases" className="hover:text-[var(--primary)] transition-colors">Monitoring Registry</Link></li>
+              <li><Link to="/about-us" className="hover:text-[var(--primary)] transition-colors">About Us</Link></li>
+              <li><Link to="/#features" className="hover:text-[var(--primary)] transition-colors">Features</Link></li>
+              <li><Link to="/#how-it-works" className="hover:text-[var(--primary)] transition-colors">How It Works</Link></li>
+              <li><Link to="/#pricing" className="hover:text-[var(--primary)] transition-colors">Pricing</Link></li>
             </ul>
           </div>
 

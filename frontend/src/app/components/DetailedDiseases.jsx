@@ -1,8 +1,13 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useLayoutEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Heart, Wind, Activity, Brain, ArrowLeft, Search, ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
+import DiseaseSideNav from "./DiseaseSideNav";
 import "../../index.css";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const diseaseData = [
   {
@@ -119,7 +124,9 @@ const DiseaseCard = ({ name, icon, onSelect }) => {
           <h3 className="font-bold text-gray-900 leading-tight group-hover:text-[#4A6FA5] transition-colors line-clamp-2">
             {name}
           </h3>
-          <p className="text-xs text-gray-400 mt-2 font-medium tracking-wide">CLICK FOR DETAILS</p>
+          <p className="text-xs text-gray-400 mt-2 font-medium tracking-wide">
+            CLICK FOR DETAILS
+          </p>
         </div>
       </div>
     </motion.div>
@@ -129,107 +136,171 @@ const DiseaseCard = ({ name, icon, onSelect }) => {
 export default function DetailedDiseases() {
   const [selected, setSelected] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const containerRef = useRef(null);
 
+  // ✅ FIXED: moved above useLayoutEffect
   const filteredData = useMemo(() => {
     if (!searchQuery) return diseaseData;
-    
-    return diseaseData.map(section => ({
-      ...section,
-      diseases: section.diseases.filter(d => 
-        d.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-        d.description.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    })).filter(section => section.diseases.length > 0);
+
+    return diseaseData
+      .map((section) => ({
+        ...section,
+        diseases: section.diseases.filter(
+          (d) =>
+            d.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            d.description.toLowerCase().includes(searchQuery.toLowerCase())
+        ),
+      }))
+      .filter((section) => section.diseases.length > 0);
   }, [searchQuery]);
 
-  return (
-    <div className="min-h-screen bg-[var(--bg-secondary)] text-[var(--text-dark)] selection:bg-[var(--primary)] selection:text-white">
+  const categories = useMemo(() => filteredData.map((d) => d.category), [filteredData]);
+
+  // 1. Initial Page Load Animations (Only runs once)
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".registry-header > *", {
+        y: 40,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.15,
+        ease: "power4.out",
+      });
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
+
+  // 2. Continuous Scroll Trigger Monitoring (Updates when data changes)
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const sections = containerRef.current.querySelectorAll(".clinical-section");
+
+      sections.forEach((section) => {
+        const header = section.querySelector(".section-header");
+        const cards = section.querySelectorAll(".disease-card-wrapper");
+
+        if (header) {
+          gsap.from(header, {
+            x: -30,
+            opacity: 0,
+            duration: 0.6,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: header,
+              start: "top 95%",
+              toggleActions: "play none none none",
+            },
+          });
+        }
+
+        if (cards.length) {
+          gsap.from(cards, {
+            y: 40,
+            opacity: 0,
+            scale: 0.98,
+            duration: 0.6,
+            stagger: 0.05,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: section,
+              start: "top 90%",
+              toggleActions: "play none none none",
+            },
+          });
+        }
+      });
       
-      {/* HEADER SECTION */}
+      ScrollTrigger.refresh();
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, [filteredData]);
+
+  return (
+    <div
+      ref={containerRef}
+      className="min-h-screen relative text-[var(--text-dark)] selection:bg-[var(--primary)] selection:text-white"
+    >
+      <div className="fixed inset-0 bg-[var(--bg-glass)] backdrop-blur-md -z-10" />
+
+      <DiseaseSideNav categories={categories} />
+
+      {/* HEADER */}
       <div className="pb-12 relative overflow-hidden">
-        {/* Subtle Decorative Elements */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/20 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2" />
-        
-        <nav className="max-w-7xl mx-auto px-8 py-8 flex justify-between items-center relative z-10">
-          <Link to="/" className="flex items-center gap-2 font-bold text-[var(--text-dark)] hover:opacity-80 transition-opacity bg-white/20 backdrop-blur-md px-4 py-2 rounded-full">
+        <nav className="max-w-7xl mx-auto px-8 py-8 flex justify-between items-center">
+          <Link
+            to="/"
+            className="flex items-center gap-2 font-bold bg-white/20 px-4 py-2 rounded-full"
+          >
             <ArrowLeft className="w-5 h-5" />
             Back to Home
           </Link>
-          <div className="flex items-center gap-2 px-4 py-2 bg-white/40 rounded-full text-xs font-black uppercase tracking-widest text-[var(--text-dark)] backdrop-blur-md border border-white/20">
+
+          <div className="flex items-center gap-2 px-4 py-2 bg-white/40 rounded-full text-xs font-black">
             <ShieldCheck className="w-4 h-4" />
             Clinical Protocol v2.4
           </div>
         </nav>
 
-        <header className="max-w-4xl mx-auto px-6 pt-8 pb-4 text-center relative z-10">
-          <h1 className="text-5xl md:text-6xl font-black text-[var(--text-dark)] mb-6 tracking-tighter uppercase">
+        <header className="registry-header max-w-4xl mx-auto px-6 text-center">
+          <h1 className="text-5xl font-black mb-6 uppercase">
             Monitoring Registry
           </h1>
-          <p className="text-[var(--text-dark)]/70 text-xl mb-12 max-w-2xl mx-auto font-semibold leading-relaxed">
-            Real-time diagnostic coverage for neonatal care. Powered by Smart Nest Pro AI.
-          </p>
 
-          <div className="relative max-w-2xl mx-auto">
-            <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-6 h-6 text-[var(--text-dark)]/40" />
-            <input 
-              type="text"
-              placeholder="SEARCH CLINICAL CONDITIONS OR SYMPTOMS..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-16 pr-8 py-6 bg-white/90 backdrop-blur-xl rounded-[2rem] shadow-2xl border-none outline-none focus:ring-4 focus:ring-[var(--primary)]/20 transition-all text-[var(--text-dark)] placeholder:text-[var(--text-dark)]/30 font-bold text-sm tracking-wider"
-            />
-          </div>
+          <input
+            type="text"
+            placeholder="SEARCH..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full mt-6 px-6 py-4 rounded-2xl shadow-xl outline-none"
+          />
         </header>
       </div>
 
-      {/* CONTENT SECTION */}
-      <div className="max-w-7xl mx-auto px-8 pb-24 relative z-20">
+      {/* CONTENT */}
+      <div className="max-w-7xl mx-auto px-8 pb-24">
         {filteredData.length > 0 ? (
           filteredData.map((section, sIdx) => (
-            <section key={sIdx} className="mb-20 last:mb-0">
-              <div className="flex items-center gap-4 mb-8 border-b border-[var(--text-dark)]/10 pb-4">
-                <div className="p-3 bg-[var(--text-dark)] text-white rounded-2xl shadow-lg">
+            <section 
+              key={sIdx} 
+              id={section.category.toLowerCase().replace(/[^a-z0-9]/g, '-')}
+              className="clinical-section mb-20 last:mb-0 scroll-mt-32 will-change-transform"
+            >
+              <div className="section-header flex items-center gap-4 mb-8">
+                <div className="p-3 bg-black text-white rounded-xl">
                   {section.icon}
                 </div>
-                <h2 className="text-2xl font-black text-[var(--text-dark)] uppercase tracking-tighter">
+                <h2 className="text-2xl font-black uppercase">
                   {section.category}
                 </h2>
-                <div className="flex-1 h-px bg-gradient-to-r from-[var(--text-dark)]/20 to-transparent ml-4" />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {section.diseases.map((disease, i) => (
-                  <DiseaseCard
-                    key={i}
-                    name={disease.name}
-                    icon={section.icon}
-                    onSelect={() => setSelected(disease)}
-                  />
+                  <div key={i} className="disease-card-wrapper">
+                    <DiseaseCard
+                      name={disease.name}
+                      icon={section.icon}
+                      onSelect={() => setSelected(disease)}
+                    />
+                  </div>
                 ))}
               </div>
             </section>
           ))
         ) : (
-          <div className="py-40 text-center">
-            <Activity className="w-20 h-20 text-[var(--text-dark)] opacity-10 mx-auto mb-6" />
-            <h3 className="text-3xl font-black text-[var(--text-dark)] uppercase">No Intelligence Matches</h3>
-            <p className="text-[var(--text-dark)]/50 mt-2 font-bold uppercase tracking-widest text-xs">Refine your search parameters</p>
+          <div className="text-center py-40">
+            <h3 className="text-3xl font-black">No Results Found</h3>
           </div>
         )}
       </div>
 
-      <footer className="py-20 text-center bg-white/10 backdrop-blur-sm border-t border-white/10">
-        <div className="text-[var(--text-dark)] font-black uppercase tracking-[0.4em] text-[10px] opacity-40">
-          Smart Nest Pro Clinical System • Secure Data Layer
-        </div>
-      </footer>
-
       {/* MODAL */}
       <AnimatePresence>
         {selected && (
-          <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-6">
+          <div className="fixed inset-0 z-50 flex items-center justify-center">
             <motion.div
-              className="absolute inset-0 bg-[var(--text-dark)]/60 backdrop-blur-lg"
+              className="absolute inset-0 bg-black/60"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -237,58 +308,21 @@ export default function DetailedDiseases() {
             />
 
             <motion.div
-              className="bg-white rounded-[3rem] max-w-xl w-full shadow-[0_30px_100px_rgba(0,0,0,0.3)] relative z-10 overflow-hidden"
-              initial={{ scale: 0.9, opacity: 0, y: 40 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 40 }}
-              onClick={(e) => e.stopPropagation()}
+              className="bg-white p-10 rounded-3xl max-w-xl w-full relative z-10"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
             >
-              <div className="h-3 bg-gradient-to-r from-[var(--primary)] to-[var(--bg-secondary)]" />
-              <div className="p-10 sm:p-14">
-                <div className="flex justify-between items-start mb-10">
-                  <div className="w-16 h-16 bg-[var(--bg-secondary)] text-[var(--text-dark)] rounded-[1.5rem] flex items-center justify-center shadow-inner">
-                    <ShieldCheck className="w-9 h-9" />
-                  </div>
-                  <button
-                    onClick={() => setSelected(null)}
-                    className="p-3 rounded-full hover:bg-gray-100 transition-colors group"
-                  >
-                    <X className="w-7 h-7 text-gray-300 group-hover:text-[var(--text-dark)]" />
-                  </button>
-                </div>
+              <button
+                onClick={() => setSelected(null)}
+                className="absolute top-4 right-4"
+              >
+                <X />
+              </button>
 
-                <h2 className="text-4xl font-black text-[var(--text-dark)] mb-8 leading-none tracking-tighter uppercase">
-                  {selected.name}
-                </h2>
-
-                <div className="space-y-12">
-                  <div>
-                    <h4 className="text-[10px] font-black uppercase text-[var(--text-light)] tracking-[0.4em] mb-4">Registry Data</h4>
-                    <p className="text-[var(--text-dark)]/80 text-xl border-l-4 border-[var(--bg-secondary)] pl-6 leading-relaxed font-medium">
-                      {selected.description}
-                    </p>
-                  </div>
-
-                  <div className="bg-[var(--bg-secondary)]/10 p-8 rounded-[2rem] border border-[var(--bg-secondary)]/20 relative">
-                    <div className="absolute top-4 right-6 text-[var(--bg-secondary)] opacity-30">
-                      <Brain className="w-12 h-12" />
-                    </div>
-                    <h4 className="flex items-center gap-3 text-[10px] font-black uppercase text-[var(--primary)] tracking-[0.3em] mb-5">
-                      Intervention AI
-                    </h4>
-                    <p className="text-[var(--text-dark)] font-bold italic text-xl leading-relaxed pr-8">
-                      "{selected.aiRole}"
-                    </p>
-                  </div>
-                </div>
-
-                <button 
-                  onClick={() => setSelected(null)}
-                  className="w-full mt-12 py-6 bg-[var(--text-dark)] text-white rounded-full font-black uppercase tracking-[0.2em] hover:bg-black transition-all shadow-2xl text-xs"
-                >
-                  Close Specification
-                </button>
-              </div>
+              <h2 className="text-3xl font-black mb-6">{selected.name}</h2>
+              <p className="mb-4">{selected.description}</p>
+              <p className="italic text-gray-600">{selected.aiRole}</p>
             </motion.div>
           </div>
         )}

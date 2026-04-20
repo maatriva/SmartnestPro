@@ -74,13 +74,13 @@ const Navbar = () => {
     <nav ref={navRef} className="demo-navbar fixed top-0 left-0 right-0 z-[100] px-4 md:px-6 py-4 
     bg-[var(--bg-secondary)] text-[var(--text)]">
 
-      <div className="max-w-7.5xl mx-auto flex items-center justify-between h-20 px-4 md:px-8 rounded-[var(--radius-lg)] 
+      <div className="max-w-7.5xl mx-3 flex items-center justify-between h-20 px-5 md:px-3 rounded-[var(--radius-lg)] 
       bg-[var(--bg-glass)] backdrop-blur-xl border border-white/40 shadow-[var(--shadow)] relative">
 
         {/* Logo */}
         <Link to="/" className="nav-logo inline-block text-xl md:text-2xl font-bold tracking-wide">
           {/* Maatriva */}
-          <img src="/Faviconsimple (2).png" alt="" className="w-40 h-40" />
+          <img src="/Faviconsimple (2).png" alt="" className="w-30 h-30" />
         </Link>
 
         {/* Desktop Links */}
