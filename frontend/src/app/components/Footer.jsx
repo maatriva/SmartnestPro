@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Sparkles, Facebook, Instagram, Youtube, Send, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import ContactModal from "./ContactModal"; // 👈 NEW IMPORT
+import ContactModal from "./ContactModal";
 import { validateEmail } from '../utils/validation';
+import API from '../utils/api';
 
 export function Footer() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -35,15 +36,9 @@ export function Footer() {
     setStatus({ type: null, message: '' });
 
     try {
-      const response = await fetch("http://localhost:5000/api/contacts", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await API.post("/contacts", formData);
 
-      if (response.ok) {
+      if (response.status === 200 || response.status === 201) {
         setStatus({ type: 'success', message: "Message sent successfully!" });
         setFormData({ name: '', email: '', organization: '', message: '' });
 
@@ -51,12 +46,10 @@ export function Footer() {
           setStatus({ type: null, message: '' });
           setIsModalOpen(false);
         }, 2000);
-      } else {
-        const data = await response.json().catch(() => ({ error: "Failed" }));
-        setStatus({ type: 'error', message: data.error || "Failed to send message" });
       }
     } catch (error) {
-      setStatus({ type: 'error', message: "Server error" });
+      const errorMessage = error.response?.data?.error || "Failed to send message. Please try again.";
+      setStatus({ type: 'error', message: errorMessage });
     } finally {
       setLoading(false);
     }
