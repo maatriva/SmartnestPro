@@ -11,7 +11,7 @@ export const createSurvey = async (req, res) => {
   try {
     const result = await pool.query(
       "INSERT INTO surveys (name, email, answers, user_id) VALUES ($1, $2, $3, $4) RETURNING *",
-      [name, email, JSON.stringify(answers), user_id || null]
+      [name, email, answers, user_id || null]
     );
 
     res.status(201).json({
@@ -20,7 +20,11 @@ export const createSurvey = async (req, res) => {
     });
   } catch (error) {
     console.error("Error saving survey:", error);
-    res.status(500).json({ error: "Failed to save survey response" });
+    // Explicitly check for relation errors (table not found)
+    if (error.code === '42P01') {
+      return res.status(500).json({ error: "Database table not initialized. Please run migrations." });
+    }
+    res.status(500).json({ error: error.message || "Failed to save survey response" });
   }
 };
 
