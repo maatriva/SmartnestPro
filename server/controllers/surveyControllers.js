@@ -20,11 +20,13 @@ export const createSurvey = async (req, res) => {
     });
   } catch (error) {
     console.error("Error saving survey:", error);
-    // Explicitly check for relation errors (table not found)
-    if (error.code === '42P01') {
-      return res.status(500).json({ error: "Database table not initialized. Please run migrations." });
-    }
-    res.status(500).json({ error: error.message || "Failed to save survey response" });
+    // Explicitly return the error details to help debug the 500 code
+    res.status(500).json({ 
+      error: "Detailed Server Error", 
+      message: error.message,
+      code: error.code,
+      detail: error.detail
+    });
   }
 };
 
