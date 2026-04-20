@@ -96,11 +96,7 @@ export default function App() {
 
             <Route
               path="/about-us"
-              element={
-                <ProtectedRoute>
-                  <AboutUs />
-                </ProtectedRoute>
-              }
+              element={<AboutUs />}
             />
 
             <Route

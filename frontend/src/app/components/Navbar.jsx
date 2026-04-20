@@ -79,7 +79,8 @@ const Navbar = () => {
 
         {/* Logo */}
         <Link to="/" className="nav-logo inline-block text-xl md:text-2xl font-bold tracking-wide">
-          Maatriva
+          {/* Maatriva */}
+          <img src="/Faviconsimple (2).png" alt="" className="w-40 h-40" />
         </Link>
 
         {/* Desktop Links */}

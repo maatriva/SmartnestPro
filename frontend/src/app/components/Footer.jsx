@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
-import { Sparkles, Facebook, Instagram, Youtube } from 'lucide-react';
+import { Sparkles, Facebook, Instagram, Youtube, Send, Linkedin } from 'lucide-react';
+import ContactModal from "./ContactModal"; // 👈 NEW IMPORT
 import { validateEmail } from '../utils/validation';
-import { FaLinkedin } from "react-icons/fa6";
 
 export function Footer() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
+    organization: '',
     message: ''
   });
+
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState({ type: null, message: '' });
 
@@ -21,6 +24,7 @@ export function Footer() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!validateEmail(formData.email)) {
       setStatus({ type: 'error', message: "Please enter a valid email address." });
       return;
@@ -39,100 +43,131 @@ export function Footer() {
       });
 
       if (response.ok) {
-        setStatus({ type: 'success', message: "Goal! Your message has been sent successfully." });
-        setFormData({ name: '', email: '', phone: '', message: '' });
-        setTimeout(() => setStatus({ type: null, message: '' }), 5000);
+        setStatus({ type: 'success', message: "Message sent successfully!" });
+        setFormData({ name: '', email: '', organization: '', message: '' });
+
+        setTimeout(() => {
+          setStatus({ type: null, message: '' });
+          setIsModalOpen(false);
+        }, 2000);
       } else {
-        const data = await response.json().catch(() => ({ error: "Failed to send message." }));
-        setStatus({ type: 'error', message: data.error || "Failed to send message. Please try again." });
+        const data = await response.json().catch(() => ({ error: "Failed" }));
+        setStatus({ type: 'error', message: data.error || "Failed to send message" });
       }
     } catch (error) {
-      console.error("Error submitting contact form:", error);
-      setStatus({ type: 'error', message: "Connection error. Please check if the server is running." });
+      setStatus({ type: 'error', message: "Server error" });
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <footer id="footer" className="bg-[var(--bg-glass)] backdrop-blur-xl text-[var(--text)] py-16 px-6 border-t border-[var(--border)]">
-      <div className="max-w-7xl mx-auto">
-        
+    <footer
+      id="footer"
+      className="bg-[var(--bg-glass)] backdrop-blur-xl text-[var(--text)] py-16 px-6 border-t border-[var(--border)] relative overflow-hidden"
+    >
+      {/* Background blur */}
+      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-[var(--primary)]/5 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
-          
+
+          {/* LEFT */}
           <div className="lg:col-span-5">
             <div className="flex items-center gap-2 mb-6">
-              <Sparkles className="w-8 h-8 text-[var(--primary)]" aria-hidden="true" />
+              <Sparkles className="w-8 h-8 text-[var(--primary)]" />
               <span className="text-2xl font-bold tracking-tight text-[var(--text-dark)]">
                 Smart Nest Pro
               </span>
             </div>
-            
+
             <p className="text-[var(--text-light)] text-lg mb-8 max-w-md leading-relaxed">
               The world's first AI-powered smart baby cradle that learns your baby's needs and gives you peace of mind.
             </p>
 
             <div className="flex gap-4">
-              <a href="https://www.facebook.com/share/18P8z1QPAJ/" className="w-11 h-11 bg-[var(--bg-glass)] hover:bg-[var(--primary)] hover:text-white rounded-full flex items-center justify-center transition-all border border-[var(--border)] group focus:ring-2 focus:ring-[var(--primary)] outline-none">
-                <Facebook className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              <a 
+                href="https://www.facebook.com/share/18P8z1QPAJ/" 
+                aria-label="Facebook"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--primary)]/5 text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white transition-all duration-300 border border-[var(--primary)]/10 hover:shadow-[0_0_15px_rgba(74,111,165,0.3)] hover:-translate-y-1"
+              >
+                <Facebook className="w-5 h-5" />
               </a>
-              <a href="https://www.linkedin.com/company/maatriva/" className="w-11 h-11 bg-[var(--bg-glass)] hover:bg-[var(--primary)] hover:text-white rounded-full flex items-center justify-center transition-all border border-[var(--border)] group focus:ring-2 focus:ring-[var(--primary)] outline-none">
-                <FaLinkedin className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              <a 
+                href="https://www.linkedin.com/company/maatriva/" 
+                aria-label="LinkedIn"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--primary)]/5 text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white transition-all duration-300 border border-[var(--primary)]/10 hover:shadow-[0_0_15px_rgba(74,111,165,0.3)] hover:-translate-y-1"
+              >
+                <Linkedin className="w-5 h-5" />
               </a>
-              <a href="https://www.instagram.com/maatriva_?igsh=eXNrdzAzNHZ5ejFx" target="_blank" rel="noopener noreferrer" className="w-11 h-11 bg-[var(--bg-glass)] hover:bg-[var(--primary)] hover:text-white rounded-full flex items-center justify-center transition-all border border-[var(--border)] group focus:ring-2 focus:ring-[var(--primary)] outline-none">
-                <Instagram className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              <a 
+                href="https://www.instagram.com/maatriva_/?utm_source=ig_web_button_share_sheet" 
+                aria-label="Instagram"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--primary)]/5 text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white transition-all duration-300 border border-[var(--primary)]/10 hover:shadow-[0_0_15px_rgba(74,111,165,0.3)] hover:-translate-y-1"
+              >
+                <Instagram className="w-5 h-5" />
               </a>
-              <a href="https://www.youtube.com/channel/UCWKAIrA9O3h8fNVFCYq2qQg" target="_blank" rel="noopener noreferrer" className="w-11 h-11 bg-[var(--bg-glass)] hover:bg-[var(--primary)] hover:text-white rounded-full flex items-center justify-center transition-all border border-[var(--border)] group focus:ring-2 focus:ring-[var(--primary)] outline-none">
-                <Youtube className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              <a 
+                href="https://www.youtube.com/channel/UCWKAIrA9O3h8fNVFCYq2qQg" 
+                aria-label="YouTube"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--primary)]/5 text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white transition-all duration-300 border border-[var(--primary)]/10 hover:shadow-[0_0_15px_rgba(74,111,165,0.3)] hover:-translate-y-1"
+              >
+                <Youtube className="w-5 h-5" />
               </a>
             </div>
           </div>
 
+          {/* MIDDLE */}
           <div className="lg:col-span-3">
-            <h4 className="font-bold text-[var(--text-dark)] uppercase tracking-[0.15em] text-xs mb-8">
-              Product
-            </h4>
-            <nav>
-              <ul className="space-y-4">
-                <li><a href="#features" className="text-[var(--text-light)] hover:text-[var(--primary)] transition-colors">Features</a></li>
-                <li><a href="#how-it-works" className="text-[var(--text-light)] hover:text-[var(--primary)] transition-colors">How It Works</a></li>
-                <li><a href="#pricing" className="text-[var(--text-light)] hover:text-[var(--primary)] transition-colors">Pricing</a></li>
-              </ul>
-            </nav>
+            <h4 className="font-bold uppercase text-xs mb-6">Product</h4>
+            <ul className="space-y-3">
+              <li><a href="#features">Features</a></li>
+              <li><a href="#how-it-works">How It Works</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+            </ul>
           </div>
 
+          {/* RIGHT */}
           <div className="lg:col-span-4">
-            <h4 className="font-bold text-[var(--text-dark)] uppercase tracking-[0.15em] text-xs mb-8">
-              Contact Us
-            </h4>
+            <h4 className="font-bold uppercase text-xs mb-6">Support</h4>
 
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-              <input type="text" name="name" placeholder="Full Name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 bg-[var(--bg-glass)] border border-[var(--border)] rounded-xl text-[var(--text)] focus:ring-2 focus:ring-[var(--primary)]" />
-              <input type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 bg-[var(--bg-glass)] border border-[var(--border)] rounded-xl text-[var(--text)] focus:ring-2 focus:ring-[var(--primary)]" />
-              <input type="tel" name="phone" placeholder="Contact Number" value={formData.phone} onChange={handleChange} required className="w-full px-4 py-3 bg-[var(--bg-glass)] border border-[var(--border)] rounded-xl text-[var(--text)] focus:ring-2 focus:ring-[var(--primary)]" />
-              <textarea name="message" rows="3" placeholder="Your Message" value={formData.message} onChange={handleChange} required className="w-full px-4 py-3 bg-[var(--bg-glass)] border border-[var(--border)] rounded-xl text-[var(--text)] focus:ring-2 focus:ring-[var(--primary)] resize-none" />
+            <div className="bg-[var(--bg-secondary)]/10 p-6 rounded-2xl border border-[var(--primary)]/10">
+              <p className="font-medium mb-3">Need help?</p>
+              <p className="text-sm mb-4">
+                Contact our support team anytime.
+              </p>
 
-              {status.message && (
-                <div className={`p-3 rounded-lg text-sm font-medium ${status.type === 'success' ? 'bg-green-100/10 text-green-500' : 'bg-red-100/10 text-red-500'}`}>
-                  {status.message}
-                </div>
-              )}
-
-              <button type="submit" disabled={loading || status.type === 'success'} className={`w-full py-3 ${status.type === 'success' ? 'bg-green-500' : 'bg-[var(--primary)]'} text-white font-semibold rounded-xl hover:scale-[1.02] transition-all disabled:opacity-70`}>
-                {loading ? "Sending..." : status.type === 'success' ? "Message Sent!" : "Send Message"}
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="w-full py-3 bg-[var(--primary)] text-white rounded-xl flex items-center justify-center gap-2"
+              >
+                Contact Us
+                <Send className="w-4 h-4" />
               </button>
-            </form>
+            </div>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-[var(--border)] flex flex-col md:flex-row justify-between items-center gap-6 text-[13px] text-[var(--text-light)]">
-          <p>© 2026 Smart Nest Pro. All rights reserved.</p>
-          <div className="flex gap-8">
-            <a href="#privacy" className="hover:text-[var(--primary)] transition-colors">Privacy Policy</a>
-            <a href="#terms" className="hover:text-[var(--primary)] transition-colors">Terms</a>
+        {/* Bottom */}
+        <div className="pt-6 border-t flex justify-between text-sm">
+          <p>© 2026 Smart Nest Pro</p>
+          <div className="flex gap-4">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
           </div>
         </div>
       </div>
+
+      {/* ✅ Modal Component */}
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        formData={formData}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        loading={loading}
+        status={status}
+      />
     </footer>
   );
 }
