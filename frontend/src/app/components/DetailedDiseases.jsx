@@ -112,19 +112,19 @@ const DiseaseCard = ({ name, icon, onSelect }) => {
   return (
     <motion.div
       onClick={onSelect}
-      className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-[#A8DADC] transition-all cursor-pointer group"
+      className="bg-[var(--white)] border border-[var(--border)] rounded-2xl p-6 shadow-sm hover:shadow-[var(--shadow-primary)] hover:border-[var(--primary)] transition-all cursor-pointer group"
       whileHover={{ y: -4 }}
       whileTap={{ scale: 0.98 }}
     >
       <div className="flex items-start gap-4">
-        <div className="w-10 h-10 bg-[#A8DADC]/10 text-[#4A6FA5] rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#A8DADC] group-hover:text-white transition-colors">
+        <div className="w-10 h-10 bg-[var(--bg-secondary)] text-[var(--primary)] rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[var(--primary)] group-hover:text-[var(--white)] transition-colors">
           {icon}
         </div>
         <div className="text-left">
-          <h3 className="font-bold text-gray-900 leading-tight group-hover:text-[#4A6FA5] transition-colors line-clamp-2">
+          <h3 className="font-bold text-[var(--text-dark)] leading-tight group-hover:text-[var(--primary)] transition-colors line-clamp-2">
             {name}
           </h3>
-          <p className="text-xs text-gray-400 mt-2 font-medium tracking-wide">
+          <p className="text-xs text-[var(--text-light)] mt-2 font-medium tracking-wide">
             CLICK FOR DETAILS
           </p>
         </div>
@@ -267,7 +267,7 @@ export default function DetailedDiseases() {
               className="clinical-section mb-20 last:mb-0 scroll-mt-32 will-change-transform"
             >
               <div className="section-header flex items-center gap-4 mb-8">
-                <div className="p-3 bg-black text-white rounded-xl">
+                <div className="p-3 bg-[var(--primary)] text-[var(--white)] rounded-xl shadow-[var(--shadow)]">
                   {section.icon}
                 </div>
                 <h2 className="text-2xl font-black uppercase">
@@ -308,21 +308,21 @@ export default function DetailedDiseases() {
             />
 
             <motion.div
-              className="bg-white p-10 rounded-3xl max-w-xl w-full relative z-10"
+              className="bg-[var(--white)] text-[var(--text)] p-10 rounded-3xl max-w-xl w-full relative z-10 shadow-[var(--shadow-primary)]"
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
             >
               <button
                 onClick={() => setSelected(null)}
-                className="absolute top-4 right-4"
+                className="absolute top-4 right-4 text-[var(--text-light)] hover:text-[var(--primary)] transition-colors"
               >
                 <X />
               </button>
 
-              <h2 className="text-3xl font-black mb-6">{selected.name}</h2>
+              <h2 className="text-3xl font-black mb-6 text-[var(--text-dark)]">{selected.name}</h2>
               <p className="mb-4">{selected.description}</p>
-              <p className="italic text-gray-600">{selected.aiRole}</p>
+              <p className="italic text-[var(--text-light)]">{selected.aiRole}</p>
             </motion.div>
           </div>
         )}

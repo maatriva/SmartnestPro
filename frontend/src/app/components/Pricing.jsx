@@ -7,67 +7,42 @@ gsap.registerPlugin(ScrollTrigger);
 
 const plans = [
   {
-    name: "AI Subscription",
-    badge: "Software Plan",
-    price: "15,000",
-    description: "AI-powered monitoring & insights subscription.",
-    popular: false,
-    type: "simple",
-    features: [
-      "AI sleep & health monitoring",
-      "Cloud-based insights",
-      "Real-time alerts",
-      "Mobile app access",
-      "Continuous updates",
-      "Data analytics dashboard"
-    ]
-  },
+  name: "Standard",
+  badge: "Basic",
+  price: "12,000",
+  description: "AI-powered cradle with automatic swing & lullabies.",
+  popular: false,
+  features: [
+    "AI assistance",
+    "Automatic cradle swing",
+    "Built-in lullabies",
+    "Safe & reliable design"
+  ]
+},
   {
-    name: "Smart Cradle",
-    badge: "Hardware",
-    price: "12,000",
-    description: "Choose your cradle model based on features.",
+    name: "AI Pro",
+    badge: "Most Popular",
+    price: "55,000",
+    description: "Advanced AI cradle with sensors & cloud.",
     popular: true,
-    type: "dropdown",
-    options: [
-      {
-        label: "Model A (Basic)",
-        price: "12,000",
-        details: "Auto-Swing + Cradle Frame"
-      },
-      {
-        label: "Model B (Cloud AI)",
-        price: "45,000 - 55,000",
-        details: "ESP Board + Sensors + Cloud AI"
-      },
-      {
-        label: "Model C (Edge AI)",
-        price: "65,000 - 70,000",
-        details: "Onboard AI + Full Sensors + Privacy Focus"
-      }
-    ],
     features: [
-      "Multiple cradle variants",
-      "Smart automation",
-      "Sensor integration",
-      "AI compatibility",
-      "Upgradeable system"
+      "Health & sleep sensors",
+      "Cloud connectivity",
+      "Real-time monitoring",
+      "AI insights & alerts"
     ]
   },
   {
     name: "Enterprise",
-    badge: "Industrial Use",
+    badge: "Commercial",
     price: "Custom",
-    description: "For hospitals, clinics & daycare centers.",
+    description: "For hospitals & daycare centers.",
     popular: false,
-    type: "contact",
     features: [
       "Bulk deployment",
-      "Hospital-grade monitoring",
-      "Central dashboard",
-      "Dedicated support",
+      "Central monitoring dashboard",
       "Custom integrations",
-      "Installation services"
+      "Dedicated support"
     ]
   }
 ];

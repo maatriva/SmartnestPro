@@ -188,6 +188,10 @@
     transform: translateX(-50%);
   }
 }
+
+.marquee:hover {
+  animation-play-state: paused;
+}
 :root {
   /* 🌈 Background System */
   --bg: #F8F9FA;

@@ -1,5 +1,6 @@
 import "../../styles/theme.css";
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const tickerData = [
   {
@@ -37,6 +38,7 @@ const tickerData = [
 const Diseases = () => {
   const chipRefs = useRef([]);
   const [activeIndex, setActiveIndex] = useState(null);
+  const navigate = useNavigate();
 
   const handleClick = (i) => {
     setActiveIndex(activeIndex === i ? null : i);
@@ -53,7 +55,7 @@ const Diseases = () => {
       </h1>
 
       {/* Marquee */}
-      <div className="flex whitespace-nowrap marquee hover:[animation-play-state:paused]">
+      <div className="flex whitespace-nowrap marquee">
         {[...tickerData, ...tickerData].map((item, i) => (
           <div
             key={i}
@@ -80,7 +82,10 @@ const Diseases = () => {
 
       {/* Button */}
       <div className="flex w-full justify-center mt-6">
-        <button className="px-5 py-2.5 bg-[var(--primary)] text-white rounded-full hover:bg-[var(--primary-hover)] transition-all font-semibold">
+        <button 
+          onClick={() => navigate('/diseases')}
+          className="px-5 py-2.5 bg-[var(--primary)] text-white rounded-full hover:bg-[var(--primary-hover)] transition-all font-semibold"
+        >
           Know more
         </button>
       </div>

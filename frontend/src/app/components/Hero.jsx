@@ -5,7 +5,7 @@ import { motion } from "framer-motion"; // ✅ fixed import
 import { Parallax } from "react-scroll-parallax";
 import gsap from "gsap";
 import ModelCursor from "../animations/ModelCursor";
-import PreOrderForm from "../components/pages/preOrder";
+import PreOrderForm from "../components/pages/PreOrder";
 
 export function Hero() {
   const videoRef = useRef(null);
