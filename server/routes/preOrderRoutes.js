@@ -1,5 +1,5 @@
 import express from "express";
-import { createPreorder } from "../controllers/preOrderRoutes.js";
+import { createPreorder } from "../controllers/preOrderControllers.js";
 
 const router = express.Router();
 
