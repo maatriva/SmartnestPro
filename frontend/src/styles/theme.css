@@ -1,5 +1,7 @@
 @custom-variant dark (&:is(.dark *));
 
+
+
 :root {
   --font-size: 16px;
   --background: #ffffff;
@@ -196,10 +198,11 @@
   /* 🌈 Background System */
   --bg: #F8F9FA;
   --bg-secondary: #A8DADC;
+  --bg-secondaryh: #67d2da;
   --bg-glass: rgba(255, 255, 255, 0.7);
   --bg-hover: #E9F5F6;
 
-  /* 💙 Primary (Brand / Buttons) */
+  /* #678c8eary (Brand / Buttons) */
   --primary: #4A6FA5;
   --primary-hover: #3A5A98;
   --primary-light: #8FA8FF;

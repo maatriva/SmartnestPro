@@ -3,12 +3,14 @@ import API from "../../utils/api";
 import { validateEmail } from "../../utils/validation";
 
 
-export default function PreOrderForm({ onClose }) {
+export default function PreOrderForm({ selectedPlan, onClose }) {
   const [form, setForm] = useState({
     name: "",
     email: "",
     phone: "",
-    address: ""
+    address: "",
+    planName: selectedPlan?.name || "Smart Nest Pro",
+    planPrice: selectedPlan?.price || ""
   });
 
   const [loading, setLoading] = useState(false);
@@ -41,51 +43,73 @@ export default function PreOrderForm({ onClose }) {
     }
   };
 
-
   return (
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-      <div className="bg-white p-6 rounded-xl w-full max-w-md space-y-4">
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 transition-opacity duration-300">
+      <style>{`
+        @keyframes minimizeSmooth {
+          0% { opacity: 0; transform: scale(1.1) translateY(-20px); }
+          100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .animate-minimize {
+          animation: minimizeSmooth 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+      `}</style>
+      
+      <div className="bg-white p-8 rounded-2xl w-full max-w-md space-y-6 shadow-2xl animate-minimize">
 
-        <h2 className="text-xl font-bold">Pre-Order Smart Nest Pro</h2>
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-[var(--text-dark)]">Pre-Order</h2>
+          {selectedPlan && (
+            <p className="text-[var(--primary)] font-medium mt-1">
+              {selectedPlan.name} Model (₹{selectedPlan.price})
+            </p>
+          )}
+        </div>
 
-        <input
-          placeholder="Full Name"
-          onChange={handleChange("name")}
-          className="w-full border p-3 rounded"
-        />
+        <div className="space-y-4">
+          <input
+            placeholder="Full Name"
+            onChange={handleChange("name")}
+            className="w-full border border-[var(--border)] p-3 rounded-lg focus:outline-none focus:border-[var(--primary)] transition-colors text-[var(--text-dark)]"
+          />
 
-        <input
-          type="email"
-          placeholder="Email"
-          onChange={handleChange("email")}
-          className="w-full border p-3 rounded"
-        />
+          <input
+            type="email"
+            placeholder="Email"
+            onChange={handleChange("email")}
+            className="w-full border border-[var(--border)] p-3 rounded-lg focus:outline-none focus:border-[var(--primary)] transition-colors text-[var(--text-dark)]"
+          />
 
-        <input
-          placeholder="Phone"
-          onChange={handleChange("phone")}
-          className="w-full border p-3 rounded"
-        />
+          <input
+            placeholder="Phone Number"
+            onChange={handleChange("phone")}
+            className="w-full border border-[var(--border)] p-3 rounded-lg focus:outline-none focus:border-[var(--primary)] transition-colors text-[var(--text-dark)]"
+          />
 
-        <textarea
-          placeholder="Address"
-          onChange={handleChange("address")}
-          className="w-full border p-3 rounded"
-        />
+          <textarea
+            placeholder="Delivery Address"
+            onChange={handleChange("address")}
+            rows="3"
+            className="w-full border border-[var(--border)] p-3 rounded-lg focus:outline-none focus:border-[var(--primary)] transition-colors text-[var(--text-dark)] resize-none"
+          />
+        </div>
 
-        <button
-          onClick={handleSubmit}
-          className="w-full bg-[var(--primary)] text-white py-3 rounded"
-        >
-          {loading ? "Submitting..." : "Confirm Pre-Order"}
-        </button>
+        <div className="space-y-3 pt-2">
+          <button
+            onClick={handleSubmit}
+            disabled={loading}
+            className="w-full bg-[var(--primary)] text-white py-3.5 rounded-lg font-semibold hover:bg-[var(--primary-hover)] transition-colors shadow-lg hover:shadow-xl disabled:opacity-70"
+          >
+            {loading ? "Submitting..." : "Confirm Pre-Order"}
+          </button>
 
-        <button
-          onClick={onClose}
-          className="w-full text-gray-500"
-        >
-          Cancel
-        </button>
+          <button
+            onClick={onClose}
+            className="w-full text-[var(--text-light)] py-2 font-medium hover:text-[var(--text-dark)] transition-colors"
+          >
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   );

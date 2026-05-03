@@ -1,36 +1,58 @@
-import React, { useLayoutEffect, useRef } from "react";
-import { Check, Star } from "lucide-react";
+import React, { useLayoutEffect, useRef, useState } from "react";
+import { Check } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import PreOrderForm from "./pages/preOrder";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const cradleModels = {
+  Basic: {
+    name: "Basic Model",
+    price: "12,000",
+    description: "Light version with essential features.",
+    features: ["Auto swing", "Animal shaped cradle", "Custom lullabies", "Attached toys"],
+     img : "/BasicCradle.jpeg"
+  },
+  AIPro: {
+    name: "Standard Model",
+    price: "45,000",
+    description: "Advanced AI cradle with sensors & cloud.",
+    features: ["Health & sleep sensors", "Cloud connectivity", "Real-time monitoring", "AI alerts"],
+     img : "/AIPro.jpeg"
+  },
+  Custom: {
+    name: "Pro Model",
+    price: "75,000",
+    description: "Advanced version with full AI capabilities.",
+    features: ["Edge AI", "AI Voice Assistant", "Screen + Monitoring", "Made in India AI"],
+     img : "/EnterpriseCradle.png"
+  }
+};
+
 const plans = [
   {
-  name: "Standard",
-  badge: "Basic",
-  price: "12,000",
-  description: "AI-powered cradle with automatic swing & lullabies.",
-  popular: false,
-  features: [
-    "AI assistance",
-    "Automatic cradle swing",
-    "Built-in lullabies",
-    "Safe & reliable design"
-  ]
-},
-  {
-    name: "AI Pro",
-    badge: "Most Popular",
-    price: "55,000",
-    description: "Advanced AI cradle with sensors & cloud.",
-    popular: true,
+    name: "AI Subscription",
+    badge: "Smart AI",
+    price: "₹10,000",
+    description: "Advanced AI health monitoring & assistant system.",
+    popular: false,
     features: [
-      "Health & sleep sensors",
-      "Cloud connectivity",
-      "Real-time monitoring",
-      "AI insights & alerts"
-    ]
+      "Deep analysis",
+      "Disease detection",
+      "Meaning of diseases",
+      "Caretaker access",
+      "Chat assistant (standard)",
+      "AI Voice Assistant (pro)"
+    ],
+  },
+  {
+    name: "Cradle",
+    badge: "Most Popular",
+    price: "",
+    description: "Smart AI cradle with intelligent modes.",
+    popular: true,
+    features: [] // ✅ removed features
   },
   {
     name: "Enterprise",
@@ -49,175 +71,205 @@ const plans = [
 
 export function Pricing() {
   const sectionRef = useRef(null);
+  const modelSectionRef = useRef(null);
+
+  const [selectedPlan, setSelectedPlan] = useState(null);
+  const [activeModel, setActiveModel] = useState(null);
 
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
-      
-      // 1. Header Animation
-      gsap.from(".pricing-header-el", {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".pricing-header",
-          start: "top 90%",
-          toggleActions: "play none none none",
+      gsap.fromTo(".pricing-card",
+        { y: 60, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.2,
+          ease: "back.out(1.2)",
+          scrollTrigger: {
+            trigger: ".pricing-grid",
+            start: "top 85%",
+          }
         }
-      });
-
-      // 2. Cards Animation - Added immediateRender: false
-      gsap.from(".pricing-card", {
-        y: 60,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: "back.out(1.2)",
-        immediateRender: false, // Prevents elements from being hidden before scroll
-        scrollTrigger: {
-          trigger: ".pricing-grid",
-          start: "top 85%",
-          toggleActions: "play none none none",
-        }
-      });
-
-      // 3. Footer Animation
-      gsap.from(".pricing-footer", {
-        opacity: 0,
-        y: 20,
-        duration: 0.8,
-        scrollTrigger: {
-          trigger: ".pricing-footer",
-          start: "top 95%",
-        }
-      });
-      
+      );
     }, sectionRef);
-
-    // Force recalculation
-    ScrollTrigger.refresh();
 
     return () => ctx.revert();
   }, []);
+
+  const handleModelClick = (model) => {
+    setActiveModel(model);
+
+    setTimeout(() => {
+      const target = document.getElementById(`model-${model.name}`);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "center" });
+
+        gsap.fromTo(
+          target,
+          { scale: 0.9 },
+          { scale: 1.05, duration: 0.4, ease: "back.out(1.5)", clearProps: "transform" }
+        );
+      }
+    }, 50);
+  };
 
   return (
     <section
       id="pricing"
       ref={sectionRef}
-      className="py-24 px-6 bg-white/50 backdrop-blur-sm text-[var(--text)] overflow-hidden"
+      className="py-24 px-6 bg-[var(--bg-secondary)] text-[var(--text)]"
     >
       <div className="max-w-7xl mx-auto">
 
-        {/* Header */}
-        <div className="pricing-header text-center max-w-3xl mx-auto mb-16">
-          <div className="pricing-header-el inline-flex items-center gap-2 px-4 py-2 
-          bg-[var(--bg-glass)] rounded-full 
-          text-[var(--primary)] text-sm font-medium mb-4 
-          border border-[var(--border)]">
-            <Star className="w-4 h-4" />
+        {/* HEADER */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-[var(--text-dark)] mb-4">
             Pricing
-          </div>
-
-          <h2 className="pricing-header-el text-4xl md:text-5xl font-bold text-[var(--text-dark)] mb-6">
-            Choose the perfect
-            <br />
-            <span className="text-[var(--primary)]">
-              plan for your family
-            </span>
           </h2>
-
-          <p className="pricing-header-el text-xl text-[var(--text-light)]">
-            Cradle and Mattress are available now. Bulk direct contact is coming soon.
+          <p className="text-[var(--text-light)] text-xl">
+            Choose your perfect plan
           </p>
         </div>
 
-        {/* Cards */}
-        <div className="pricing-grid grid md:grid-cols-3 gap-8 ">
+        {/* PRICING CARDS */}
+        <div className="pricing-grid grid md:grid-cols-3 gap-8">
+
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={[
-                "pricing-card group relative rounded-[var(--radius-lg)] p-8 border transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col h-full cursor-default",
-                plan.popular
-                  ? "bg-[var(--white)] border-[var(--primary)] shadow-[var(--shadow-primary)] scale-100 md:scale-110 z-10 hover:z-20 hover:scale-105 md:hover:scale-120 hover:shadow-2xl md:hover:-translate-y-12"
-                  : "bg-[var(--white)] border-[var(--border)] hover:border-[var(--primary)] hover:shadow-2xl hover:scale-105 md:hover:scale-110 md:hover:-translate-y-10 hover:z-20"
-              ].join(" ")}
+              className={`pricing-card p-8 rounded-xl border transition-all duration-300 
+              ${plan.popular ? "border-[var(--primary)] shadow-[var(--shadow-primary)] scale-105" : "border-[var(--border)]"}
+              bg-[var(--bg-glass)] hover:shadow-[var(--shadow)]`}
             >
-              <div className="flex-grow">
-                {/* Top */}
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-[var(--text-dark)] mb-2">
-                    {plan.name}
-                  </h3>
+              <h3 className="text-2xl font-bold mb-2 text-[var(--text-dark)]">
+                {plan.name}
+              </h3>
 
-                  <div className={`inline-flex items-center gap-2 px-4 py-2 
-                  bg-[var(--bg-secod)] border border-[var(--border)] 
-                  rounded-full text-sm font-semibold text-[var(--text)] mb-4`}>
-                    {plan.popular ? (
-                      <>
-                        <Star className="w-4 h-4 text-[var(--primary)]" />
-                        {plan.badge}
-                      </>
-                    ) : (
-                      <span>{plan.badge}</span>
-                    )}
-                  </div>
+              <p className="text-[var(--text-light)] mb-4">
+                {plan.description}
+              </p>
 
-                  <p className="text-[var(--text-light)] mb-6">
-                    {plan.description}
-                  </p>
+              <div className="text-4xl font-bold mb-6">
+                {plan.price === "Custom" ? plan.price : `${plan.price}`}
+              </div>
 
-                  <div className="flex items-baseline justify-center gap-2">
-                    <span className="text-5xl font-bold text-[var(--text-dark)]">
-                      {plan.price === "—" ? "—" : `₹${plan.price}`}
-                    </span>
-                    {plan.price !== "—" && (
-                      <span className="text-[var(--text-light)]">INR</span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Features */}
-                <ul className="space-y-4 mb-8">
-                  {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-6 h-6 rounded-full 
-                      bg-[var(--primary)] flex items-center justify-center mt-0.5">
-                        <Check className="w-4 h-4 text-white" strokeWidth={3} />
-                      </div>
-                      <span className="text-[var(--text)]">
-                        {feature}
-                      </span>
+              {/* ✅ Hide features for Cradle */}
+              {plan.name !== "Cradle" && (
+                <ul className="space-y-2 mb-6">
+                  {plan.features.map((f) => (
+                    <li key={f} className="flex gap-2">
+                      <Check className="w-4 h-4 text-[var(--primary)]" />
+                      {f}
                     </li>
                   ))}
                 </ul>
+              )}
+
+              {/* ✅ Cradle Buttons Only */}
+              {plan.name === "Cradle" && (
+                <div className="flex flex-col gap-7 mb-4">
+                  <p className="text-sm text-[var(--text-light)]">
+                    Select a model ↓
+                  </p>
+
+                  <button
+                    onClick={() => handleModelClick(cradleModels.Basic)}
+                    className="py-4 mt-2 bg-[var(--bg-secondary)] rounded-lg hover:bg-[var(--bg-secondaryh)] hover:text-white transition font-medium"
+                  >
+                    Basic Model
+                  </button>
+
+                  <button
+                    onClick={() => handleModelClick(cradleModels.AIPro)}
+                    className="py-4 bg-[var(--bg-secondary)] rounded-lg shadow-md hover:opacity-90 transition font-medium hover:bg-[var(--bg-secondaryh)] hover:text-white"
+                  >
+                    Standard Model
+                  </button>
+
+                  <button
+                    onClick={() => handleModelClick(cradleModels.Custom)}
+                    className="py-4 bg-[var(--text-dark)]  text-white rounded-lg hover:bg-[var(--primary)] transition font-medium "
+                  >
+                    Pro Model
+                  </button>
+                </div>
+              )}
+
+            </div>
+          ))}
+
+        </div>
+
+        {/* MODELS SECTION */}
+        <div
+          ref={modelSectionRef}
+          className="mt-20 max-w-6xl mx-auto grid md:grid-cols-3 gap-8"
+        >
+          {Object.values(cradleModels).map((model) => (
+            <div
+              key={model.name}
+              id={`model-${model.name}`}
+              className={`p-6 flex flex-col rounded-xl border transition-all duration-300 cursor-pointer
+              ${activeModel?.name === model.name
+                  ? "border-[var(--primary)] shadow-[var(--shadow-primary)] scale-105"
+                  : "border-[var(--border)] hover:shadow-[var(--shadow)] hover:scale-105"
+                } bg-[var(--bg-glass)]`}
+            >
+              {model.img && (
+                <div className="w-full h-48 mb-6 rounded-lg overflow-hidden flex-shrink-0">
+                  <img
+                    src={model.img}
+                    alt={model.name}
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  />
+                </div>
+              )}
+
+              <h3 className="text-2xl font-bold mb-2 text-[var(--text-dark)]">
+                {model.name}
+              </h3>
+
+              <p className="text-[var(--text-light)] mb-4 flex-grow">
+                {model.description}
+              </p>
+
+              <div className="text-3xl font-bold text-[var(--primary)] mb-4">
+                ₹{model.price}
               </div>
 
-              {/* Button */}
-              {/* <button
-                type="button"
-                disabled={plan.disabledCta}
-                className={[
-                  "w-full py-4 rounded-full font-medium transition-all duration-300 whitespace-nowrap active:scale-95 hover:scale-105",
-                  plan.disabledCta
-                    ? "bg-[var(--border)] text-[var(--text-light)] cursor-not-allowed"
-                    : plan.popular
-                      ? "bg-[var(--primary)] text-white hover:bg-[var(--primary-hover)] shadow-[var(--shadow-primary)] hover:shadow-xl"
-                      : "bg-[var(--text-dark)] text-white hover:bg-[var(--primary)] hover:shadow-xl"
-                ].join(" ")}
+              {/* ✅ Features only here */}
+              <ul className="space-y-2 mb-6">
+                {model.features.map((f, i) => (
+                  <li key={i} className="flex gap-2 text-[var(--text-dark)]">
+                    <Check className="w-4 h-4 text-[var(--primary)] mt-1" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+
+              <button
+                onClick={() => setSelectedPlan(model)}
+                className="w-full py-3 bg-[var(--primary)] text-white font-semibold rounded-lg hover:bg-[var(--primary-hover)] transition shadow-md mt-auto"
               >
-                {plan.cta}
-              </button> */}
+                Pre-Order
+              </button>
             </div>
           ))}
         </div>
 
-        {/* Footer */}
-        <div className="pricing-footer mt-12 text-center text-sm text-[var(--text-light)]">
-          Want a custom bulk quote? Use the Contact page and we’ll reach out (coming soon).
+        <div className="mt-12 text-center text-sm text-[var(--text-light)]">
+          Custom enterprise solutions available on request.
         </div>
+
       </div>
+
+      {selectedPlan && (
+        <PreOrderForm
+          selectedPlan={selectedPlan}
+          onClose={() => setSelectedPlan(null)}
+        />
+      )}
     </section>
   );
 }
