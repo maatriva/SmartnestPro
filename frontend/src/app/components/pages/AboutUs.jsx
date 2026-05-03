@@ -27,6 +27,7 @@ export default function AboutUs() {
           transition={{ duration: 0.6 }}
           className="max-w-5xl mx-auto"
         >
+          {/* Photo Album */}
           <section className="mb-10">
             <h2 className="text-2xl font-semibold text-[var(--text-dark)] mb-4">Photo Album</h2>
             <p className="text-[var(--text)] mb-5">
@@ -54,18 +55,22 @@ export default function AboutUs() {
             </div>
           </section>
 
+          {/* Header */}
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--bg-glass)] border border-[var(--border)] backdrop-blur rounded-full text-[var(--primary)] text-sm font-semibold mb-5">
             About Smart Nest Pro
           </div>
+
           <h1 className="text-4xl md:text-5xl font-bold text-[var(--text-dark)] mb-5">
             Sleep Better, Parent Smarter
           </h1>
+
           <p className="text-[var(--text)] text-lg leading-relaxed mb-8 max-w-3xl">
             Smart Nest Pro helps parents build calmer routines using AI-driven
             insights, comfort automation, and a thoughtful product experience made
             for real homes and real schedules.
           </p>
 
+          {/* Cards */}
           <div className="grid md:grid-cols-3 gap-5 mb-10">
             <div className="bg-[var(--bg-glass)] backdrop-blur-xl rounded-[var(--radius-lg)] border border-[var(--border)] shadow-[var(--shadow)] p-6">
               <h2 className="text-xl font-semibold text-[var(--text-dark)] mb-3">Our mission</h2>
@@ -92,6 +97,7 @@ export default function AboutUs() {
             </div>
           </div>
 
+          {/* Focus */}
           <div className="bg-[var(--bg-glass)] backdrop-blur-xl rounded-[var(--radius-lg)] border border-[var(--border)] shadow-[var(--shadow)] p-8 mb-8">
             <h2 className="text-2xl font-semibold text-[var(--text-dark)] mb-4">What we focus on</h2>
             <ul className="space-y-3 text-[var(--text)]">
@@ -110,8 +116,68 @@ export default function AboutUs() {
             </ul>
           </div>
 
-          <div className="flex flex-wrap gap-4 mb-20">
+          {/* ✅ NEW SECTION ADDED */}
+          <div className="bg-[var(--bg-glass)] backdrop-blur-xl rounded-[var(--radius-lg)] border border-[var(--border)] shadow-[var(--shadow)] p-8 mb-8">
+            <h2 className="text-2xl font-semibold text-[var(--text-dark)] mb-4">
+              MAATRIVA — Smart Nest Pro Clinical Intelligence
+            </h2>
 
+            <p className="text-[var(--text)] leading-relaxed mb-4">
+              Smart Nest Pro is designed as a comprehensive disease and condition monitoring system
+              that assists both parents and clinical understanding through real-time AI-driven insights.
+            </p>
+
+            <h3 className="text-xl font-semibold text-[var(--text-dark)] mb-3">
+              Sensor & AI Stack Overview
+            </h3>
+
+            <div className="grid md:grid-cols-2 gap-4 text-[var(--text)]">
+              <div className="space-y-2">
+                <p>• 60 GHz mmWave Radar</p>
+                <p>• BCG / ECG Smart Textile</p>
+                <p>• MLX90640 Thermal Camera</p>
+                <p>• INMP441 MEMS Microphone</p>
+                <p>• ADS1115 + NTC Thermistors</p>
+              </div>
+
+              <div className="space-y-2">
+                <p>• BME280 Barometric Pressure</p>
+                <p>• USB Camera (Posture / Mood)</p>
+                <p>• AI Cry Classification</p>
+                <p>• AI Sleep Staging</p>
+                <p>• 6-Zone Smart Heating</p>
+                <p>• Voice & Chat Assistant</p>
+              </div>
+            </div>
+
+            <h3 className="text-xl font-semibold text-[var(--text-dark)] mt-6 mb-3">
+              Derived Health & Behavioral Parameters
+            </h3>
+
+            <div className="grid md:grid-cols-2 gap-4 text-[var(--text)]">
+              <div className="space-y-2">
+                <p>• Heart Rate (HR)</p>
+                <p>• Heart Rate Variability (HRV)</p>
+                <p>• Breathing Rate</p>
+                <p>• Breathing Patterns (Apnea, Irregularities)</p>
+                <p>• BCG Waveform Analysis</p>
+                <p>• Sleep Stage Detection</p>
+              </div>
+
+              <div className="space-y-2">
+                <p>• Skin Surface Temperature (6-Zone)</p>
+                <p>• Ambient Temperature & Humidity</p>
+                <p>• Barometric Pressure</p>
+                <p>• Body Posture Tracking</p>
+                <p>• Facial Mood & Expression Analysis</p>
+                <p>• Cry Classification</p>
+                <p>• Air Quality Index</p>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="flex flex-wrap gap-4 mb-20">
             <Link
               to="/survey"
               className="px-6 py-3 rounded-full font-semibold text-white bg-[var(--primary)] hover:bg-[var(--primary-hover)] hover:shadow-[var(--shadow-primary)] transition-all"
@@ -122,6 +188,7 @@ export default function AboutUs() {
 
         </motion.div>
       </main>
+
     </div>
   );
 }
