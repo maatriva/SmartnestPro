@@ -58,13 +58,13 @@ export function Footer() {
   return (
     <footer
       id="footer"
-      className="bg-[var(--bg-glass)] backdrop-blur-xl text-[var(--text)] py-16 px-6 border-t border-[var(--border)] relative overflow-hidden"
+      className="bg-[var(--bg-glass)] backdrop-blur-xl text-[var(--text)] py-16 border-t border-[var(--border)] relative overflow-hidden"
     >
       {/* Background blur */}
       <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-[var(--primary)]/5 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-8">
 
           {/* LEFT */}
           <div className="lg:col-span-5">
@@ -113,7 +113,7 @@ export function Footer() {
 
           {/* MIDDLE */}
           <div className="lg:col-span-3">
-            <h4 className="font-bold uppercase text-xs mb-6 text-[var(--text-dark)] opacity-60">Product</h4>
+            <h4 className="font-bold pb-5 uppercase text-xs text-[var(--text-dark)] opacity-60">Product</h4>
             <ul className="space-y-4 font-medium">
               <li><Link to="/diseases" className="hover:text-[var(--primary)] transition-colors">Monitoring Registry</Link></li>
               <li><Link to="/about-us" className="hover:text-[var(--primary)] transition-colors">About Us</Link></li>
@@ -145,8 +145,8 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="pt-6 border-t flex justify-between text-sm">
-          <p>© 2026 Smart Nest Pro</p>
+        <div className="border-t border-[var(--border)] pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+          <p className="text-[var(--text-light)]">© 2026 Smart Nest Pro</p>
           <div className="flex gap-4">
             <a href="#">Privacy</a>
             <a href="#">Terms</a>

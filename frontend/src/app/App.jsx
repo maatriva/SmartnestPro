@@ -89,11 +89,7 @@ export default function App() {
 
             <Route
               path="/survey"
-              element={
-                <ProtectedRoute>
-                  <Survey />
-                </ProtectedRoute>
-              }
+              element={<Survey />}
             />
 
             <Route

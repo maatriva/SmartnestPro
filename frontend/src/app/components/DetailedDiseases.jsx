@@ -264,6 +264,7 @@ export default function DetailedDiseases() {
           </div>
         )}
       </AnimatePresence>
+      
     </div>
   );
 }

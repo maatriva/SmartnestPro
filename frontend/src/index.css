@@ -62,3 +62,12 @@
   scrollbar-width: none; /* Firefox */
 }
 
+
+.model-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.pricing-card {
+  transform-style: preserve-3d;
+}
