@@ -416,7 +416,7 @@ export default function Survey() {
           name: user ? user.name : "Anonymous User",
           email: user ? user.email : "anonymous@example.com",
           user_id: user ? user.id : null,
-          answers: JSON.stringify(answers)
+          answers
       });
       setSubmitted(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
