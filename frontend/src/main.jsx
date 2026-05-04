@@ -1,21 +1,32 @@
 import React from "react";
 import { ParallaxProvider } from "react-scroll-parallax";
-import ReactDOM from "react-dom/client";
+import { hydrateRoot, createRoot } from "react-dom/client";
+import { HelmetProvider } from "react-helmet-async";
 import App from "./app/App";
 import "./index.css";
 import "./styles/theme.css";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./app/context/AuthContext";
-import {GoogleOAuthProvider} from '@react-oauth/google'
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+const rootElement = document.getElementById("root");
+
+const app = (
   <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
-  <BrowserRouter>
-    <ParallaxProvider>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
-    </ParallaxProvider>
-  </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <ParallaxProvider>
+          <AuthProvider>
+            <App />
+          </AuthProvider>
+        </ParallaxProvider>
+      </BrowserRouter>
+    </HelmetProvider>
   </GoogleOAuthProvider>
 );
+
+if (rootElement.hasChildNodes()) {
+  hydrateRoot(rootElement, app);
+} else {
+  createRoot(rootElement).render(app);
+}

@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useLayoutEffect, useRef, useEffect } from "react";
 import API from "../utils/api";
 import { motion, AnimatePresence } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { X, Heart, Wind, Activity, Brain, ArrowLeft, Search, ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
 import DiseaseSideNav from "./DiseaseSideNav";
@@ -153,6 +154,11 @@ export default function DetailedDiseases() {
       ref={containerRef}
       className="min-h-screen relative text-[var(--text-dark)] selection:bg-[var(--primary)] selection:text-white"
     >
+      <Helmet>
+        <title>Monitoring Registry - MAATRIVA</title>
+        <meta name="description" content="Clinical Protocol v2.4. View the MAATRIVA Monitoring Registry for baby health, including cardiac, respiratory, and neurological patterns." />
+        <meta property="og:title" content="Monitoring Registry - MAATRIVA" />
+      </Helmet>
       <div className="fixed inset-0 bg-[var(--bg-glass)] backdrop-blur-md -z-10" />
 
       <DiseaseSideNav categories={categories} />

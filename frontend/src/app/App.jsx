@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { Toaster } from "sonner";
+import { Helmet } from "react-helmet-async";
 
 
 import { Hero } from "./components/Hero";
@@ -48,6 +49,12 @@ const LoadingFallback = () => (
 function Home() {
   return (
     <div className="relative bg-[var(--bg-secondary)] text-[var(--text)] fade-in">
+      <Helmet>
+        <title>MAATRIVA - Smart Nest Pro | The AI Baby Cradle</title>
+        <meta name="description" content="Discover the world's first AI-powered smart baby cradle. MAATRIVA Smart Nest Pro learns your baby's needs and provides peace of mind." />
+        <meta property="og:title" content="MAATRIVA - Smart Nest Pro" />
+        <meta property="og:description" content="Discover the world's first AI-powered smart baby cradle." />
+      </Helmet>
       <Hero />
       <Suspense fallback={<div className="h-96" />}>
         <Diseases />
