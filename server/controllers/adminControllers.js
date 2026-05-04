@@ -18,7 +18,17 @@ export const getAdminStats = async (req, res) => {
       ORDER BY s.created_at DESC
     `);
 
-    // 3. Get generic login stats (total users created per day for last 7 days)
+    // 3. Get all preorders
+    const preordersResult = await pool.query(`
+      SELECT * FROM preorders ORDER BY created_at DESC
+    `);
+
+    // 4. Get all contacts
+    const contactsResult = await pool.query(`
+      SELECT * FROM contacts ORDER BY created_at DESC
+    `);
+
+    // 5. Get generic login stats (total users created per day for last 7 days)
     const loginStats = await pool.query(`
       SELECT DATE(created_at) as date, COUNT(*) as count 
       FROM users 
@@ -30,6 +40,8 @@ export const getAdminStats = async (req, res) => {
     res.json({
       totalUsers: parseInt(usersCount.rows[0].count),
       surveys: surveysResult.rows,
+      preorders: preordersResult.rows,
+      contacts: contactsResult.rows,
       loginStats: loginStats.rows,
     });
   } catch (error) {
