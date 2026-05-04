@@ -8,9 +8,9 @@ export const getAdminStats = async (req, res) => {
       return res.status(403).json({ error: "Unauthorized. Admin access only." });
     }
 
-    // 1. Get total users count
-    const usersCount = await pool.query("SELECT COUNT(*) FROM users");
-    
+    // 1. Get all users
+    const usersResult = await pool.query("SELECT id, name, email, is_admin, created_at FROM users ORDER BY created_at DESC");
+
     // 2. Get all surveys
     const surveysResult = await pool.query(`
       SELECT s.id, s.name, s.email, s.answers, s.created_at 
@@ -38,7 +38,8 @@ export const getAdminStats = async (req, res) => {
     `);
 
     res.json({
-      totalUsers: parseInt(usersCount.rows[0].count),
+      totalUsers: usersResult.rows.length,
+      users: usersResult.rows,
       surveys: surveysResult.rows,
       preorders: preordersResult.rows,
       contacts: contactsResult.rows,

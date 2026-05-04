@@ -44,6 +44,7 @@ export default function AdminDashboard() {
   const filteredSurveys = filterData(stats?.surveys);
   const filteredPreorders = filterData(stats?.preorders);
   const filteredContacts = filterData(stats?.contacts);
+  const filteredUsers = filterData(stats?.users);
 
   if (loading) {
     return (
@@ -83,7 +84,8 @@ export default function AdminDashboard() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <motion.div 
             whileHover={{ y: -5 }}
-            className="bg-white/60 backdrop-blur-xl p-6 rounded-[2rem] border border-white shadow-xl flex items-center gap-4"
+            onClick={() => {setActiveTab("users"); setExpandedItem(null);}}
+            className={`cursor-pointer bg-white/60 backdrop-blur-xl p-6 rounded-[2rem] border shadow-xl flex items-center gap-4 transition-all ${activeTab === 'users' ? 'border-[var(--primary)] ring-2 ring-[var(--primary)]/20 bg-white/90' : 'border-white'}`}
           >
             <div className="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center shadow-inner shrink-0">
               <Users size={28} />
@@ -178,6 +180,48 @@ export default function AdminDashboard() {
 
             <div className="space-y-4 max-h-[600px] overflow-y-auto pr-4 no-scrollbar">
               
+              {/* USERS */}
+              {activeTab === "users" && filteredUsers?.map((u) => (
+                <div key={`user-${u.id}`} className="bg-white/40 rounded-[2rem] border border-white/60 overflow-hidden transition-all hover:bg-white/60 group">
+                  <div 
+                    onClick={() => setExpandedItem(expandedItem === `user-${u.id}` ? null : `user-${u.id}`)}
+                    className="p-6 cursor-pointer flex items-center justify-between"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center font-black">
+                        {u.name?.charAt(0) || "U"}
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-[var(--text-dark)]">{u.name}</h4>
+                        <p className="text-xs text-[var(--text-light)] font-bold uppercase tracking-wider">
+                          {u.email} • {new Date(u.created_at).toLocaleDateString()}
+                        </p>
+                      </div>
+                    </div>
+                    {expandedItem === `user-${u.id}` ? <ChevronUp className="text-gray-400" /> : <ChevronDown className="text-gray-400" />}
+                  </div>
+
+                  {expandedItem === `user-${u.id}` && (
+                    <motion.div 
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      className="px-6 pb-6 pt-2 border-t border-white/60"
+                    >
+                      <div className="p-4 bg-white/50 rounded-2xl border border-white/40 space-y-3 mt-2">
+                         <div className="flex items-center gap-3 text-[var(--text-dark)]">
+                            <Mail className="w-4 h-4 text-[var(--primary)]" />
+                            <span className="font-semibold">{u.email}</span>
+                         </div>
+                         <div className="flex items-center gap-3 text-[var(--text-dark)]">
+                            <Users className="w-4 h-4 text-[var(--primary)]" />
+                            <span className="font-semibold">Role: {u.is_admin ? "Admin" : "User"}</span>
+                         </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </div>
+              ))}
+
               {/* SURVEYS */}
               {activeTab === "surveys" && filteredSurveys?.map((survey) => (
                 <div key={`survey-${survey.id}`} className="bg-white/40 rounded-[2rem] border border-white/60 overflow-hidden transition-all hover:bg-white/60 group">
@@ -305,6 +349,12 @@ export default function AdminDashboard() {
               ))}
 
               {/* EMPTY STATES */}
+              {activeTab === "users" && filteredUsers?.length === 0 && (
+                <div className="text-center py-20 bg-white/20 rounded-[2rem] border-2 border-dashed border-white/60">
+                  <Users className="mx-auto text-gray-400 mb-4" size={48} />
+                  <p className="text-[var(--text-light)] font-bold">No users found matching your search.</p>
+                </div>
+              )}
               {activeTab === "surveys" && filteredSurveys?.length === 0 && (
                 <div className="text-center py-20 bg-white/20 rounded-[2rem] border-2 border-dashed border-white/60">
                   <ClipboardList className="mx-auto text-gray-400 mb-4" size={48} />
