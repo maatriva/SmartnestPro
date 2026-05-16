@@ -139,7 +139,7 @@ export default function AboutUs() {
                   </span>
                 </div>
 
-                <h1 className="text-5xl md:text-7xl font-black leading-[1.05] text-[var(--text-dark)] flex flex-col gap-2">
+                <h1 className="text-4xl sm:text-5xl md:text-7xl font-black leading-[1.05] text-[var(--text-dark)] flex flex-col gap-2">
                   <motion.span
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -234,7 +234,7 @@ export default function AboutUs() {
                   transition={{
                     delay: 0.6,
                   }}
-                  className="mt-14 grid grid-cols-2 gap-4"
+                  className="mt-14 grid grid-cols-1 sm:grid-cols-2 gap-4"
                 >
                   {monitoring.map((item, index) => (
                     <motion.div
@@ -352,7 +352,7 @@ export default function AboutUs() {
                     duration: 5,
                     repeat: Infinity,
                   }}
-                  className="absolute -bottom-10 -left-10 w-[240px] rounded-[30px] overflow-hidden border border-[var(--border)] bg-[var(--bg-glass)] backdrop-blur-2xl shadow-[var(--shadow)]"
+                  className="hidden md:block absolute -bottom-10 -left-10 w-[240px] rounded-[30px] overflow-hidden border border-[var(--border)] bg-[var(--bg-glass)] backdrop-blur-2xl shadow-[var(--shadow)]"
                 >
                   <img
                     src={withoutBabyImage}

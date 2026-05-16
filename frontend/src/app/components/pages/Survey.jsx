@@ -608,7 +608,7 @@ export default function Survey() {
               <button
                 onClick={handlePrev}
                 disabled={page === 0}
-                className={`flex items-center gap-2 px-8 py-4 rounded-2xl font-bold transition-all ${
+                className={`flex items-center gap-1 sm:gap-2 px-4 sm:px-8 py-3 sm:py-4 rounded-2xl font-bold transition-all text-sm sm:text-base ${
                   page === 0 
                   ? "opacity-0 pointer-events-none" 
                   : "text-[var(--text-dark)] hover:bg-white/50 bg-white/30"
@@ -632,7 +632,7 @@ export default function Survey() {
               <button
                 onClick={handleNext}
                 disabled={loading}
-                className="flex items-center gap-2 bg-[var(--text-dark)] text-white px-10 py-4 rounded-2xl font-black shadow-xl hover:shadow-[var(--text-dark)]/30 hover:scale-105 active:scale-95 transition-all disabled:opacity-50"
+                className="flex items-center gap-1 sm:gap-2 bg-[var(--text-dark)] text-white px-5 sm:px-10 py-3 sm:py-4 rounded-2xl font-black shadow-xl hover:shadow-[var(--text-dark)]/30 hover:scale-105 active:scale-95 transition-all disabled:opacity-50 text-sm sm:text-base"
               >
                 {loading ? (
                   "Submitting..."

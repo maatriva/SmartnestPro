@@ -71,7 +71,7 @@ export default function App() {
   const location = useLocation();
 
   return (
-    <div className="relative bg-[var(--bg-secondary)] text-[var(--text)]">
+    <div className="relative bg-[var(--bg-secondary)] text-[var(--text)] overflow-x-hidden w-full">
       <ScrollToTop />
       <Toaster position="top-center" richColors />
 

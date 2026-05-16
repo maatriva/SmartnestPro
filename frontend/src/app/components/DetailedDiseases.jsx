@@ -168,20 +168,20 @@ export default function DetailedDiseases() {
         <nav className="max-w-7xl mx-auto px-8 py-8 flex justify-between items-center">
           <Link
             to="/"
-            className="flex items-center gap-2 font-bold bg-white/20 px-4 py-2 rounded-full"
+            className="flex items-center gap-2 font-bold bg-white/20 px-4 py-2 rounded-full text-sm"
           >
             <ArrowLeft className="w-5 h-5" />
-            Back to Home
+            <span className="hidden sm:inline">Back to Home</span>
           </Link>
 
-          <div className="flex items-center gap-2 px-4 py-2 bg-white/40 rounded-full text-xs font-black">
+          <div className="flex items-center gap-2 px-4 py-2 bg-white/40 rounded-full text-[10px] sm:text-xs font-black">
             <ShieldCheck className="w-4 h-4" />
             Clinical Protocol v2.4
           </div>
         </nav>
 
         <header className="registry-header max-w-4xl mx-auto px-6 text-center">
-          <h1 className="text-5xl font-black mb-6 uppercase">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 uppercase">
             Monitoring Registry
           </h1>
 
@@ -196,7 +196,7 @@ export default function DetailedDiseases() {
       </div>
 
       {/* CONTENT */}
-      <div className="max-w-7xl mx-auto px-8 pb-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 pb-24">
         {loading ? (
           <div className="text-center py-40">
             <div className="w-12 h-12 border-4 border-[var(--primary)] border-t-transparent rounded-full animate-spin mx-auto mb-6"></div>

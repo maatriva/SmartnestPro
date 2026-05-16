@@ -176,7 +176,7 @@ export function HowItWorks() {
                 >
 
                   {/* Step Number */}
-                  <div className="absolute -top-4 -left-4 w-12 h-12 
+                  <div className="absolute -top-6 left-6 w-12 h-12 
                   bg-[var(--primary)] rounded-full 
                   flex items-center justify-center text-white font-bold 
                   shadow-[var(--shadow-primary)]">
