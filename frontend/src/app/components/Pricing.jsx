@@ -103,11 +103,11 @@ const SplitCard = ({ model, onPreOrder }) => {
   };
 
   return (
-    <div className="relative w-full max-w-sm mx-auto z-10 flex flex-col">
+    <div className="relative w-full max-w-sm mx-auto z-10 flex flex-col h-full">
       {/* FRONT CARD */}
       <div 
         ref={frontRef} 
-        className="demo-card-front relative p-6 flex flex-col rounded-xl border border-[var(--primary)] shadow-[var(--shadow-primary)] bg-[var(--bg-glass)] backdrop-blur-xl z-20"
+        className="demo-card-front relative p-6 flex flex-col flex-1 rounded-xl border border-[var(--primary)] shadow-[var(--shadow-primary)] bg-[var(--bg-glass)] backdrop-blur-xl z-20"
       >
         {model.img && (
           <div className="w-full h-48 mb-6 rounded-lg overflow-hidden">
@@ -381,7 +381,7 @@ export function Pricing() {
 
                   <button
                     onClick={handleToggleAllModels}
-                    className="py-3 mt-2 text-[var(--primary)] border-2 border-[var(--primary)] rounded-lg hover:bg-[var(--primary)] hover:text-white transition font-bold"
+                    className="mt-2 text-[var(--primary)] hover:underline transition font-bold self-center"
                   >
                     {showAllModels ? "Hide All Models" : "View All Models"}
                   </button>
@@ -406,7 +406,7 @@ export function Pricing() {
                 <p className="text-[var(--text-light)] mt-2">Find the perfect smart cradle for your baby</p>
               </div>
               
-              <div className="grid md:grid-cols-3 gap-8">
+              <div className="grid md:grid-cols-3 gap-8 pb-12 px-2">
                 {Object.values(cradleModels).map((model, idx) => (
                   <SplitCard key={idx} model={model} onPreOrder={setSelectedPlan} />
                 ))}

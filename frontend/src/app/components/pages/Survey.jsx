@@ -10,7 +10,7 @@ const questions = [
   // Q1–Q4
   {
     question: "What is your current parenting status?",
-    type: "radio",
+    type: "checkbox",
     options: [
       "Expecting a child",
       "Parent of a newborn (0–6 months)",
@@ -124,7 +124,7 @@ const questions = [
   // Q13–Q16
   {
     question: "Interest in AI-powered health monitoring (real-time alerts):",
-    type: "range",
+    type: "checkbox",
     options: ["Low", "Medium", "High", "Very High"],
   },
   {
@@ -304,7 +304,7 @@ const questions = [
   },
   {
     question: "Clinical pricing?",
-    type: "radio",
+    type: "checkbox",
     options: [
       "₹40k–₹60k",
       "₹60k–₹80k",
@@ -485,7 +485,7 @@ export default function Survey() {
               Community Survey
             </div>
             <h1 className="text-4xl md:text-5xl font-black mb-4 bg-gradient-to-r from-[var(--text-dark)] to-[var(--primary)] bg-clip-text text-transparent">
-              Smart Nest Pro Survey
+              MAATRIVA Survey
             </h1>
             <p className="text-[var(--text-light)] text-lg max-w-xl mx-auto font-medium">
               Join us in redefining baby care. Your insights help us build the perfect nest.

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import API from "../../utils/api";
 import { validateEmail } from "../../utils/validation";
 
@@ -43,8 +44,8 @@ export default function PreOrderForm({ selectedPlan, onClose }) {
     }
   };
 
-  return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 transition-opacity duration-300">
+  return createPortal(
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[9999] transition-opacity duration-300">
       <style>{`
         @keyframes minimizeSmooth {
           0% { opacity: 0; transform: scale(1.1) translateY(-20px); }
@@ -111,6 +112,7 @@ export default function PreOrderForm({ selectedPlan, onClose }) {
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
