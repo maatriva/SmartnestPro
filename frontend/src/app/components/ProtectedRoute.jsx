@@ -10,7 +10,7 @@ const ProtectedRoute = ({ children }) => {
   useEffect(() => {
     if (!loading && !user) {
       toast.error("Please login to access this page", {
-        description: "Join the Smart Nest Pro community to continue.",
+        description: "Join the Maatriva community to continue.",
         duration: 4000,
       });
     }
@@ -21,7 +21,7 @@ const ProtectedRoute = ({ children }) => {
       <div className="min-h-screen flex items-center justify-center bg-[var(--bg-secondary)] text-[var(--text-dark)]">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 border-4 border-[var(--primary)] border-t-transparent rounded-full animate-spin"></div>
-          <p className="font-bold text-xl animate-pulse">Loading Smart Nest Pro...</p>
+          <p className="font-bold text-xl animate-pulse">Loading Maatriva...</p>
         </div>
       </div>
     );

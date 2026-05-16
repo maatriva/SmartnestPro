@@ -8,7 +8,7 @@ const getBaseURL = () => {
     return 'http://localhost:5000/api';
   }
   
-  return 'https://smartnestpro.onrender.com/api';
+  return 'https://maatriva.onrender.com/api';
 };
 
 const API = axios.create({

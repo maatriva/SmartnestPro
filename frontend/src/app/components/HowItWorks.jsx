@@ -11,7 +11,7 @@ const steps = [
     number: '01',
     icon: Download,
     title: 'Setup & Connect',
-    description: 'Unbox your Smart Nest Pro, plug it in, and connect to the mobile app in under 5 minutes.'
+    description: 'Unbox your Maatriva, plug it in, and connect to the mobile app in under 5 minutes.'
   },
   {
     number: '02',

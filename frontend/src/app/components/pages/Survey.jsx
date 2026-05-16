@@ -266,7 +266,7 @@ const questions = [
     options: ["Yes", "No", "Maybe"],
   },
   {
-    question: "Willingness to buy a certified refurbished Smart Nest Pro:",
+    question: "Willingness to buy a certified refurbished Maatriva:",
     type: "range",
     options: ["Low", "Medium", "High", "Very High"],
   },
@@ -350,7 +350,7 @@ const questions = [
     options: ["Low", "Medium", "High", "Very High"],
   },
   {
-    question: "How likely are you to recommend Smart Nest Pro to others?",
+    question: "How likely are you to recommend Maatriva to others?",
     type: "range",
     options: ["1","2","3","4","5","6","7","8","9","10"],
   },
@@ -449,7 +449,7 @@ export default function Survey() {
           </div>
           <h2 className="text-3xl font-bold text-[var(--text-dark)] mb-4">You're Amazing!</h2>
           <p className="text-[var(--text-light)] mb-8 font-medium">
-            Thank you for helping us shape the future of Smart Nest Pro. Your feedback is invaluable to us.
+            Thank you for helping us shape the future of Maatriva. Your feedback is invaluable to us.
           </p>
           <button 
             onClick={() => window.location.href = '/'}

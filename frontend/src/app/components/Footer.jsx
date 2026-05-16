@@ -71,7 +71,7 @@ export function Footer() {
             <div className="flex items-center gap-2 mb-6">
               <Sparkles className="w-8 h-8 text-[var(--primary)]" />
               <span className="text-2xl font-bold tracking-tight text-[var(--text-dark)]">
-                Smart Nest Pro
+                Maatriva
               </span>
             </div>
 
@@ -146,7 +146,7 @@ export function Footer() {
 
         {/* Bottom */}
         <div className="border-t border-[var(--border)] pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
-          <p className="text-[var(--text-light)]">© 2026 Smart Nest Pro</p>
+          <p className="text-[var(--text-light)]">© 2026 Maatriva</p>
           <div className="flex gap-4">
             <a href="#">Privacy</a>
             <a href="#">Terms</a>

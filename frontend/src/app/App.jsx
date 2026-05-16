@@ -50,9 +50,9 @@ function Home() {
   return (
     <div className="relative bg-[var(--bg-secondary)] text-[var(--text)] fade-in">
       <Helmet>
-        <title>MAATRIVA - Smart Nest Pro | The AI Baby Cradle</title>
-        <meta name="description" content="Discover the world's first AI-powered smart baby cradle. MAATRIVA Smart Nest Pro learns your baby's needs and provides peace of mind." />
-        <meta property="og:title" content="MAATRIVA - Smart Nest Pro" />
+        <title>Maatriva | The AI Baby Cradle</title>
+        <meta name="description" content="Discover the world's first AI-powered smart baby cradle. Maatriva learns your baby's needs and provides peace of mind." />
+        <meta property="og:title" content="Maatriva" />
         <meta property="og:description" content="Discover the world's first AI-powered smart baby cradle." />
       </Helmet>
       <Hero />

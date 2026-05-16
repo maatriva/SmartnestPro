@@ -1,6 +1,6 @@
-# SmartNestPro Backend
+# Maatriva Backend
 
-This is the Express backend for SmartNestPro, using PostgreSQL for data storage.
+This is the Express backend for Maatriva, using PostgreSQL for data storage.
 
 ## Setup
 
@@ -9,7 +9,7 @@ This is the Express backend for SmartNestPro, using PostgreSQL for data storage.
     
     ```env
     PORT=5000
-    DATABASE_URL=postgres://postgres:password@localhost:5432/smartnestpro
+    DATABASE_URL=postgres://postgres:password@localhost:5432/maatriva
     ```
 
 2.  **Install Dependencies**:

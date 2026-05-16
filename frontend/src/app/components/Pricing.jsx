@@ -161,21 +161,34 @@ const HorizontalSplitCard = ({ model, onPreOrder }) => {
   const backRef = useRef(null);
 
   const toggleOpen = () => {
+    const isMobileNow = window.innerWidth < 768;
     const tl = gsap.timeline();
     if (!isOpen) {
-      tl.to(frontRef.current, { x: 280, duration: 1, ease: "power2.out", delay: 0 }, 0);
-      tl.to(backRef.current, { x: 60, duration: 1, ease: "power2.out", delay: 0 }, 0);
+      if (isMobileNow) {
+        tl.to(frontRef.current, { y: -160, duration: 1, ease: "power2.out", delay: 0 }, 0);
+        tl.to(backRef.current, { y: 160, duration: 1, ease: "power2.out", delay: 0 }, 0);
+      } else {
+        tl.to(frontRef.current, { x: 280, duration: 1, ease: "power2.out", delay: 0 }, 0);
+        tl.to(backRef.current, { x: 60, duration: 1, ease: "power2.out", delay: 0 }, 0);
+      }
     } else {
-      tl.to(frontRef.current, { x: 0, duration: 1, ease: "power2.out", delay: 0 }, 0);
-      tl.to(backRef.current, { x: 0, duration: 1, ease: "power2.out", delay: 0 }, 0);
+      tl.to(frontRef.current, { x: 0, y: 0, duration: 1, ease: "power2.out", delay: 0 }, 0);
+      tl.to(backRef.current, { x: 0, y: 0, duration: 1, ease: "power2.out", delay: 0 }, 0);
     }
     setIsOpen(!isOpen);
   };
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  useLayoutEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div 
       className="relative w-full max-w-sm mx-auto z-10 transition-transform duration-1000 ease-[cubic-bezier(0,0.55,0.45,1)]"
-      style={{ transform: isOpen ? "translateX(-170px)" : "translateX(0)" }}
+      style={{ transform: isOpen ? (isMobile ? "translateY(-60px)" : "translateX(-170px)") : "translate(0px, 0px)" }}
     >
       {/* BACK CARD */}
       <div 

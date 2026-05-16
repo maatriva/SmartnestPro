@@ -10,7 +10,7 @@ export default function PreOrderForm({ selectedPlan, onClose }) {
     email: "",
     phone: "",
     address: "",
-    planName: selectedPlan?.name || "Smart Nest Pro",
+    planName: selectedPlan?.name || "Maatriva",
     planPrice: selectedPlan?.price || ""
   });
 
@@ -45,7 +45,7 @@ export default function PreOrderForm({ selectedPlan, onClose }) {
   };
 
   return createPortal(
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[9999] transition-opacity duration-300">
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[9999] p-4 transition-opacity duration-300">
       <style>{`
         @keyframes minimizeSmooth {
           0% { opacity: 0; transform: scale(1.1) translateY(-20px); }
@@ -62,7 +62,7 @@ export default function PreOrderForm({ selectedPlan, onClose }) {
           <h2 className="text-2xl font-bold text-[var(--text-dark)]">Pre-Order</h2>
           {selectedPlan && (
             <p className="text-[var(--primary)] font-medium mt-1">
-              {selectedPlan.name} Model (₹{selectedPlan.price})
+              {selectedPlan.name} Model {selectedPlan.price === "Custom" ? "(Custom Pricing)" : `(₹${selectedPlan.price})`}
             </p>
           )}
         </div>

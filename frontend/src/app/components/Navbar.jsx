@@ -78,9 +78,8 @@ const Navbar = () => {
       bg-[var(--bg-glass)] backdrop-blur-xl border border-white/40 shadow-[var(--shadow)] relative">
 
         {/* Logo */}
-        <Link to="/" className="nav-logo inline-block text-xl md:text-2xl font-bold tracking-wide">
-          {/* Maatriva */}
-          <img src="/Faviconsimple (2).png" alt="" className="w-30 h-30" />
+        <Link to="/" className="nav-logo inline-block font-bold tracking-wide flex items-center justify-center">
+          <img src="/Faviconsimple (2).png" alt="Maatriva Logo" className="h-12 w-auto object-contain" />
         </Link>
 
         {/* Desktop Links */}

@@ -78,7 +78,7 @@ const Signup = () => {
             Create Account
           </h2>
           <p className="text-[var(--text-light)]">
-            Join SmartNestPro and start monitoring.
+            Join Maatriva and start monitoring.
           </p>
         </div>
 

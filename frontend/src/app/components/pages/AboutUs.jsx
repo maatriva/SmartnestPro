@@ -203,14 +203,21 @@ export default function AboutUs() {
                     </Link>
                   </motion.div>
 
-                  <motion.button
+                  <motion.div
                     whileHover={{
                       scale: 1.05,
                     }}
-                    className="px-8 py-4 rounded-full border border-[var(--border)] bg-[var(--bg-glass)] backdrop-blur-xl inline-flex items-center justify-center font-medium"
+                    whileTap={{
+                      scale: 0.95,
+                    }}
                   >
-                    Explore Features
-                  </motion.button>
+                    <Link
+                      to="/#features"
+                      className="px-8 py-4 rounded-full border border-[var(--border)] bg-[var(--bg-glass)] backdrop-blur-xl inline-flex items-center justify-center font-medium"
+                    >
+                      Explore Features
+                    </Link>
+                  </motion.div>
                 </div>
 
                 {/* LIVE MONITORING */}
@@ -288,7 +295,7 @@ export default function AboutUs() {
                 >
                   <img
                     src={withBabyImage}
-                    alt="Smart Nest"
+                    alt="Maatriva"
                     className="w-full h-[500px] object-cover"
                   />
 
