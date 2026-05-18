@@ -1,7 +1,6 @@
-import React, { useState, useMemo, useLayoutEffect, useRef, useEffect } from "react";
+﻿import React, { useState, useMemo, useLayoutEffect, useRef, useEffect } from "react";
 import API from "../utils/api";
 import { motion, AnimatePresence } from "framer-motion";
-import { Helmet } from "react-helmet-async";
 import { X, Heart, Wind, Activity, Brain, ArrowLeft, Search, ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
 import DiseaseSideNav from "./DiseaseSideNav";
@@ -46,59 +45,6 @@ const DiseaseCard = ({ name, icon, onSelect }) => {
   );
 };
 
-const fallbackDiseaseData = [
-  {
-    category: "Respiratory & Pulmonary",
-    diseases: [
-      {
-        name: "Bronchopulmonary Dysplasia (BPD)",
-        description: "A chronic lung disease seen in premature babies causing difficulty in breathing and low oxygen levels.",
-        aiRole: "AI monitors irregular breathing patterns and detects oxygen drops early.",
-      },
-      {
-        name: "Congenital Central Hypoventilation Syndrome (CCHS)",
-        description: "A rare condition where the baby fails to breathe properly during sleep.",
-        aiRole: "Detects shallow breathing or apnea in real time and alerts instantly.",
-      },
-      {
-        name: "Cystic Fibrosis (CF)",
-        description: "A genetic disorder that causes thick mucus buildup in lungs leading to infections.",
-        aiRole: "Tracks breathing rate spikes to predict early infections.",
-      },
-      {
-        name: "Infantile Sleep Apnea",
-        description: "Breathing repeatedly stops during sleep (central or obstructive).",
-        aiRole: "Detects breathing pauses and sends emergency alerts.",
-      },
-    ],
-  },
-  {
-    category: "Cardiovascular (Heart)",
-    diseases: [
-      {
-        name: "Septal Defects (VSD/ASD)",
-        description: "Holes in the heart that affect normal blood flow.",
-        aiRole: "Monitors abnormal heart rate and fatigue indicators.",
-      },
-      {
-        name: "Tetralogy of Fallot",
-        description: "A combination of heart defects causing low oxygen levels.",
-        aiRole: "Tracks heart rate stability during distress episodes.",
-      },
-      {
-        name: "Patent Ductus Arteriosus (PDA)",
-        description: "A heart condition where a vessel fails to close after birth.",
-        aiRole: "Detects abnormal heart workload and breathing stress.",
-      },
-      {
-        name: "Arrhythmias",
-        description: "Irregular heart rhythms (too fast or too slow).",
-        aiRole: "Continuously monitors heart rate outside safe limits.",
-      },
-    ],
-  },
-];
-
 export default function DetailedDiseases() {
   const [selected, setSelected] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -116,12 +62,7 @@ export default function DetailedDiseases() {
         }));
         setDiseaseData(dataWithIcons);
       } catch (err) {
-        console.error("Error fetching diseases, using fallback data:", err);
-        const dataWithIcons = fallbackDiseaseData.map(section => ({
-          ...section,
-          icon: getCategoryIcon(section.category)
-        }));
-        setDiseaseData(dataWithIcons);
+        console.error("Error fetching diseases:", err);
       } finally {
         setLoading(false);
       }
@@ -129,7 +70,7 @@ export default function DetailedDiseases() {
     fetchDiseases();
   }, []);
 
-  // ✅ FIXED: moved above useLayoutEffect
+  // Ô£à FIXED: moved above useLayoutEffect
   const filteredData = useMemo(() => {
     if (!searchQuery) return diseaseData;
 
@@ -212,11 +153,6 @@ export default function DetailedDiseases() {
       ref={containerRef}
       className="min-h-screen relative text-[var(--text-dark)] selection:bg-[var(--primary)] selection:text-white"
     >
-      <Helmet>
-        <title>Monitoring Registry - MAATRIVA</title>
-        <meta name="description" content="Clinical Protocol v2.4. View the MAATRIVA Monitoring Registry for baby health, including cardiac, respiratory, and neurological patterns." />
-        <meta property="og:title" content="Monitoring Registry - MAATRIVA" />
-      </Helmet>
       <div className="fixed inset-0 bg-[var(--bg-glass)] backdrop-blur-md -z-10" />
 
       <DiseaseSideNav categories={categories} />
@@ -226,20 +162,20 @@ export default function DetailedDiseases() {
         <nav className="max-w-7xl mx-auto px-8 py-8 flex justify-between items-center">
           <Link
             to="/"
-            className="flex items-center gap-2 font-bold bg-white/20 px-4 py-2 rounded-full text-sm"
+            className="flex items-center gap-2 font-bold bg-white/20 px-4 py-2 rounded-full"
           >
             <ArrowLeft className="w-5 h-5" />
-            <span className="hidden sm:inline">Back to Home</span>
+            Back to Home
           </Link>
 
-          <div className="flex items-center gap-2 px-4 py-2 bg-white/40 rounded-full text-[10px] sm:text-xs font-black">
+          <div className="flex items-center gap-2 px-4 py-2 bg-white/40 rounded-full text-xs font-black">
             <ShieldCheck className="w-4 h-4" />
             Clinical Protocol v2.4
           </div>
         </nav>
 
         <header className="registry-header max-w-4xl mx-auto px-6 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 uppercase">
+          <h1 className="text-5xl font-black mb-6 uppercase">
             Monitoring Registry
           </h1>
 
@@ -254,7 +190,7 @@ export default function DetailedDiseases() {
       </div>
 
       {/* CONTENT */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 pb-24">
+      <div className="max-w-7xl mx-auto px-8 pb-24">
         {loading ? (
           <div className="text-center py-40">
             <div className="w-12 h-12 border-4 border-[var(--primary)] border-t-transparent rounded-full animate-spin mx-auto mb-6"></div>
