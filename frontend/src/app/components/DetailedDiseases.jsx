@@ -46,58 +46,7 @@ const DiseaseCard = ({ name, icon, onSelect }) => {
   );
 };
 
-const fallbackDiseaseData = [
-  {
-    category: "Respiratory & Pulmonary",
-    diseases: [
-      {
-        name: "Bronchopulmonary Dysplasia (BPD)",
-        description: "A chronic lung disease seen in premature babies causing difficulty in breathing and low oxygen levels.",
-        aiRole: "AI monitors irregular breathing patterns and detects oxygen drops early.",
-      },
-      {
-        name: "Congenital Central Hypoventilation Syndrome (CCHS)",
-        description: "A rare condition where the baby fails to breathe properly during sleep.",
-        aiRole: "Detects shallow breathing or apnea in real time and alerts instantly.",
-      },
-      {
-        name: "Cystic Fibrosis (CF)",
-        description: "A genetic disorder that causes thick mucus buildup in lungs leading to infections.",
-        aiRole: "Tracks breathing rate spikes to predict early infections.",
-      },
-      {
-        name: "Infantile Sleep Apnea",
-        description: "Breathing repeatedly stops during sleep (central or obstructive).",
-        aiRole: "Detects breathing pauses and sends emergency alerts.",
-      },
-    ],
-  },
-  {
-    category: "Cardiovascular (Heart)",
-    diseases: [
-      {
-        name: "Septal Defects (VSD/ASD)",
-        description: "Holes in the heart that affect normal blood flow.",
-        aiRole: "Monitors abnormal heart rate and fatigue indicators.",
-      },
-      {
-        name: "Tetralogy of Fallot",
-        description: "A combination of heart defects causing low oxygen levels.",
-        aiRole: "Tracks heart rate stability during distress episodes.",
-      },
-      {
-        name: "Patent Ductus Arteriosus (PDA)",
-        description: "A heart condition where a vessel fails to close after birth.",
-        aiRole: "Detects abnormal heart workload and breathing stress.",
-      },
-      {
-        name: "Arrhythmias",
-        description: "Irregular heart rhythms (too fast or too slow).",
-        aiRole: "Continuously monitors heart rate outside safe limits.",
-      },
-    ],
-  },
-];
+
 
 export default function DetailedDiseases() {
   const [selected, setSelected] = useState(null);
@@ -107,26 +56,13 @@ export default function DetailedDiseases() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchDiseases = async () => {
-      try {
-        const response = await API.get(`/diseases`);
-        const dataWithIcons = response.data.map(section => ({
-          ...section,
-          icon: getCategoryIcon(section.category)
-        }));
-        setDiseaseData(dataWithIcons);
-      } catch (err) {
-        console.error("Error fetching diseases, using fallback data:", err);
-        const dataWithIcons = fallbackDiseaseData.map(section => ({
-          ...section,
-          icon: getCategoryIcon(section.category)
-        }));
-        setDiseaseData(dataWithIcons);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchDiseases();
+    // Setting disease data from hardcoded fallback directly to prevent 500 API errors
+    const dataWithIcons = fallbackDiseaseData.map(section => ({
+      ...section,
+      icon: getCategoryIcon(section.category)
+    }));
+    setDiseaseData(dataWithIcons);
+    setLoading(false);
   }, []);
 
   // ✅ FIXED: moved above useLayoutEffect
