@@ -15,13 +15,19 @@ const ModelCursor = () => {
     const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
     camera.position.z = 5;
 
-    const renderer = new THREE.WebGLRenderer({
-      antialias: true,
-      alpha: true,
-    });
-    renderer.setSize(width, height);
-
-    mountRef.current.appendChild(renderer.domElement);
+    let renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true,
+      });
+      renderer.setSize(width, height);
+      mountRef.current.appendChild(renderer.domElement);
+    } catch (error) {
+      console.error("Error creating WebGL context:", error);
+      // Clean up and exit early if WebGL is unsupported
+      return;
+    }
 
     // 💡 Light
     const light = new THREE.HemisphereLight(0xffffff, 0x444444, 2);
