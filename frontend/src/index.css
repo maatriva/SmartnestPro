@@ -76,3 +76,20 @@ html, body {
 .pricing-card {
   transform-style: preserve-3d;
 }
+.float-container {
+  animation: floating 4s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-30px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}

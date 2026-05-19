@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 import withBabyImage from "../../images/withbaby.jpeg";
 import withoutBabyImage from "../../images/withoutbaby.jpeg";
@@ -8,10 +9,19 @@ import withParentImage from "../../images/withParents.jpeg";
 import { motion } from "motion/react";
 
 export default function AboutUs() {
+  const [showAnimation, setShowAnimation] = useState(true);
   const [mousePosition, setMousePosition] = useState({
     x: 0,
     y: 0,
   });
+
+  // Hide the Lottie animation after 2 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowAnimation(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const move = (e) => {
@@ -52,8 +62,23 @@ export default function AboutUs() {
     "Air Quality Monitoring",
   ];
 
+  if (showAnimation) {
+    return (
+      <div className="fixed inset-0 flex flex-col items-center justify-center bg-[var(--bg)] z-50">
+        <div className="w-64 h-64 md:w-96 md:h-96">
+          {/* Replace this path with your actual animation URL or path */}
+          <DotLottieReact
+            src="path/to/animation.lottie"
+            loop
+            autoplay
+          />
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[var(--bg-secondary)] text-[var(--text)]">
+    <div className="relative min-h-screen overflow-hidden bg-[var(--bg-secondary)] text-[var(--text)] fade-in">
       {/* ================= BACKGROUND ================= */}
 
       <div className="absolute inset-0 opacity-[0.03]">
