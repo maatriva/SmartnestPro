@@ -39,6 +39,7 @@ const AboutUs = lazy(() => import("./components/pages/AboutUs"));
 const AdminDashboard = lazy(() => import("./components/pages/AdminDashboard"));
 const Login = lazy(() => import("./components/pages/Auth/Login"));
 const Signup = lazy(() => import("./components/pages/Auth/Signup"));
+const NotFound = lazy(() => import("./components/pages/NotFound"));
 
 const LoadingFallback = () => (
   <div className="fixed inset-0 flex items-center justify-center bg-[var(--bg-secondary)] z-50">
@@ -127,6 +128,9 @@ export default function App() {
                 </AdminRoute>
               }
             />
+            
+            {/* 404 Not Found Route */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
         
