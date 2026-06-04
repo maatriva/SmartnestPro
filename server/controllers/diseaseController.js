@@ -7,7 +7,7 @@ export const getDiseases = async (req, res) => {
         c.name as category, 
         d.name, 
         d.key_parameters as description, 
-        d.maatriva_help as "aiRole"
+        d.smartnest_help as "aiRole"
       FROM diseases d
       JOIN subcategories s ON d.subcategory_id = s.id
       JOIN categories c ON s.category_id = c.id
