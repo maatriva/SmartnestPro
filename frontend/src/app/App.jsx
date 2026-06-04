@@ -88,7 +88,7 @@ export default function App() {
 
       <div
         className={`${
-          location.pathname === "/" ? "" : "pt-24 md:pt-32"
+          location.pathname === "/" || location.pathname === "/about-us" ? "" : "pt-24 md:pt-32"
         } relative z-10`}
       >
         <Suspense fallback={<LoadingFallback />}>

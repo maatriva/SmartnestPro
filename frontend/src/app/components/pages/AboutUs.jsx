@@ -1,564 +1,252 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { Baby, Heart, Sparkles, Wind } from "lucide-react";
+import { motion } from "motion/react";
 
 import withBabyImage from "../../images/withbaby.jpeg";
 import withoutBabyImage from "../../images/withoutbaby.jpeg";
 import withParentImage from "../../images/withParents.jpeg";
 
-import { motion } from "motion/react";
-
 export default function AboutUs() {
-  const [showAnimation, setShowAnimation] = useState(true);
-  const [mousePosition, setMousePosition] = useState({
-    x: 0,
-    y: 0,
-  });
-
-  // Hide the Lottie animation after 2 seconds
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowAnimation(false);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    const move = (e) => {
-      setMousePosition({
-        x: e.clientX,
-        y: e.clientY,
-      });
-    };
-
-    window.addEventListener("mousemove", move);
-
-    return () => window.removeEventListener("mousemove", move);
-  }, []);
-
-  const gallery = [
+  const scienceCards = [
     {
-      src: withBabyImage,
-      title: "AI Sleep Monitoring",
+      icon: Wind,
+      title: "Breathable Materials",
+      copy: "Medical-grade comfort layers are designed for steady airflow, reducing heat buildup while maintaining a soft, secure nest.",
     },
     {
-      src: withoutBabyImage,
-      title: "Smart Cradle Design",
+      icon: Sparkles,
+      title: "Smart Motion Tech",
+      copy: "Whisper-quiet movement patterns mimic natural soothing rhythms, helping babies settle without disrupting the room.",
     },
     {
-      src: withParentImage,
-      title: "Parent Interaction",
+      icon: Baby,
+      title: "Cry-Detection AI",
+      copy: "Responsive alerts help parents understand discomfort, hunger, and sleep cues with more confidence.",
     },
   ];
 
-  const monitoring = [
-    "Heart Rate Monitoring",
-    "Breathing Analysis",
-    "Sleep Stage Detection",
-    "Body Posture Tracking",
-    "Cry Classification",
-    "Temperature Analysis",
-    "Mood Detection",
-    "Air Quality Monitoring",
+  const team = [
+    {
+      name: "Arghya Pratim Ghosh",
+      role: "Founder & Hardware lead",
+      isFounder: true,
+      isCoFounder: false,
+      image: withParentImage,
+      copy: "Leads the development of smart hardware systems, ensuring reliability, innovation, and seamless integration.",
+    },
+    {
+      name: "Rahul Kumar Ghosh",
+      role: "AI & Robotics Specialist",
+      isFounder: false,
+      isCoFounder: true,
+      image: withoutBabyImage,
+      copy: "Builds advanced AI solutions to enhance safety, monitoring, and user experiences.",
+    },
+    {
+      name: "Kirtik Biswas",
+      role: "Marketing & AI Specialist",
+      isFounder: false,
+      isCoFounder: true,
+      image: withBabyImage,
+      copy: "Combines AI innovation with strategic marketing to create impactful solutions that enhance baby care and connect meaningfully with parents.",
+    },
+    {
+      name: "Vishavjeet Chauhan",
+      role: "Creative Head",
+      isFounder: false,
+      isCoFounder: true,
+      image: withoutBabyImage,
+      copy: "Shapes the creative vision of Maatriva, crafting engaging experiences that are innovative, meaningful, and user-focused.",
+    },{
+      name: "Arman Sharma",
+      role: "Web & App Developer",
+      isFounder: false,
+      isCoFounder: true,
+      image: withoutBabyImage,
+      copy: "Builds intuitive web and mobile applications that bring Maatriva's smart baby care solutions to parents everywhere.",
+    }
   ];
-
-  if (showAnimation) {
-    return (
-      <div className="fixed inset-0 flex flex-col items-center justify-center bg-[var(--bg)] z-50">
-        <div className="w-64 h-64 md:w-96 md:h-96">
-          {/* Replace this path with your actual animation URL or path */}
-          <DotLottieReact
-            src="path/to/animation.lottie"
-            loop
-            autoplay
-          />
-        </div>
-      </div>
-    );
-  }
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[var(--bg-secondary)] text-[var(--text)] fade-in">
-      {/* ================= BACKGROUND ================= */}
+    <div className="min-h-screen bg-[var(--bg-secondary)] text-[var(--text)] fade-in pb-20">
+      <main className="space-y-20">
+        <section className="relative min-h-[720px] md:min-h-[760px] pt-36 flex items-end overflow-hidden">
+          <img
+            src={withParentImage}
+            alt="Parents resting with their baby"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
 
-      <div className="absolute inset-0 opacity-[0.03]">
-        <div className="h-full w-full bg-[linear-gradient(to_right,var(--text)_1px,transparent_1px),linear-gradient(to_bottom,var(--text)_1px,transparent_1px)] bg-[size:60px_60px]" />
-      </div>
-
-      {/* ================= CURSOR LIGHT ================= */}
-
-      <div className="pointer-events-none fixed inset-0 z-10">
-        <motion.div
-          animate={{
-            x: mousePosition.x - 200,
-            y: mousePosition.y - 200,
-          }}
-          transition={{
-            type: "spring",
-            damping: 25,
-            stiffness: 120,
-          }}
-          className="absolute w-[400px] h-[400px] rounded-full bg-white/5 blur-3xl"
-        />
-      </div>
-
-      {/* ================= FLOATING BLURS ================= */}
-
-      <motion.div
-        animate={{
-          y: [0, -40, 0],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-        }}
-        className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-[var(--primary)] opacity-10 blur-3xl"
-      />
-
-      <motion.div
-        animate={{
-          y: [0, 40, 0],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-        }}
-        className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-[var(--primary)] opacity-10 blur-3xl"
-      />
-
-      <main className="relative z-20 px-6 pb-24 -mt-12 md:-mt-20">
-        <div className="max-w-7xl mx-auto">
-          {/* ================= HERO SECTION ================= */}
-
-          <section className="flex pt-8 pb-16">
-            <div className="grid lg:grid-cols-2 gap-16 items-start w-full">
-              {/* LEFT SIDE */}
-
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  x: -80,
-                }}
-                animate={{
-                  opacity: 1,
-                  x: 0,
-                }}
-                transition={{
-                  duration: 1,
-                }}
+          <div className="relative z-10 w-full px-5 sm:px-8 lg:px-12 pb-28">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="max-w-2xl"
+            >
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-white">
+                Redefining the First Dreams.
+              </h1>
+              <p className="mt-6 max-w-xl text-base sm:text-lg leading-8 text-white/90">
+                A warm, inviting introduction to our mission of safe, smart
+                sleep. At Maatriva, we believe every infant deserves a sanctuary
+                of peace, and every parent deserves the confidence that comes
+                with protective innovation.
+              </p>
+              <Link
+                to="/#features"
+                className="mt-9 inline-flex min-h-12 items-center rounded-full border border-white/80 bg-white px-8 text-sm font-bold text-[var(--primary)] shadow-[var(--shadow)] transition hover:scale-[1.02]"
               >
-                <div className="inline-flex items-center gap-3 px-5  rounded-full border border-[var(--border)] bg-[var(--bg-glass)] backdrop-blur-xl mb-8">
-                  <motion.div
-                    animate={{
-                      scale: [1, 1.4, 1],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                    }}
-                    className="w-2 h-2 rounded-full bg-[var(--primary)]"
-                  />
+                Discover the Innovation
+              </Link>
+            </motion.div>
+          </div>
+        </section>
 
-                  <span className="text-sm font-semibold text-[var(--primary)]">
-                    Maatriva
-                  </span>
+        {/* Section 2: The Genesis */}
+        <section className="px-5 sm:px-8 lg:px-12">
+          <div className="mx-auto max-w-7xl bg-[var(--bg-glass)] backdrop-blur-xl border border-white/40 shadow-[var(--shadow)] rounded-3xl p-8 sm:p-12 lg:p-16 grid items-center gap-14 lg:grid-cols-[1fr_1.05fr]">
+            <motion.div
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7 }}
+            >
+              <p className="text-xs font-black uppercase tracking-[0.28em] text-[var(--primary)]">
+                The Genesis
+              </p>
+              <h2 className="mt-5 text-3xl font-black leading-tight text-[var(--text-dark)] sm:text-4xl">
+                Born from a Parent's Love
+              </h2>
+              <p className="mt-7 text-base leading-8 text-[var(--text)]">
+                Maatriva started from a fundamental parent's need for better
+                rest and baby safety. Our founders, navigating the exhausted fog
+                of early parenthood, realized that sleep technology had not kept
+                pace with our understanding of infant wellness.
+              </p>
+              <p className="mt-5 text-base leading-8 text-[var(--text)]">
+                Driven by curiosity, creativity, and a vision for smarter parenting, we created Maatriva to explore how technology can make baby care safer, simpler, and more connected. Our goal is to build innovative solutions that support families through every step of their parenting journey.
+
+              </p>
+              <div className="mt-8 flex items-center gap-4">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--bg-secondary)] text-[var(--text-dark)]">
+                  <Heart size={20} />
                 </div>
-
-                <h1 className="text-4xl sm:text-5xl md:text-7xl font-black leading-[1.05] text-[var(--text-dark)] flex flex-col gap-2">
-                  <motion.span
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
-                  >
-                    Future
-                  </motion.span>
-                  <motion.span
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-                  >
-                    Baby Care
-                  </motion.span>
-                  <motion.span
-                    initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
-                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                    transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
-                    className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-blue-500"
-                  >
-                    Experience
-                  </motion.span>
-                </h1>
-
-                <motion.p
-                  initial={{
-                    opacity: 0,
-                  }}
-                  animate={{
-                    opacity: 1,
-                  }}
-                  transition={{
-                    delay: 0.4,
-                  }}
-                  className="mt-8 text-lg leading-relaxed text-[var(--text)] max-w-xl"
-                >
-                  AI-powered monitoring, intelligent comfort automation, and
-                  futuristic clinical insights for safer parenting.
-                </motion.p>
-
-                {/* BUTTONS */}
-
-                <div className="flex flex-wrap items-center gap-5 mt-10">
-                  <motion.div
-                    whileHover={{
-                      scale: 1.05,
-                    }}
-                    whileTap={{
-                      scale: 0.95,
-                    }}
-                  >
-                    <Link
-                      to="/survey"
-                      className="group relative overflow-hidden px-8 py-4 rounded-full bg-[var(--primary)] text-white font-semibold shadow-[var(--shadow-primary)] inline-flex items-center justify-center"
-                    >
-                      <span className="relative z-10">
-                        Take Survey
-                      </span>
-
-                      <div className="absolute inset-0 translate-y-full group-hover:translate-y-0 transition duration-500 bg-white/10" />
-                    </Link>
-                  </motion.div>
-
-                  <motion.div
-                    whileHover={{
-                      scale: 1.05,
-                    }}
-                    whileTap={{
-                      scale: 0.95,
-                    }}
-                  >
-                    <Link
-                      to="/#features"
-                      className="px-8 py-4 rounded-full border border-[var(--border)] bg-[var(--bg-glass)] backdrop-blur-xl inline-flex items-center justify-center font-medium"
-                    >
-                      Explore Features
-                    </Link>
-                  </motion.div>
-                </div>
-
-                {/* LIVE MONITORING */}
-
-                <motion.div
-                  initial={{
-                    opacity: 0,
-                    y: 60,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  transition={{
-                    delay: 0.6,
-                  }}
-                  className="mt-14 grid grid-cols-1 sm:grid-cols-2 gap-4"
-                >
-                  {monitoring.map((item, index) => (
-                    <motion.div
-                      key={index}
-                      whileHover={{
-                        x: 8,
-                        scale: 1.02,
-                      }}
-                      className="flex items-center gap-3 rounded-2xl border border-[var(--border)] bg-[var(--bg-glass)] backdrop-blur-xl p-4"
-                    >
-                      <motion.div
-                        animate={{
-                          scale: [1, 1.3, 1],
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          delay: index * 0.2,
-                        }}
-                        className="w-2.5 h-2.5 rounded-full bg-[var(--primary)]"
-                      />
-
-                      <span className="text-sm">
-                        {item}
-                      </span>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </motion.div>
-
-              {/* RIGHT SIDE */}
-
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  x: 80,
-                }}
-                animate={{
-                  opacity: 1,
-                  x: 0,
-                }}
-                transition={{
-                  duration: 1,
-                }}
-                className="relative lg:mt-[68px]"
-              >
-                {/* MAIN IMAGE */}
-
-                <motion.div
-                  animate={{
-                    y: [0, -15, 0],
-                  }}
-                  transition={{
-                    duration: 6,
-                    repeat: Infinity,
-                  }}
-                  className="relative rounded-[40px] overflow-hidden border border-[var(--border)] bg-[var(--bg-glass)] backdrop-blur-2xl shadow-[var(--shadow)]"
-                >
-                  <img
-                    src={withBabyImage}
-                    alt="Maatriva"
-                    className="w-full h-[500px] object-cover"
-                  />
-
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-
-                  {/* FLOATING CARD */}
-
-                  <motion.div
-                    animate={{
-                      y: [0, -10, 0],
-                    }}
-                    transition={{
-                      duration: 4,
-                      repeat: Infinity,
-                    }}
-                    className="absolute top-6 left-6 rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl p-5"
-                  >
-                    <p className="text-white/70 text-sm">
-                      Sleep Analysis
-                    </p>
-
-                    <h3 className="text-4xl font-black text-white">
-                      96%
-                    </h3>
-                  </motion.div>
-
-                  <motion.div
-                    animate={{
-                      y: [0, 10, 0],
-                    }}
-                    transition={{
-                      duration: 5,
-                      repeat: Infinity,
-                    }}
-                    className="absolute bottom-6 right-6 rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl p-5"
-                  >
-                    <p className="text-white/70 text-sm">
-                      Live Monitoring
-                    </p>
-
-                    <h3 className="text-2xl font-bold text-white">
-                      Active
-                    </h3>
-                  </motion.div>
-                </motion.div>
-
-                {/* SMALL FLOATING IMAGE */}
-
-                <motion.div
-                  animate={{
-                    y: [0, -12, 0],
-                  }}
-                  transition={{
-                    duration: 5,
-                    repeat: Infinity,
-                  }}
-                  className="hidden md:block absolute -bottom-10 -left-10 w-[240px] rounded-[30px] overflow-hidden border border-[var(--border)] bg-[var(--bg-glass)] backdrop-blur-2xl shadow-[var(--shadow)]"
-                >
-                  <img
-                    src={withoutBabyImage}
-                    alt="Smart Cradle"
-                    className="w-full h-[180px] object-cover"
-                  />
-
-                  <div className="p-5">
-                    <h3 className="font-bold text-[var(--text-dark)]">
-                      Smart Comfort
-                    </h3>
-
-                    <p className="text-sm mt-2 text-[var(--text)]">
-                      AI adaptive automation
-                    </p>
-                  </div>
-                </motion.div>
-              </motion.div>
-            </div>
-          </section>
-
-          {/* ================= MISSION SECTION ================= */}
-          <section className="py-10 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8 }}
-                className="space-y-6"
-              >
-                <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-[var(--border)] bg-[var(--bg-glass)] backdrop-blur-xl">
-                  <span className="text-sm font-semibold text-[var(--primary)] uppercase tracking-wider">
-                    Our Vision
-                  </span>
-                </div>
-                <h2 className="text-4xl md:text-5xl font-black text-[var(--text-dark)]">
-                  Redefining Peace of Mind for Parents
-                </h2>
-                <p className="text-lg text-[var(--text)] leading-relaxed">
-                  We are a team of passionate engineers, designers, and parents dedicated to revolutionizing baby care. Our goal is to provide peace of mind to parents through cutting-edge AI and smart technology.
+                <p className="text-sm italic text-[var(--text-dark)]">
+                  "Nurturing is our nature, innovation is our instrument."
                 </p>
-                <p className="text-lg text-[var(--text)] leading-relaxed">
-                  We believe that every child deserves the safest and most comfortable sleep environment, and every parent deserves to rest easy knowing their little one is protected by the most advanced monitoring systems available.
-                </p>
+              </div>
+            </motion.div>
 
-                <div className="flex flex-wrap gap-4 pt-6">
-                  {[
-                    { value: "24/7", label: "Monitoring" },
-                    { value: "100%", label: "Safe & Secure" },
-                    { value: "AI", label: "Powered Insights" },
-                  ].map((stat, i) => (
-                    <motion.div
-                      key={i}
-                      whileHover={{ y: -5 }}
-                      className="flex-1 min-w-[120px] p-5 rounded-3xl bg-[var(--bg-glass)] border border-[var(--border)] backdrop-blur-xl shadow-lg text-center"
-                    >
-                      <h4 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-blue-500 mb-1">{stat.value}</h4>
-                      <p className="text-sm font-medium text-[var(--text)]">{stat.label}</p>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="overflow-hidden rounded-2xl border border-white/60 bg-[var(--bg-glass)] shadow-[var(--shadow)] w-full"
+            >
+              <img
+                src={withoutBabyImage}
+                alt="Smart Maatriva cradle in a nursery"
+                className="h-[360px] w-full object-cover sm:h-[480px] lg:h-[560px]"
+              />
+            </motion.div>
+          </div>
+        </section>
 
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 1, type: "spring" }}
-                className="relative"
-              >
-                <div className="absolute inset-0 bg-gradient-to-tr from-[var(--primary)] to-blue-500 opacity-20 blur-3xl rounded-full" />
-                <div className="relative rounded-[40px] overflow-hidden border border-[var(--border)] p-3 bg-[var(--bg-glass)] backdrop-blur-xl shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent pointer-events-none" />
-                  <img src={withParentImage} alt="Parents with baby" className="w-full h-[450px] object-cover rounded-[32px] hover:scale-105 transition-transform duration-700" />
-
-                  {/* Floating badge */}
-                  <motion.div
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute -bottom-6 -left-6 bg-[var(--bg-secondary)] rounded-2xl p-4 shadow-xl border border-[var(--border)] flex items-center gap-4 z-20"
-                  >
-                    {/* <div className="w-12 h-12 rounded-full bg-[var(--primary)]/20 flex items-center justify-center">
-                      <svg className="w-6 h-6 text-[var(--primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div> */}
-                    {/* <div>
-                      <p className="text-sm font-bold text-[var(--text-dark)]">Trusted by</p>
-                      <p className="text-xs text-[var(--text)]">10,000+ Parents</p>
-                    </div> */}
-                  </motion.div>
-                </div>
-              </motion.div>
-            </div>
-          </section>
-
-          {/* ================= GALLERY SECTION ================= */}
-
-          <section className="py-2">
-            <div className="text-center mb-16">
-              <motion.h2
-                initial={{
-                  opacity: 0,
-                  y: 40,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{ once: true }}
-                className="text-5xl font-black text-[var(--text-dark)]"
-              >
-                Smart Experience
-              </motion.h2>
-
-              <p className="mt-5 text-lg text-[var(--text)]">
-                Intelligent design with futuristic interactions.
+        {/* Section 3: Science & Safety */}
+        <section className="px-5 sm:px-8 lg:px-12">
+          <div className="mx-auto max-w-7xl bg-[var(--bg-glass)] backdrop-blur-xl border border-white/40 shadow-[var(--shadow)] rounded-3xl p-8 sm:p-12 lg:p-16">
+            <div className="mx-auto max-w-2xl text-center">
+              <h2 className="text-3xl font-black text-[var(--text-dark)] sm:text-4xl">
+                The Science & Safety
+              </h2>
+              <p className="mt-4 text-sm leading-7 text-[var(--text)]">
+                We leverage advanced robotics and AI to ensure your baby's
+                safety and comfort, grounded in clinical research.
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-3 gap-8">
-              {gallery.map((image, index) => (
-                <motion.div
-                  key={index}
-                  initial={{
-                    opacity: 0,
-                    y: 60,
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                    y: 0,
-                  }}
+            <div className="mt-14 grid gap-7 md:grid-cols-3">
+              {scienceCards.map(({ icon: Icon, title, copy }, index) => (
+                <motion.article
+                  key={title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{
-                    delay: index * 0.2,
-                  }}
-                  whileHover={{
-                    y: -15,
-                  }}
-                  className="group relative overflow-hidden rounded-[32px] border border-[var(--border)] bg-[var(--bg-glass)] shadow-[var(--shadow)]"
+                  transition={{ duration: 0.55, delay: index * 0.08 }}
+                  className="rounded-2xl border border-white/60 bg-white/40 p-8 text-center shadow-sm hover:shadow-md hover:bg-white/60 transition-all duration-300"
                 >
-                  <div className="overflow-hidden">
-                    <img
-                      src={image.src}
-                      alt={image.title}
-                      className="w-full h-[320px] object-cover transition duration-700 group-hover:scale-110"
-                    />
+                  <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-[var(--bg-secondary)] text-[var(--text-dark)]">
+                    <Icon size={24} />
                   </div>
-
-                  <div className="p-6">
-                    <h3 className="text-2xl font-bold text-[var(--text-dark)]">
-                      {image.title}
-                    </h3>
-
-                    <div className="mt-4 flex items-center gap-2">
-                      <motion.div
-                        animate={{
-                          scale: [1, 1.4, 1],
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                        }}
-                        className="w-2 h-2 rounded-full bg-[var(--primary)]"
-                      />
-
-                      <span className="text-sm text-[var(--text)]">
-                        Active AI Detection
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-white/5 pointer-events-none" />
-                </motion.div>
+                  <h3 className="mt-7 text-xl font-black text-[var(--text-dark)]">
+                    {title}
+                  </h3>
+                  <p className="mt-4 text-sm leading-7 text-[var(--text)]">
+                    {copy}
+                  </p>
+                </motion.article>
               ))}
             </div>
-          </section>
-        </div>
-      </main>
+          </div>
+        </section>
 
+        {/* Section 4: Our Experts */}
+        <section className="px-5 sm:px-8 lg:px-12">
+          <div className="mx-auto max-w-7xl bg-[var(--bg-glass)] backdrop-blur-xl border border-white/40 shadow-[var(--shadow)] rounded-3xl p-8 sm:p-12 lg:p-16">
+            <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:items-end">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.28em] text-[var(--primary)]">
+                  The Minds Behind Maatriva
+                </p>
+                <h2 className="mt-5 text-3xl font-black leading-tight text-[var(--text-dark)] sm:text-4xl">
+                  Meet the Visionaries Behind Maatriva
+                </h2>
+              </div>
+              <p className="max-w-xl text-sm leading-7 text-[var(--text)] lg:ml-auto">
+                A team of aspiring developers and innovators building the future of baby care through technology and AI.
+              </p>
+            </div>
+
+            <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+              {team.map((member, index) => (
+                <motion.article
+                  key={member.name}
+                  initial={{ opacity: 0, y: 28 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.55, delay: index * 0.07 }}
+                >
+                  <div className="overflow-hidden rounded-2xl border border-white/60 bg-[var(--bg-glass)] shadow-[var(--shadow)] relative">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="h-80 w-full object-cover grayscale"
+                    />
+                    {(member.isFounder || member.isCoFounder) && (
+                      <span className="absolute top-4 left-4 bg-[var(--primary)] text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+                        {member.isFounder ? "Founder" : "Co-Founder"}
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="mt-5 text-base sm:text-lg lg:text-xl font-black text-[var(--text-dark)] whitespace-nowrap">
+                    {member.name}
+                  </h3>
+                  <p className="mt-1 text-xs font-black uppercase tracking-[0.18em] text-[var(--primary)]">
+                    {member.role}
+                  </p>
+                  <p className="mt-3 text-sm leading-6 text-[var(--text)]">
+                    {member.copy}
+                  </p>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   );
 }

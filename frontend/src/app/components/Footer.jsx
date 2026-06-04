@@ -64,6 +64,9 @@ export function Footer() {
       <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-[var(--primary)]/5 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
+        {/* Ready for Better Nights CTA Banner */}
+      
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-8">
 
           {/* LEFT */}
