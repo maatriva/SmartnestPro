@@ -84,30 +84,30 @@ export function Footer() {
 
             <div className="flex gap-4">
               <a 
-                href="https://www.facebook.com/share/18P8z1QPAJ/" 
+                href="https://www.facebook.com/share/1CbXVMdfWa/" 
                 aria-label="Facebook"
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--primary)]/5 text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white transition-all duration-300 border border-[var(--primary)]/10 hover:shadow-[0_0_15px_rgba(74,111,165,0.3)] hover:-translate-y-1"
+                className="w-10 h-10 flex items-center justify-center clay-badge text-[var(--primary)] hover:scale-110 transition-all duration-300"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a 
                 href="https://www.linkedin.com/company/maatriva/" 
                 aria-label="LinkedIn"
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--primary)]/5 text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white transition-all duration-300 border border-[var(--primary)]/10 hover:shadow-[0_0_15px_rgba(74,111,165,0.3)] hover:-translate-y-1"
+                className="w-10 h-10 flex items-center justify-center clay-badge text-[var(--primary)] hover:scale-110 transition-all duration-300"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
               <a 
                 href="https://www.instagram.com/maatriva_/?utm_source=ig_web_button_share_sheet" 
                 aria-label="Instagram"
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--primary)]/5 text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white transition-all duration-300 border border-[var(--primary)]/10 hover:shadow-[0_0_15px_rgba(74,111,165,0.3)] hover:-translate-y-1"
+                className="w-10 h-10 flex items-center justify-center clay-badge text-[var(--primary)] hover:scale-110 transition-all duration-300"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a 
                 href="https://www.youtube.com/channel/UCWKAIrA9O3h8fNVFCYq2qQg" 
                 aria-label="YouTube"
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--primary)]/5 text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white transition-all duration-300 border border-[var(--primary)]/10 hover:shadow-[0_0_15px_rgba(74,111,165,0.3)] hover:-translate-y-1"
+                className="w-10 h-10 flex items-center justify-center clay-badge text-[var(--primary)] hover:scale-110 transition-all duration-300"
               >
                 <Youtube className="w-5 h-5" />
               </a>
@@ -130,18 +130,18 @@ export function Footer() {
           <div className="lg:col-span-4">
             <h4 className="font-bold uppercase text-xs mb-6">Support</h4>
 
-            <div className="bg-[var(--bg-secondary)]/10 p-6 rounded-2xl border border-[var(--primary)]/10">
-              <p className="font-medium mb-3">Need help?</p>
-              <p className="text-sm mb-4">
+            <div className="clay-card p-6 bg-white/40">
+              <p className="font-semibold mb-3">Need help?</p>
+              <p className="text-sm text-[var(--text-light)] mb-4">
                 Contact our support team anytime.
               </p>
 
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="w-full py-3 bg-[var(--primary)] text-white rounded-xl flex items-center justify-center gap-2"
+                className="w-full py-3 clay-btn clay-btn-primary flex items-center justify-center gap-2"
               >
                 Contact Us
-                <Send className="w-4 h-4" />
+                <Send className="w-4 h-4 text-white" />
               </button>
             </div>
           </div>

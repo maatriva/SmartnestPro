@@ -92,8 +92,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="inline-flex items-center gap-2 px-4 py-2 
-                bg-[var(--bg-glass)] backdrop-blur-sm rounded-full border border-[var(--border)]"
+                className="inline-flex items-center gap-2 px-4 py-2 clay-badge"
               >
                 <Sparkles className="w-4 h-4 text-[var(--primary)]" />
                 <span className="text-sm text-[var(--text)]">
@@ -151,9 +150,7 @@ export function Hero() {
                   Watch Demo
                 </a> */}
                  <button
-                  className="px-8 py-4 bg-[var(--primary)] text-white
-                  rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 
-                  flex items-center justify-center"
+                  className="px-8 py-4 clay-btn clay-btn-primary flex items-center justify-center"
                 >
                   Coming Soon
                 </button>
@@ -177,9 +174,7 @@ export function Hero() {
               ></div>
 
               <div
-                className="relative bg-[var(--bg-glass)] backdrop-blur-sm 
-                rounded-[3rem] p-8 m-5 border border-white/60 shadow-2xl 
-                hover:scale-105 transition-all duration-300"
+                className="relative clay-card p-8 m-5"
               >
                 <div className="w-full h-[400px] flex items-center justify-center -z-40">
                   <ModelCursor />

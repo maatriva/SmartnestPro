@@ -56,7 +56,7 @@ export default function PreOrderForm({ selectedPlan, onClose }) {
         }
       `}</style>
       
-      <div className="bg-white p-8 rounded-2xl w-full max-w-md space-y-6 shadow-2xl animate-minimize">
+      <div className="clay-card p-8 w-full max-w-md space-y-6 animate-minimize bg-white">
 
         <div className="text-center">
           <h2 className="text-2xl font-bold text-[var(--text-dark)]">Pre-Order</h2>
@@ -71,27 +71,27 @@ export default function PreOrderForm({ selectedPlan, onClose }) {
           <input
             placeholder="Full Name"
             onChange={handleChange("name")}
-            className="w-full border border-[var(--border)] p-3 rounded-lg focus:outline-none focus:border-[var(--primary)] transition-colors text-[var(--text-dark)]"
+            className="w-full clay-input p-3"
           />
 
           <input
             type="email"
             placeholder="Email"
             onChange={handleChange("email")}
-            className="w-full border border-[var(--border)] p-3 rounded-lg focus:outline-none focus:border-[var(--primary)] transition-colors text-[var(--text-dark)]"
+            className="w-full clay-input p-3"
           />
 
           <input
             placeholder="Phone Number"
             onChange={handleChange("phone")}
-            className="w-full border border-[var(--border)] p-3 rounded-lg focus:outline-none focus:border-[var(--primary)] transition-colors text-[var(--text-dark)]"
+            className="w-full clay-input p-3"
           />
 
           <textarea
             placeholder="Delivery Address"
             onChange={handleChange("address")}
             rows="3"
-            className="w-full border border-[var(--border)] p-3 rounded-lg focus:outline-none focus:border-[var(--primary)] transition-colors text-[var(--text-dark)] resize-none"
+            className="w-full clay-input p-3 resize-none"
           />
         </div>
 
@@ -99,14 +99,14 @@ export default function PreOrderForm({ selectedPlan, onClose }) {
           <button
             onClick={handleSubmit}
             disabled={loading}
-            className="w-full bg-[var(--primary)] text-white py-3.5 rounded-lg font-semibold hover:bg-[var(--primary-hover)] transition-colors shadow-lg hover:shadow-xl disabled:opacity-70"
+            className="w-full clay-btn clay-btn-primary py-3.5"
           >
             {loading ? "Submitting..." : "Confirm Pre-Order"}
           </button>
 
           <button
             onClick={onClose}
-            className="w-full text-[var(--text-light)] py-2 font-medium hover:text-[var(--text-dark)] transition-colors"
+            className="w-full clay-btn clay-btn-secondary py-2"
           >
             Cancel
           </button>

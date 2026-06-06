@@ -6,18 +6,21 @@ export default function FloatingParticles() {
 
   const particles = useMemo(() => {
     const palette = [
-      "var(--primary-light)",
-      "var(--primary)",
-      "var(--bg-hover)",
+      "#f6d8ca", // Soft Peach
+      "#d7eef0", // Soft Teal
+      "#e8dbfc", // Soft Lavender
+      "#fef3c7", // Soft Yellow
+      "#ffe4e6", // Soft Pink
+      "var(--primary-light)", // Light blue-grey
     ];
 
-    return Array.from({ length: 22 }, (_, i) => ({
+    return Array.from({ length: 15 }, (_, i) => ({
       id: i,
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
-      size: 5 + Math.random() * 10,
+      size: 25 + Math.random() * 45, // Larger size to show clay shadow clearly
       color: palette[i % palette.length],
-      opacity: 0.18 + Math.random() * 0.22,
+      opacity: 0.15 + Math.random() * 0.15,
     }));
   }, []);
 
@@ -29,9 +32,9 @@ export default function FloatingParticles() {
 
       const tween = gsap.to(particle, {
         y: gsap.utils.random(-150, -50),
-        x: gsap.utils.random(-30, 30),
+        x: gsap.utils.random(-40, 40),
         opacity: 0,
-        duration: gsap.utils.random(3, 6),
+        duration: gsap.utils.random(4, 8),
         repeat: -1,
         yoyo: true,
         repeatRefresh: true,
@@ -54,7 +57,7 @@ export default function FloatingParticles() {
           ref={(el) => {
             particleRefs.current[i] = el;
           }}
-          className="absolute rounded-full"
+          className="absolute clay-orb"
           style={{
             left: p.left,
             top: p.top,

@@ -132,9 +132,7 @@ export function HowItWorks() {
           className="text-center max-w-3xl mx-auto mb-16"
         >
           
-          <div className="inline-block px-4 py-2 
-          bg-[var(--bg-glass)] rounded-full 
-          text-[var(--primary)] text-sm font-medium mb-4 border border-[var(--border)]">
+          <div className="inline-block px-4 py-2 clay-badge text-sm font-bold mb-4">
             How It Works
           </div>
 
@@ -169,24 +167,17 @@ export function HowItWorks() {
                 className="relative h-full"
               >
 
-                <div className="hiw-card h-full bg-[var(--bg-glass)] backdrop-blur-xl rounded-[var(--radius-lg)] p-8 
-                border border-[var(--border)] 
-                shadow-[var(--shadow)] hover:shadow-lg transition-all 
-                hover:-translate-y-1 duration-300 flex flex-col"
+                <div className="hiw-card h-full clay-card p-8 flex flex-col"
                 >
 
                   {/* Step Number */}
-                  <div className="absolute -top-6 left-6 w-12 h-12 
-                  bg-[var(--primary)] rounded-full 
-                  flex items-center justify-center text-white font-bold 
-                  shadow-[var(--shadow-primary)]">
+                  <div className="absolute -top-6 left-6 w-12 h-12 clay-btn clay-btn-primary flex items-center justify-center text-white font-black text-lg">
                     {step.number}
                   </div>
 
                   {/* Icon */}
                   <div className="mb-6 mt-4">
-                    <div className="inline-flex p-4 
-                    bg-[var(--primary-light)] rounded-2xl">
+                    <div className="inline-flex p-4 clay-badge">
                       <step.icon
                         className="w-8 h-8 text-[var(--primary)]"
                         strokeWidth={2}

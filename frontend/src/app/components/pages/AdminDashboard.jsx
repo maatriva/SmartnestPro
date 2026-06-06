@@ -75,7 +75,7 @@ export default function AdminDashboard() {
           </div>
           <button 
             onClick={fetchStats}
-            className="px-6 py-3 bg-[var(--text-dark)] text-white rounded-2xl font-bold hover:bg-[var(--primary)] transition-all shadow-xl shadow-[var(--text-dark)]/20"
+            className="px-6 py-3 clay-btn clay-btn-primary"
           >
             Refresh Data
           </button>
@@ -86,7 +86,7 @@ export default function AdminDashboard() {
           <motion.div 
             whileHover={{ y: -5 }}
             onClick={() => {setActiveTab("users"); setExpandedItem(null);}}
-            className={`cursor-pointer bg-white/60 backdrop-blur-xl p-6 rounded-[2rem] border shadow-xl flex items-center gap-4 transition-all ${activeTab === 'users' ? 'border-[var(--primary)] ring-2 ring-[var(--primary)]/20 bg-white/90' : 'border-white'}`}
+            className={`cursor-pointer clay-card p-6 flex items-center gap-4 transition-all ${activeTab === 'users' ? 'border-[var(--primary)] ring-4 ring-[var(--primary)]/20 bg-white/90' : ''}`}
           >
             <div className="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center shadow-inner shrink-0">
               <Users size={28} />
@@ -100,7 +100,7 @@ export default function AdminDashboard() {
           <motion.div 
             whileHover={{ y: -5 }}
             onClick={() => {setActiveTab("surveys"); setExpandedItem(null);}}
-            className={`cursor-pointer bg-white/60 backdrop-blur-xl p-6 rounded-[2rem] border shadow-xl flex items-center gap-4 transition-all ${activeTab === 'surveys' ? 'border-[var(--primary)] ring-2 ring-[var(--primary)]/20 bg-white/90' : 'border-white'}`}
+            className={`cursor-pointer clay-card p-6 flex items-center gap-4 transition-all ${activeTab === 'surveys' ? 'border-[var(--primary)] ring-4 ring-[var(--primary)]/20 bg-white/90' : ''}`}
           >
             <div className="w-14 h-14 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center shadow-inner shrink-0">
               <ClipboardList size={28} />
@@ -114,7 +114,7 @@ export default function AdminDashboard() {
           <motion.div 
             whileHover={{ y: -5 }}
             onClick={() => {setActiveTab("preorders"); setExpandedItem(null);}}
-            className={`cursor-pointer bg-white/60 backdrop-blur-xl p-6 rounded-[2rem] border shadow-xl flex items-center gap-4 transition-all ${activeTab === 'preorders' ? 'border-[var(--primary)] ring-2 ring-[var(--primary)]/20 bg-white/90' : 'border-white'}`}
+            className={`cursor-pointer clay-card p-6 flex items-center gap-4 transition-all ${activeTab === 'preorders' ? 'border-[var(--primary)] ring-4 ring-[var(--primary)]/20 bg-white/90' : ''}`}
           >
             <div className="w-14 h-14 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center shadow-inner shrink-0">
               <TrendingUp size={28} />
@@ -128,7 +128,7 @@ export default function AdminDashboard() {
           <motion.div 
             whileHover={{ y: -5 }}
             onClick={() => {setActiveTab("contacts"); setExpandedItem(null);}}
-            className={`cursor-pointer bg-white/60 backdrop-blur-xl p-6 rounded-[2rem] border shadow-xl flex items-center gap-4 transition-all ${activeTab === 'contacts' ? 'border-[var(--primary)] ring-2 ring-[var(--primary)]/20 bg-white/90' : 'border-white'}`}
+            className={`cursor-pointer clay-card p-6 flex items-center gap-4 transition-all ${activeTab === 'contacts' ? 'border-[var(--primary)] ring-4 ring-[var(--primary)]/20 bg-white/90' : ''}`}
           >
             <div className="w-14 h-14 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center shadow-inner shrink-0">
               <Mail size={28} />
@@ -142,7 +142,7 @@ export default function AdminDashboard() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Recent Activity / Login Chart Area */}
-          <div className="lg:col-span-1 bg-white/60 backdrop-blur-xl p-8 rounded-[2.5rem] border border-white shadow-xl">
+          <div className="lg:col-span-1 clay-card p-8">
             <h3 className="text-xl font-black text-[var(--text-dark)] mb-6 flex items-center gap-2">
               <Calendar className="text-[var(--primary)]" />
               Growth Trends
@@ -164,7 +164,7 @@ export default function AdminDashboard() {
           </div>
 
           {/* Data Feed */}
-          <div className="lg:col-span-2 bg-white/60 backdrop-blur-xl p-8 rounded-[2.5rem] border border-white shadow-xl">
+          <div className="lg:col-span-2 clay-card p-8">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
               <h3 className="text-2xl font-black text-[var(--text-dark)] capitalize">{activeTab} Details</h3>
               <div className="relative w-full sm:w-64">
@@ -174,7 +174,7 @@ export default function AdminDashboard() {
                   placeholder="Search by name or email..." 
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 bg-white/50 border border-white rounded-2xl focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/30 font-medium"
+                  className="w-full pl-12 pr-4 py-3 clay-input font-medium"
                 />
               </div>
             </div>
@@ -183,7 +183,7 @@ export default function AdminDashboard() {
               
               {/* USERS */}
               {activeTab === "users" && filteredUsers?.map((u) => (
-                <div key={`user-${u.id}`} className="bg-white/40 rounded-[2rem] border border-white/60 overflow-hidden transition-all hover:bg-white/60 group">
+                <div key={`user-${u.id}`} className="clay-card overflow-hidden my-3">
                   <div 
                     onClick={() => setExpandedItem(expandedItem === `user-${u.id}` ? null : `user-${u.id}`)}
                     className="p-6 cursor-pointer flex items-center justify-between"
@@ -225,7 +225,7 @@ export default function AdminDashboard() {
 
               {/* SURVEYS */}
               {activeTab === "surveys" && filteredSurveys?.map((survey) => (
-                <div key={`survey-${survey.id}`} className="bg-white/40 rounded-[2rem] border border-white/60 overflow-hidden transition-all hover:bg-white/60 group">
+                <div key={`survey-${survey.id}`} className="clay-card overflow-hidden my-3">
                   <div 
                     onClick={() => setExpandedItem(expandedItem === `survey-${survey.id}` ? null : `survey-${survey.id}`)}
                     className="p-6 cursor-pointer flex items-center justify-between"
@@ -267,7 +267,7 @@ export default function AdminDashboard() {
 
               {/* PREORDERS */}
               {activeTab === "preorders" && filteredPreorders?.map((order) => (
-                <div key={`preorder-${order.id}`} className="bg-white/40 rounded-[2rem] border border-white/60 overflow-hidden transition-all hover:bg-white/60 group">
+                <div key={`preorder-${order.id}`} className="clay-card overflow-hidden my-3">
                   <div 
                     onClick={() => setExpandedItem(expandedItem === `preorder-${order.id}` ? null : `preorder-${order.id}`)}
                     className="p-6 cursor-pointer flex items-center justify-between"
@@ -309,7 +309,7 @@ export default function AdminDashboard() {
 
               {/* CONTACTS */}
               {activeTab === "contacts" && filteredContacts?.map((contact) => (
-                <div key={`contact-${contact.id}`} className="bg-white/40 rounded-[2rem] border border-white/60 overflow-hidden transition-all hover:bg-white/60 group">
+                <div key={`contact-${contact.id}`} className="clay-card overflow-hidden my-3">
                   <div 
                     onClick={() => setExpandedItem(expandedItem === `contact-${contact.id}` ? null : `contact-${contact.id}`)}
                     className="p-6 cursor-pointer flex items-center justify-between"

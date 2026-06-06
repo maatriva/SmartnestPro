@@ -30,12 +30,12 @@ export default function ContactModal({
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="relative w-full max-w-md bg-[var(--white)] rounded-2xl shadow-xl p-6 border border-[var(--border)]"
+            className="relative w-full max-w-md clay-card p-6"
           >
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 p-2 hover:bg-[var(--bg-hover)] rounded-full"
+              className="absolute top-4 right-4 p-2 hover:bg-[var(--bg-hover)] rounded-full z-10"
             >
               <X className="w-5 h-5" />
             </button>
@@ -52,7 +52,7 @@ export default function ContactModal({
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border rounded-lg"
+                className="w-full px-3 py-2 clay-input"
               />
 
               <input
@@ -62,7 +62,7 @@ export default function ContactModal({
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border rounded-lg"
+                className="w-full px-3 py-2 clay-input"
               />
 
               <input
@@ -72,7 +72,7 @@ export default function ContactModal({
                 value={formData.organization}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border rounded-lg"
+                className="w-full px-3 py-2 clay-input"
               />
 
               <textarea
@@ -82,7 +82,7 @@ export default function ContactModal({
                 value={formData.message}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border rounded-lg"
+                className="w-full px-3 py-2 clay-input"
               />
 
               {status.message && (
@@ -100,10 +100,10 @@ export default function ContactModal({
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-2 bg-[var(--primary)] text-white rounded-lg flex items-center justify-center gap-2"
+                className="w-full py-3 clay-btn clay-btn-primary flex items-center justify-center gap-2"
               >
                 {loading ? "Sending..." : "Send Message"}
-                <Send className="w-4 h-4" />
+                <Send className="w-4 h-4 text-white" />
               </button>
             </form>
           </motion.div>

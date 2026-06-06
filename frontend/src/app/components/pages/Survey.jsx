@@ -442,7 +442,7 @@ export default function Survey() {
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="max-w-md w-full bg-white/70 backdrop-blur-xl p-12 rounded-[2.5rem] shadow-2xl border border-white text-center"
+          className="max-w-md w-full clay-card p-12 text-center"
         >
           <div className="w-24 h-24 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner">
             <CheckCircle2 size={48} />
@@ -453,7 +453,7 @@ export default function Survey() {
           </p>
           <button 
             onClick={() => window.location.href = '/'}
-            className="w-full py-4 bg-[var(--text-dark)] text-white rounded-2xl font-bold hover:bg-[var(--primary)] transition-all shadow-lg hover:shadow-[var(--text-dark)]/20"
+            className="w-full py-4 clay-btn clay-btn-primary"
           >
             Back to Home
           </button>
@@ -480,7 +480,7 @@ export default function Survey() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] text-sm font-bold uppercase tracking-wider mb-4 border border-[var(--primary)]/20">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 clay-badge text-sm font-bold uppercase tracking-wider mb-4">
               <Sparkles className="w-4 h-4" />
               Community Survey
             </div>
@@ -503,11 +503,11 @@ export default function Survey() {
             transition={{ duration: 0.4, ease: "easeInOut" }}
             className="space-y-8"
           >
-            <div className="bg-white/40 backdrop-blur-xl p-8 md:p-12 rounded-[2.5rem] shadow-2xl border border-white/60">
+            <div className="clay-card p-8 md:p-12">
               
               <div className="flex justify-between items-center mb-10">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-2xl bg-[var(--primary)] text-white flex items-center justify-center font-black text-xl shadow-lg shadow-[var(--primary)]/20">
+                  <div className="w-12 h-12 clay-btn clay-btn-primary flex items-center justify-center text-white font-black text-xl">
                     {page + 1}
                   </div>
                   <div>
@@ -566,8 +566,8 @@ export default function Survey() {
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {q.options.map((opt, idx) => {
                               const isSelected = q.type === "radio" 
-                                ? answers[qIndex] === opt 
-                                : answers[qIndex]?.includes(opt);
+                                  ? answers[qIndex] === opt 
+                                  : answers[qIndex]?.includes(opt);
 
                               return (
                                 <button
@@ -575,15 +575,15 @@ export default function Survey() {
                                   onClick={() => handleChange(qIndex, opt, q.type)}
                                   className={`flex items-center justify-between p-5 rounded-2xl border-2 text-left transition-all duration-300 group/btn ${
                                     isSelected 
-                                      ? "bg-[var(--text-dark)] border-[var(--text-dark)] text-white shadow-xl shadow-[var(--text-dark)]/20 scale-[1.02]" 
-                                      : "bg-white/50 border-white/80 text-[var(--text)] hover:border-[var(--primary)]/40 hover:bg-white hover:shadow-lg"
+                                      ? "clay-btn clay-btn-primary text-white scale-[1.02]" 
+                                      : "clay-card text-[var(--text)] bg-white/50"
                                   }`}
                                 >
                                   <span className="font-semibold">{opt}</span>
-                                  <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all ${
+                                  <div className={`w-6 h-6 rounded-full border flex items-center justify-center flex-shrink-0 transition-all ${
                                     isSelected 
-                                      ? "bg-white border-white scale-110" 
-                                      : "border-[var(--primary)]/20 group-hover/btn:border-[var(--primary)]/40"
+                                      ? "clay-badge bg-white text-[var(--primary)] scale-110" 
+                                      : "border-[var(--primary)]/20 group-hover/btn:border-[var(--primary)]/40 bg-white/40"
                                   }`}>
                                     {isSelected && (
                                       q.type === "radio" 
@@ -604,14 +604,14 @@ export default function Survey() {
             </div>
 
             {/* Navigation Controls */}
-            <div className="flex items-center justify-between bg-white/20 backdrop-blur-md p-5 rounded-3xl border border-white/30 shadow-lg">
+            <div className="flex items-center justify-between clay-card p-5">
               <button
                 onClick={handlePrev}
                 disabled={page === 0}
-                className={`flex items-center gap-1 sm:gap-2 px-4 sm:px-8 py-3 sm:py-4 rounded-2xl font-bold transition-all text-sm sm:text-base ${
+                className={`flex items-center gap-1 sm:gap-2 px-4 sm:px-8 py-3 sm:py-4 clay-btn clay-btn-secondary text-sm sm:text-base ${
                   page === 0 
                   ? "opacity-0 pointer-events-none" 
-                  : "text-[var(--text-dark)] hover:bg-white/50 bg-white/30"
+                  : ""
                 }`}
               >
                 <ChevronLeft size={20} />
@@ -632,7 +632,7 @@ export default function Survey() {
               <button
                 onClick={handleNext}
                 disabled={loading}
-                className="flex items-center gap-1 sm:gap-2 bg-[var(--text-dark)] text-white px-5 sm:px-10 py-3 sm:py-4 rounded-2xl font-black shadow-xl hover:shadow-[var(--text-dark)]/30 hover:scale-105 active:scale-95 transition-all disabled:opacity-50 text-sm sm:text-base"
+                className="flex items-center gap-1 sm:gap-2 clay-btn clay-btn-primary px-5 sm:px-10 py-3 sm:py-4 text-sm sm:text-base disabled:opacity-50"
               >
                 {loading ? (
                   "Submitting..."

@@ -74,8 +74,7 @@ const Navbar = () => {
     <nav ref={navRef} className="demo-navbar fixed top-0 left-0 right-0 z-[100] px-4 md:px-6 py-4 
     bg-transparent text-[var(--text)]">
 
-      <div className="max-w-7xl mx-auto flex items-center justify-between h-20 px-4 sm:px-6 rounded-2xl 
-      bg-[var(--bg-glass)] backdrop-blur-xl border border-white/40 shadow-[var(--shadow)] relative">
+      <div className="max-w-7xl mx-auto flex items-center justify-between h-20 px-4 sm:px-6 clay-navbar relative">
 
         {/* Logo */}
         <Link to="/" className="nav-logo inline-block font-bold tracking-wide flex items-center justify-center">
@@ -116,8 +115,7 @@ const Navbar = () => {
               </span>
               <button
                 onClick={logout}
-                className="px-5 py-2 bg-[var(--destructive)] text-white rounded-full 
-                hover:opacity-90 hover:scale-105 transition-all duration-200 font-semibold text-sm"
+                className="px-5 py-2 clay-btn clay-btn-destructive text-sm"
               >
                 Logout
               </button>
@@ -125,10 +123,7 @@ const Navbar = () => {
           ) : (
             <Link
               to="/login"
-              className="px-6 py-2.5 bg-[var(--primary)] text-white rounded-full 
-              hover:bg-[var(--primary-hover)] hover:scale-105 
-              hover:shadow-[var(--shadow-primary)] 
-              transition-all duration-200 font-semibold"
+              className="px-6 py-2.5 clay-btn clay-btn-primary"
             >
               Login
             </Link>
@@ -162,8 +157,7 @@ const Navbar = () => {
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
               className="fixed top-24 right-4 bottom-4 left-4 lg:hidden 
-              bg-[var(--bg-secondary)] rounded-[2rem] border border-white/40 
-              shadow-2xl overflow-hidden flex flex-col p-8 z-[-1] pt-12"
+              clay-card overflow-hidden flex flex-col p-8 z-[-1] pt-12"
             >
               <div className="flex flex-col gap-6 text-center">
                 {navLinks.map((link, i) => (
@@ -196,7 +190,7 @@ const Navbar = () => {
                     </div>
                     <button
                       onClick={logout}
-                      className="w-full py-4 bg-[var(--destructive)] text-white rounded-full font-bold text-lg"
+                      className="w-full py-4 clay-btn clay-btn-destructive font-bold text-lg"
                     >
                       Logout
                     </button>
@@ -204,7 +198,7 @@ const Navbar = () => {
                 ) : (
                   <Link
                     to="/login"
-                    className="w-full py-4 bg-[var(--primary)] text-white rounded-full font-bold text-center text-lg shadow-[var(--shadow-primary)]"
+                    className="w-full py-4 clay-btn clay-btn-primary font-bold text-center text-lg flex items-center justify-center"
                   >
                     Login to Account
                   </Link>

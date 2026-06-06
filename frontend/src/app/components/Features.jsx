@@ -86,9 +86,7 @@ export function Features() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <div className="inline-block px-4 py-2 
-          bg-[var(--bg-secondary)] rounded-full 
-          text-[var(--primary)] text-sm font-medium mb-4">
+          <div className="inline-block px-4 py-2 clay-badge text-sm font-bold mb-4">
             Features
           </div>
 
@@ -106,24 +104,15 @@ export function Features() {
         </motion.div>
 
         {/* Grid */}
-        <div ref={gridRef} className=" md:grid-cols-2 lg:grid-cols-3 gap-8 grid">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={index}
               whileHover={{ y: -5 }}
-              className="grid-item group relative 
-              bg-[var(--bg-glass)] 
-              rounded-[var(--radius-lg)] p-8 
-              border border-[var(--border)] 
-              hover:shadow-[var(--shadow)] 
-              transition-all duration-300"
+              className="grid-item group relative clay-card p-8 flex flex-col h-full"
             >
               {/* Icon */}
-              <div className="w-16 h-16 
-              bg-[var(--primary-light)] 
-              rounded-2xl flex items-center justify-center mb-6 
-              group-hover:scale-110 transition-transform">
-
+              <div className="w-16 h-16 clay-badge flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <feature.icon
                   className="w-8 h-8 text-[var(--primary)]"
                   strokeWidth={2.5}
@@ -136,14 +125,9 @@ export function Features() {
               </h3>
 
               {/* Description */}
-              <p className="text-[var(--text-light)] leading-relaxed">
+              <p className="text-[var(--text-light)] leading-relaxed flex-1">
                 {feature.description}
               </p>
-
-              {/* Bottom Accent Line */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 
-              bg-[var(--primary)] rounded-b-[var(--radius-lg)] 
-              opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </motion.div>
           ))}
         </div>

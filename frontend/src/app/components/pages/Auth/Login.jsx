@@ -70,7 +70,7 @@ const Login = () => {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6 }}
-        className="w-full max-w-md bg-white/80 backdrop-blur-xl p-8 rounded-[var(--radius-lg)] shadow-[var(--shadow)] border border-white/20 relative z-10"
+        className="w-full max-w-md clay-card p-8 relative z-10"
       >
         {/* Heading */}
         <div className="text-center mb-8">
@@ -110,7 +110,7 @@ const Login = () => {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Enter Your Email"
-                className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                className="w-full pl-10 pr-4 py-3 clay-input"
               />
             </div>
           </div>
@@ -134,7 +134,7 @@ const Login = () => {
                 value={formData.password}
                 onChange={handleChange}
                 placeholder="Enter Your Password"
-                className="w-full pl-10 pr-12 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                className="w-full pl-10 pr-12 py-3 clay-input"
               />
               <button
                 type="button"
@@ -150,10 +150,10 @@ const Login = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-primary text-gray-500 py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-primary-hover transition-colors shadow-lg shadow-primary/25 disabled:opacity-70"
+            className="w-full clay-btn clay-btn-primary py-3 flex items-center justify-center gap-2 disabled:opacity-70"
           >
             {loading ? 'Logging In...' : 'Log In'}
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-5 h-5 text-white" />
           </button>
         </form>
 

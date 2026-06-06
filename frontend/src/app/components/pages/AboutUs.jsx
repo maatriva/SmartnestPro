@@ -1,12 +1,27 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Baby, Heart, Sparkles, Wind } from "lucide-react";
-import { motion } from "motion/react";
+import { Baby, Heart, Linkedin, Sparkles, Wind } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 
 import withBabyImage from "../../images/withbaby.jpeg";
 import withoutBabyImage from "../../images/withoutbaby.jpeg";
 import withParentImage from "../../images/withParents.jpeg";
+import developersImage from "../../images/developer.jpeg";
+import FounderImage from "../../images/Founder.jpeg";
+import Kirtik from "../../images/kirtikbiswas.jpeg"
+import Rahul from "../../images/rahul.jpeg"
+import Vishavjeet from "../../images/vishu.jpg"
 
 export default function AboutUs() {
+  const [expandedCards, setExpandedCards] = useState({});
+
+  const toggleCard = (name) => {
+    setExpandedCards(prev => ({
+      ...prev,
+      [name]: !prev[name]
+    }));
+  };
+
   const scienceCards = [
     {
       icon: Wind,
@@ -31,7 +46,9 @@ export default function AboutUs() {
       role: "Founder & Hardware lead",
       isFounder: true,
       isCoFounder: false,
-      image: withParentImage,
+      image: FounderImage,
+      objectPosition: "object-[center_20%]",
+      linkedin: "https://www.linkedin.com/in/arghyapratimghosh ",
       copy: "Leads the development of smart hardware systems, ensuring reliability, innovation, and seamless integration.",
     },
     {
@@ -39,7 +56,9 @@ export default function AboutUs() {
       role: "AI & Robotics Specialist",
       isFounder: false,
       isCoFounder: true,
-      image: withoutBabyImage,
+      image: Rahul,
+      objectPosition: "object-center",
+      linkedin: "https://www.linkedin.com/in/rahul-kumar-ghosh ",
       copy: "Builds advanced AI solutions to enhance safety, monitoring, and user experiences.",
     },
     {
@@ -47,7 +66,9 @@ export default function AboutUs() {
       role: "Marketing & AI Specialist",
       isFounder: false,
       isCoFounder: true,
-      image: withBabyImage,
+      image: Kirtik,
+      objectPosition: "object-[center_20%]",
+      linkedin: "https://www.linkedin.com/in/kirtikbiswas ",
       copy: "Combines AI innovation with strategic marketing to create impactful solutions that enhance baby care and connect meaningfully with parents.",
     },
     {
@@ -55,14 +76,18 @@ export default function AboutUs() {
       role: "Creative Head",
       isFounder: false,
       isCoFounder: true,
-      image: withoutBabyImage,
+      image: Vishavjeet,
+      objectPosition: "object-center",
+      linkedin: "https://www.linkedin.com/in/vishavjeet-chauhan-140b88335 ",
       copy: "Shapes the creative vision of Maatriva, crafting engaging experiences that are innovative, meaningful, and user-focused.",
     },{
       name: "Arman Sharma",
       role: "Web & App Developer",
       isFounder: false,
       isCoFounder: true,
-      image: withoutBabyImage,
+      image: developersImage,
+      objectPosition: "object-[center_20%]",
+      linkedin: "https://www.linkedin.com/in/arman-sharma-0a875a32a ",
       copy: "Builds intuitive web and mobile applications that bring Maatriva's smart baby care solutions to parents everywhere.",
     }
   ];
@@ -107,16 +132,16 @@ export default function AboutUs() {
 
         {/* Section 2: The Genesis */}
         <section className="px-5 sm:px-8 lg:px-12">
-          <div className="mx-auto max-w-7xl bg-[var(--bg-glass)] backdrop-blur-xl border border-white/40 shadow-[var(--shadow)] rounded-3xl p-8 sm:p-12 lg:p-16 grid items-center gap-14 lg:grid-cols-[1fr_1.05fr]">
+          <div className="mx-auto max-w-7xl clay-card p-8 sm:p-12 lg:p-16 grid items-center gap-14 lg:grid-cols-[1fr_1.05fr]">
             <motion.div
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7 }}
             >
-              <p className="text-xs font-black uppercase tracking-[0.28em] text-[var(--primary)]">
+              <div className="inline-block px-3 py-1.5 clay-badge text-[10px] font-black uppercase tracking-[0.2em] mb-4">
                 The Genesis
-              </p>
+              </div>
               <h2 className="mt-5 text-3xl font-black leading-tight text-[var(--text-dark)] sm:text-4xl">
                 Born from a Parent's Love
               </h2>
@@ -131,7 +156,7 @@ export default function AboutUs() {
 
               </p>
               <div className="mt-8 flex items-center gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--bg-secondary)] text-[var(--text-dark)]">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full clay-badge text-[var(--text-dark)]">
                   <Heart size={20} />
                 </div>
                 <p className="text-sm italic text-[var(--text-dark)]">
@@ -145,12 +170,12 @@ export default function AboutUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="overflow-hidden rounded-2xl border border-white/60 bg-[var(--bg-glass)] shadow-[var(--shadow)] w-full"
+              className="overflow-hidden clay-card w-full p-2"
             >
               <img
                 src={withoutBabyImage}
                 alt="Smart Maatriva cradle in a nursery"
-                className="h-[360px] w-full object-cover sm:h-[480px] lg:h-[560px]"
+                className="h-[360px] w-full object-cover sm:h-[480px] lg:h-[560px] rounded-2xl"
               />
             </motion.div>
           </div>
@@ -158,12 +183,12 @@ export default function AboutUs() {
 
         {/* Section 3: Science & Safety */}
         <section className="px-5 sm:px-8 lg:px-12">
-          <div className="mx-auto max-w-7xl bg-[var(--bg-glass)] backdrop-blur-xl border border-white/40 shadow-[var(--shadow)] rounded-3xl p-8 sm:p-12 lg:p-16">
+          <div className="mx-auto max-w-7xl clay-card p-8 sm:p-12 lg:p-16">
             <div className="mx-auto max-w-2xl text-center">
               <h2 className="text-3xl font-black text-[var(--text-dark)] sm:text-4xl">
                 The Science & Safety
               </h2>
-              <p className="mt-4 text-sm leading-7 text-[var(--text)]">
+              <p className="mt-4 text-sm leading-7 text-[var(--text)] font-semibold">
                 We leverage advanced robotics and AI to ensure your baby's
                 safety and comfort, grounded in clinical research.
               </p>
@@ -177,9 +202,9 @@ export default function AboutUs() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.55, delay: index * 0.08 }}
-                  className="rounded-2xl border border-white/60 bg-white/40 p-8 text-center shadow-sm hover:shadow-md hover:bg-white/60 transition-all duration-300"
+                  className="clay-card bg-white/40 p-8 text-center"
                 >
-                  <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-[var(--bg-secondary)] text-[var(--text-dark)]">
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center clay-badge text-[var(--text-dark)]">
                     <Icon size={24} />
                   </div>
                   <h3 className="mt-7 text-xl font-black text-[var(--text-dark)]">
@@ -196,22 +221,22 @@ export default function AboutUs() {
 
         {/* Section 4: Our Experts */}
         <section className="px-5 sm:px-8 lg:px-12">
-          <div className="mx-auto max-w-7xl bg-[var(--bg-glass)] backdrop-blur-xl border border-white/40 shadow-[var(--shadow)] rounded-3xl p-8 sm:p-12 lg:p-16">
+          <div className="mx-auto max-w-7xl clay-card p-8 sm:p-12 lg:p-16">
             <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:items-end">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.28em] text-[var(--primary)]">
+                <div className="inline-block px-3 py-1.5 clay-badge text-[10px] font-black uppercase tracking-[0.2em] mb-4">
                   The Minds Behind Maatriva
-                </p>
+                </div>
                 <h2 className="mt-5 text-3xl font-black leading-tight text-[var(--text-dark)] sm:text-4xl">
                   Meet the Visionaries Behind Maatriva
                 </h2>
               </div>
-              <p className="max-w-xl text-sm leading-7 text-[var(--text)] lg:ml-auto">
+              <p className="max-w-xl text-sm leading-7 text-[var(--text)] lg:ml-auto font-semibold">
                 A team of aspiring developers and innovators building the future of baby care through technology and AI.
               </p>
             </div>
 
-            <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+            <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
               {team.map((member, index) => (
                 <motion.article
                   key={member.name}
@@ -219,28 +244,68 @@ export default function AboutUs() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.55, delay: index * 0.07 }}
+                  className="flex"
                 >
-                  <div className="overflow-hidden rounded-2xl border border-white/60 bg-[var(--bg-glass)] shadow-[var(--shadow)] relative">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="h-80 w-full object-cover grayscale"
-                    />
+                  <motion.div
+                    layout
+                    className="relative flex w-full flex-col flex-1 items-center clay-card px-7 py-9 text-center text-[var(--text)] transition-transform duration-300 hover:-translate-y-1"
+                  >
                     {(member.isFounder || member.isCoFounder) && (
-                      <span className="absolute top-4 left-4 bg-[var(--primary)] text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+                      <motion.span layout className="absolute left-5 top-5 rounded-full clay-badge px-3 py-1 text-[9px] font-black uppercase tracking-[0.18em]">
                         {member.isFounder ? "Founder" : "Co-Founder"}
-                      </span>
+                      </motion.span>
                     )}
-                  </div>
-                  <h3 className="mt-5 text-base sm:text-lg lg:text-xl font-black text-[var(--text-dark)] whitespace-nowrap">
-                    {member.name}
-                  </h3>
-                  <p className="mt-1 text-xs font-black uppercase tracking-[0.18em] text-[var(--primary)]">
-                    {member.role}
-                  </p>
-                  <p className="mt-3 text-sm leading-6 text-[var(--text)]">
-                    {member.copy}
-                  </p>
+                    <motion.div layout className="mt-8 flex h-28 w-28 items-center justify-center rounded-full border border-[var(--primary)]/20 bg-white/40 p-1 shadow-[var(--shadow)]">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className={`h-full w-full rounded-full object-cover ${member.objectPosition || 'object-center'}`}
+                      />
+                    </motion.div>
+                    <motion.div layout className="mt-8 w-full flex flex-col items-center">
+                      <h3 className="text-2xl font-black leading-tight text-[var(--text-dark)]">
+                        {member.name}
+                      </h3>
+                      <p className="mt-3 text-[10px] font-black uppercase tracking-[0.18em] text-[var(--primary)]">
+                        {member.role}
+                      </p>
+                    </motion.div>
+                    
+                    <motion.button
+                      layout
+                      onClick={() => toggleCard(member.name)}
+                      className={`mt-4 text-xs font-black uppercase tracking-wider text-blue-500 hover:text-blue-600 transition-colors focus:outline-none cursor-pointer ${!expandedCards[member.name] ? 'mt-auto' : ''}`}
+                    >
+                      {expandedCards[member.name] ? "Show Less" : "Know More.."}
+                    </motion.button>
+
+                    <AnimatePresence>
+                      {expandedCards[member.name] && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          className="w-full overflow-hidden flex flex-col items-center flex-1"
+                        >
+                          <p className="mt-6 text-left text-sm font-semibold leading-6 text-[var(--text)]">
+                            {member.copy}
+                          </p>
+                          <div className="mt-auto pt-6">
+                            <a
+                              href={member.linkedin || "https://www.linkedin.com/company/maatriva/"}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--primary)]/5 text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white transition-all duration-300 border border-[var(--primary)]/10 hover:shadow-[0_0_15px_rgba(74,111,165,0.3)] hover:-translate-y-1 cursor-pointer"
+                              aria-label={`${member.name} LinkedIn profile`}
+                            >
+                              <Linkedin size={18} strokeWidth={2} />
+                            </a>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
                 </motion.article>
               ))}
             </div>

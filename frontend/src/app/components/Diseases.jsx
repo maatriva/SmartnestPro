@@ -61,21 +61,21 @@ const Diseases = () => {
             key={i}
             ref={(el) => (chipRefs.current[i] = el)}
             onClick={() => handleClick(i)}
-            className={`mx-8 cursor-pointer text-sm md:text-base border rounded-full px-4 py-2 backdrop-blur transition-all duration-300
+            className={`mx-8 cursor-pointer text-sm md:text-base px-5 py-2.5 transition-all duration-300 rounded-full
             ${activeIndex === i
-                ? "bg-white text-black shadow-lg scale-110"
-                : "bg-[var(--bg-secondary)] border-[var(--border)]"
+                ? "clay-card text-[var(--text-dark)] scale-110"
+                : "clay-badge text-[var(--text-light)]"
               }`}
           >
-            <div className="font-semibold">
-              {item.name}
+            <div className="font-bold inline-block mr-2">
+              {item.name}:
             </div>
 
-            <span>
+            <span className="font-semibold text-xs md:text-sm">
               {activeIndex === i ? item.full : item.short}
             </span>
 
-            <span className="mx-6">•</span>
+            <span className="mx-6 text-[var(--primary-light)]">•</span>
           </div>
         ))}
       </div>
@@ -84,7 +84,7 @@ const Diseases = () => {
       <div className="flex w-full justify-center mt-6">
         <button 
           onClick={() => navigate('/diseases')}
-          className="px-5 py-2.5 bg-[var(--primary)] text-white rounded-full hover:bg-[var(--primary-hover)] transition-all font-semibold"
+          className="px-6 py-3 clay-btn clay-btn-primary"
         >
           Know more
         </button>

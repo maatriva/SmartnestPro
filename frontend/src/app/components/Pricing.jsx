@@ -107,7 +107,7 @@ const SplitCard = ({ model, onPreOrder }) => {
       {/* FRONT CARD */}
       <div 
         ref={frontRef} 
-        className="demo-card-front relative p-6 flex flex-col flex-1 rounded-xl border border-[var(--primary)] shadow-[var(--shadow-primary)] bg-[var(--bg-glass)] backdrop-blur-xl z-20"
+        className="demo-card-front relative p-6 flex flex-col flex-1 clay-card z-20"
       >
         {model.img && (
           <div className="w-full h-48 mb-6 rounded-lg overflow-hidden">
@@ -119,14 +119,14 @@ const SplitCard = ({ model, onPreOrder }) => {
         
         <button
           onClick={toggleOpen}
-          className="w-full py-2 mb-3 font-semibold text-[var(--primary)] border-2 border-[var(--primary)] rounded-lg hover:bg-[var(--primary)] hover:text-white transition"
+          className="w-full py-2 mb-3 clay-btn clay-btn-secondary"
         >
           {isOpen ? "Close Info" : "Know More"}
         </button>
 
         <button
           onClick={() => onPreOrder(model)}
-          className="w-full py-3 bg-[var(--primary)] text-white font-semibold rounded-lg hover:bg-[var(--primary-hover)] transition shadow-md mt-auto"
+          className="w-full py-3 clay-btn clay-btn-primary mt-auto"
         >
           Pre-Order
         </button>
@@ -138,7 +138,7 @@ const SplitCard = ({ model, onPreOrder }) => {
         className="demo-card-back relative z-10 overflow-hidden"
         style={{ height: 0, opacity: 0, marginTop: "-20px" }}
       >
-        <div className="pt-10 pb-6 px-6 flex flex-col rounded-b-xl border border-t-0 border-[var(--primary)] shadow-[var(--shadow-primary)] bg-white">
+        <div className="pt-10 pb-6 px-6 flex flex-col clay-card bg-white">
           <h3 className="text-xl font-bold mb-4 text-[var(--primary)]">More Info</h3>
           <p className="text-[var(--text-light)] mb-4">{model.description}</p>
           <ul className="space-y-2 mb-2">
@@ -193,7 +193,7 @@ const HorizontalSplitCard = ({ model, onPreOrder }) => {
       {/* BACK CARD */}
       <div 
         ref={backRef} 
-        className="absolute inset-0 p-6 flex flex-col rounded-xl border border-[var(--primary)] shadow-[var(--shadow-primary)] bg-white z-0"
+        className="absolute inset-0 p-6 flex flex-col clay-card bg-white z-0"
       >
         <h3 className="text-xl font-bold mb-4 text-[var(--primary)]">More Info</h3>
         <p className="text-[var(--text-light)] mb-4">{model.description}</p>
@@ -210,7 +210,7 @@ const HorizontalSplitCard = ({ model, onPreOrder }) => {
       {/* FRONT CARD */}
       <div 
         ref={frontRef} 
-        className="relative p-6 flex flex-col rounded-xl border border-[var(--primary)] shadow-[var(--shadow-primary)] bg-[var(--bg-glass)] backdrop-blur-xl z-10"
+        className="relative p-6 flex flex-col clay-card z-10"
       >
         {model.img && (
           <div className="w-full h-48 mb-6 rounded-lg overflow-hidden">
@@ -222,14 +222,14 @@ const HorizontalSplitCard = ({ model, onPreOrder }) => {
         
         <button
           onClick={toggleOpen}
-          className="w-full py-2 mb-3 font-semibold text-[var(--primary)] border-2 border-[var(--primary)] rounded-lg hover:bg-[var(--primary)] hover:text-white transition"
+          className="w-full py-2 mb-3 clay-btn clay-btn-secondary"
         >
           {isOpen ? "Close Info" : "Know More"}
         </button>
 
         <button
           onClick={() => onPreOrder(model)}
-          className="w-full py-3 bg-[var(--primary)] text-white font-semibold rounded-lg hover:bg-[var(--primary-hover)] transition shadow-md mt-auto"
+          className="w-full py-3 clay-btn clay-btn-primary mt-auto"
         >
           Pre-Order
         </button>
@@ -334,13 +334,12 @@ export function Pricing() {
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`pricing-card p-8 rounded-xl border transition-all duration-300 
+              className={`pricing-card p-8 clay-card transition-all duration-300 
               ${
                 plan.popular
-                  ? "border-[var(--primary)] shadow-[var(--shadow-primary)] scale-105"
-                  : "border-[var(--border)]"
-              }
-              bg-[var(--bg-glass)] hover:shadow-[var(--shadow)]`}
+                  ? "border-[var(--primary)] scale-105"
+                  : ""
+              }`}
             >
               <h3 className="text-2xl font-bold mb-2 text-[var(--text-dark)]">
                 {plan.name}
@@ -373,28 +372,28 @@ export function Pricing() {
 
                   <button
                     onClick={() => handleModelClick(cradleModels.Basic)}
-                    className="py-4 mt-2 bg-[var(--bg-secondary)] rounded-lg hover:bg-[var(--bg-secondaryh)] hover:text-white transition font-medium"
+                    className="py-4 mt-2 clay-btn clay-btn-secondary"
                   >
                     Basic Model
                   </button>
 
                   <button
                     onClick={() => handleModelClick(cradleModels.AIPro)}
-                    className="py-4 bg-[var(--bg-secondary)] rounded-lg shadow-md hover:bg-[var(--bg-secondaryh)] hover:text-white transition font-medium"
+                    className="py-4 clay-btn clay-btn-secondary"
                   >
                     Standard Model
                   </button>
 
                   <button
                     onClick={() => handleModelClick(cradleModels.Custom)}
-                    className="py-4 bg-[var(--text-dark)] text-white rounded-lg hover:bg-[var(--primary)] transition font-medium"
+                    className="py-4 clay-btn clay-btn-primary"
                   >
                     Pro Model
                   </button>
 
                   <button
                     onClick={handleToggleAllModels}
-                    className="mt-2 text-[var(--primary)] hover:underline transition font-bold self-center"
+                    className="mt-2 px-4 py-2 clay-badge hover:scale-105 transition font-bold self-center"
                   >
                     {showAllModels ? "Hide All Models" : "View All Models"}
                   </button>
