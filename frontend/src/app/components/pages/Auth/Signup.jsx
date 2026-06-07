@@ -171,7 +171,10 @@ const Signup = () => {
               className="w-5 h-5 rounded border-gray-300 text-[var(--primary)] focus:ring-[var(--primary)] accent-[var(--primary)] cursor-pointer"
             />
             <label htmlFor="isProfessional" className="text-sm font-semibold text-[var(--text-dark)] cursor-pointer select-none">
-              Register as Professional
+              I agree to the{' '}
+              <Link to="/terms" className="text-[var(--primary)] hover:underline" onClick={(e) => e.stopPropagation()}>
+                Terms & Conditions
+              </Link>
             </label>
           </div>
 
