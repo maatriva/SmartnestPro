@@ -57,7 +57,7 @@ export default function DiseaseSideNav({ categories }) {
 
   return (
     <aside className="fixed right-5 top-1/2 -translate-y-1/2 z-50 hidden md:block">
-      <div className="rounded-2xl bg-[var(--bg-glass)] backdrop-blur border border-[var(--border)] shadow-[var(--shadow)] px-3 py-4 max-h-[70vh] overflow-y-auto">
+      <div className="clay-card px-3 py-4 max-h-[70vh] overflow-y-auto">
         <div className="flex flex-col items-center gap-4">
           {items.map((item) => {
             const active = activeSectionId === item.id;
@@ -66,14 +66,14 @@ export default function DiseaseSideNav({ categories }) {
               <Tilt key={item.id}>
                 <button
                   onClick={() => scrollToSection(item.id)}
-                  className="focus:outline-none"
+                  className="focus:outline-none cursor-pointer"
                   title={item.label}
                 >
                   <span
                     className={`rounded-full block transition-all duration-300 ${
                       active
-                        ? "w-4 h-4 bg-[var(--primary)] shadow-[0_0_0_6px_rgba(74,111,165,0.15)]"
-                        : "w-2.5 h-2.5 bg-[var(--text-light)] hover:bg-[var(--primary)]"
+                        ? "w-4 h-4 bg-[var(--primary)] shadow-[inset_2px_2px_4px_rgba(255,255,255,0.4),_inset_-2px_-2px_4px_rgba(0,0,0,0.2),_0_4px_8px_rgba(74,111,165,0.3)]"
+                        : "w-2.5 h-2.5 bg-[var(--text-light)] hover:bg-[var(--primary)] shadow-[inset_1px_1px_2px_rgba(255,255,255,0.3),_inset_-1px_-1px_2px_rgba(0,0,0,0.15)]"
                     }`}
                   />
                 </button>

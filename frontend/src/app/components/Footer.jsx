@@ -130,7 +130,7 @@ export function Footer() {
           <div className="lg:col-span-4">
             <h4 className="font-bold uppercase text-xs mb-6">Support</h4>
 
-            <div className="clay-card p-6 bg-white/40">
+            <div className="clay-card p-6">
               <p className="font-semibold mb-3">Need help?</p>
               <p className="text-sm text-[var(--text-light)] mb-4">
                 Contact our support team anytime.

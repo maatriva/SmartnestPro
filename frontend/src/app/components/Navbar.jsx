@@ -184,8 +184,8 @@ const Navbar = () => {
               <div className="mt-auto flex flex-col gap-4">
                 {user ? (
                   <>
-                    <div className="text-center p-4 bg-[var(--bg-glass)] rounded-2xl border border-[var(--border)]">
-                      <p className="text-[var(--text-light)] text-sm mb-1">Logged in as</p>
+                    <div className="text-center p-4 clay-card">
+                      <p className="text-[var(--text-light)] text-sm mb-1 font-semibold">Logged in as</p>
                       <p className="font-bold text-[var(--text-dark)]">{user.name}</p>
                     </div>
                     <button

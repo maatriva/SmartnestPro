@@ -25,19 +25,19 @@ const DiseaseCard = ({ name, icon, onSelect }) => {
   return (
     <motion.div
       onClick={onSelect}
-      className="bg-[var(--white)] border border-[var(--border)] rounded-2xl p-6 shadow-sm hover:shadow-[var(--shadow-primary)] hover:border-[var(--primary)] transition-all cursor-pointer group"
+      className="clay-card p-6 cursor-pointer group"
       whileHover={{ y: -4 }}
       whileTap={{ scale: 0.98 }}
     >
       <div className="flex items-start gap-4">
-        <div className="w-10 h-10 bg-[var(--bg-secondary)] text-[var(--primary)] rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[var(--primary)] group-hover:text-[var(--white)] transition-colors">
+        <div className="w-10 h-10 clay-badge text-[var(--primary)] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
           {icon}
         </div>
         <div className="text-left">
           <h3 className="font-bold text-[var(--text-dark)] leading-tight group-hover:text-[var(--primary)] transition-colors line-clamp-2">
             {name}
           </h3>
-          <p className="text-xs text-[var(--text-light)] mt-2 font-medium tracking-wide">
+          <p className="text-xs text-[var(--text-light)] mt-2 font-bold tracking-wide uppercase">
             CLICK FOR DETAILS
           </p>
         </div>
@@ -170,20 +170,20 @@ export default function DetailedDiseases() {
         <nav className="max-w-7xl mx-auto px-8 py-8 flex justify-between items-center">
           <Link
             to="/"
-            className="flex items-center gap-2 font-bold bg-white/20 px-4 py-2 rounded-full text-sm"
+            className="flex items-center gap-2 clay-btn clay-btn-secondary px-5 py-2 text-sm"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-4 h-4" />
             <span className="hidden sm:inline">Back to Home</span>
           </Link>
 
-          <div className="flex items-center gap-2 px-4 py-2 bg-white/40 rounded-full text-[10px] sm:text-xs font-black">
-            <ShieldCheck className="w-4 h-4" />
+          <div className="flex items-center gap-2 px-4 py-2 clay-badge text-[10px] sm:text-xs font-black">
+            <ShieldCheck className="w-4 h-4 text-[var(--primary)]" />
             Clinical Protocol v2.4
           </div>
         </nav>
 
         <header className="registry-header max-w-4xl mx-auto px-6 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 uppercase">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 uppercase text-[var(--text-dark)]">
             Monitoring Registry
           </h1>
 
@@ -192,7 +192,7 @@ export default function DetailedDiseases() {
             placeholder="SEARCH..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full mt-6 px-6 py-4 rounded-2xl shadow-xl outline-none"
+            className="w-full mt-6 px-6 py-4 clay-input text-lg font-semibold outline-none"
           />
         </header>
       </div>
@@ -253,21 +253,21 @@ export default function DetailedDiseases() {
             />
 
             <motion.div
-              className="bg-[var(--white)] text-[var(--text)] p-10 rounded-3xl max-w-xl w-full relative z-10 shadow-[var(--shadow-primary)]"
+              className="clay-card p-10 max-w-xl w-full relative z-10 text-[var(--text)]"
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
             >
               <button
                 onClick={() => setSelected(null)}
-                className="absolute top-4 right-4 text-[var(--text-light)] hover:text-[var(--primary)] transition-colors"
+                className="absolute top-4 right-4 text-[var(--text-light)] hover:text-[var(--primary)] transition-colors p-2 hover:bg-[var(--bg-hover)] rounded-full cursor-pointer animate-none"
               >
-                <X />
+                <X className="w-5 h-5" />
               </button>
 
               <h2 className="text-3xl font-black mb-6 text-[var(--text-dark)]">{selected.name}</h2>
-              <p className="mb-4">{selected.description}</p>
-              <p className="italic text-[var(--text-light)]">{selected.aiRole}</p>
+              <p className="mb-4 font-semibold text-lg">{selected.description}</p>
+              <p className="italic text-[var(--text-light)] font-medium">{selected.aiRole}</p>
             </motion.div>
           </div>
         )}

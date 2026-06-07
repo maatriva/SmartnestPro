@@ -40,7 +40,7 @@ const NotFound = () => {
 
         <button
           onClick={() => navigate('/')}
-          className="px-8 py-4 bg-[var(--primary)] text-white font-semibold text-lg hover:bg-[var(--primary-hover)] hover:shadow-[var(--shadow-primary)] transition-all duration-300 rounded-full hover:scale-105 flex items-center justify-center"
+          className="px-8 py-4 clay-btn clay-btn-primary flex items-center justify-center cursor-pointer text-lg font-bold"
         >
           Return Home
         </button>

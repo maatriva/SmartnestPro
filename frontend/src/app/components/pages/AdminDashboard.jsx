@@ -86,7 +86,7 @@ export default function AdminDashboard() {
           <motion.div 
             whileHover={{ y: -5 }}
             onClick={() => {setActiveTab("users"); setExpandedItem(null);}}
-            className={`cursor-pointer clay-card p-6 flex items-center gap-4 transition-all ${activeTab === 'users' ? 'border-[var(--primary)] ring-4 ring-[var(--primary)]/20 bg-white/90' : ''}`}
+            className={`cursor-pointer clay-card p-6 flex items-center gap-4 transition-all ${activeTab === 'users' ? 'ring-4 ring-[var(--primary)]/40 shadow-[inset_4px_4px_8px_rgba(255,255,255,0.9),_inset_-4px_-4px_8px_rgba(0,0,0,0.1),_0_0_15px_rgba(74,111,165,0.4)]' : ''}`}
           >
             <div className="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center shadow-inner shrink-0">
               <Users size={28} />
@@ -100,7 +100,7 @@ export default function AdminDashboard() {
           <motion.div 
             whileHover={{ y: -5 }}
             onClick={() => {setActiveTab("surveys"); setExpandedItem(null);}}
-            className={`cursor-pointer clay-card p-6 flex items-center gap-4 transition-all ${activeTab === 'surveys' ? 'border-[var(--primary)] ring-4 ring-[var(--primary)]/20 bg-white/90' : ''}`}
+            className={`cursor-pointer clay-card p-6 flex items-center gap-4 transition-all ${activeTab === 'surveys' ? 'ring-4 ring-[var(--primary)]/40 shadow-[inset_4px_4px_8px_rgba(255,255,255,0.9),_inset_-4px_-4px_8px_rgba(0,0,0,0.1),_0_0_15px_rgba(74,111,165,0.4)]' : ''}`}
           >
             <div className="w-14 h-14 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center shadow-inner shrink-0">
               <ClipboardList size={28} />
@@ -114,7 +114,7 @@ export default function AdminDashboard() {
           <motion.div 
             whileHover={{ y: -5 }}
             onClick={() => {setActiveTab("preorders"); setExpandedItem(null);}}
-            className={`cursor-pointer clay-card p-6 flex items-center gap-4 transition-all ${activeTab === 'preorders' ? 'border-[var(--primary)] ring-4 ring-[var(--primary)]/20 bg-white/90' : ''}`}
+            className={`cursor-pointer clay-card p-6 flex items-center gap-4 transition-all ${activeTab === 'preorders' ? 'ring-4 ring-[var(--primary)]/40 shadow-[inset_4px_4px_8px_rgba(255,255,255,0.9),_inset_-4px_-4px_8px_rgba(0,0,0,0.1),_0_0_15px_rgba(74,111,165,0.4)]' : ''}`}
           >
             <div className="w-14 h-14 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center shadow-inner shrink-0">
               <TrendingUp size={28} />
@@ -128,7 +128,7 @@ export default function AdminDashboard() {
           <motion.div 
             whileHover={{ y: -5 }}
             onClick={() => {setActiveTab("contacts"); setExpandedItem(null);}}
-            className={`cursor-pointer clay-card p-6 flex items-center gap-4 transition-all ${activeTab === 'contacts' ? 'border-[var(--primary)] ring-4 ring-[var(--primary)]/20 bg-white/90' : ''}`}
+            className={`cursor-pointer clay-card p-6 flex items-center gap-4 transition-all ${activeTab === 'contacts' ? 'ring-4 ring-[var(--primary)]/40 shadow-[inset_4px_4px_8px_rgba(255,255,255,0.9),_inset_-4px_-4px_8px_rgba(0,0,0,0.1),_0_0_15px_rgba(74,111,165,0.4)]' : ''}`}
           >
             <div className="w-14 h-14 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center shadow-inner shrink-0">
               <Mail size={28} />
@@ -149,7 +149,7 @@ export default function AdminDashboard() {
             </h3>
             <div className="space-y-4">
               {stats?.loginStats?.map((item, i) => (
-                <div key={i} className="flex items-center justify-between p-4 bg-white/40 rounded-2xl border border-white/60">
+                <div key={i} className="flex items-center justify-between p-4 clay-card">
                   <span className="font-bold text-[var(--text-dark)]">
                     {new Date(item.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}
                   </span>
@@ -208,7 +208,7 @@ export default function AdminDashboard() {
                       animate={{ opacity: 1, height: "auto" }}
                       className="px-6 pb-6 pt-2 border-t border-white/60"
                     >
-                      <div className="p-4 bg-white/50 rounded-2xl border border-white/40 space-y-3 mt-2">
+                      <div className="p-4 clay-card space-y-3 mt-2">
                          <div className="flex items-center gap-3 text-[var(--text-dark)]">
                             <Mail className="w-4 h-4 text-[var(--primary)]" />
                             <span className="font-semibold">{u.email}</span>
@@ -252,7 +252,7 @@ export default function AdminDashboard() {
                     >
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
                         {Object.entries(parseAnswers(survey.answers)).map(([key, value]) => (
-                          <div key={key} className="p-4 bg-white/50 rounded-2xl border border-white/40">
+                          <div key={key} className="p-4 clay-card">
                             <p className="text-xs font-bold text-[var(--text-light)] uppercase mb-1">Q{parseInt(key) + 1}</p>
                             <p className="text-[var(--text-dark)] font-semibold">
                               {Array.isArray(value) ? value.join(", ") : value}
@@ -292,7 +292,7 @@ export default function AdminDashboard() {
                       animate={{ opacity: 1, height: "auto" }}
                       className="px-6 pb-6 pt-2 border-t border-white/60"
                     >
-                      <div className="p-4 bg-white/50 rounded-2xl border border-white/40 space-y-3 mt-2">
+                      <div className="p-4 clay-card space-y-3 mt-2">
                          <div className="flex items-center gap-3 text-[var(--text-dark)]">
                             <Phone className="w-4 h-4 text-[var(--primary)]" />
                             <span className="font-semibold">{order.phone || "No phone provided"}</span>
@@ -334,7 +334,7 @@ export default function AdminDashboard() {
                       animate={{ opacity: 1, height: "auto" }}
                       className="px-6 pb-6 pt-2 border-t border-white/60"
                     >
-                      <div className="p-4 bg-white/50 rounded-2xl border border-white/40 space-y-3 mt-2">
+                      <div className="p-4 clay-card space-y-3 mt-2">
                          <div className="flex items-center gap-3 text-[var(--text-dark)]">
                             <Mail className="w-4 h-4 text-[var(--primary)]" />
                             <span className="font-semibold">{contact.email}</span>

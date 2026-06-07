@@ -47,7 +47,7 @@ const Diseases = () => {
   return (
     <div
       id="diseases"
-      className="overflow-hidden bg-white/50 backdrop-blur-sm border border-white/40 shadow-[var(--shadow)] text-[var(--text)] py-6"
+      className="max-w-7xl mx-auto my-8 overflow-hidden clay-card text-[var(--text)] py-8 px-4"
     >
       {/* Heading */}
       <h1 className="text-2xl font-bold text-[var(--text-dark)] text-center p-5">

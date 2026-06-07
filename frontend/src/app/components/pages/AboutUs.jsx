@@ -122,7 +122,7 @@ export default function AboutUs() {
               </p>
               <Link
                 to="/#features"
-                className="mt-9 inline-flex min-h-12 items-center rounded-full border border-white/80 bg-white px-8 text-sm font-bold text-[var(--primary)] shadow-[var(--shadow)] transition hover:scale-[1.02]"
+                className="mt-9 inline-flex min-h-12 items-center clay-btn clay-btn-secondary px-8 text-sm text-[var(--primary)]"
               >
                 Discover the Innovation
               </Link>
@@ -202,7 +202,7 @@ export default function AboutUs() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.55, delay: index * 0.08 }}
-                  className="clay-card bg-white/40 p-8 text-center"
+                  className="clay-card p-8 text-center"
                 >
                   <div className="mx-auto flex h-12 w-12 items-center justify-center clay-badge text-[var(--text-dark)]">
                     <Icon size={24} />
@@ -255,7 +255,7 @@ export default function AboutUs() {
                         {member.isFounder ? "Founder" : "Co-Founder"}
                       </motion.span>
                     )}
-                    <motion.div layout className="mt-8 flex h-28 w-28 items-center justify-center rounded-full border border-[var(--primary)]/20 bg-white/40 p-1 shadow-[var(--shadow)]">
+                    <motion.div layout className="mt-8 flex h-28 w-28 items-center justify-center rounded-full clay-badge p-1 shadow-[inset_3px_3px_6px_rgba(255,255,255,0.7),_inset_-3px_-3px_6px_rgba(0,0,0,0.15),_0_8px_16px_rgba(0,0,0,0.08)]">
                       <img
                         src={member.image}
                         alt={member.name}
@@ -296,7 +296,7 @@ export default function AboutUs() {
                               href={member.linkedin || "https://www.linkedin.com/company/maatriva/"}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--primary)]/5 text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white transition-all duration-300 border border-[var(--primary)]/10 hover:shadow-[0_0_15px_rgba(74,111,165,0.3)] hover:-translate-y-1 cursor-pointer"
+                              className="flex h-11 w-11 items-center justify-center clay-badge text-[var(--primary)] hover:scale-110 cursor-pointer"
                               aria-label={`${member.name} LinkedIn profile`}
                             >
                               <Linkedin size={18} strokeWidth={2} />
