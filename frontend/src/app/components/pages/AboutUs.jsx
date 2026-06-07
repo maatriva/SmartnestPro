@@ -6,11 +6,11 @@ import { motion, AnimatePresence } from "motion/react";
 import withBabyImage from "../../images/withbaby.jpeg";
 import withoutBabyImage from "../../images/withoutbaby.jpeg";
 import withParentImage from "../../images/withParents.jpeg";
-import developersImage from "../../images/developer.jpeg";
-import FounderImage from "../../images/Founder.jpeg";
-import Kirtik from "../../images/kirtikbiswas.jpeg"
+import Arman from "../../images/Arman.png"
+import Arghya from "../../images/Arghya.png"
+import Kirtik from "../../images/Kirtik.png"
 import Rahul from "../../images/rahul.jpeg"
-import Vishavjeet from "../../images/vishu.jpg"
+import Vishavjeet from "../../images/Vishavjeet.png"
 
 export default function AboutUs() {
   const [expandedCards, setExpandedCards] = useState({});
@@ -46,7 +46,7 @@ export default function AboutUs() {
       role: "Founder & Hardware lead",
       isFounder: true,
       isCoFounder: false,
-      image: FounderImage,
+      image: Arghya,
       objectPosition: "object-[center_20%]",
       linkedin: "https://www.linkedin.com/in/arghyapratimghosh ",
       copy: "Leads the development of smart hardware systems, ensuring reliability, innovation, and seamless integration.",
@@ -85,7 +85,7 @@ export default function AboutUs() {
       role: "Web & App Developer",
       isFounder: false,
       isCoFounder: true,
-      image: developersImage,
+      image: Arman,
       objectPosition: "object-[center_20%]",
       linkedin: "https://www.linkedin.com/in/arman-sharma-0a875a32a ",
       copy: "Builds intuitive web and mobile applications that bring Maatriva's smart baby care solutions to parents everywhere.",
@@ -122,7 +122,7 @@ export default function AboutUs() {
               </p>
               <Link
                 to="/#features"
-                className="mt-9 inline-flex min-h-12 items-center clay-btn clay-btn-secondary px-8 text-sm text-[var(--primary)]"
+                className="mt-9 inline-flex min-h-12 items-center clay-btn clay-btn-primary clay-btn-darkbg px-8 text-sm text-white"
               >
                 Discover the Innovation
               </Link>

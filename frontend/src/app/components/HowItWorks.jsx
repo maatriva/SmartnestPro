@@ -171,7 +171,7 @@ export function HowItWorks() {
                 >
 
                   {/* Step Number */}
-                  <div className="absolute -top-6 left-6 w-12 h-12 clay-btn clay-btn-primary flex items-center justify-center text-white font-black text-lg">
+                  <div className="absolute -top-6 left-6 w-12 h-12 clay-btn clay-btn-secondaryh flex items-center justify-center font-black text-lg">
                     {step.number}
                   </div>
 

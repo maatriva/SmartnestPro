@@ -507,7 +507,7 @@ export default function Survey() {
               
               <div className="flex justify-between items-center mb-10">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 clay-btn clay-btn-primary flex items-center justify-center text-white font-black text-xl">
+                  <div className="w-12 h-12 clay-btn clay-btn-secondaryh flex items-center justify-center font-black text-xl">
                     {page + 1}
                   </div>
                   <div>
