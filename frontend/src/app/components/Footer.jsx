@@ -152,7 +152,7 @@ export function Footer() {
           <p className="text-[var(--text-light)]">© 2026 Maatriva</p>
           <div className="flex gap-4">
             <a href="#">Privacy</a>
-            <a href="#">Terms</a>
+            <Link to="/terms" className="hover:text-[var(--primary)] transition-colors">Terms</Link>
           </div>
         </div>
       </div>

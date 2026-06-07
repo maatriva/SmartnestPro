@@ -39,6 +39,7 @@ const AboutUs = lazy(() => import("./components/pages/AboutUs"));
 const AdminDashboard = lazy(() => import("./components/pages/AdminDashboard"));
 const Login = lazy(() => import("./components/pages/Auth/Login"));
 const Signup = lazy(() => import("./components/pages/Auth/Signup"));
+const Terms = lazy(() => import("./components/pages/Terms"));
 const NotFound = lazy(() => import("./components/pages/NotFound"));
 
 const LoadingFallback = () => (
@@ -118,6 +119,11 @@ export default function App() {
             <Route
               path="/signup"
               element={<Signup />}
+            />
+
+            <Route
+              path="/terms"
+              element={<Terms />}
             />
 
             <Route

@@ -64,7 +64,7 @@ export const googleLogin = async (req, res) => {
 };
 
 export const signup = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, isProfessional } = req.body;
   console.log("BODY:", req.body);
 
   if (!validateEmail(email)) {
@@ -77,8 +77,8 @@ export const signup = async (req, res) => {
   const hash = await bcrypt.hash(password, 10);
 
   const result = await pool.query(
-    "INSERT INTO users (name,email,password) VALUES ($1,$2,$3) RETURNING id,name,email,is_admin",
-    [name, email, hash]
+    "INSERT INTO users (name,email,password,is_professional) VALUES ($1,$2,$3,$4) RETURNING id,name,email,is_admin,is_professional",
+    [name, email, hash, isProfessional || false]
   );
 
   const user = result.rows[0];
@@ -117,7 +117,7 @@ export const getMe = async (req, res) => {
     }
 
     const result = await pool.query(
-      "SELECT id, name, email, is_admin FROM users WHERE id = $1",
+      "SELECT id, name, email, is_admin, is_professional FROM users WHERE id = $1",
       [req.user.id]
     );
 

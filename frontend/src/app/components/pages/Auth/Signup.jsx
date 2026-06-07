@@ -8,7 +8,7 @@ import { validateEmail } from '../../../utils/validation';
 import { GoogleLogin } from '@react-oauth/google';
 
 const Signup = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', password: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', password: '', isProfessional: false });
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -50,7 +50,7 @@ const Signup = () => {
     }
 
     try {
-      await signup(formData.name, formData.email, formData.password);
+      await signup(formData.name, formData.email, formData.password, formData.isProfessional);
       navigate('/');
     } catch (err) {
       setError(err.response?.data?.error || 'Signup failed. Please try again.');
@@ -158,6 +158,21 @@ const Signup = () => {
                 {showPassword ? <EyeOff /> : <Eye />}
               </button>
             </div>
+          </div>
+
+          {/* Professional Checkbox */}
+          <div className="flex items-center gap-2.5 py-1">
+            <input
+              type="checkbox"
+              id="isProfessional"
+              name="isProfessional"
+              checked={formData.isProfessional}
+              onChange={(e) => setFormData({ ...formData, isProfessional: e.target.checked })}
+              className="w-5 h-5 rounded border-gray-300 text-[var(--primary)] focus:ring-[var(--primary)] accent-[var(--primary)] cursor-pointer"
+            />
+            <label htmlFor="isProfessional" className="text-sm font-semibold text-[var(--text-dark)] cursor-pointer select-none">
+              Register as Professional
+            </label>
           </div>
 
           {/* Submit */}
