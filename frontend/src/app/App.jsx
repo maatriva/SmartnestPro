@@ -3,8 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { Toaster } from "sonner";
 import { Helmet } from "react-helmet-async";
 
-
-import { Hero } from "./components/Hero";
+import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import FloatingParticles from "./components/FloatingParticles";
 import ProtectedRoute from "./components/ProtectedRoute";
