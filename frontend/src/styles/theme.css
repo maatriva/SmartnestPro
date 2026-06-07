@@ -375,11 +375,11 @@
 }
 
 .clay-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-12px) scale(1.03) !important;
   box-shadow: 
     inset 8px 8px 18px rgba(255, 255, 255, 0.95),
     inset -8px -8px 18px rgba(166, 180, 200, 0.35),
-    12px 18px 32px rgba(103, 210, 218, 0.6) !important;
+    18px 25px 40px rgba(103, 210, 218, 0.65) !important;
 }
 
 /* 🔘 Clay Buttons */
@@ -389,111 +389,119 @@
   font-weight: 700 !important;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
   box-shadow: 
-    -6px -6px 12px rgba(255, 255, 255, 0.8),
-    6px 6px 12px rgba(0, 0, 0, 0.08) !important;
+    inset 4px 4px 8px rgba(255, 255, 255, 0.6),
+    inset -4px -4px 8px rgba(166, 180, 200, 0.35) !important;
   transition: all 0.3s ease !important;
 }
  
 .clay-btn-primary {
   background: linear-gradient(135deg, #7B8FF8, #5A78D6) !important;
   color: #ffffff !important;
+  box-shadow: 
+    inset 4px 4px 8px rgba(255, 255, 255, 0.5),
+    inset -4px -4px 8px rgba(20, 30, 90, 0.45) !important;
 }
  
 .clay-btn-primary:hover {
   transform: scale(1.05) !important;
   background: linear-gradient(135deg, #8C9EFF, #6E88E6) !important;
   box-shadow: 
-    -8px -8px 16px rgba(255, 255, 255, 0.9),
-    8px 8px 16px rgba(0, 0, 0, 0.12) !important;
+    inset 5px 5px 10px rgba(255, 255, 255, 0.65),
+    inset -5px -5px 10px rgba(20, 30, 90, 0.55) !important;
 }
  
 .clay-btn-primary:active {
   transform: scale(0.98) !important;
   box-shadow: 
-    inset 4px 4px 8px rgba(0, 0, 0, 0.15),
-    inset -4px -4px 8px rgba(255, 255, 255, 0.25),
-    -3px -3px 6px rgba(255, 255, 255, 0.5),
-    3px 3px 6px rgba(0, 0, 0, 0.05) !important;
+    inset 4px 4px 8px rgba(10, 15, 60, 0.6),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.25) !important;
 }
  
 .clay-btn-secondary {
   background: #F4F8F8 !important;
   color: #223B66 !important;
   border-color: rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 
+    inset 4px 4px 8px rgba(255, 255, 255, 0.95),
+    inset -4px -4px 8px rgba(166, 180, 200, 0.45) !important;
 }
  
 .clay-btn-secondary:hover {
   transform: scale(1.05) !important;
   background: #ffffff !important;
   box-shadow: 
-    -8px -8px 16px rgba(255, 255, 255, 0.95),
-    8px 8px 16px rgba(0, 0, 0, 0.1) !important;
+    inset 5px 5px 10px rgba(255, 255, 255, 1),
+    inset -5px -5px 10px rgba(166, 180, 200, 0.6) !important;
 }
 
 .clay-btn-secondary:active {
   transform: scale(0.98) !important;
   box-shadow: 
-    inset 3px 3px 6px rgba(0, 0, 0, 0.06),
-    inset -3px -3px 6px rgba(255, 255, 255, 0.95),
-    -3px -3px 6px rgba(255, 255, 255, 0.5),
-    3px 3px 6px rgba(0, 0, 0, 0.04) !important;
+    inset 3px 3px 6px rgba(166, 180, 200, 0.6),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.95) !important;
 }
  
 .clay-btn-destructive {
   background: linear-gradient(135deg, #ff6b8b, #d4183d) !important;
   color: #ffffff !important;
+  box-shadow: 
+    inset 4px 4px 8px rgba(255, 255, 255, 0.45),
+    inset -4px -4px 8px rgba(90, 8, 25, 0.55) !important;
 }
  
 .clay-btn-destructive:hover {
   transform: scale(1.05) !important;
   background: linear-gradient(135deg, #ff809c, #e5294e) !important;
   box-shadow: 
-    -8px -8px 16px rgba(255, 255, 255, 0.9),
-    8px 8px 16px rgba(0, 0, 0, 0.12) !important;
+    inset 5px 5px 10px rgba(255, 255, 255, 0.55),
+    inset -5px -5px 10px rgba(90, 8, 25, 0.65) !important;
 }
 
 .clay-btn-destructive:active {
   transform: scale(0.98) !important;
   box-shadow: 
-    inset 4px 4px 8px rgba(0, 0, 0, 0.15),
-    inset -4px -4px 8px rgba(255, 255, 255, 0.25),
-    -3px -3px 6px rgba(255, 255, 255, 0.5),
-    3px 3px 6px rgba(0, 0, 0, 0.05) !important;
+    inset 4px 4px 8px rgba(90, 8, 25, 0.65),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
 }
  
 .clay-btn-secondaryh {
   background: linear-gradient(135deg, #7B8FF8, #5A78D6) !important;
   color: #ffffff !important;
+  box-shadow: 
+    inset 4px 4px 8px rgba(255, 255, 255, 0.5),
+    inset -4px -4px 8px rgba(20, 30, 90, 0.45) !important;
 }
  
 .clay-btn-secondaryh:hover {
   transform: scale(1.05) !important;
   background: linear-gradient(135deg, #8C9EFF, #6E88E6) !important;
   box-shadow: 
-    -8px -8px 16px rgba(255, 255, 255, 0.9),
-    8px 8px 16px rgba(0, 0, 0, 0.12) !important;
+    inset 5px 5px 10px rgba(255, 255, 255, 0.65),
+    inset -5px -5px 10px rgba(20, 30, 90, 0.55) !important;
 }
 
 .clay-btn-secondaryh:active {
   transform: scale(0.98) !important;
   box-shadow: 
-    inset 4px 4px 8px rgba(0, 0, 0, 0.15),
-    inset -4px -4px 8px rgba(255, 255, 255, 0.25),
-    -3px -3px 6px rgba(255, 255, 255, 0.5),
-    3px 3px 6px rgba(0, 0, 0, 0.05) !important;
+    inset 4px 4px 8px rgba(10, 15, 60, 0.6),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.25) !important;
 }
 
 .clay-btn-darkbg {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+  box-shadow: 
+    inset 0 4px 12px rgba(0, 0, 0, 0.35),
+    inset 0 -4px 12px rgba(255, 255, 255, 0.05) !important;
 }
 
 .clay-btn-darkbg:hover {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35) !important;
+  box-shadow: 
+    inset 0 6px 18px rgba(0, 0, 0, 0.45),
+    inset 0 -6px 18px rgba(255, 255, 255, 0.08) !important;
 }
 
 .clay-btn-darkbg:active {
   box-shadow: 
-    inset 4px 4px 8px rgba(0, 0, 0, 0.25),
+    inset 4px 4px 8px rgba(0, 0, 0, 0.55),
     inset -4px -4px 8px rgba(255, 255, 255, 0.1) !important;
 }
 
@@ -551,5 +559,64 @@
     inset -4px -4px 10px rgba(166, 180, 200, 0.18),
     0 10px 25px rgba(166, 180, 200, 0.22) !important;
   border-radius: 24px !important;
+}
+
+/* 🌊 Section Transition Blending & Shadows */
+.section-blend-glass {
+  position: relative;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.5) 120px,
+    rgba(255, 255, 255, 0.5) calc(100% - 120px),
+    rgba(255, 255, 255, 0) 100%
+  ) !important;
+}
+
+.section-blend-glass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.04), transparent);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.section-blend-glass::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.04), transparent);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.footer-blend {
+  position: relative;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    var(--bg-glass) 60px,
+    var(--bg-glass) 100%
+  ) !important;
+  border-top: none !important;
+}
+
+.footer-blend::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.04), transparent);
+  pointer-events: none;
+  z-index: 10;
 }
 

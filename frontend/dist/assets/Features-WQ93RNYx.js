@@ -1,0 +1,26 @@
+import{r as s,j as e}from"./ui-vendor-avc6CE4D.js";import{_ as i}from"./animation-vendor-DvrN3zRt.js";import{S as l}from"./ScrollTrigger-Cv03IO65.js";import{c as r,m as c}from"./index-BV3eSeTX.js";import{B as m}from"./brain-DqdeMRce.js";import"./three-vendor-_GriAIux.js";/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const p=[["path",{d:"M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z",key:"a7tn18"}]],h=r("moon",p);/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const x=[["path",{d:"M9 18V5l12-2v13",key:"1jmyc2"}],["circle",{cx:"6",cy:"18",r:"3",key:"fqmcym"}],["circle",{cx:"18",cy:"16",r:"3",key:"1hluhg"}]],u=r("music",x);/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const y=[["path",{d:"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z",key:"oel41y"}]],g=r("shield",y);/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const f=[["rect",{width:"14",height:"20",x:"5",y:"2",rx:"2",ry:"2",key:"1yt0o3"}],["path",{d:"M12 18h.01",key:"mhygvu"}]],b=r("smartphone",f);/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const v=[["path",{d:"M12 9a4 4 0 0 0-2 7.5",key:"1jvsq6"}],["path",{d:"M12 3v2",key:"1w22ol"}],["path",{d:"m6.6 18.4-1.4 1.4",key:"w2yidj"}],["path",{d:"M20 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z",key:"iof6y5"}],["path",{d:"M4 13H2",key:"118le4"}],["path",{d:"M6.34 7.34 4.93 5.93",key:"1brd51"}]],w=r("thermometer-sun",v);i.registerPlugin(l);const j=[{icon:m,title:"AI Learning",description:"Adapts to your baby's unique sleep patterns and preferences over time."},{icon:h,title:"Smart Soothing",description:"Automatic rocking, white noise, and lullabies when baby needs comfort."},{icon:b,title:"App Control",description:"Monitor and control everything from your phone, anywhere, anytime."},{icon:g,title:"Safe & Secure",description:"Medical-grade materials with built-in safety sensors and alerts."},{icon:u,title:"Sound Library",description:"100+ curated lullabies and white noise options for better sleep."},{icon:w,title:"Climate Control",description:"Monitors temperature and humidity for optimal sleeping conditions."}];function A(){const o=s.useRef(null);return s.useEffect(()=>{const t=o.current;if(!t||typeof window<"u"&&window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;const d=i.context(()=>{const n=i.utils.toArray(".grid-item");n.length&&i.from(n,{scale:0,opacity:0,duration:.4,stagger:{amount:.6,from:"center"},ease:"back.out(1.7)",scrollTrigger:{trigger:t,start:"top 80%",once:!0},clearProps:"transform,opacity"})},t);return()=>d.revert()},[]),e.jsx("section",{id:"features",className:"py-24 px-6 bg-[var(--bg-secondary)] text-[var(--text)] overflow-hidden",children:e.jsxs("div",{className:"max-w-7xl mx-auto",children:[e.jsxs(c.div,{initial:{opacity:0,y:30},whileInView:{opacity:1,y:0},viewport:{once:!0,margin:"-100px"},transition:{duration:.6},className:"text-center max-w-3xl mx-auto mb-16",children:[e.jsx("div",{className:"inline-block px-4 py-2 clay-badge text-sm font-bold mb-4",children:"Features"}),e.jsxs("h2",{className:"text-4xl md:text-5xl font-bold text-[var(--text-dark)] mb-6",children:["Everything you need for",e.jsx("br",{}),e.jsx("span",{className:"text-[var(--primary)]",children:"peaceful parenting"})]}),e.jsx("p",{className:"text-xl text-[var(--text-light)]",children:"Cutting-edge technology designed with your baby's comfort and your peace of mind at heart."})]}),e.jsx("div",{ref:o,className:"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8",children:j.map((t,a)=>e.jsxs(c.div,{className:"grid-item group relative clay-card p-8 flex flex-col h-full",children:[e.jsx("div",{className:"w-16 h-16 clay-badge flex items-center justify-center mb-6 group-hover:scale-110 transition-transform",children:e.jsx(t.icon,{className:"w-8 h-8 text-[var(--primary)]",strokeWidth:2.5})}),e.jsx("h3",{className:"text-xl font-semibold text-[var(--text-dark)] mb-3",children:t.title}),e.jsx("p",{className:"text-[var(--text-light)] leading-relaxed flex-1",children:t.description})]},a))})]})})}export{A as Features};

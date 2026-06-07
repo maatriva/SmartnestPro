@@ -104,32 +104,34 @@ const SplitCard = ({ model, onPreOrder }) => {
 
   return (
     <div className="relative w-full max-w-sm mx-auto z-10 flex flex-col h-full">
-      {/* FRONT CARD */}
+      {/* FRONT CARD WRAPPER */}
       <div 
         ref={frontRef} 
-        className="demo-card-front relative p-6 flex flex-col flex-1 clay-card z-20"
+        className="demo-card-front relative z-20 flex flex-col flex-1"
       >
-        {model.img && (
-          <div className="w-full h-48 mb-6 rounded-lg overflow-hidden">
-            <img src={model.img} alt={model.name} className="w-full h-full object-cover" />
-          </div>
-        )}
-        <h3 className="text-2xl font-bold mb-2 text-[var(--text-dark)]">{model.name}</h3>
-        <div className="text-3xl font-bold text-[var(--primary)] mb-4">₹{model.price}</div>
-        
-        <button
-          onClick={toggleOpen}
-          className="w-full py-2 mb-3 clay-btn clay-btn-secondary"
-        >
-          {isOpen ? "Close Info" : "Know More"}
-        </button>
+        <div className="p-6 flex flex-col flex-1 clay-card z-20 h-full">
+          {model.img && (
+            <div className="w-full h-48 mb-6 rounded-lg overflow-hidden">
+              <img src={model.img} alt={model.name} className="w-full h-full object-cover" />
+            </div>
+          )}
+          <h3 className="text-2xl font-bold mb-2 text-[var(--text-dark)]">{model.name}</h3>
+          <div className="text-3xl font-bold text-[var(--primary)] mb-4">₹{model.price}</div>
+          
+          <button
+            onClick={toggleOpen}
+            className="w-full py-2 mb-3 clay-btn clay-btn-secondary"
+          >
+            {isOpen ? "Close Info" : "Know More"}
+          </button>
 
-        <button
-          onClick={() => onPreOrder(model)}
-          className="w-full py-3 clay-btn clay-btn-primary mt-auto"
-        >
-          Pre-Order
-        </button>
+          <button
+            onClick={() => onPreOrder(model)}
+            className="w-full py-3 clay-btn clay-btn-primary mt-auto"
+          >
+            Pre-Order
+          </button>
+        </div>
       </div>
 
       {/* BACK CARD (Drops down in-flow) */}
@@ -165,15 +167,15 @@ const HorizontalSplitCard = ({ model, onPreOrder }) => {
     const tl = gsap.timeline();
     if (!isOpen) {
       if (isMobileNow) {
-        tl.to(frontRef.current, { y: -160, duration: 1, ease: "power2.out", delay: 0 }, 0);
-        tl.to(backRef.current, { y: 160, duration: 1, ease: "power2.out", delay: 0 }, 0);
+        tl.to(frontRef.current, { y: -180, duration: 0.8, ease: "power3.out" }, 0);
+        tl.to(backRef.current, { y: 180, duration: 0.8, ease: "power3.out" }, 0);
       } else {
-        tl.to(frontRef.current, { x: 280, duration: 1, ease: "power2.out", delay: 0 }, 0);
-        tl.to(backRef.current, { x: 60, duration: 1, ease: "power2.out", delay: 0 }, 0);
+        tl.to(frontRef.current, { x: 192, duration: 0.8, ease: "power3.out" }, 0);
+        tl.to(backRef.current, { x: -192, duration: 0.8, ease: "power3.out" }, 0);
       }
     } else {
-      tl.to(frontRef.current, { x: 0, y: 0, duration: 1, ease: "power2.out", delay: 0 }, 0);
-      tl.to(backRef.current, { x: 0, y: 0, duration: 1, ease: "power2.out", delay: 0 }, 0);
+      tl.to(frontRef.current, { x: 0, y: 0, duration: 0.6, ease: "power2.inOut" }, 0);
+      tl.to(backRef.current, { x: 0, y: 0, duration: 0.6, ease: "power2.inOut" }, 0);
     }
     setIsOpen(!isOpen);
   };
@@ -187,52 +189,55 @@ const HorizontalSplitCard = ({ model, onPreOrder }) => {
 
   return (
     <div 
-      className="relative w-full max-w-sm mx-auto z-10 transition-transform duration-1000 ease-[cubic-bezier(0,0.55,0.45,1)]"
-      style={{ transform: isOpen ? (isMobile ? "translateY(-60px)" : "translateX(-170px)") : "translate(0px, 0px)" }}
+      className="relative w-full max-w-sm mx-auto z-10"
     >
       {/* BACK CARD */}
       <div 
         ref={backRef} 
-        className="absolute inset-0 p-6 flex flex-col clay-card bg-white z-0"
+        className="absolute inset-0 z-0"
       >
-        <h3 className="text-xl font-bold mb-4 text-[var(--primary)]">More Info</h3>
-        <p className="text-[var(--text-light)] mb-4">{model.description}</p>
-        <ul className="space-y-2 mb-6">
-          {model.features.map((f, i) => (
-            <li key={i} className="flex gap-2 text-sm text-[var(--text-dark)]">
-              <Check className="w-4 h-4 text-[var(--primary)] mt-0.5" />
-              {f}
-            </li>
-          ))}
-        </ul>
+        <div className="p-6 flex flex-col clay-card bg-white h-full">
+          <h3 className="text-xl font-bold mb-4 text-[var(--primary)]">More Info</h3>
+          <p className="text-[var(--text-light)] mb-4">{model.description}</p>
+          <ul className="space-y-2 mb-6">
+            {model.features.map((f, i) => (
+              <li key={i} className="flex gap-2 text-sm text-[var(--text-dark)]">
+                <Check className="w-4 h-4 text-[var(--primary)] mt-0.5" />
+                {f}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       {/* FRONT CARD */}
       <div 
         ref={frontRef} 
-        className="relative p-6 flex flex-col clay-card z-10"
+        className="relative z-10"
       >
-        {model.img && (
-          <div className="w-full h-48 mb-6 rounded-lg overflow-hidden">
-            <img src={model.img} alt={model.name} className="w-full h-full object-cover" />
-          </div>
-        )}
-        <h3 className="text-2xl font-bold mb-2 text-[var(--text-dark)]">{model.name}</h3>
-        <div className="text-3xl font-bold text-[var(--primary)] mb-4">₹{model.price}</div>
-        
-        <button
-          onClick={toggleOpen}
-          className="w-full py-2 mb-3 clay-btn clay-btn-secondary"
-        >
-          {isOpen ? "Close Info" : "Know More"}
-        </button>
+        <div className="p-6 flex flex-col clay-card h-full">
+          {model.img && (
+            <div className="w-full h-48 mb-6 rounded-lg overflow-hidden">
+              <img src={model.img} alt={model.name} className="w-full h-full object-cover" />
+            </div>
+          )}
+          <h3 className="text-2xl font-bold mb-2 text-[var(--text-dark)]">{model.name}</h3>
+          <div className="text-3xl font-bold text-[var(--primary)] mb-4">₹{model.price}</div>
+          
+          <button
+            onClick={toggleOpen}
+            className="w-full py-2 mb-3 clay-btn clay-btn-secondary"
+          >
+            {isOpen ? "Close Info" : "Know More"}
+          </button>
 
-        <button
-          onClick={() => onPreOrder(model)}
-          className="w-full py-3 clay-btn clay-btn-primary mt-auto"
-        >
-          Pre-Order
-        </button>
+          <button
+            onClick={() => onPreOrder(model)}
+            className="w-full py-3 clay-btn clay-btn-primary mt-auto"
+          >
+            Pre-Order
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -441,7 +446,7 @@ export function Pricing() {
 
               <motion.div
                 key={activeModel.name}
-                className="relative z-10 max-w-md w-full mx-auto"
+                className="relative z-10 max-w-3xl w-full mx-auto"
                 initial={{ scale: 0.8, opacity: 0, y: 30 }}
                 animate={{ scale: 1, opacity: 1, y: 0 }}
                 exit={{ scale: 0.8, opacity: 0, y: 30 }}

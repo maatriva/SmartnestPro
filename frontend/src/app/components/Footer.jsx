@@ -58,7 +58,7 @@ export function Footer() {
   return (
     <footer
       id="footer"
-      className="bg-[var(--bg-glass)] backdrop-blur-xl text-[var(--text)] py-16 border-t border-[var(--border)] relative overflow-hidden"
+      className="footer-blend backdrop-blur-xl text-[var(--text)] py-16 relative overflow-hidden"
     >
       {/* Background blur */}
       <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-[var(--primary)]/5 blur-[120px] rounded-full pointer-events-none" />

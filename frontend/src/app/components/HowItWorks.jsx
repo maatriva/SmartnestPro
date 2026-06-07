@@ -119,7 +119,7 @@ export function HowItWorks() {
   return (
     <section 
       id="how-it-works" 
-      className="py-24 px-6 bg-white/50 backdrop-blur-sm text-[var(--text)] overflow-x-hidden"
+      className="py-24 px-6 section-blend-glass backdrop-blur-sm text-[var(--text)] overflow-x-hidden"
     >
       <div className="max-w-7xl mx-auto">
 

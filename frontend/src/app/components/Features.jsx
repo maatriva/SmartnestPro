@@ -108,7 +108,6 @@ export function Features() {
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              whileHover={{ y: -5 }}
               className="grid-item group relative clay-card p-8 flex flex-col h-full"
             >
               {/* Icon */}

@@ -45,51 +45,65 @@ const Diseases = () => {
   };
 
   return (
-    <div
+    <section
       id="diseases"
-      className="w-full my-8 overflow-hidden clay-card text-[var(--text)] py-8 px-4"
+      className="py-24 px-6 section-blend-glass backdrop-blur-sm text-[var(--text)] overflow-x-hidden"
     >
-      {/* Heading */}
-      <h1 className="text-2xl font-bold text-[var(--text-dark)] text-center p-5">
-        Diseases That are Monitored by us
-      </h1>
+      <div className="max-w-7xl mx-auto">
+        {/* Heading */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-block px-4 py-2 clay-badge text-sm font-bold mb-4">
+            Monitoring
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-[var(--text-dark)] mb-6">
+            Diseases that are monitored by us
+          </h2>
+          <p className="text-xl text-[var(--text-light)]">
+            Our smart baby cradle tracks vital patterns to detect symptoms early.
+          </p>
+        </div>
+      </div>
 
       {/* Marquee */}
-      <div className="flex whitespace-nowrap marquee">
-        {[...tickerData, ...tickerData].map((item, i) => (
-          <div
-            key={i}
-            ref={(el) => (chipRefs.current[i] = el)}
-            onClick={() => handleClick(i)}
-            className={`mx-8 cursor-pointer text-sm md:text-base px-5 py-2.5 transition-all duration-300 rounded-full
-            ${activeIndex === i
-                ? "clay-card text-[var(--text-dark)] scale-110"
-                : "clay-badge text-[var(--text-light)]"
-              }`}
-          >
-            <div className="font-bold inline-block mr-2">
-              {item.name}:
+      <div className="w-full overflow-hidden my-8">
+        <div className="flex whitespace-nowrap marquee">
+          {[...tickerData, ...tickerData].map((item, i) => (
+            <div
+              key={i}
+              ref={(el) => (chipRefs.current[i] = el)}
+              onClick={() => handleClick(i)}
+              className={`mx-8 cursor-pointer text-sm md:text-base px-5 py-2.5 transition-all duration-300 rounded-full
+              ${activeIndex === i
+                  ? "clay-card text-[var(--text-dark)] scale-110"
+                  : "clay-badge text-[var(--text-light)]"
+                }`}
+            >
+              <div className="font-bold inline-block mr-2">
+                {item.name}:
+              </div>
+
+              <span className="font-semibold text-xs md:text-sm">
+                {activeIndex === i ? item.full : item.short}
+              </span>
+
+              <span className="mx-6 text-[var(--primary-light)]">•</span>
             </div>
-
-            <span className="font-semibold text-xs md:text-sm">
-              {activeIndex === i ? item.full : item.short}
-            </span>
-
-            <span className="mx-6 text-[var(--primary-light)]">•</span>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
-      {/* Button */}
-      <div className="flex w-full justify-center mt-6">
-        <button 
-          onClick={() => navigate('/diseases')}
-          className="px-6 py-3 clay-btn clay-btn-primary"
-        >
-          Know more
-        </button>
+      <div className="max-w-7xl mx-auto">
+        {/* Button */}
+        <div className="flex w-full justify-center mt-12">
+          <button 
+            onClick={() => navigate('/diseases')}
+            className="px-6 py-3 clay-btn clay-btn-primary"
+          >
+            Know more
+          </button>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
