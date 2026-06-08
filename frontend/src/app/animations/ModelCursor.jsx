@@ -113,7 +113,7 @@ const ModelCursor = () => {
   return (
     <div
       ref={mountRef}
-      className="w-full h-[400px] flex items-center justify-center cursor-grab active:cursor-grabbing"
+      className="w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing"
     />
   );
 };

@@ -102,8 +102,8 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 min-h-screen">
-        <div className="grid lg:grid-cols-2 items-center min-h-screen gap-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-2 items-center min-h-screen gap-12 lg:gap-16 pt-32 pb-16 lg:pt-24 lg:pb-12">
           {/* LEFT CONTENT */}
           <div>
             <motion.div
@@ -119,7 +119,7 @@ export default function Hero() {
                 rounded-full
                 border
                 border-[var(--primary)]
-                mb-8
+                mb-6
               "
             >
               <Sparkles size={16} className="text-[var(--primary)]" />
@@ -150,7 +150,7 @@ export default function Hero() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
               className="
-                mt-8
+                mt-6
                 text-lg
                 md:text-xl
                 leading-relaxed
@@ -167,7 +167,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="flex flex-wrap gap-4 mt-10"
+              className="flex flex-wrap gap-4 mt-8"
             >
               <button
                 className="
@@ -207,15 +207,21 @@ export default function Hero() {
               flex
               items-center
               justify-center
-              h-[650px]
+              h-[350px]
+              sm:h-[450px]
+              lg:h-[650px]
             "
           >
             {/* Glow Ring */}
             <div
               className="
                 absolute
-                w-[500px]
-                h-[500px]
+                w-[260px]
+                h-[260px]
+                sm:w-[350px]
+                sm:h-[350px]
+                lg:w-[500px]
+                lg:h-[500px]
                 rounded-full
                 border
                 border-[var(--primary)]
@@ -227,8 +233,12 @@ export default function Hero() {
             <div
               className="
                 absolute
-                w-[650px]
-                h-[650px]
+                w-[320px]
+                h-[320px]
+                sm:w-[450px]
+                sm:h-[450px]
+                lg:w-[650px]
+                lg:h-[650px]
                 rounded-full
                 border
                 border-[var(--primary)]
@@ -247,7 +257,7 @@ export default function Hero() {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="w-[450px] h-[450px] flex items-center justify-center"
+                className="w-[240px] h-[240px] sm:w-[320px] sm:h-[320px] lg:w-[450px] lg:h-[450px] flex items-center justify-center"
               >
                 <ModelCursor />
               </motion.div>
