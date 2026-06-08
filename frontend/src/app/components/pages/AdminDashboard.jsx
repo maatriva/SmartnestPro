@@ -49,7 +49,7 @@ export default function AdminDashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[var(--bg-secondary)]">
+      <div className="min-h-screen flex items-center justify-center bg-[var(--bg)]">
         <motion.div 
           animate={{ scale: [1, 1.1, 1] }}
           transition={{ repeat: Infinity, duration: 1.5 }}

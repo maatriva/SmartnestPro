@@ -93,7 +93,7 @@ export default function AboutUs() {
   ];
 
   return (
-    <div className="min-h-screen bg-[var(--bg-secondary)] text-[var(--text)] fade-in pb-20">
+    <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] fade-in pb-20">
       <main className="space-y-20">
         <section className="relative min-h-[720px] md:min-h-[760px] pt-36 flex items-end overflow-hidden">
           <img

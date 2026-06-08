@@ -52,7 +52,7 @@ const Terms = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[var(--bg-secondary)] text-[var(--text)] fade-in pb-20 pt-28">
+    <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] fade-in pb-20 pt-28">
       <Helmet>
         <title>Terms & Conditions | Maatriva</title>
         <meta name="description" content="Read the Terms and Conditions for purchasing and using Maatriva smart cradle and applications." />

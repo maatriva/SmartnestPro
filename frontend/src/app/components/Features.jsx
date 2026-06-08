@@ -75,7 +75,7 @@ export function Features() {
   }, []);
 
   return (
-    <section id="features" className="py-24 px-6 bg-[var(--bg-secondary)] text-[var(--text)] overflow-hidden">
+    <section id="features" className="py-24 px-6 blend-features text-[var(--text)] overflow-hidden">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}

@@ -18,7 +18,7 @@ const ProtectedRoute = ({ children }) => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[var(--bg-secondary)] text-[var(--text-dark)]">
+      <div className="min-h-screen flex items-center justify-center bg-[var(--bg)] text-[var(--text-dark)]">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 border-4 border-[var(--primary)] border-t-transparent rounded-full animate-spin"></div>
           <p className="font-bold text-xl animate-pulse">Loading Maatriva...</p>

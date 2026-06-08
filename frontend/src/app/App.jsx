@@ -42,14 +42,14 @@ const Terms = lazy(() => import("./components/pages/Terms"));
 const NotFound = lazy(() => import("./components/pages/NotFound"));
 
 const LoadingFallback = () => (
-  <div className="fixed inset-0 flex items-center justify-center bg-[var(--bg-secondary)] z-50">
+  <div className="fixed inset-0 flex items-center justify-center bg-[var(--bg)] z-50">
     <div className="w-12 h-12 border-4 border-[var(--primary)] border-t-transparent rounded-full animate-spin"></div>
   </div>
 );
 
 function Home() {
   return (
-    <div className="relative bg-[var(--bg-secondary)] text-[var(--text)] fade-in">
+    <div className="relative bg-[var(--bg)] text-[var(--text)] fade-in">
       <Helmet>
         <title>Maatriva | The AI Baby Cradle</title>
         <meta name="description" content="Discover the world's first AI-powered smart baby cradle. Maatriva learns your baby's needs and provides peace of mind." />
@@ -72,7 +72,7 @@ export default function App() {
   const location = useLocation();
 
   return (
-    <div className="relative bg-[var(--bg-secondary)] text-[var(--text)] overflow-x-hidden w-full">
+    <div className="relative bg-[var(--bg)] text-[var(--text)] overflow-x-hidden w-full">
       <ScrollToTop />
       <Toaster position="top-center" richColors />
 

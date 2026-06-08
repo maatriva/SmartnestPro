@@ -323,7 +323,7 @@ export function Pricing() {
     <section
       id="pricing"
       ref={sectionRef}
-      className="py-24 px-6 bg-[var(--bg-secondary)] text-[var(--text)] relative"
+      className="py-24 px-6 blend-pricing text-[var(--text)] relative"
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">

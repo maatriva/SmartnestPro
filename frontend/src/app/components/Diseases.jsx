@@ -47,7 +47,7 @@ const Diseases = () => {
   return (
     <section
       id="diseases"
-      className="py-24 px-6 section-blend-glass backdrop-blur-sm text-[var(--text)] overflow-x-hidden"
+      className="py-24 px-6 clay-even-section text-[var(--text)] overflow-x-hidden"
     >
       <div className="max-w-7xl mx-auto">
         {/* Heading */}

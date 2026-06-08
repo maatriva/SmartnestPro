@@ -63,7 +63,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen overflow-hidden bg-[var(--bg-secondary)]"
+      className="relative min-h-screen overflow-hidden clay-hero"
     >
       {/* Background Glow */}
       <div className="absolute inset-0 overflow-hidden">

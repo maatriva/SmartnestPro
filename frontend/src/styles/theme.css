@@ -214,8 +214,39 @@
 
 .clay-hero::after {
   bottom: 0;
-  height: 11rem;
-  background: linear-gradient(to top, var(--bg-secondary), transparent);
+  height: 16px;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.7), transparent);
+}
+
+.clay-even-section {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 2px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 
+    inset 6px 6px 14px rgba(255, 255, 255, 0.85),
+    inset -6px -6px 14px rgba(166, 180, 200, 0.25),
+    10px 10px 24px rgba(103, 210, 218, 0.45) !important;
+}
+
+.blend-features {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.7) 0%,
+    var(--bg-secondary) 16px,
+    var(--bg-secondary) calc(100% - 16px),
+    rgba(255, 255, 255, 0.7) 100%
+  ) !important;
+}
+
+.blend-pricing {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.7) 0%,
+    var(--bg-secondary) 16px,
+    var(--bg-secondary) calc(100% - 16px),
+    rgba(255, 255, 255, 0.7) 100%
+  ) !important;
 }
 
 .clay-model-stage {
