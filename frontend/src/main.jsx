@@ -3,10 +3,9 @@ import { ParallaxProvider } from "react-scroll-parallax";
 import { hydrateRoot, createRoot } from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
 import App from "./app/App";
-import "./index.css";
-import "./styles/theme.css";
+import "./styles/index.css";
 import { BrowserRouter } from "react-router-dom";
-import { AuthProvider } from "./app/context/AuthContext";
+import { AuthProvider } from "./features/auth/context/AuthContext";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const rootElement = document.getElementById("root");

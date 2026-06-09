@@ -1,0 +1,81 @@
+import React from "react";
+
+export default function QuestionCard({ q, qIndex, answers, handleChange }) {
+  const currentAnswer = answers[qIndex];
+
+  return (
+    <div className="relative group">
+      <div className="flex items-start gap-4 mb-6">
+        <span className="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-(--primary)/10 text-(--primary) flex items-center justify-center font-bold text-xs border border-(--primary)/20 group-hover:bg-(--primary) group-hover:text-white transition-colors">
+          {qIndex + 1}
+        </span>
+        <h4 className="text-xl md:text-2xl font-bold text-(--text-dark) leading-tight">
+          {q.question || "Rate your response"}
+        </h4>
+      </div>
+
+      <div className="ml-0 md:ml-10">
+        {q.type === "range" ? (
+          <div className="space-y-6 py-4">
+            <input
+              type="range"
+              min="0"
+              max={q.options.length - 1}
+              step="1"
+              value={q.options.indexOf(currentAnswer) !== -1 ? q.options.indexOf(currentAnswer) : 0}
+              onChange={(e) => handleChange(qIndex, q.options[parseInt(e.target.value)], "radio")}
+              className="w-full h-3 bg-white/50 backdrop-blur rounded-lg appearance-none cursor-pointer accent-(--text-dark)"
+            />
+            <div className="flex justify-between px-2">
+              {q.options.map((opt, idx) => (
+                <div key={idx} className="flex flex-col items-center gap-2">
+                  <div className={`w-1.5 h-1.5 rounded-full transition-all ${
+                    currentAnswer === opt ? "bg-(--text-dark) scale-150" : "bg-gray-300"
+                  }`} />
+                  <span className={`text-xs font-bold transition-all ${
+                    currentAnswer === opt ? "text-(--text-dark) scale-110" : "text-gray-400"
+                  }`}>
+                    {opt}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {q.options.map((opt, idx) => {
+              const isSelected = q.type === "radio" 
+                  ? currentAnswer === opt 
+                  : currentAnswer?.includes(opt);
+
+              return (
+                <button
+                  key={idx}
+                  onClick={() => handleChange(qIndex, opt, q.type)}
+                  className={`flex items-center justify-between p-5 rounded-2xl border-2 text-left transition-all duration-300 group/btn ${
+                    isSelected 
+                      ? "clay-btn clay-btn-primary text-white scale-[1.02]" 
+                      : "clay-card text-(--text) bg-white/50"
+                  }`}
+                >
+                  <span className="font-semibold">{opt}</span>
+                  <div className={`w-6 h-6 rounded-full border flex items-center justify-center flex-shrink-0 transition-all ${
+                    isSelected 
+                      ? "clay-badge bg-white text-(--primary) scale-110" 
+                      : "border-(--primary)/20 group-hover/btn:border-(--primary)/40 bg-white/40"
+                  }`}>
+                    {isSelected && (
+                      q.type === "radio" 
+                        ? <div className="w-3 h-3 rounded-full bg-(--text-dark)" />
+                        : <div className="w-3 h-3 bg-(--text-dark) rounded-sm" />
+                    )}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
