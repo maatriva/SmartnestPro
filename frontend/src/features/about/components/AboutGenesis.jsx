@@ -6,7 +6,7 @@ import withoutBabyImage from "../../images/withoutbaby.jpeg";
 
 export default function AboutGenesis() {
   return (
-    <section className="px-5 sm:px-8 lg:px-12">
+    <section className="py-20 bg-(--bg) px-5 sm:px-8 lg:px-12">
       <div className="mx-auto max-w-7xl clay-card p-8 sm:p-12 lg:p-16 grid items-center gap-14 lg:grid-cols-[1fr_1.05fr]">
         <motion.div
           initial={{ opacity: 0, y: 28 }}

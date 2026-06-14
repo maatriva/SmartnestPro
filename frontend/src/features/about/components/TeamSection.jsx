@@ -1,12 +1,11 @@
 import React from "react";
-import TeamMemberCard from "./TeamMemberCard";
-import { team } from "../constants/aboutData";
+import TeamOrbit from "./TeamOrbit";
 
-export default function TeamSection({ expandedCards, toggleCard }) {
+export default function TeamSection() {
   return (
-    <section className="px-5 sm:px-8 lg:px-12">
+    <section className="py-20 bg-(--bg) px-5 sm:px-8 lg:px-12">
       <div className="mx-auto max-w-7xl clay-card p-8 sm:p-12 lg:p-16">
-        <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:items-end">
+        <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:items-end mb-10">
           <div>
             <div className="inline-block px-3 py-1.5 clay-badge text-[10px] font-black uppercase tracking-[0.2em] mb-4">
               The Minds Behind Maatriva
@@ -20,16 +19,8 @@ export default function TeamSection({ expandedCards, toggleCard }) {
           </p>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-          {team.map((member, index) => (
-            <TeamMemberCard
-              key={member.name}
-              member={member}
-              index={index}
-              isExpanded={!!expandedCards[member.name]}
-              onToggle={() => toggleCard(member.name)}
-            />
-          ))}
+        <div className="mt-6 border-t border-teal-200/20 pt-8">
+          <TeamOrbit />
         </div>
       </div>
     </section>

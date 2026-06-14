@@ -34,6 +34,7 @@ export const team = [
     objectPosition: "object-[center_20%]",
     linkedin: "https://www.linkedin.com/in/arghyapratimghosh ",
     copy: "Leads the development of smart hardware systems, ensuring reliability, innovation, and seamless integration.",
+    skills: ["IoT Systems", "Embedded Firmware", "Product Architecture", "MedTech Hardware"],
   },
   {
     name: "Rahul Kumar Ghosh",
@@ -44,6 +45,7 @@ export const team = [
     objectPosition: "object-center",
     linkedin: "https://www.linkedin.com/in/rahul-kumar-ghosh ",
     copy: "Builds advanced AI solutions to enhance safety, monitoring, and user experiences.",
+    skills: ["Robotics & Control", "Computer Vision", "Machine Learning", "Edge Computing"],
   },
   {
     name: "Kirtik Biswas",
@@ -54,6 +56,7 @@ export const team = [
     objectPosition: "object-[center_20%]",
     linkedin: "https://www.linkedin.com/in/kirtikbiswas ",
     copy: "Combines AI innovation with strategic marketing to create impactful solutions that enhance baby care and connect meaningfully with parents.",
+    skills: ["Growth Marketing", "AI Consulting", "Product Strategy", "Market Positioning"],
   },
   {
     name: "Vishavjeet Chauhan",
@@ -64,6 +67,7 @@ export const team = [
     objectPosition: "object-center",
     linkedin: "https://www.linkedin.com/in/vishavjeet-chauhan-140b88335 ",
     copy: "Shapes the creative vision of Maatriva, crafting engaging experiences that are innovative, meaningful, and user-focused.",
+    skills: ["UI/UX Design", "3D Modeling", "Branding Identity", "Creative Direction"],
   },
   {
     name: "Arman Sharma",
@@ -74,5 +78,6 @@ export const team = [
     objectPosition: "object-[center_20%]",
     linkedin: "https://www.linkedin.com/in/arman-sharma-0a875a32a ",
     copy: "Builds intuitive web and mobile applications that bring Maatriva's smart baby care solutions to parents everywhere.",
+    skills: ["React / React Native", "Tailwind CSS", "TypeScript", "Full-Stack Dev"],
   },
 ];

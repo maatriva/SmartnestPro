@@ -28,7 +28,7 @@ export default function Survey() {
   }
 
   return (
-    <div className="min-h-screen bg-[#A8DADC] px-4 py-12 md:py-20 font-sans text-(--text-dark)">
+    <div className="min-h-screen bg-(--bg) px-4 py-12 md:py-20 font-sans text-(--text-dark)">
       <div className="max-w-4xl mx-auto relative">
         
         {/* Progress Header */}

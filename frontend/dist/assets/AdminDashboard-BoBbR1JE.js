@@ -1,4 +1,4 @@
-import{r as m,j as e}from"./ui-vendor-avc6CE4D.js";import{c as x,A as S,m as d}from"./index-KpkQJGbx.js";import{M as j}from"./mail-jfZrAkH0.js";import"./animation-vendor-DvrN3zRt.js";/**
+import{r as m,j as e}from"./ui-vendor-avc6CE4D.js";import{c as x,A as S,m as d}from"./index-B6iNF70I.js";import{M as j}from"./mail-DScvNDWP.js";import"./animation-vendor-Cda-ms3t.js";/**
  * @license lucide-react v0.487.0 - ISC
  *
  * This source code is licensed under the ISC license.

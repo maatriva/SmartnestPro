@@ -4,9 +4,9 @@ import { scienceCards } from "../constants/aboutData";
 
 export default function ScienceSafety() {
   return (
-    <section className="px-5 sm:px-8 lg:px-12">
-      <div className="mx-auto max-w-7xl clay-card p-8 sm:p-12 lg:p-16">
-        <div className="mx-auto max-w-2xl text-center">
+    <section className="py-20 clay-even-section px-5 sm:px-8 lg:px-12  mt-20">
+      <div className="mx-auto max-w-7xl clay-card-secondary p-8 sm:p-12 lg:p-16">
+        <div className="mx-auto max-w-2xl  text-center">
           <h2 className="text-3xl font-black text-(--text-dark) sm:text-4xl">
             The Science & Safety
           </h2>

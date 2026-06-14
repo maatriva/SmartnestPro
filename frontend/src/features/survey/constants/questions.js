@@ -10,7 +10,7 @@ export const questions = [
       "Parent of a newborn (0–6 months)",
       "Parent of an infant (6–18 months)",
       "Parent of a toddler (18 months–3 years)",
-      "Parent of multiple children",
+      "Child Greater than 3 years",
       "Grandparent / caregiver",
       "Healthcare professional",
     ],
@@ -55,33 +55,34 @@ export const questions = [
     options: [
       "Both working full-time",
       "One working",
-      "Freelance",
+      "Freelancer/Remote",
       "Not working",
     ],
   },
   {
-    question: "How satisfied are you with current baby monitoring solutions?",
+    question: "How satisfied are you with current baby care journey?",
     type: "range",
     options: ["1","2","3","4","5","6","7","8","9","10"],
   },
   {
-    question: "Which challenges do you face?",
+    question: "Which baby care challenges are you facing?",
     type: "checkbox",
     options: [
-      "Breathing concern",
+      "Breathing Regulation / Fever",
       "Temperature issues",
       "Understanding crying",
-      "Sleep deprivation",
+      "Parental sleep deprivation",
       "SIDS worry",
-      "No childcare",
+      "Baby feeding problem",
       "Night monitoring",
       "Feeding concerns",
+      "Custom"
     ],
   },
 
   // Q9–Q12
   {
-    question: "How much sleep do you get?",
+    question: "How much sleep are you getting?",
     type: "radio",
     options: ["<3 hrs", "3–5 hrs", "5–7 hrs", "7+ hrs"],
   },
@@ -91,7 +92,7 @@ export const questions = [
     options: ["Low", "Medium", "High", "Very High"],
   },
   {
-    question: "AI chatbot usefulness?",
+    question: "How likely would an AI voice assistant , trained on baby care would help you ?",
     type: "radio",
     options: [
       "Extremely valuable",
@@ -105,13 +106,14 @@ export const questions = [
     question: "AI chatbot topics?",
     type: "checkbox",
     options: [
-      "Breastfeeding",
+      "feedin suggestions",
       "Sleep training",
-      "Milestones",
-      "Nutrition",
-      "Vaccination",
+      "Developmental milestones",
+      "Vaccinations and medical checkups",
+      "Healthcare analysis and feedback",
       "Cry detection",
       "Mental health",
+      "Custom",
     ],
   },
 

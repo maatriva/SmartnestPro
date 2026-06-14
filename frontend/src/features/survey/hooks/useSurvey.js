@@ -18,15 +18,24 @@ export default function useSurvey() {
   const progress = ((page + 1) / totalPages) * 100;
 
   const handleChange = (qIndex, option, type) => {
-    if (type === "radio") {
+    if (type === "radio" || type === "text") {
       setAnswers((prev) => ({ ...prev, [qIndex]: option }));
     } else {
       const prevAnswers = answers[qIndex] || [];
       if (prevAnswers.includes(option)) {
-        setAnswers((prev) => ({
-          ...prev,
-          [qIndex]: prevAnswers.filter((o) => o !== option),
-        }));
+        setAnswers((prev) => {
+          const updated = {
+            ...prev,
+            [qIndex]: prevAnswers.filter((o) => o !== option),
+          };
+          if (qIndex === 7 && option === "Custom") {
+            delete updated["7_custom"];
+          }
+          if (qIndex === 11 && option === "Custom") {
+            delete updated["11_custom"];
+          }
+          return updated;
+        });
       } else {
         setAnswers((prev) => ({
           ...prev,
