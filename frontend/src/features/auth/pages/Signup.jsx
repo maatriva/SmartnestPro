@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-import useSignup from "../hooks/useSignup";
+import useSignup from "../hooks/useSignUp";
 
 import SignupForm from "../components/signup/SignUpForm";
 import GoogleLoginButton from "../components/GoogleLoginButton";
