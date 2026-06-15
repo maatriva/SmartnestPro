@@ -5,6 +5,7 @@ import Hero from "../sections/Hero";
 import Diseases from "../../diseases/components/diseases/Diseases";
 import Features from "../sections/Feature";
 import HowItWorks from "../sections/howItWorks";
+import SupportingParents from "../sections/SupportingParents";
 import Pricing from "../sections/Pricing";
 
 export default function Home() {
@@ -35,6 +36,7 @@ export default function Home() {
         <Diseases />
         <Features />
         <HowItWorks />
+        <SupportingParents />
         <Pricing />
       </Suspense>
     </div>

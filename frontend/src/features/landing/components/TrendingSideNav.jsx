@@ -11,6 +11,7 @@ export default function TrendingSideNav() {
       { id: "diseases", label: "Diseases" },
       { id: "features", label: "Features" },
       { id: "how-it-works", label: "How It Works" },
+      { id: "supporting-parents", label: "Parent Support" },
       // { id: "demo", label: "Demo" },
       { id: "pricing", label: "Pricing" },
       // { id: "testimonials", label: "Testimonials" },
