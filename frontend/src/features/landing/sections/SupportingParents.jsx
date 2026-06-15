@@ -62,13 +62,13 @@ export default function SupportingParents() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="clay-card p-4 bg-white/50 backdrop-blur-md rounded-3xl border border-white/80 shadow-xl overflow-hidden group"
+            className="clay-card p-4 bg-white/50 backdrop-blur-md rounded-3xl border border-white/80 shadow-xl overflow-hidden"
           >
             <div className="relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-[16/10]">
               <img
                 src={supportingParentsImage}
                 alt="Your AI Parenting Companion"
-                className="w-full h-full object-cover transform group-hover:scale-[1.02] transition-transform duration-700"
+                className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-85" />
               
@@ -151,7 +151,7 @@ export default function SupportingParents() {
             
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* Card 1: Anxiety */}
-              <div className="clay-card p-6 hover:shadow-md transition-all flex flex-col justify-between">
+              <div className="clay-card p-6 flex flex-col justify-between">
                 <div className="flex items-start gap-4">
                   <div className="mt-1 p-2 rounded-lg bg-white/60 text-pink-500 shadow-sm flex-shrink-0">
                     <Sparkles className="w-4 h-4" />
@@ -166,7 +166,7 @@ export default function SupportingParents() {
               </div>
 
               {/* Card 2: Warning Signs */}
-              <div className="clay-card p-6 hover:shadow-md transition-all flex flex-col justify-between">
+              <div className="clay-card p-6 flex flex-col justify-between">
                 <div className="flex items-start gap-4">
                   <div className="mt-1 p-2 rounded-lg bg-white/60 text-pink-500 shadow-sm flex-shrink-0">
                     <AlertTriangle className="w-4 h-4" />
@@ -181,7 +181,7 @@ export default function SupportingParents() {
               </div>
 
               {/* Card 3: Compassionate Guidance */}
-              <div className="clay-card p-6 hover:shadow-md transition-all flex flex-col justify-between">
+              <div className="clay-card p-6 flex flex-col justify-between">
                 <div className="flex items-start gap-4">
                   <div className="mt-1 p-2 rounded-lg bg-white/60 text-pink-500 shadow-sm flex-shrink-0">
                     <MessageSquare className="w-4 h-4" />
@@ -217,7 +217,7 @@ export default function SupportingParents() {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {/* Cry analysis */}
-              <div className="clay-card p-6 hover:shadow-md transition-all">
+              <div className="clay-card p-6">
                 <h5 className="font-bold text-base text-(--text-dark) mb-2">Understand Every Cry</h5>
                 <p className="text-(--text) text-sm leading-relaxed">
                   Advanced cry analysis helps identify whether a baby may be hungry, uncomfortable, tired, or in distress, reducing guesswork and helping parents respond faster.
@@ -225,7 +225,7 @@ export default function SupportingParents() {
               </div>
 
               {/* Learn As Your Baby Grows */}
-              <div className="clay-card p-6 hover:shadow-md transition-all">
+              <div className="clay-card p-6">
                 <h5 className="font-bold text-base text-(--text-dark) mb-2">Learn As Your Baby Grows</h5>
                 <p className="text-(--text) text-sm leading-relaxed">
                   Receive personalized developmental insights, milestone tracking, feeding reminders, and age-appropriate parenting guidance tailored to your baby's growth stage.
@@ -233,7 +233,7 @@ export default function SupportingParents() {
               </div>
 
               {/* Simple Health Insights */}
-              <div className="clay-card p-6 hover:shadow-md transition-all">
+              <div className="clay-card p-6">
                 <h5 className="font-bold text-base text-(--text-dark) mb-2">Simple Health Insights</h5>
                 <p className="text-(--text) text-sm leading-relaxed">
                   Instead of overwhelming medical data, the assistant explains infant health metrics in easy-to-understand language, helping parents know what is normal and when professional medical attention may be needed.
@@ -241,7 +241,7 @@ export default function SupportingParents() {
               </div>
 
               {/* 24/7 Parenting Support */}
-              <div className="clay-card p-6 hover:shadow-md transition-all">
+              <div className="clay-card p-6">
                 <h5 className="font-bold text-base text-(--text-dark) mb-2">24/7 Parenting Support</h5>
                 <p className="text-(--text) text-sm leading-relaxed">
                   Whether it's 2 PM or 2 AM, the MAATRIVA AI Assistant is always available to answer questions, provide guidance, and offer reassurance when parents need it most.
@@ -270,7 +270,7 @@ export default function SupportingParents() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               {/* Chat Assistant */}
-              <div className="clay-card p-6 border border-white bg-white/70 hover:shadow-md transition-all">
+              <div className="clay-card p-6 border border-white bg-white/70">
                 <h5 className="font-bold text-lg text-(--text-dark) mb-1">MAATRIVA Chat Assistant</h5>
                 <p className="text-xs text-(--text-light) mb-6">Everyday support on the go</p>
                 
@@ -303,8 +303,8 @@ export default function SupportingParents() {
               </div>
 
               {/* Voice Assistant Pro */}
-              <div className="clay-card p-6 border border-white bg-white/70 hover:shadow-md transition-all relative overflow-hidden group">
-                <div className="absolute -top-12 -right-12 w-28 h-28 bg-(--primary)/5 rounded-full blur-xl group-hover:scale-150 transition-transform duration-700" />
+              <div className="clay-card p-6 border border-white bg-white/70 relative overflow-hidden">
+                <div className="absolute -top-12 -right-12 w-28 h-28 bg-(--primary)/5 rounded-full blur-xl" />
                 
                 <div className="relative z-10">
                   <div className="flex justify-between items-center mb-1">

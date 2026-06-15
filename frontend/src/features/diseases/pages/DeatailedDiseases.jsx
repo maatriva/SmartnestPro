@@ -35,6 +35,7 @@ export default function DetailedDiseases() {
         min-h-screen
         bg-(--bg)
         text-(--text)
+        pt-32
         pb-20
       "
     >

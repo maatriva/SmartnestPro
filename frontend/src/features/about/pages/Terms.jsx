@@ -10,7 +10,7 @@ export default function Terms() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-(--bg) text-(--text) fade-in pb-20 pt-28">
+    <div className="min-h-screen bg-(--bg) text-(--text) fade-in pb-20 pt-32">
       <Helmet>
         <title>Terms & Conditions | Maatriva</title>
         <meta name="description" content="Read the Terms and Conditions for purchasing and using Maatriva smart cradle and applications." />

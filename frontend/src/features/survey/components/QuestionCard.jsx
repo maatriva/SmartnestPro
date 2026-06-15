@@ -5,9 +5,9 @@ export default function QuestionCard({ q, qIndex, answers, handleChange }) {
   const currentAnswer = answers[qIndex];
 
   return (
-    <div className="relative group">
+    <div className="relative">
       <div className="flex items-start gap-4 mb-6">
-        <span className="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-(--primary)/10 text-(--primary) flex items-center justify-center font-bold text-xs border border-(--primary)/20 group-hover:bg-(--primary) group-hover:text-white transition-colors">
+        <span className="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-(--primary)/10 text-(--primary) flex items-center justify-center font-bold text-xs border border-(--primary)/20">
           {qIndex + 1}
         </span>
         <h4 className="text-xl md:text-2xl font-bold text-(--text-dark) leading-tight">

@@ -18,7 +18,7 @@ export default function TeamMemberCard({
     >
       <motion.div
         layout
-        className="relative flex w-full flex-col flex-1 items-center clay-card px-7 py-9 text-center text-(--text) transition-transform duration-300 hover:-translate-y-1"
+        className="relative flex w-full flex-col flex-1 items-center clay-card px-7 py-9 text-center text-(--text)"
       >
         {(member.isFounder || member.isCoFounder) && (
           <motion.span layout className="absolute left-5 top-5 rounded-full clay-badge px-3 py-1 text-[9px] font-black uppercase tracking-[0.18em]">

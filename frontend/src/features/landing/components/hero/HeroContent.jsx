@@ -1,5 +1,6 @@
 import { Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export default function HeroContent({
   headingRef,
@@ -73,7 +74,8 @@ export default function HeroContent({
         transition={{ delay: 0.6 }}
         className="flex flex-wrap gap-4 mt-8"
       >
-        <button
+        <Link
+          to="/survey"
           className="
             px-8
             py-4
@@ -82,12 +84,15 @@ export default function HeroContent({
             text-white
             font-medium
             hover:scale-105
+            hover:shadow-[0_8px_24px_rgba(20,184,166,0.35)]
+            active:scale-95
             transition-all
             duration-300
+            inline-block
           "
         >
-          {buttonText}
-        </button>
+          {buttonText === "Coming Soon" ? "Pre-Order Survey" : buttonText}
+        </Link>
       </motion.div>
     </div>
   );
