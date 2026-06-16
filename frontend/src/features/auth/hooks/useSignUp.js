@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import useAuth from "./useAuth";
 import { validateEmail } from "../../../shared/utils/validation";
 
 export default function useSignup() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const { signup, googleLogin } = useAuth();
 
@@ -48,7 +50,7 @@ export default function useSignup() {
         true
       );
 
-      navigate("/");
+      navigate(from);
     } catch {
       setError(
         "Google signup failed. Please try again."
@@ -83,7 +85,7 @@ export default function useSignup() {
         formData.isProfessional
       );
 
-      navigate("/");
+      navigate(from);
     } catch (err) {
       setError(
         err.response?.data?.error ||

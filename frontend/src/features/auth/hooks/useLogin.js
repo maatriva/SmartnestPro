@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "./useAuth";
 import { validateEmail } from "../../../shared/utils/validation";
 
 export default function useLogin() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const { login, googleLogin } = useAuth();
 
@@ -38,7 +40,7 @@ export default function useLogin() {
         credentialResponse.credential
       );
 
-      navigate("/");
+      navigate(from);
     } catch (err) {
       setError(
         "Google login failed. Please try again."
@@ -71,7 +73,7 @@ export default function useLogin() {
         formData.password
       );
 
-      navigate("/");
+      navigate(from);
     } catch (err) {
       setError(
         err.response?.data?.error ||

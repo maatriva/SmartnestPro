@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 
 import AdminRoute from "../../features/auth/routes/AdminRoute";
+import ProtectedRoute from "../../features/auth/routes/ProtectedRoute";
 
 const Home = lazy(() =>
   import("../../features/landing/pages/Home")
@@ -59,7 +60,11 @@ export default function AppRoutes() {
 
           <Route
             path="/survey"
-            element={<Survey />}
+            element={
+              <ProtectedRoute>
+                <Survey />
+              </ProtectedRoute>
+            }
           />
 
           <Route

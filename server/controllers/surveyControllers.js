@@ -1,17 +1,29 @@
 import pool from "../db.js";
-import { validateEmail } from "../utils/validation.js";
 
 export const createSurvey = async (req, res) => {
-  const { name, email, answers, user_id } = req.body;
+  const { answers } = req.body;
+  const user_id = req.user?.id;
 
-  if (!validateEmail(email)) {
-    return res.status(400).json({ error: "Invalid email format" });
+  if (!user_id) {
+    return res.status(401).json({ error: "Unauthorized. Please log in to submit a survey." });
   }
 
   try {
+    // Retrieve the user's name and email from the database
+    const userResult = await pool.query(
+      "SELECT name, email FROM users WHERE id = $1",
+      [user_id]
+    );
+
+    if (userResult.rows.length === 0) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    const { name, email } = userResult.rows[0];
+
     const result = await pool.query(
       "INSERT INTO surveys (name, email, answers, user_id) VALUES ($1, $2, $3, $4) RETURNING *",
-      [name, email, answers, user_id || null]
+      [name, email, answers, user_id]
     );
 
     res.status(201).json({
