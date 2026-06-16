@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { motion, AnimatePresence, useTransform, useSpring, useMotionValue, animate } from "motion/react";
 import { Linkedin, X, Award, Terminal, CheckCircle2 } from "lucide-react";
 import { team } from "../constants/aboutData";
@@ -113,6 +113,19 @@ export default function TeamOrbit() {
   const sectionRef = useRef(null);
   const N = team.length;
 
+  // Generate stable random particles once to optimize performance and prevent animation restarts
+  const backdropParticles = useMemo(() => {
+    return [...Array(15)].map((_, i) => ({
+      id: i,
+      x: Math.random() * 100 + "%",
+      y: Math.random() * 100 + "%",
+      opacity: Math.random() * 0.4 + 0.1,
+      scale: Math.random() * 0.8 + 0.4,
+      duration: 8 + Math.random() * 6,
+      delay: Math.random() * 4,
+    }));
+  }, []);
+
   // Permanently Enlarged Orbit Dimensions (Centered Layout)
   const radiusX = size.width >= 1280 ? 465 : size.width >= 1024 ? 385 : size.width >= 768 ? 295 : 145;
   const radiusZ = size.width >= 1280 ? 285 : size.width >= 1024 ? 225 : size.width >= 768 ? 165 : 85;
@@ -144,6 +157,26 @@ export default function TeamOrbit() {
 
   // Lock body scroll when profile details panel is open
   useBodyScrollLock(isPanelOpen);
+
+  const panelScrollRef = useRef(null);
+
+  // Reset scroll position of the details panel when the selected employee changes or panel opens
+  useEffect(() => {
+    if (isPanelOpen) {
+      const resetScroll = () => {
+        if (panelScrollRef.current) {
+          panelScrollRef.current.scrollTop = 0;
+        }
+      };
+
+      // Reset immediately
+      resetScroll();
+
+      // Defer to override browser autofocus or layout-shifting scroll
+      const timer = setTimeout(resetScroll, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [selectedEmployee, isPanelOpen]);
 
   // Orbit scale factor (permanently 1.0)
   const orbitScale = useMotionValue(1);
@@ -308,7 +341,7 @@ export default function TeamOrbit() {
       className="relative w-full overflow-hidden py-16 px-6 md:px-12 lg:px-20 select-none"
     >
       {/* 🌌 Premium Aesthetic Backdrop: Gradient Blobs & Floating Particles */}
-      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+      <div className={`absolute inset-0 pointer-events-none z-0 overflow-hidden transition-all duration-300 ${isPanelOpen ? "opacity-0 invisible" : ""}`}>
         {/* Blob 1 */}
         <motion.div
           animate={{
@@ -341,24 +374,24 @@ export default function TeamOrbit() {
         />
         
         {/* Floating Particles */}
-        {[...Array(15)].map((_, i) => (
+        {backdropParticles.map((p) => (
           <motion.div
-            key={i}
+            key={p.id}
             initial={{
-              x: Math.random() * 100 + "%",
-              y: Math.random() * 100 + "%",
-              opacity: Math.random() * 0.4 + 0.1,
-              scale: Math.random() * 0.8 + 0.4,
+              x: p.x,
+              y: p.y,
+              opacity: p.opacity,
+              scale: p.scale,
             }}
             animate={{
               y: ["0%", "-10%", "0%"],
               x: ["0%", "5%", "0%"],
             }}
             transition={{
-              duration: 8 + Math.random() * 6,
+              duration: p.duration,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: Math.random() * 4,
+              delay: p.delay,
             }}
             style={{ willChange: "transform" }}
             className="absolute w-3 h-3 rounded-full bg-teal-200/50 shadow-[0_0_6px_rgba(184,227,226,0.4)] pointer-events-none"
@@ -367,7 +400,7 @@ export default function TeamOrbit() {
       </div>
 
       {/* Main Section Content Wrapper */}
-      <div className="relative mx-auto max-w-7xl z-10 flex flex-col items-center">
+      <div className={`relative mx-auto max-w-7xl z-10 flex flex-col items-center transition-all duration-300 ${isPanelOpen ? "opacity-0 invisible pointer-events-none" : ""}`}>
         
         {/* 🧭 Rating-style Profile Avatar Navigation Bar */}
         <div className="flex justify-center items-center gap-3 sm:gap-4 md:gap-5 mb-12 relative z-25">
@@ -424,7 +457,7 @@ export default function TeamOrbit() {
               scale: isExploreMode ? 1.05 : 1.0,
             }}
             transition={{ type: "spring", stiffness: 60, damping: 16 }}
-            className="flex flex-col items-center justify-center relative w-full overflow-visible z-20 touch-none cursor-grab active:cursor-grabbing"
+            className="flex flex-col items-center justify-center relative w-full overflow-visible z-20 touch-pan-y cursor-grab active:cursor-grabbing"
           >
             {/* Orbit Stage Area */}
             <div className="relative w-full h-[320px] sm:h-[480px] flex items-center justify-center overflow-visible">
@@ -517,7 +550,7 @@ export default function TeamOrbit() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={closePanel}
-              className="fixed inset-0 bg-black/60 backdrop-blur-md z-45 cursor-pointer"
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[110] cursor-pointer"
             />
 
             {/* Slide-up Profile Panel */}
@@ -527,7 +560,7 @@ export default function TeamOrbit() {
               animate="visible"
               exit="hidden"
               style={{ willChange: "transform" }}
-              className="fixed top-[101px] bottom-0 left-0 right-0 w-full bg-white/85 dark:bg-zinc-950/90 backdrop-blur-xl rounded-t-[32px] sm:rounded-t-[48px] border-t border-white/20 dark:border-zinc-800/40 shadow-[0_-20px_50px_rgba(0,0,0,0.4)] z-50 overflow-hidden flex flex-col"
+              className="fixed top-[101px] bottom-0 left-0 right-0 w-full bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md rounded-t-[32px] sm:rounded-t-[48px] border-t border-white/20 dark:border-zinc-800/40 shadow-[0_-20px_50px_rgba(0,0,0,0.4)] z-[120] overflow-hidden flex flex-col"
             >
               {/* Top drag handle indicator */}
               <div className="w-full flex justify-center py-4 cursor-pointer" onClick={closePanel}>
@@ -543,7 +576,11 @@ export default function TeamOrbit() {
               </button>
 
               {/* Scrollable Panel Contents */}
-              <div className="flex-1 overflow-y-auto px-6 pb-20 sm:px-12 lg:px-24 no-scrollbar">
+              <div
+                ref={panelScrollRef}
+                style={{ WebkitOverflowScrolling: "touch", willChange: "scroll-position" }}
+                className="flex-grow min-h-0 overflow-y-auto px-6 pb-20 sm:px-12 lg:px-24"
+              >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 pt-6">
                   
                   {/* Left Column: Photo & Socials */}
@@ -662,7 +699,7 @@ export default function TeamOrbit() {
 }
 
 // Sub-component: A single card on the 3D Orbit path (Desktop & Mobile)
-function OrbitCard({
+const OrbitCard = React.memo(function OrbitCard({
   member,
   index,
   phi_i,
@@ -775,10 +812,10 @@ function OrbitCard({
       </motion.div>
     </motion.div>
   );
-}
+});
 
 // Sub-component: Connector lines (optimized motion line coordinate transforms)
-function OrbitBeamLine({ phi_i, smoothAngle, orbitScale, radiusX, radiusY, isActive }) {
+const OrbitBeamLine = React.memo(function OrbitBeamLine({ phi_i, smoothAngle, orbitScale, radiusX, radiusY, isActive }) {
   const x = useTransform([smoothAngle, orbitScale], ([angleVal, scaleVal]) => (radiusX * scaleVal) * Math.sin(((angleVal + phi_i) * Math.PI) / 180));
   const z = useTransform([smoothAngle, orbitScale], ([angleVal, scaleVal]) => (radiusY * scaleVal) * (radiusX !== 0 ? Math.cos(((angleVal + phi_i) * Math.PI) / 180) : 1));
   
@@ -797,4 +834,4 @@ function OrbitBeamLine({ phi_i, smoothAngle, orbitScale, radiusX, radiusY, isAct
       className={`transition-colors duration-300 ${isActive ? "opacity-60" : "opacity-25"}`}
     />
   );
-}
+});

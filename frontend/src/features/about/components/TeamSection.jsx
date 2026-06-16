@@ -4,8 +4,8 @@ import TeamOrbit from "./TeamOrbit";
 export default function TeamSection() {
   return (
     <section className="py-20 bg-(--bg) px-5 sm:px-8 lg:px-12">
-      <div className="mx-auto max-w-7xl clay-card p-8 sm:p-12 lg:p-16">
-        <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:items-end mb-10">
+      <div className="mx-auto max-w-7xl clay-card-static p-8 sm:p-12 lg:p-16 mb-8">
+        <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:items-end">
           <div>
             <div className="inline-block px-3 py-1.5 clay-badge text-[10px] font-black uppercase tracking-[0.2em] mb-4">
               The Minds Behind Maatriva
@@ -18,10 +18,10 @@ export default function TeamSection() {
             A team of aspiring developers and innovators building the future of baby care through technology and AI.
           </p>
         </div>
+      </div>
 
-        <div className="mt-6 border-t border-teal-200/20 pt-8">
-          <TeamOrbit />
-        </div>
+      <div className="mx-auto max-w-7xl">
+        <TeamOrbit />
       </div>
     </section>
   );
