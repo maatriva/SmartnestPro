@@ -350,9 +350,4 @@ export const questions = [
     type: "range",
     options: ["1","2","3","4","5","6","7","8","9","10"],
   },
-  {
-    question: "What is your gender?",
-    type: "radio",
-    options: ["Male", "Female", "Other", "Prefer not to say"],
-  },
 ];

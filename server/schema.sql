@@ -34,6 +34,8 @@ CREATE TABLE IF NOT EXISTS surveys (
   user_id INTEGER REFERENCES users(id),
   name TEXT,
   email TEXT,
+  phone TEXT,
+  gender TEXT,
   answers JSONB NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

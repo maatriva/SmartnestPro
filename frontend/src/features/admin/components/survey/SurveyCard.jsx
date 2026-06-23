@@ -37,7 +37,10 @@ export default function SurveyCard({
             </h4>
 
             <p className="text-xs text-(--text-light) font-bold uppercase tracking-wider">
-              {survey.email} • {new Date(survey.created_at).toLocaleDateString()}
+              {survey.email}
+              {survey.phone ? ` • Phone: ${survey.phone}` : ""}
+              {survey.gender ? ` • Gender: ${survey.gender}` : ""}
+              {` • ${new Date(survey.created_at).toLocaleDateString()}`}
             </p>
           </div>
         </div>

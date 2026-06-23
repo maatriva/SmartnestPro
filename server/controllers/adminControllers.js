@@ -13,7 +13,7 @@ export const getAdminStats = async (req, res) => {
 
     // 2. Get all surveys
     const surveysResult = await pool.query(`
-      SELECT s.id, s.name, s.email, s.answers, s.created_at 
+      SELECT s.id, s.name, s.email, s.phone, s.gender, s.answers, s.created_at 
       FROM surveys s 
       ORDER BY s.created_at DESC
     `);

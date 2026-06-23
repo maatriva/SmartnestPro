@@ -10,6 +10,8 @@ import SurveyControls from "../components/SurveyControls";
 export default function Survey() {
   const {
     page,
+    personalInfo,
+    setPersonalInfo,
     answers,
     submitted,
     loading,
@@ -21,6 +23,8 @@ export default function Survey() {
     handleChange,
     handleNext,
     handlePrev,
+    validationError,
+    setValidationError,
   } = useSurvey();
 
   if (submitted) {
@@ -55,8 +59,12 @@ export default function Survey() {
                     {page + 1}
                   </div>
                   <div>
-                    <h2 className="text-xl font-bold text-(--text-dark)">Section {page + 1}</h2>
-                    <p className="text-sm text-(--text-light)">Step for the future</p>
+                    <h2 className="text-xl font-bold text-(--text-dark)">
+                      {page === 0 ? "Personal Information" : `Section ${page}`}
+                    </h2>
+                    <p className="text-sm text-(--text-light)">
+                      {page === 0 ? "Tell us about yourself" : "Step for the future"}
+                    </p>
                   </div>
                 </div>
                 <div className="hidden sm:block text-right">
@@ -65,21 +73,122 @@ export default function Survey() {
                 </div>
               </div>
 
-              <div className="grid gap-12">
-                {currentQuestions.map((q, i) => {
-                  const qIndex = start + i;
-                  return (
-                    <QuestionCard
-                      key={qIndex}
-                      q={q}
-                      qIndex={qIndex}
-                      answers={answers}
-                      handleChange={handleChange}
+              {page === 0 ? (
+                <div className="grid gap-8">
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-(--text-dark) flex items-center gap-1">
+                      Full Name <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={personalInfo.name}
+                      onChange={(e) => {
+                        setValidationError("");
+                        setPersonalInfo({ ...personalInfo, name: e.target.value });
+                      }}
+                      placeholder="John Doe"
+                      className="w-full px-4 py-3 clay-input"
                     />
-                  );
-                })}
-              </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-(--text-dark) flex items-center gap-1">
+                      Email Address <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      value={personalInfo.email}
+                      onChange={(e) => {
+                        setValidationError("");
+                        setPersonalInfo({ ...personalInfo, email: e.target.value });
+                      }}
+                      placeholder="john@example.com"
+                      className="w-full px-4 py-3 clay-input"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-(--text-dark)">
+                      Phone Number (Optional)
+                    </label>
+                    <input
+                      type="tel"
+                      value={personalInfo.phone}
+                      onChange={(e) => {
+                        setValidationError("");
+                        setPersonalInfo({ ...personalInfo, phone: e.target.value });
+                      }}
+                      placeholder="+91 98765 43210"
+                      className="w-full px-4 py-3 clay-input"
+                    />
+                  </div>
+
+                  <div className="space-y-3">
+                    <label className="text-sm font-bold text-(--text-dark) flex items-center gap-1">
+                      What is your gender? <span className="text-red-500">*</span>
+                    </label>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {["Male", "Female", "Other", "Prefer not to say"].map((option) => {
+                        const isSelected = personalInfo.gender === option;
+                        return (
+                          <label
+                            key={option}
+                            className={`flex items-center gap-3 p-4 rounded-2xl cursor-pointer border transition-all duration-300 ${
+                              isSelected
+                                ? "bg-(--primary)/20 border-(--primary) shadow-[inset_2px_2px_4px_rgba(255,255,255,0.9),_inset_-2px_-2px_4px_rgba(0,0,0,0.05),_0_0_15px_rgba(74,111,165,0.2)]"
+                                : "bg-white/10 border-white/20 hover:bg-white/20"
+                            }`}
+                          >
+                            <input
+                              type="radio"
+                              name="gender"
+                              value={option}
+                              checked={isSelected}
+                              onChange={() => {
+                                setValidationError("");
+                                setPersonalInfo({ ...personalInfo, gender: option });
+                              }}
+                              className="accent-(--primary) w-4 h-4 cursor-pointer"
+                            />
+                            <span className="font-semibold text-sm text-(--text-dark)">
+                              {option}
+                            </span>
+                          </label>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="grid gap-12">
+                  {currentQuestions.map((q, i) => {
+                    const qIndex = start + i;
+                    return (
+                      <QuestionCard
+                        key={qIndex}
+                        q={q}
+                        qIndex={qIndex}
+                        answers={answers}
+                        handleChange={handleChange}
+                      />
+                    );
+                  })}
+                </div>
+              )}
             </div>
+
+            {/* Validation Error Message */}
+            {validationError && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="bg-red-500/10 border border-red-500/30 text-red-600 px-6 py-4 rounded-2xl font-semibold text-sm text-center shadow-sm backdrop-blur-md"
+              >
+                {validationError}
+              </motion.div>
+            )}
 
             {/* Navigation Controls */}
             <SurveyControls

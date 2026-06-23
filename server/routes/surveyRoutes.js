@@ -4,7 +4,7 @@ import authMiddleware from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.post("/", authMiddleware, createSurvey);
+router.post("/", createSurvey);
 router.get("/", getSurveys);
 
 export default router;

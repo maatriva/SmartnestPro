@@ -60,11 +60,7 @@ export default function AppRoutes() {
 
           <Route
             path="/survey"
-            element={
-              <ProtectedRoute>
-                <Survey />
-              </ProtectedRoute>
-            }
+            element={<Survey />}
           />
 
           <Route

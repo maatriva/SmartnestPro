@@ -1,29 +1,16 @@
 import pool from "../db.js";
 
 export const createSurvey = async (req, res) => {
-  const { answers } = req.body;
-  const user_id = req.user?.id;
+  const { name, email, phone, gender, answers, user_id } = req.body;
 
-  if (!user_id) {
-    return res.status(401).json({ error: "Unauthorized. Please log in to submit a survey." });
+  if (!name || !email) {
+    return res.status(400).json({ error: "Name and Email are required." });
   }
 
   try {
-    // Retrieve the user's name and email from the database
-    const userResult = await pool.query(
-      "SELECT name, email FROM users WHERE id = $1",
-      [user_id]
-    );
-
-    if (userResult.rows.length === 0) {
-      return res.status(404).json({ error: "User not found" });
-    }
-
-    const { name, email } = userResult.rows[0];
-
     const result = await pool.query(
-      "INSERT INTO surveys (name, email, answers, user_id) VALUES ($1, $2, $3, $4) RETURNING *",
-      [name, email, answers, user_id]
+      "INSERT INTO surveys (name, email, phone, gender, answers, user_id) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
+      [name, email, phone || null, gender || null, answers, user_id || null]
     );
 
     res.status(201).json({
