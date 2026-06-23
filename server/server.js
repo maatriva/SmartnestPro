@@ -13,6 +13,7 @@ import preorderRoutes from "./routes/preOrderRoutes.js";
 import surveyRoutes from "./routes/surveyRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import diseaseRoutes from "./routes/diseaseRoutes.js";
+import storyRoutes from "./routes/storyRoutes.js";
 
 
 const app = express();
@@ -35,6 +36,7 @@ app.use("/api/preorders", preorderRoutes);
 app.use("/api/surveys", surveyRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/diseases", diseaseRoutes);
+app.use("/api/stories", storyRoutes);
 
 
 app.get("/", (req, res) => {

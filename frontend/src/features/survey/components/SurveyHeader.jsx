@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 
-export default function SurveyHeader() {
+export default function SurveyHeader({ showKarmaNote }) {
   return (
     <div className="text-center mb-12">
       <motion.div
@@ -19,6 +19,20 @@ export default function SurveyHeader() {
         <p className="text-(--text-light) text-lg max-w-xl mx-auto font-medium">
           Join us in redefining baby care. Your insights help us build the perfect nest.
         </p>
+        {showKarmaNote && (
+          <p className="text-(--text-light) text-xs mt-3 max-w-xl mx-auto italic opacity-85 font-medium">
+            P.S.: This survey contains Karma to get free survey responses at{" "}
+            <a 
+              href="https://surveyswap.io" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="underline hover:text-(--primary) transition-colors"
+            >
+              SurveySwap.io
+            </a>
+            .
+          </p>
+        )}
       </motion.div>
     </div>
   );

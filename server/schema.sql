@@ -37,3 +37,22 @@ CREATE TABLE IF NOT EXISTS surveys (
   answers JSONB NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE IF NOT EXISTS stories (
+  id SERIAL PRIMARY KEY,
+  parent_name TEXT NOT NULL,
+  child_age TEXT,
+  location TEXT,
+  story_title TEXT NOT NULL,
+  story_description TEXT NOT NULL,
+  photo_url TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS blacklisted_tokens (
+  id SERIAL PRIMARY KEY,
+  token TEXT UNIQUE NOT NULL,
+  expires_at TIMESTAMP,
+  blacklisted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+

@@ -35,7 +35,7 @@ export default function Survey() {
         <SurveyProgress progress={progress} />
 
         {/* Survey Branding Header */}
-        <SurveyHeader />
+        <SurveyHeader showKarmaNote={page === 0} />
 
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div

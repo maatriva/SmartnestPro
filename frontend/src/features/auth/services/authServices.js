@@ -55,3 +55,8 @@ export const fetchCurrentUser =
 
     return res.data;
   };
+
+export const logoutUser = async () => {
+  const res = await API.post("/auth/logout");
+  return res.data;
+};

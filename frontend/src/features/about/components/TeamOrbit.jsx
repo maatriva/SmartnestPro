@@ -560,7 +560,7 @@ export default function TeamOrbit() {
               animate="visible"
               exit="hidden"
               style={{ willChange: "transform" }}
-              className="fixed top-[101px] bottom-0 left-0 right-0 w-full bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md rounded-t-[32px] sm:rounded-t-[48px] border-t border-white/20 dark:border-zinc-800/40 shadow-[0_-20px_50px_rgba(0,0,0,0.4)] z-[120] overflow-hidden flex flex-col"
+              className="fixed top-[101px] bottom-0 left-0 right-0 mx-auto w-full max-w-3xl bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md rounded-t-[32px] sm:rounded-t-[48px] border-t border-x border-white/20 dark:border-zinc-800/40 shadow-[0_-20px_50px_rgba(0,0,0,0.4)] z-[120] overflow-hidden flex flex-col"
             >
               {/* Top drag handle indicator */}
               <div className="w-full flex justify-center py-4 cursor-pointer" onClick={closePanel}>
@@ -579,13 +579,13 @@ export default function TeamOrbit() {
               <div
                 ref={panelScrollRef}
                 style={{ WebkitOverflowScrolling: "touch", willChange: "scroll-position" }}
-                className="flex-grow min-h-0 overflow-y-auto px-6 pb-20 sm:px-12 lg:px-24"
+                className="flex-grow min-h-0 overflow-y-auto px-6 pb-20 sm:px-12 lg:px-12"
               >
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 pt-6">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 pt-6">
                   
                   {/* Left Column: Photo & Socials */}
-                  <div className="lg:col-span-4 flex flex-col items-center">
-                    <TiltWrapper className="w-60 h-60 sm:w-72 sm:h-72 rounded-[32px] overflow-hidden p-1 bg-white/30 dark:bg-white/5 border border-white/40 dark:border-white/10 shadow-xl relative group">
+                  <div className="lg:col-span-5 flex flex-col items-center">
+                    <TiltWrapper className="w-48 h-48 sm:w-56 sm:h-56 rounded-[32px] overflow-hidden p-1 bg-white/30 dark:bg-white/5 border border-white/40 dark:border-white/10 shadow-xl relative group">
                       <div className="absolute inset-0 bg-gradient-to-tr from-teal-500/10 to-indigo-500/10 pointer-events-none z-10" />
                       <img
                         src={selectedEmployee.image}
@@ -613,7 +613,7 @@ export default function TeamOrbit() {
                   </div>
 
                   {/* Right Column: Information details */}
-                  <div className="lg:col-span-8 flex flex-col text-left">
+                  <div className="lg:col-span-7 flex flex-col text-left">
                     <div className="mb-4">
                       <span className="inline-block px-3 py-1.5 rounded-full clay-badge text-[10px] font-black uppercase tracking-[0.2em] bg-teal-100/50 text-teal-800 border border-white/40">
                         {selectedEmployee.isFounder ? "Founder" : "Co-Founder"}
@@ -645,7 +645,7 @@ export default function TeamOrbit() {
                     </motion.p>
 
                     {/* Achievements & Contributions grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4 border-t border-teal-100 dark:border-zinc-800/40 pt-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-8 mt-4 border-t border-teal-100 dark:border-zinc-800/40 pt-8">
                       {/* Achievements */}
                       <div>
                         <h4 className="text-xs font-black uppercase tracking-[0.2em] text-teal-950 dark:text-white mb-4 flex items-center gap-2">

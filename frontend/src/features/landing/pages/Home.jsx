@@ -5,6 +5,7 @@ import Hero from "../sections/Hero";
 import Diseases from "../../diseases/components/diseases/Diseases";
 import Features from "../sections/Feature";
 import HowItWorks from "../sections/howItWorks";
+import ParentStories from "../../parentStories/ParentStories";
 import SupportingParents from "../sections/SupportingParents";
 import Pricing from "../sections/Pricing";
 
@@ -36,6 +37,7 @@ export default function Home() {
         <Diseases />
         <Features />
         <HowItWorks />
+        <ParentStories />
         <SupportingParents />
         <Pricing />
       </Suspense>

@@ -113,7 +113,7 @@ export default function Pricing() {
     <section
       id="pricing"
       ref={sectionRef}
-      className="py-24 px-6 clay-even-section text-(--text) relative"
+      className="py-24 px-6 blend-pricing text-(--text) relative"
     >
       <div className="max-w-7xl mx-auto">
 

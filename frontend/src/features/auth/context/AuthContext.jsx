@@ -3,12 +3,14 @@ import {
   useEffect,
   useState,
 } from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
   loginUser,
   signupUser,
   googleAuth,
   fetchCurrentUser,
+  logoutUser,
 } from "../services/authServices";
 
 import {
@@ -23,6 +25,7 @@ export const AuthContext =
 export function AuthProvider({
   children,
 }) {
+  const navigate = useNavigate();
   const [user, setUser] =
     useState(null);
 
@@ -116,12 +119,17 @@ export function AuthProvider({
     return data;
   };
 
-  const logout = () => {
-    removeToken();
-
-    setToken(null);
-
-    setUser(null);
+  const logout = async () => {
+    try {
+      await logoutUser();
+    } catch (error) {
+      console.error("Error logging out from server:", error);
+    } finally {
+      removeToken();
+      setToken(null);
+      setUser(null);
+      navigate("/login");
+    }
   };
 
   return (

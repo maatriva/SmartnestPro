@@ -22,7 +22,7 @@ export default function SupportingParents() {
     <section
       id="supporting-parents"
       ref={sectionRef}
-      className="py-24 px-6 blend-features text-(--text) overflow-hidden relative"
+      className="py-24 px-6 clay-even-section text-(--text) overflow-hidden relative"
     >
       {/* Decorative Background Orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

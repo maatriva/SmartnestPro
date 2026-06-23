@@ -131,3 +131,26 @@ export const getMe = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
+export const logout = async (req, res) => {
+  const token = req.header('Authorization')?.split(' ')[1];
+
+  if (!token) {
+    return res.status(400).json({ error: "No token provided" });
+  }
+
+  try {
+    const decoded = jwt.decode(token);
+    const expiresAt = decoded && decoded.exp ? new Date(decoded.exp * 1000) : null;
+
+    await pool.query(
+      "INSERT INTO blacklisted_tokens (token, expires_at) VALUES ($1, $2) ON CONFLICT (token) DO NOTHING",
+      [token, expiresAt]
+    );
+
+    res.json({ message: "Logout successful" });
+  } catch (error) {
+    console.error("Error during logout:", error);
+    res.status(500).json({ error: "Failed to blacklist token" });
+  }
+};
