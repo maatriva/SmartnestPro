@@ -1,11 +1,14 @@
 import { Check } from "lucide-react";
+import ExpandableModelCard from "./ExpandableModelCard";
 
 export default function PricingCard({
   plan,
   cradleModels,
-  onModelClick,
   onToggleModels,
   showAllModels,
+  expandedModel,
+  setExpandedModel,
+  onPreOrder,
 }) {
   return (
     <div
@@ -44,41 +47,41 @@ export default function PricingCard({
       )}
 
       {plan.name === "Cradle" && (
-        <div className="flex flex-col gap-7 mb-4">
-          <p className="text-sm text-(--text-light)">
+        <div className="flex flex-col gap-4 mb-4">
+          <p className="text-sm text-(--text-light) mb-1">
             Select a model ↓
           </p>
 
-          <button
-            onClick={() =>
-              onModelClick(cradleModels.Basic)
+          <ExpandableModelCard
+            model={cradleModels.Basic}
+            isExpanded={expandedModel === "Basic"}
+            onToggle={() =>
+              setExpandedModel(expandedModel === "Basic" ? null : "Basic")
             }
-            className="py-4 clay-btn clay-btn-secondary"
-          >
-            Basic Model
-          </button>
+            onPreOrder={onPreOrder}
+          />
 
-          <button
-            onClick={() =>
-              onModelClick(cradleModels.AIPro)
+          <ExpandableModelCard
+            model={cradleModels.AIPro}
+            isExpanded={expandedModel === "AIPro"}
+            onToggle={() =>
+              setExpandedModel(expandedModel === "AIPro" ? null : "AIPro")
             }
-            className="py-4 clay-btn clay-btn-secondary"
-          >
-            Standard Model
-          </button>
+            onPreOrder={onPreOrder}
+          />
 
-          <button
-            onClick={() =>
-              onModelClick(cradleModels.Custom)
+          <ExpandableModelCard
+            model={cradleModels.Custom}
+            isExpanded={expandedModel === "Custom"}
+            onToggle={() =>
+              setExpandedModel(expandedModel === "Custom" ? null : "Custom")
             }
-            className="py-4 clay-btn clay-btn-primary"
-          >
-            Pro Model
-          </button>
+            onPreOrder={onPreOrder}
+          />
 
           <button
             onClick={onToggleModels}
-            className="mt-2 px-4 py-2 clay-badge hover:scale-105 transition font-bold self-center"
+            className="mt-4 px-4 py-2 clay-badge hover:scale-105 transition font-bold self-center cursor-pointer"
           >
             {showAllModels
               ? "Hide All Models"
