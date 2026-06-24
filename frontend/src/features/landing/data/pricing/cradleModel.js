@@ -1,7 +1,7 @@
 export const CRADLE_MODELS = {
   Basic: {
     name: "Basic Model",
-    price: "12,000",
+    price: "25,000",
     description: "Light version with essential features.",
     features: [
       "Auto swing",
@@ -14,7 +14,7 @@ export const CRADLE_MODELS = {
 
   AIPro: {
     name: "Standard Model",
-    price: "45,000",
+    price: "40,000",
     description: "Advanced AI cradle with sensors & cloud.",
     features: [
       "Health & sleep sensors",
@@ -27,7 +27,7 @@ export const CRADLE_MODELS = {
 
   Custom: {
     name: "Pro Model",
-    price: "75,000",
+    price: "60,000",
     description: "Advanced version with full AI capabilities.",
     features: [
       "Edge AI",

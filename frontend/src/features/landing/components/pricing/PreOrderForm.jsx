@@ -4,6 +4,8 @@ import API from "../../../../shared/services/api";
 import { validateEmail } from "../../../../shared/utils/validation";
 
 export default function PreOrderForm({ selectedPlan, onClose }) {
+  const isEnterprise = selectedPlan?.name === "Enterprise" || selectedPlan?.price === "Custom";
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -33,7 +35,7 @@ export default function PreOrderForm({ selectedPlan, onClose }) {
 
       await API.post("/preorders", form);
 
-      alert("Pre-order successful 🚀");
+      alert(isEnterprise ? "Inquiry submitted successfully 🚀" : "Pre-order successful 🚀");
       onClose();
     } catch (err) {
       console.error(err);
@@ -58,10 +60,12 @@ export default function PreOrderForm({ selectedPlan, onClose }) {
       <div className="clay-card p-8 w-full max-w-md space-y-6 animate-minimize bg-white">
 
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-[var(--text-dark)]">Pre-Order</h2>
+          <h2 className="text-2xl font-bold text-[var(--text-dark)]">
+            {isEnterprise ? "Enterprise Inquiry" : "Pre-Order"}
+          </h2>
           {selectedPlan && (
             <p className="text-[var(--primary)] font-medium mt-1">
-              {selectedPlan.name} Model {selectedPlan.price === "Custom" ? "(Custom Pricing)" : `(₹${selectedPlan.price})`}
+              {selectedPlan.name} {selectedPlan.price === "Custom" ? "(Custom Pricing)" : `Model (₹${selectedPlan.price})`}
             </p>
           )}
         </div>
@@ -100,7 +104,7 @@ export default function PreOrderForm({ selectedPlan, onClose }) {
             disabled={loading}
             className="w-full clay-btn clay-btn-primary py-3.5"
           >
-            {loading ? "Submitting..." : "Confirm Pre-Order"}
+            {loading ? "Submitting..." : isEnterprise ? "Submit Inquiry" : "Confirm Pre-Order"}
           </button>
 
           <button
