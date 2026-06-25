@@ -66,8 +66,10 @@ export default function DiseaseSideNav({ categories }) {
               <Tilt key={item.id}>
                 <button
                   onClick={() => scrollToSection(item.id)}
-                  className="focus:outline-none cursor-pointer"
+                  className="focus:outline-none cursor-pointer focus:ring-2 focus:ring-(--primary-light)/80 rounded-full p-0.5"
                   title={item.label}
+                  aria-label={`Scroll to category: ${item.label}`}
+                  aria-current={active ? "true" : "false"}
                 >
                   <span
                     className={`rounded-full block transition-all duration-300 ${

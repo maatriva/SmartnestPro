@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, lazy, Suspense } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Heart, Star, Baby } from "lucide-react";
 import StoryCard from "./StoryCard";
-import ShareStoryModal from "./ShareStoryModal";
+
+const ShareStoryModal = lazy(() => import("./ShareStoryModal"));
 import { STORIES } from "./storiesData";
 import "./ParentStories.scss";
 import API from "../../shared/services/api";
@@ -260,10 +261,12 @@ export default function ParentStories() {
       </div>
 
       {/* Share Story Modal */}
-      <ShareStoryModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
+      <Suspense fallback={null}>
+        <ShareStoryModal 
+          isOpen={isModalOpen} 
+          onClose={() => setIsModalOpen(false)} 
+        />
+      </Suspense>
     </section>
   );
 }

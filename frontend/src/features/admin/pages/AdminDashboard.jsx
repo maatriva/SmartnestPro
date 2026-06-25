@@ -35,7 +35,6 @@ export default function AdminDashboard() {
   const filteredPreorders = filterData(stats?.preorders);
   const filteredContacts = filterData(stats?.contacts);
   const filteredUsers = filterData(stats?.users);
-  // const filterd users  = filterData(stats?.usersData);  Clone
 
   if (loading) {
     return (

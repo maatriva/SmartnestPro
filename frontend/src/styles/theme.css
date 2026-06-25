@@ -10,7 +10,7 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: #030213;
+  --primary: #5A78D6;
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.95 0.0058 264.53);
   --secondary-foreground: #030213;
@@ -20,7 +20,7 @@
   --accent-foreground: #030213;
   --destructive: #d4183d;
   --destructive-foreground: #ffffff;
-  --border: rgba(0, 0, 0, 0.1);
+  --border: #E5E7EB;
   --input: transparent;
   --input-background: #f3f3f5;
   --switch-background: #cbced4;
@@ -32,7 +32,7 @@
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.625rem;
+  --radius: 16px;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: #030213;
@@ -41,6 +41,33 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* 🌈 Background System */
+  --bg: #bff5f5;
+  --bg-light: #FAFCFC;
+  --bg-secondary: #B8E3E2;
+  --bg-secondaryh: #a5d2d1;
+  --bg-glass: rgba(250, 252, 252, 0.75);
+  --bg-hover: #d5f2f1;
+
+  /* 💜 Accent System (Lavender-Blue Gradient Colors) */
+  --primary-hover: #4862B5;
+  --primary-light: #7B8FF8;
+
+  /* 🖤 Text */
+  --text: #4A4A4A;
+  --text-dark: #223B66;
+  --text-light: #6B7280;
+
+  /* 🤍 UI */
+  --white: #FFFFFF;
+
+  /* ✨ Effects */
+  --shadow: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-primary: 0 6px 20px rgba(90, 120, 214, 0.4);
+
+  /* 🔘 Radius */
+  --radius-lg: 20px;
 }
 
 
@@ -159,37 +186,7 @@
 .marquee:hover {
   animation-play-state: paused;
 }
-:root {
-  /* 🌈 Background System */
-  --bg: #bff5f5;
-  --bg-light: #FAFCFC;
-  --bg-secondary: #B8E3E2;
-  --bg-secondaryh: #a5d2d1;
-  --bg-glass: rgba(250, 252, 252, 0.75);
-  --bg-hover: #d5f2f1;
 
-  /* 💜 Accent System (Lavender-Blue Gradient Colors) */
-  --primary: #5A78D6;
-  --primary-hover: #4862B5;
-  --primary-light: #7B8FF8;
-
-  /* 🖤 Text */
-  --text: #4A4A4A;
-  --text-dark: #223B66;
-  --text-light: #6B7280;
-
-  /* 🤍 UI */
-  --white: #FFFFFF;
-  --border: #E5E7EB;
-
-  /* ✨ Effects */
-  --shadow: 0 4px 20px rgba(0,0,0,0.08);
-  --shadow-primary: 0 6px 20px rgba(90, 120, 214, 0.4);
-
-  /* 🔘 Radius */
-  --radius: 16px;
-  --radius-lg: 20px;
-}
 
 .clay-hero {
   background:
@@ -250,143 +247,7 @@
   ) !important;
 }
 
-.clay-model-stage {
-  position: relative;
-  display: flex;
-  min-height: 520px;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  border-radius: 44px;
-}
 
-.clay-orbit {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: min(82vw, 700px);
-  height: min(82vw, 700px);
-  transform: translate(-50%, -50%);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.28);
-  box-shadow:
-    inset 26px 26px 54px rgba(255, 255, 255, 0.72),
-    inset -32px -32px 62px rgba(72, 117, 136, 0.2),
-    0 38px 80px rgba(43, 92, 112, 0.18);
-}
-
-.clay-blob {
-  position: absolute;
-  z-index: 1;
-  border-radius: 999px;
-}
-
-.clay-blob-peach {
-  left: 12%;
-  top: 16%;
-  width: clamp(3.5rem, 7vw, 5rem);
-  height: clamp(3.5rem, 7vw, 5rem);
-  background: #f6d8ca;
-  box-shadow:
-    inset 8px 8px 18px rgba(255, 255, 255, 0.7),
-    inset -9px -9px 20px rgba(174, 117, 98, 0.2),
-    0 18px 28px rgba(39, 84, 102, 0.12);
-}
-
-.clay-blob-blue {
-  right: 12%;
-  bottom: 18%;
-  width: clamp(5rem, 9vw, 7rem);
-  height: clamp(5rem, 9vw, 7rem);
-  background: #d7eef0;
-  box-shadow:
-    inset 10px 10px 22px rgba(255, 255, 255, 0.72),
-    inset -12px -12px 26px rgba(70, 119, 137, 0.18),
-    0 18px 34px rgba(39, 84, 102, 0.12);
-}
-
-.clay-model-canvas {
-  position: relative;
-  z-index: 10;
-  width: 100%;
-  height: 520px;
-  filter: drop-shadow(0 34px 34px rgba(35, 75, 91, 0.2));
-}
-
-.clay-model-canvas canvas {
-  border-radius: 40px;
-}
-
-.clay-hint,
-.clay-scroll {
-  border: 1px solid rgba(255, 255, 255, 0.72);
-  background: rgba(255, 255, 255, 0.45);
-  color: #315170;
-  box-shadow:
-    inset 5px 5px 12px rgba(255, 255, 255, 0.62),
-    inset -5px -5px 14px rgba(74, 117, 134, 0.16),
-    0 16px 30px rgba(38, 80, 96, 0.12);
-  backdrop-filter: blur(14px);
-}
-
-.clay-hint {
-  position: absolute;
-  bottom: 3rem;
-  left: 50%;
-  z-index: 20;
-  display: flex;
-  transform: translateX(-50%);
-  align-items: center;
-  gap: 0.5rem;
-  white-space: nowrap;
-  border-radius: 999px;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 700;
-}
-
-.clay-scroll {
-  position: absolute;
-  bottom: 1.25rem;
-  left: 50%;
-  z-index: 20;
-  display: flex;
-  transform: translateX(-50%);
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-  white-space: nowrap;
-  border-radius: 999px;
-  padding: 0.45rem 0.95rem 0.35rem;
-  font-size: 0.875rem;
-  font-weight: 700;
-  transition: color 160ms ease, transform 160ms ease;
-}
-
-.clay-scroll:hover {
-  color: #183757;
-  transform: translateX(-50%) translateY(-2px);
-}
-
-@media (min-width: 640px) {
-  .clay-model-stage {
-    min-height: 620px;
-  }
-
-  .clay-model-canvas {
-    height: 620px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .clay-model-stage {
-    min-height: 700px;
-  }
-
-  .clay-model-canvas {
-    height: 740px;
-  }
-}
 
 /* ==========================================
    ✨ PREMIUM CLAYMORPHISM UI CLASSES
@@ -563,23 +424,7 @@
     inset -4px -4px 8px rgba(255, 255, 255, 0.25) !important;
 }
 
-.clay-btn-darkbg {
-  box-shadow: 
-    inset 0 4px 12px rgba(0, 0, 0, 0.35),
-    inset 0 -4px 12px rgba(255, 255, 255, 0.05) !important;
-}
 
-.clay-btn-darkbg:hover {
-  box-shadow: 
-    inset 0 6px 18px rgba(0, 0, 0, 0.45),
-    inset 0 -6px 18px rgba(255, 255, 255, 0.08) !important;
-}
-
-.clay-btn-darkbg:active {
-  box-shadow: 
-    inset 4px 4px 8px rgba(0, 0, 0, 0.55),
-    inset -4px -4px 8px rgba(255, 255, 255, 0.1) !important;
-}
 
 /* 📥 Clay Inputs */
 .clay-input {
@@ -638,40 +483,7 @@
 }
 
 /* 🌊 Section Transition Blending & Shadows */
-.section-blend-glass {
-  position: relative;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.15) 150px,
-    rgba(255, 255, 255, 0.15) calc(100% - 150px),
-    rgba(255, 255, 255, 0) 100%
-  ) !important;
-}
 
-.section-blend-glass::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 20px;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.015), transparent);
-  pointer-events: none;
-  z-index: 10;
-}
-
-.section-blend-glass::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 20px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.015), transparent);
-  pointer-events: none;
-  z-index: 10;
-}
 
 .footer-blend {
   position: relative;

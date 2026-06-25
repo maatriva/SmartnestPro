@@ -1,4 +1,6 @@
-export default function DiseaseChip({
+import React, { memo } from "react";
+
+const DiseaseChip = memo(function DiseaseChip({
   disease,
   index,
   activeIndex,
@@ -6,7 +8,17 @@ export default function DiseaseChip({
 }) {
   return (
     <div
+      role="button"
+      tabIndex={0}
+      aria-pressed={activeIndex === index}
+      aria-label={`Select ${disease.name} for more information`}
       onClick={() => onClick(index)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onClick(index);
+        }
+      }}
       className={`
         mx-8
         cursor-pointer
@@ -17,6 +29,9 @@ export default function DiseaseChip({
         transition-all
         duration-300
         rounded-full
+        focus:outline-none
+        focus:ring-2
+        focus:ring-(--primary-light)/50
 
         ${
           activeIndex === index
@@ -40,4 +55,6 @@ export default function DiseaseChip({
       </span>
     </div>
   );
-}
+});
+
+export default DiseaseChip;

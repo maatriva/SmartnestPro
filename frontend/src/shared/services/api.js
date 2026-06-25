@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getToken } from '../../features/auth/utils/authStorage';
 
 const getBaseURL = () => {
   // Smart fallback: if running locally, point to local server
@@ -17,7 +18,7 @@ const API = axios.create({
 
 // Add a request interceptor to include the token in headers
 API.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token');
+  const token = getToken();
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }

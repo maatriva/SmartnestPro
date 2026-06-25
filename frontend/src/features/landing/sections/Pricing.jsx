@@ -1,16 +1,14 @@
-import { useRef, useState } from "react";
+import { useRef, useState, lazy, Suspense } from "react";
 import PricingHeader from "../components/pricing/PricingHeader";
 import PricingCard from "../components/pricing/PricingCard";
 import { PRICING_PLANS } from "../data/pricing/pricingPlans";
 import { CRADLE_MODELS } from "../data/pricing/cradleModel";
-import usePricingAnimation from "../hooks/usePricingAnimation";
-import PreOrderForm from "../components/pricing/PreOrderForm";
+
+const PreOrderForm = lazy(() => import("../components/pricing/PreOrderForm"));
 
 export default function Pricing() {
   const sectionRef = useRef(null);
   const [selectedPlan, setSelectedPlan] = useState(null);
-
-  usePricingAnimation(sectionRef);
 
   return (
     <section
@@ -72,10 +70,12 @@ export default function Pricing() {
       </div>
 
       {selectedPlan && (
-        <PreOrderForm
-          selectedPlan={selectedPlan}
-          onClose={() => setSelectedPlan(null)}
-        />
+        <Suspense fallback={null}>
+          <PreOrderForm
+            selectedPlan={selectedPlan}
+            onClose={() => setSelectedPlan(null)}
+          />
+        </Suspense>
       )}
     </section>
   );

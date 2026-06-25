@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /login
+Disallow: /signup
+Disallow: /survey
 
 Sitemap: https://maatriva.vercel.app/sitemap.xml

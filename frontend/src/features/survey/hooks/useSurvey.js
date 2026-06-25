@@ -2,6 +2,7 @@ import { useState } from "react";
 import useAuth from "../../auth/hooks/useAuth";
 import { submitSurveyAnswers } from "../services/surveyServices";
 import { questions, QUESTIONS_PER_PAGE } from "../constants/questions";
+import { validateEmail } from "../../../shared/utils/validation";
 
 export default function useSurvey() {
   const { user } = useAuth();
@@ -59,7 +60,7 @@ export default function useSurvey() {
       return (
         personalInfo.name?.trim() &&
         personalInfo.email?.trim() &&
-        /\S+@\S+\.\S+/.test(personalInfo.email) &&
+        validateEmail(personalInfo.email) &&
         personalInfo.gender
       );
     }
@@ -80,7 +81,7 @@ export default function useSurvey() {
         setValidationError("Email Address is required.");
         return;
       }
-      if (!/\S+@\S+\.\S+/.test(personalInfo.email)) {
+      if (!validateEmail(personalInfo.email)) {
         setValidationError("Please enter a valid email address.");
         return;
       }

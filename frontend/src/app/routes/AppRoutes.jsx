@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 
 import AdminRoute from "../../features/auth/routes/AdminRoute";
-import ProtectedRoute from "../../features/auth/routes/ProtectedRoute";
+import Spinner from "../../shared/UI/Spinner";
 
 const Home = lazy(() =>
   import("../../features/landing/pages/Home")
@@ -45,7 +45,7 @@ const NotFound = lazy(() =>
 function LoadingFallback() {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-(--bg) z-50">
-      <div className="w-12 h-12 border-4 border-(--primary) border-t-transparent rounded-full animate-spin" />
+      <Spinner />
     </div>
   );
 }

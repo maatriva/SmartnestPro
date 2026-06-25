@@ -1,18 +1,7 @@
 @import './tailwind.css';
 @import './theme.css';
 
-@keyframes aboutAlbumAutoScroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
 
-.about-album-track {
-  animation: aboutAlbumAutoScroll 26s linear infinite;
-}
 
 .fade-in {
   animation: fadeIn 0.8s ease-in forwards;
@@ -90,14 +79,7 @@ html, body {
   width: 100%;
 }
 
-.model-card {
-  transform-style: preserve-3d;
-  will-change: transform;
-}
 
-.pricing-card {
-  transform-style: preserve-3d;
-}
 
 .float-container {
   animation: floating 4s ease-in-out infinite;

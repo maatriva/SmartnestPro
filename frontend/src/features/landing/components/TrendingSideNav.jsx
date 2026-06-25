@@ -25,29 +25,38 @@ export default function TrendingSideNav() {
 
   // ✅ FIXED SCROLL DETECTION (NO FLICKER)
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      let current = "home";
-      let minDistance = Infinity;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          let current = "home";
+          let minDistance = Infinity;
 
-      items.forEach((item) => {
-        const el = document.getElementById(item.id);
-        if (!el) return;
+          items.forEach((item) => {
+            const el = document.getElementById(item.id);
+            if (!el) return;
 
-        const rect = el.getBoundingClientRect();
+            const rect = el.getBoundingClientRect();
 
-        // 🔥 adjust for navbar height
-        const offset = Math.abs(rect.top - 120);
+            // 🔥 adjust for navbar height
+            const offset = Math.abs(rect.top - 120);
 
-        if (offset < minDistance && rect.top <= window.innerHeight * 0.6) {
-          minDistance = offset;
-          current = item.id;
-        }
-      });
+            if (offset < minDistance && rect.top <= window.innerHeight * 0.6) {
+              minDistance = offset;
+              current = item.id;
+            }
+          });
 
-      setActiveSectionId(current);
+          setActiveSectionId(current);
+          ticking = false;
+        });
+
+        ticking = true;
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
@@ -78,8 +87,10 @@ export default function TrendingSideNav() {
               <Tilt key={item.id}>
                 <button
                   onClick={() => scrollToSection(item.id)}
-                  className="focus:outline-none cursor-pointer"
+                  className="focus:outline-none cursor-pointer focus:ring-2 focus:ring-(--primary-light)/80 rounded-full p-0.5"
                   title={item.label}
+                  aria-label={`Scroll to section: ${item.label}`}
+                  aria-current={active ? "true" : "false"}
                 >
                   <span
                     className={`rounded-full block transition-all duration-300 ${

@@ -25,7 +25,9 @@ export default function QuestionCard({ q, qIndex, answers, handleChange }) {
               step="1"
               value={q.options.indexOf(currentAnswer) !== -1 ? q.options.indexOf(currentAnswer) : 0}
               onChange={(e) => handleChange(qIndex, q.options[parseInt(e.target.value)], "radio")}
-              className="w-full h-3 bg-white/50 backdrop-blur rounded-lg appearance-none cursor-pointer accent-(--text-dark)"
+              aria-label={q.question}
+              aria-valuetext={currentAnswer}
+              className="w-full h-3 bg-white/50 backdrop-blur rounded-lg appearance-none cursor-pointer accent-(--text-dark) focus:outline-none focus:ring-2 focus:ring-(--primary-light)/50"
             />
             <div className="flex justify-between px-2">
               {q.options.map((opt, idx) => (

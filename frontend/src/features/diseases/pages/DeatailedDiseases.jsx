@@ -1,4 +1,5 @@
 import "../../../styles/theme.css";
+import { Helmet } from "react-helmet-async";
 
 import RegistryHeader from "../components/deatiledDiseases/RegistryHeaders";
 import DiseaseSection from "../components/deatiledDiseases/DiseasesSection";
@@ -39,6 +40,32 @@ export default function DetailedDiseases() {
         pb-20
       "
     >
+      <Helmet>
+        <title>Infant Disease Registry & Guidance | Maatriva</title>
+        <meta name="description" content="Explore Maatriva's clinical registry detailing common infant wellness risks, early warning indicators, and how AI-powered cradles provide supportive care." />
+        <link rel="canonical" href="https://maatriva.vercel.app/diseases" />
+        <meta property="og:title" content="Infant Disease Registry & Guidance | Maatriva" />
+        <meta property="og:description" content="Explore Maatriva's clinical registry detailing common infant wellness risks, early warning indicators, and how AI-powered cradles provide supportive care." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://maatriva.vercel.app/diseases" />
+        <meta property="og:image" content="https://maatriva.vercel.app/BasicCradle.jpeg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Infant Disease Registry & Guidance | Maatriva" />
+        <meta name="twitter:description" content="Explore Maatriva's clinical registry detailing common infant wellness risks, early warning indicators, and how AI-powered cradles provide supportive care." />
+        <meta name="twitter:image" content="https://maatriva.vercel.app/BasicCradle.jpeg" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "MedicalWebPage",
+            "name": "Infant Disease Registry & Guidance",
+            "description": "Explore pediatric information on common infant diseases and preventive care guidance.",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Maatriva"
+            }
+          })}
+        </script>
+      </Helmet>
       <DiseaseSideNav categories={categories} />
 
       <RegistryHeader

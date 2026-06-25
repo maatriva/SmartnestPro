@@ -1,18 +1,10 @@
+import Spinner from "../../../shared/UI/Spinner";
+
 export default function AuthLoader() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-(--bg) text-(--text-dark)">
       <div className="flex flex-col items-center gap-4">
-        <div
-          className="
-            w-12
-            h-12
-            border-4
-            border-(--primary)
-            border-t-transparent
-            rounded-full
-            animate-spin
-          "
-        />
+        <Spinner />
 
         <p className="font-bold text-xl animate-pulse">
           Loading Maatriva...

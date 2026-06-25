@@ -212,8 +212,18 @@ export default function PricingCard({ plan, onPreOrder }) {
           {plan.isModelCard && !isBasicModel && (
             <div className="flex flex-col mb-6">
               <div 
-                className="p-4 rounded-xl bg-white/20 border border-white/60 shadow-[inset_2px_2px_6px_rgba(255,255,255,0.4)] flex items-center justify-between transition-all duration-300 hover:bg-white/30 cursor-pointer select-none"
+                role="checkbox"
+                tabIndex={0}
+                aria-checked={addAI}
+                aria-label="Add 1-Year AI Subscription"
+                className="p-4 rounded-xl bg-white/20 border border-white/60 shadow-[inset_2px_2px_6px_rgba(255,255,255,0.4)] flex items-center justify-between transition-all duration-300 hover:bg-white/30 cursor-pointer select-none focus:outline-none focus:ring-2 focus:ring-(--primary-light)/50"
                 onClick={() => setAddAI(!addAI)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setAddAI(!addAI);
+                  }
+                }}
               >
                 <div className="flex items-center gap-3">
                   <div className={`w-5 h-5 rounded-md border flex items-center justify-center transition-all duration-300 ${
@@ -243,12 +253,14 @@ export default function PricingCard({ plan, onPreOrder }) {
                       Advanced health monitoring & alerts.
                       <a
                         href="#ai-features"
+                        role="button"
+                        aria-expanded={showAIFeatures}
                         onClick={(e) => {
                           e.preventDefault();
                           e.stopPropagation();
                           setShowAIFeatures(!showAIFeatures);
                         }}
-                        className="text-[#5A78D6] underline hover:text-[#7B8FF8] font-bold"
+                        className="text-[#5A78D6] underline hover:text-[#7B8FF8] font-bold focus:outline-none focus:ring-1 focus:ring-(--primary-light)/50 rounded px-1"
                       >
                         Tell me about AI subscription features
                       </a>

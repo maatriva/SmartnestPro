@@ -1,5 +1,7 @@
+import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
-import ModelCursor from "../../../../animations/ModelCursor";
+
+const ModelCursor = lazy(() => import("../../../../animations/ModelCursor"));
 
 export default function HeroModel() {
   return (
@@ -71,7 +73,9 @@ export default function HeroModel() {
           }}
           className="w-[240px] h-[240px] sm:w-[320px] sm:h-[320px] lg:w-[450px] lg:h-[450px] flex items-center justify-center"
         >
-          <ModelCursor />
+          <Suspense fallback={<div className="w-12 h-12 border-4 border-(--primary) border-t-transparent rounded-full animate-spin" />}>
+            <ModelCursor />
+          </Suspense>
         </motion.div>
       </div>
     </motion.div>

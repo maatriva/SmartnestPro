@@ -7,8 +7,17 @@ export default function DiseaseCard({
 }) {
   return (
     <motion.div
+      role="button"
+      tabIndex={0}
+      aria-label={`View details for ${name}`}
       onClick={onSelect}
-      className="clay-card p-6 cursor-pointer group"
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onSelect();
+        }
+      }}
+      className="clay-card p-6 cursor-pointer group focus:outline-none focus:ring-2 focus:ring-(--primary-light)/50"
       whileHover={{ y: -4 }}
       whileTap={{ scale: 0.98 }}
     >

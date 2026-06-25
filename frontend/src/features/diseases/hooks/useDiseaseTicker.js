@@ -1,14 +1,13 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 export default function useDiseaseTicker() {
-  const [activeIndex, setActiveIndex] =
-    useState(null);
+  const [activeIndex, setActiveIndex] = useState(null);
 
-  const toggleDisease = (index) => {
+  const toggleDisease = useCallback((index) => {
     setActiveIndex((prev) =>
       prev === index ? null : index
     );
-  };
+  }, []);
 
   return {
     activeIndex,
