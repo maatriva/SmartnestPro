@@ -41,27 +41,35 @@ export default function DetailedDiseases() {
       "
     >
       <Helmet>
-        <title>Infant Disease Registry & Guidance | Maatriva</title>
-        <meta name="description" content="Explore Maatriva's clinical registry detailing common infant wellness risks, early warning indicators, and how AI-powered cradles provide supportive care." />
+        <title>Baby Disease Information | Maatriva</title>
+        <meta name="description" content="Explore Maatriva's clinical registry detailing common infant wellness risks, pediatric diseases, warning indicators, and preventive baby care advice." />
+        <meta name="keywords" content="infant disease registry, baby health indicators, pediatric symptoms, baby wellness database, Maatriva" />
         <link rel="canonical" href="https://maatriva.vercel.app/diseases" />
-        <meta property="og:title" content="Infant Disease Registry & Guidance | Maatriva" />
-        <meta property="og:description" content="Explore Maatriva's clinical registry detailing common infant wellness risks, early warning indicators, and how AI-powered cradles provide supportive care." />
+        
+        {/* Open Graph Tags */}
+        <meta property="og:title" content="Baby Disease Information | Maatriva" />
+        <meta property="og:description" content="Explore Maatriva's clinical registry detailing common infant wellness risks, pediatric diseases, warning indicators, and preventive baby care advice." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://maatriva.vercel.app/diseases" />
         <meta property="og:image" content="https://maatriva.vercel.app/BasicCradle.jpeg" />
+        
+        {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Infant Disease Registry & Guidance | Maatriva" />
-        <meta name="twitter:description" content="Explore Maatriva's clinical registry detailing common infant wellness risks, early warning indicators, and how AI-powered cradles provide supportive care." />
+        <meta name="twitter:title" content="Baby Disease Information | Maatriva" />
+        <meta name="twitter:description" content="Explore Maatriva's clinical registry detailing common infant wellness risks, pediatric diseases, warning indicators, and preventive baby care advice." />
         <meta name="twitter:image" content="https://maatriva.vercel.app/BasicCradle.jpeg" />
+
+        {/* Structured Data */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "MedicalWebPage",
-            "name": "Infant Disease Registry & Guidance",
-            "description": "Explore pediatric information on common infant diseases and preventive care guidance.",
+            "name": "Baby Disease Information Registry - Maatriva",
+            "description": "Explore pediatric information on common infant wellness risks and preventive care guidance.",
             "publisher": {
-              "@type": "Organization",
-              "name": "Maatriva"
+              "@type": "MedicalOrganization",
+              "name": "Maatriva",
+              "logo": "https://maatriva.vercel.app/android-chrome-512x512.png"
             }
           })}
         </script>

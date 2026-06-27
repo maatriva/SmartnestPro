@@ -44,6 +44,8 @@ const Navbar = () => {
           <img
             src="/Faviconsimple (2).png"
             alt="Maatriva Logo"
+            width="100"
+            height="100"
             className="w-[100px] h-[100px] md:w-[100px] md:h-[100px] object-contain scale-125 md:scale-150"
           />
         </Link>
@@ -110,6 +112,8 @@ const Navbar = () => {
         <button
           className="lg:hidden p-2 text-(--text-dark) hover:bg-(--bg-hover) rounded-xl transition-colors"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMenuOpen}
         >
           {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>

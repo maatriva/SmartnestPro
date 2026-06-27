@@ -13,7 +13,43 @@ export default function Terms() {
     <div className="min-h-screen bg-(--bg) text-(--text) fade-in pb-20 pt-32">
       <Helmet>
         <title>Terms & Conditions | Maatriva</title>
-        <meta name="description" content="Read the Terms and Conditions for purchasing and using Maatriva smart cradle and applications." />
+        <meta
+          name="description"
+          content="Read the official Terms and Conditions for purchasing, using, and accessing Maatriva's AI-powered smart cradle products and health monitoring apps."
+        />
+        <meta name="keywords" content="terms and conditions, user agreement, purchase terms, smart cradle policy, Maatriva terms" />
+        <link rel="canonical" href="https://maatriva.vercel.app/terms" />
+        
+        {/* Open Graph Tags */}
+        <meta property="og:title" content="Terms & Conditions | Maatriva" />
+        <meta
+          property="og:description"
+          content="Read the official Terms and Conditions for purchasing, using, and accessing Maatriva's AI-powered smart cradle products and health monitoring apps."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://maatriva.vercel.app/terms" />
+        <meta property="og:image" content="https://maatriva.vercel.app/AIPro.jpeg" />
+        
+        {/* Twitter Card Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Terms & Conditions | Maatriva" />
+        <meta name="twitter:description" content="Read the official Terms and Conditions for purchasing, using, and accessing Maatriva's AI-powered smart cradle products and health monitoring apps." />
+        <meta name="twitter:image" content="https://maatriva.vercel.app/AIPro.jpeg" />
+
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Terms and Conditions - Maatriva",
+            "description": "Read the official terms and conditions for purchasing and using Maatriva smart baby cradles.",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Maatriva",
+              "logo": "https://maatriva.vercel.app/android-chrome-512x512.png"
+            }
+          })}
+        </script>
       </Helmet>
 
       {/* Floating Background Glows */}

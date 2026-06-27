@@ -53,6 +53,8 @@ export default function StoryCard({ story }) {
         <img 
           src={story.image} 
           alt={`Story image of ${story.name}`} 
+          width="400"
+          height="400"
           className="story-image"
           loading="lazy"
         />

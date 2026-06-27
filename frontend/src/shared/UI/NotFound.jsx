@@ -9,7 +9,7 @@ export default function NotFound() {
     <div className="relative flex flex-col items-center justify-center min-h-[80vh] bg-(--bg) text-(--text) overflow-hidden">
       <Helmet>
         <title>404 - Page Not Found | Maatriva</title>
-        <meta name="robots" content="noindex" />
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
       {/* Background soft glow matching site theme */}

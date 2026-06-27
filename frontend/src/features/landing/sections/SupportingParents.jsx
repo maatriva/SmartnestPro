@@ -68,6 +68,9 @@ export default function SupportingParents() {
               <img
                 src={supportingParentsImage}
                 alt="Your AI Parenting Companion"
+                width="1200"
+                height="800"
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-85" />

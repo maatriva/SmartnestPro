@@ -46,11 +46,14 @@ export default function AboutGenesis() {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="overflow-hidden clay-card w-full p-2"
         >
-          <img
-            src={withoutBabyImage}
-            alt="Smart Maatriva cradle in a nursery"
-            className="h-[360px] w-full object-cover sm:h-[480px] lg:h-[560px] rounded-2xl"
-          />
+        <img
+          src={withoutBabyImage}
+          alt="Smart Maatriva cradle in a nursery"
+          width="800"
+          height="560"
+          loading="lazy"
+          className="h-[360px] w-full object-cover sm:h-[480px] lg:h-[560px] rounded-2xl"
+        />
         </motion.div>
       </div>
     </section>

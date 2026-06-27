@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Users, ClipboardList, TrendingUp, Calendar, Mail } from "lucide-react";
 import useAdminDashboard from "../hooks/useAdminDashboard";
@@ -52,6 +53,10 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#F8F9FA] via-[#E9F5F6] to-[#A8DADC]/30 p-4 md:p-8">
+      <Helmet>
+        <title>Admin Dashboard | Maatriva</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <div className="max-w-7xl mx-auto space-y-8">
         
         {/* Header */}

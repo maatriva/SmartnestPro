@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -24,6 +25,11 @@ export default function Login() {
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 relative overflow-hidden">
+      <Helmet>
+        <title>Login | Maatriva</title>
+        <meta name="description" content="Access your Maatriva dashboard and check your smart baby cradle reports." />
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
 
       <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
 

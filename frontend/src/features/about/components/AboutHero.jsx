@@ -10,6 +10,10 @@ export default function AboutHero() {
       <img
         src={withParentImage}
         alt="Parents resting with their baby"
+        width="1920"
+        height="1080"
+        fetchpriority="high"
+        loading="eager"
         className="absolute inset-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />

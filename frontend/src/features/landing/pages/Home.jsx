@@ -14,46 +14,77 @@ export default function Home() {
   return (
     <div className="relative bg-(--bg) text-(--text) fade-in">
       <Helmet>
-        <title>Maatriva | The AI Baby Cradle</title>
+        <title>Maatriva | Smart Baby Care Powered by AI</title>
         <meta
           name="description"
-          content="Discover the world's first AI-powered smart baby cradle with real-time health monitoring and automated soothing."
+          content="Experience Maatriva, the world's first AI-powered smart baby cradle. Features automated gentle soothing, cry translation, and newborn health monitoring."
         />
+        <meta name="keywords" content="smart cradle, infant monitoring, AI baby care, healthcare technology, newborn monitoring, baby safety, parent assistance" />
         <link rel="canonical" href="https://maatriva.vercel.app/" />
-        <meta
-          property="og:title"
-          content="Maatriva | The AI Baby Cradle"
-        />
+        
+        {/* Open Graph Tags */}
+        <meta property="og:title" content="Maatriva | Smart Baby Care Powered by AI" />
         <meta
           property="og:description"
-          content="Discover the world's first AI-powered smart baby cradle with real-time health monitoring and automated soothing."
+          content="Experience Maatriva, the world's first AI-powered smart baby cradle. Features automated gentle soothing, cry translation, and newborn health monitoring."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://maatriva.vercel.app/" />
         <meta property="og:image" content="https://maatriva.vercel.app/AIPro.jpeg" />
+        
+        {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Maatriva | The AI Baby Cradle" />
-        <meta name="twitter:description" content="Discover the world's first AI-powered smart baby cradle with real-time health monitoring and automated soothing." />
+        <meta name="twitter:title" content="Maatriva | Smart Baby Care Powered by AI" />
+        <meta name="twitter:description" content="Experience Maatriva, the world's first AI-powered smart baby cradle. Features automated gentle soothing, cry translation, and newborn health monitoring." />
         <meta name="twitter:image" content="https://maatriva.vercel.app/AIPro.jpeg" />
+
+        {/* Structured Data */}
         <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Product",
-            "name": "Maatriva Smart Baby Cradle",
-            "image": "https://maatriva.vercel.app/AIPro.jpeg",
-            "description": "Discover the world's first AI-powered smart baby cradle with real-time health monitoring and automated soothing.",
-            "brand": {
-              "@type": "Brand",
-              "name": "Maatriva"
+          {JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "MedicalOrganization",
+              "@id": "https://maatriva.vercel.app/#organization",
+              "name": "Maatriva",
+              "url": "https://maatriva.vercel.app",
+              "logo": "https://maatriva.vercel.app/android-chrome-512x512.png",
+              "image": "https://maatriva.vercel.app/AIPro.jpeg",
+              "description": "Maatriva is an innovative MedTech startup in India building the world's first AI-powered smart baby cradle for infant health and safety.",
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "IN"
+              }
             },
-            "offers": {
-              "@type": "AggregateOffer",
-              "priceCurrency": "INR",
-              "lowPrice": "30000",
-              "highPrice": "60000",
-              "offerCount": "2"
+            {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "@id": "https://maatriva.vercel.app/#website",
+              "name": "Maatriva",
+              "url": "https://maatriva.vercel.app",
+              "description": "Smart Baby Care Powered by AI",
+              "publisher": {
+                "@id": "https://maatriva.vercel.app/#organization"
+              }
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "Product",
+              "name": "Maatriva Smart Baby Cradle",
+              "image": "https://maatriva.vercel.app/AIPro.jpeg",
+              "description": "AI-powered smart baby cradle with real-time health monitoring and automated soothing.",
+              "brand": {
+                "@type": "Brand",
+                "name": "Maatriva"
+              },
+              "offers": {
+                "@type": "AggregateOffer",
+                "priceCurrency": "INR",
+                "lowPrice": "12000",
+                "highPrice": "75000",
+                "offerCount": "3"
+              }
             }
-          })}
+          ])}
         </script>
       </Helmet>
 

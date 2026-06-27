@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -24,6 +25,11 @@ export default function Signup() {
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 relative overflow-hidden">
+      <Helmet>
+        <title>Sign Up | Maatriva</title>
+        <meta name="description" content="Create a Maatriva account to start monitoring your baby's health." />
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
 
       <div className="absolute top-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-secondary/20 rounded-full blur-3xl" />

@@ -203,6 +203,9 @@ export default function PricingCard({ plan, onPreOrder }) {
               <img
                 src={plan.img}
                 alt={plan.name}
+                width="150"
+                height="128"
+                loading="lazy"
                 className="w-full max-w-[150px] h-32 object-cover rounded-xl shadow-[0_4px_16px_rgba(0,0,0,0.03)] border border-white/60"
               />
             </div>
