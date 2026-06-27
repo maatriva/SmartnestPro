@@ -2,5 +2,8 @@
   "dependencies": {
     "@lottiefiles/dotlottie-react": "^0.19.3",
     "react-helmet-async": "^3.0.0"
+  },
+  "devDependencies": {
+    "vite-plugin-sitemap": "^0.8.2"
   }
 }
