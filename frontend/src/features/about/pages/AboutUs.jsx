@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import AboutHero from "../components/AboutHero";
 import AboutGenesis from "../components/AboutGenesis";
@@ -6,6 +6,10 @@ import ScienceSafety from "../components/ScienceSafety";
 import TeamSection from "../components/TeamSection";
 
 export default function AboutUs() {
+  useEffect(() => {
+    document.body.style.overflow = "";
+  }, []);
+
   return (
     <div className="min-h-screen bg-(--bg) text-(--text) fade-in">
       <Helmet>

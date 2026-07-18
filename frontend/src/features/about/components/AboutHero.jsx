@@ -17,7 +17,7 @@ export default function AboutHero() {
   }, []);
 
   return (
-    <section className="relative min-h-[600px] sm:min-h-[720px] md:min-h-[760px] pt-36 flex items-end overflow-hidden">
+    <section className="relative min-h-[600px] sm:min-h-[720px] md:min-h-[760px] pt-36 flex items-end">
       <img
         src={withParentImage}
         alt="Parents resting with their baby"
@@ -27,8 +27,8 @@ export default function AboutHero() {
         loading="eager"
         className="absolute inset-0 h-full w-full object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
 
       <div className="relative z-10 w-full px-5 sm:px-8 lg:px-12 pb-28">
         <motion.div

@@ -147,6 +147,7 @@ const Navbar = () => {
                   <Link
                     key={i}
                     to={link.path}
+                    onClick={() => setIsMenuOpen(false)}
                     className={`text-2xl font-bold transition-colors ${
                       location.pathname === link.path
                         ? "text-(--primary)"
@@ -160,6 +161,7 @@ const Navbar = () => {
                 {user?.is_admin && (
                   <Link
                     to="/admin"
+                    onClick={() => setIsMenuOpen(false)}
                     className="text-2xl font-bold text-(--primary)"
                   >
                     Admin Dashboard

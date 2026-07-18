@@ -8,6 +8,10 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./features/auth/context/AuthContext";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
+if (typeof document !== "undefined") {
+  document.body.style.overflow = "";
+}
+
 const rootElement = document.getElementById("root");
 
 const app = (
