@@ -29,7 +29,7 @@ export default function ContactCard({
         className="p-6 cursor-pointer flex items-center justify-between"
       >
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-full bg-orange-600 text-white flex items-center justify-center font-black">
+          <div className="w-12 h-12 rounded-full bg-orange-600 text-white flex items-center justify-center font-black shrink-0">
             {contact.name?.charAt(0) || "C"}
           </div>
           <div>

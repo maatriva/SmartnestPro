@@ -1,0 +1,16 @@
+import{j as e,r as n}from"./ui-vendor-avc6CE4D.js";/* empty css              */import{i as o}from"./index-Bua1gRvY.js";import"./animation-vendor-C0VThzDd.js";function c(){return e.jsxs("div",{className:"text-center max-w-3xl mx-auto mb-16",children:[e.jsx("div",{className:"inline-block px-4 py-2 clay-badge text-sm font-bold mb-4",children:"Monitoring"}),e.jsx("h2",{className:"text-4xl md:text-5xl font-bold text-(--text-dark) mb-6",children:"Diseases that are monitored by us"}),e.jsx("p",{className:"text-xl text-(--text-light)",children:"Our smart baby cradle tracks vital patterns to detect symptoms early."})]})}const u=n.memo(function({disease:s,index:t,activeIndex:a,onClick:i}){return e.jsxs("div",{role:"button",tabIndex:0,"aria-pressed":a===t,"aria-label":`Select ${s.name} for more information`,onClick:()=>i(t),onKeyDown:l=>{(l.key==="Enter"||l.key===" ")&&(l.preventDefault(),i(t))},className:`
+        mx-8
+        cursor-pointer
+        text-sm
+        md:text-base
+        px-5
+        py-2.5
+        transition-all
+        duration-300
+        rounded-full
+        focus:outline-none
+        focus:ring-2
+        focus:ring-(--primary-light)/50
+
+        ${a===t?"clay-card text-(--text-dark) scale-110":"clay-badge text-(--text-light)"}
+      `,children:[e.jsxs("div",{className:"font-bold inline-block mr-2",children:[s.name,":"]}),e.jsx("span",{className:"font-semibold text-xs md:text-sm",children:a===t?s.full:s.short}),e.jsx("span",{className:"mx-6 text-(--primary-light)",children:"•"})]})});function d({diseases:r,activeIndex:s,onClick:t}){return e.jsx("div",{className:"w-full overflow-hidden my-8",children:e.jsx("div",{className:"flex whitespace-nowrap marquee",children:[...r,...r].map((a,i)=>e.jsx(u,{disease:a,index:i,activeIndex:s,onClick:t},i))})})}function m(){const[r,s]=n.useState(null),t=n.useCallback(a=>{s(i=>i===a?null:a)},[]);return{activeIndex:r,toggleDisease:t}}const x=[{name:"Cystic Fibrosis",short:"Thick mucus buildup in lungs",full:"A genetic disorder affecting lungs and digestive system causing severe breathing issues."},{name:"Sleep Apnea",short:"Breathing pauses during sleep",full:"A sleep disorder where breathing repeatedly stops and starts, leading to poor sleep quality."},{name:"Tetralogy of Fallot",short:"Heart defect causing low oxygen",full:"A congenital heart condition with four defects affecting blood flow."},{name:"Epilepsy",short:"Repeated seizures affecting brain",full:"A neurological disorder causing recurrent seizures due to abnormal brain activity."},{name:"Hydrocephalus",short:"Fluid buildup in brain",full:"A condition where fluid accumulates in the brain, increasing pressure."},{name:"Arrhythmias",short:"Irregular heart rhythms",full:"A condition where the heart beats too fast, too slow, or irregularly."}];function b(){const r=o(),{activeIndex:s,toggleDisease:t}=m();return e.jsxs("section",{id:"diseases",className:"py-24 px-6 clay-even-section text-(--text) overflow-x-hidden",children:[e.jsx("div",{className:"max-w-7xl mx-auto",children:e.jsx(c,{})}),e.jsx(d,{diseases:x,activeIndex:s,onClick:t}),e.jsx("div",{className:"max-w-7xl mx-auto",children:e.jsx("div",{className:"flex w-full justify-center mt-12",children:e.jsx("button",{onClick:()=>r("/diseases"),className:"px-6 py-3 clay-btn clay-btn-primary",children:"Know More"})})})]})}export{b as default};

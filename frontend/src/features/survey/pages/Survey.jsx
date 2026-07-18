@@ -92,7 +92,7 @@ export default function Survey() {
             transition={{ duration: 0.4, ease: "easeInOut" }}
             className="space-y-8"
           >
-            <div className="clay-card p-8 md:p-12">
+            <div className="clay-card p-5 sm:p-8 md:p-12">
               
               <div className="flex justify-between items-center mb-10">
                 <div className="flex items-center gap-3">

@@ -1,18 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { Heart } from "lucide-react";
 
 import withoutBabyImage from "../../images/withoutbaby.jpeg";
 
 export default function AboutGenesis() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <section className="py-20 bg-(--bg) px-5 sm:px-8 lg:px-12">
       <div className="mx-auto max-w-7xl clay-card p-8 sm:p-12 lg:p-16 grid items-center gap-14 lg:grid-cols-[1fr_1.05fr]">
         <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7 }}
+          initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
+          whileInView={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: isMobile ? "0px" : "-100px" }}
+          transition={isMobile ? { duration: 0 } : { duration: 0.7 }}
         >
           <div className="inline-block px-3 py-1.5 clay-badge text-[10px] font-black uppercase tracking-[0.2em] mb-4">
             The Genesis
@@ -40,10 +51,10 @@ export default function AboutGenesis() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7, delay: 0.1 }}
+          initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
+          whileInView={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: isMobile ? "0px" : "-100px" }}
+          transition={isMobile ? { duration: 0 } : { duration: 0.7, delay: 0.1 }}
           className="overflow-hidden clay-card w-full p-2"
         >
         <img

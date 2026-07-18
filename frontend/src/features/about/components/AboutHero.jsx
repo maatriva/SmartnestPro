@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 
 import withParentImage from "../../images/withParents.jpeg";
 
 export default function AboutHero() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <section className="relative min-h-[720px] md:min-h-[760px] pt-36 flex items-end overflow-hidden">
       <img
@@ -21,9 +32,9 @@ export default function AboutHero() {
 
       <div className="relative z-10 w-full px-5 sm:px-8 lg:px-12 pb-28">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={isMobile ? { duration: 0 } : { duration: 0.7 }}
           className="max-w-2xl"
         >
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-white">

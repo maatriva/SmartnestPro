@@ -56,8 +56,8 @@ export default function DiseaseSideNav({ categories }) {
   }
 
   return (
-    <aside className="fixed right-5 top-1/2 -translate-y-1/2 z-50 hidden md:block">
-      <div className="clay-card px-3 py-4 max-h-[70vh] overflow-y-auto">
+    <aside className="fixed right-5 top-1/2 -translate-y-1/2 z-50 hidden md:block pointer-events-none">
+      <div className="clay-card px-3 py-4 max-h-[70vh] overflow-y-auto pointer-events-auto">
         <div className="flex flex-col items-center gap-4">
           {items.map((item) => {
             const active = activeSectionId === item.id;

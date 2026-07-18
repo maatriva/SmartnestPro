@@ -63,7 +63,7 @@ export default function AdminDashboard() {
         <DashboardHeader onRefresh={fetchStats} />
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           <motion.div 
             whileHover={{ y: -5 }}
             onClick={() => {setActiveTab("users"); setExpandedItem(null);}}

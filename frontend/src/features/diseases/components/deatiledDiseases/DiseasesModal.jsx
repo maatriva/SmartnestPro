@@ -55,7 +55,7 @@ export default function DiseaseModal({ selected, onClose }) {
     <AnimatePresence>
       {selected && (
         <div 
-          className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-4 overflow-y-auto"
           role="dialog"
           aria-modal="true"
           aria-labelledby="disease-modal-title"
@@ -70,7 +70,7 @@ export default function DiseaseModal({ selected, onClose }) {
 
           <motion.div
             ref={modalRef}
-            className="clay-card p-10 max-w-xl w-full relative z-10 text-(--text) bg-white"
+            className="clay-card p-6 sm:p-10 max-w-xl w-full relative z-10 text-(--text) bg-white my-auto"
             initial={{
               scale: 0.9,
               opacity: 0,

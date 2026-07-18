@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { motion, AnimatePresence, useTransform, useSpring, useMotionValue, animate } from "motion/react";
-import { Linkedin, X, Award, Terminal, CheckCircle2 } from "lucide-react";
+import { Linkedin, X, Award, Terminal, CheckCircle2, ChevronDown, ChevronUp } from "lucide-react";
 import { team } from "../constants/aboutData";
 import useBodyScrollLock from "../../../shared/hooks/useBodyScrollLock";
 
@@ -110,6 +110,15 @@ const childFadeLeftVariants = {
 export default function TeamOrbit() {
   const size = useWindowSize();
   const isMobile = size.width < 768;
+  const [expandedMembers, setExpandedMembers] = useState({});
+
+  const toggleMemberExpand = (name) => {
+    setExpandedMembers((prev) => ({
+      ...prev,
+      [name]: !prev[name],
+    }));
+  };
+
   const sectionRef = useRef(null);
   const N = team.length;
 
@@ -127,8 +136,20 @@ export default function TeamOrbit() {
   }, []);
 
   // Permanently Enlarged Orbit Dimensions (Centered Layout)
-  const radiusX = size.width >= 1280 ? 465 : size.width >= 1024 ? 385 : size.width >= 768 ? 295 : 145;
-  const radiusZ = size.width >= 1280 ? 285 : size.width >= 1024 ? 225 : size.width >= 768 ? 165 : 85;
+  const radiusX = size.width >= 1280 
+    ? 465 
+    : size.width >= 1024 
+      ? 385 
+      : size.width >= 768 
+        ? 295 
+        : Math.max(90, (size.width - 48 - 80) / 2);
+  const radiusZ = size.width >= 1280 
+    ? 285 
+    : size.width >= 1024 
+      ? 225 
+      : size.width >= 768 
+        ? 165 
+        : Math.max(55, radiusX * 0.58);
   const tiltFactor = 0.28; // Tilted Y offset based on Z depth
   const radiusY = radiusZ * tiltFactor;
 
@@ -328,6 +349,111 @@ export default function TeamOrbit() {
       handleCardClick(activeIndex, team[activeIndex]);
     }
   };
+  
+  if (isMobile) {
+    return (
+      <div className="flex flex-col gap-8 w-full max-w-2xl mx-auto z-10 relative">
+        {team.map((member) => (
+          <div key={member.name} className="clay-card p-6 sm:p-8 flex flex-col gap-6 text-left bg-white">
+            <div className="flex flex-col sm:flex-row items-center gap-6">
+              <div className="w-32 h-32 rounded-3xl overflow-hidden p-1 bg-white/30 border border-white/40 shadow-md shrink-0">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className={`w-full h-full rounded-2xl object-cover ${member.objectPosition || "object-center"}`}
+                />
+              </div>
+              <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
+                <span className="inline-block px-3 py-1.5 rounded-full clay-badge text-[10px] font-black uppercase tracking-[0.2em] bg-teal-100/50 text-teal-800 border border-white/40 mb-2">
+                  {member.isFounder ? "Founder" : "Co-Founder"}
+                </span>
+                <h3 className="text-2xl font-black text-teal-950 dark:text-white leading-tight tracking-tight mb-1">
+                  {member.name}
+                </h3>
+                <h4 className="text-xs font-black uppercase tracking-[0.18em] text-teal-600 dark:text-teal-400 mb-3">
+                  {member.role}
+                </h4>
+                {member.linkedin && (
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex h-9 w-9 items-center justify-center rounded-full clay-badge bg-white/60 text-blue-600 shadow-sm border border-white/40 hover:scale-105 transition-transform"
+                    aria-label={`${member.name} LinkedIn`}
+                  >
+                    <Linkedin size={16} strokeWidth={2.5} />
+                  </a>
+                )}
+              </div>
+            </div>
+            <div className="flex justify-center sm:justify-start">
+              <button
+                onClick={() => toggleMemberExpand(member.name)}
+                className="px-5 py-2.5 rounded-full clay-btn clay-btn-secondary text-xs font-black uppercase tracking-wider flex items-center gap-2 cursor-pointer transition-all duration-300 active:scale-95 shadow-sm border border-white/60"
+              >
+                <span>{expandedMembers[member.name] ? "Show Less" : "Show More"}</span>
+                {expandedMembers[member.name] ? (
+                  <ChevronUp size={14} strokeWidth={2.5} />
+                ) : (
+                  <ChevronDown size={14} strokeWidth={2.5} />
+                )}
+              </button>
+            </div>
+
+            <motion.div
+              initial={false}
+              animate={{
+                height: expandedMembers[member.name] ? "auto" : 0,
+                opacity: expandedMembers[member.name] ? 1 : 0,
+              }}
+              transition={{ duration: 0.35, ease: "easeInOut" }}
+              className="overflow-hidden"
+            >
+              <div className="border-t border-teal-100 dark:border-zinc-800/40 pt-4 space-y-4 mt-2">
+                <p className="text-sm font-semibold leading-relaxed text-teal-900/80 dark:text-zinc-300 tracking-wide border-l-2 border-teal-200 dark:border-teal-400/30 pl-3 whitespace-pre-line">
+                  {member.copy}
+                </p>
+                
+                {member.achievements && member.achievements.length > 0 && (
+                  <div>
+                    <h5 className="text-[10px] font-black uppercase tracking-[0.15em] text-teal-950 dark:text-white mb-2 flex items-center gap-2">
+                      <Award size={12} className="text-teal-500 shrink-0" />
+                      Achievements
+                    </h5>
+                    <ul className="space-y-2">
+                      {member.achievements.map((achievement, idx) => (
+                        <li key={idx} className="flex items-start gap-2 text-xs text-teal-900/75 dark:text-zinc-400 font-semibold">
+                          <CheckCircle2 size={14} className="text-teal-500 shrink-0 mt-0.5" />
+                          <span>{achievement}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {member.contributions && member.contributions.length > 0 && (
+                  <div>
+                    <h5 className="text-[10px] font-black uppercase tracking-[0.15em] text-teal-950 dark:text-white mb-2 flex items-center gap-2">
+                      <Terminal size={12} className="text-teal-500 shrink-0" />
+                      Contributions
+                    </h5>
+                    <ul className="space-y-2">
+                      {member.contributions.map((contribution, idx) => (
+                        <li key={idx} className="flex items-start gap-2 text-xs text-teal-900/75 dark:text-zinc-400 font-semibold">
+                          <CheckCircle2 size={14} className="text-teal-500 shrink-0 mt-0.5" />
+                          <span>{contribution}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          </div>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div

@@ -39,6 +39,7 @@ export default function UserCard({
               items-center
               justify-center
               font-black
+              shrink-0
             "
           >
             {user.name?.charAt(0) || "U"}

@@ -140,7 +140,7 @@ const Navbar = () => {
                 damping: 25,
                 stiffness: 200,
               }}
-              className="fixed top-24 right-4 bottom-4 left-4 lg:hidden clay-card overflow-hidden flex flex-col p-8 z-[-1] pt-12"
+              className="fixed top-24 right-4 bottom-4 left-4 lg:hidden clay-card overflow-y-auto flex flex-col p-8 z-[-1] pt-12"
             >
               <div className="flex flex-col gap-6 text-center">
                 {NAV_LINKS.map((link, i) => (

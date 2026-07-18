@@ -28,7 +28,7 @@ export default function SurveyCard({
         className="p-6 cursor-pointer flex items-center justify-between"
       >
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-full bg-purple-600 text-white flex items-center justify-center font-black">
+          <div className="w-12 h-12 rounded-full bg-purple-600 text-white flex items-center justify-center font-black shrink-0">
             {survey.name?.charAt(0) || "A"}
           </div>
           <div>
@@ -36,11 +36,11 @@ export default function SurveyCard({
               {survey.name}
             </h4>
 
-            <p className="text-xs text-(--text-light) font-bold uppercase tracking-wider">
-              {survey.email}
-              {survey.phone ? ` • Phone: ${survey.phone}` : ""}
-              {survey.gender ? ` • Gender: ${survey.gender}` : ""}
-              {` • ${new Date(survey.created_at).toLocaleDateString()}`}
+            <p className="text-xs text-(--text-light) font-bold uppercase tracking-wider flex flex-wrap items-center gap-x-2 gap-y-0.5">
+              <span className="break-all">{survey.email}</span>
+              {survey.phone && <span>• Phone: {survey.phone}</span>}
+              {survey.gender && <span>• Gender: {survey.gender}</span>}
+              <span>• {new Date(survey.created_at).toLocaleDateString()}</span>
             </p>
           </div>
         </div>

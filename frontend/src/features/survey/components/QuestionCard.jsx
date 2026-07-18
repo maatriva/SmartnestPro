@@ -29,13 +29,13 @@ export default function QuestionCard({ q, qIndex, answers, handleChange }) {
               aria-valuetext={currentAnswer}
               className="w-full h-3 bg-white/50 backdrop-blur rounded-lg appearance-none cursor-pointer accent-(--text-dark) focus:outline-none focus:ring-2 focus:ring-(--primary-light)/50"
             />
-            <div className="flex justify-between px-2">
+            <div className="flex justify-between px-2 gap-1">
               {q.options.map((opt, idx) => (
-                <div key={idx} className="flex flex-col items-center gap-2">
-                  <div className={`w-1.5 h-1.5 rounded-full transition-all ${
+                <div key={idx} className="flex flex-col items-center gap-2 flex-1 min-w-0">
+                  <div className={`w-1.5 h-1.5 rounded-full transition-all shrink-0 ${
                     currentAnswer === opt ? "bg-(--text-dark) scale-150" : "bg-gray-300"
                   }`} />
-                  <span className={`text-xs font-bold transition-all ${
+                  <span className={`text-[10px] sm:text-xs font-bold text-center break-words transition-all ${
                     currentAnswer === opt ? "text-(--text-dark) scale-110" : "text-gray-400"
                   }`}>
                     {opt}
