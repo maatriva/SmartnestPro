@@ -19,6 +19,12 @@ export default function ScrollToTop() {
         element.scrollIntoView({ behavior: "smooth" });
       }
     }
+
+    // Safety fallback: Unconditionally release body scroll locks on route change
+    if (typeof window !== "undefined") {
+      window.__scrollLockCount = 0;
+      document.body.style.overflow = "";
+    }
   }, [pathname, hash]);
 
   return null;

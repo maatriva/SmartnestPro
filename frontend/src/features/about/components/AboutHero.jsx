@@ -17,7 +17,7 @@ export default function AboutHero() {
   }, []);
 
   return (
-    <section className="relative min-h-[720px] md:min-h-[760px] pt-36 flex items-end overflow-hidden">
+    <section className="relative min-h-[600px] sm:min-h-[720px] md:min-h-[760px] pt-36 flex items-end overflow-hidden">
       <img
         src={withParentImage}
         alt="Parents resting with their baby"
