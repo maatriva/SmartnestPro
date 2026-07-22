@@ -18,7 +18,7 @@ export default function Terms() {
           content="Read the official Terms and Conditions for purchasing, using, and accessing Maatriva's AI-powered smart cradle products and health monitoring apps."
         />
         <meta name="keywords" content="terms and conditions, user agreement, purchase terms, smart cradle policy, Maatriva terms" />
-        <link rel="canonical" href="https://maatriva.vercel.app/terms" />
+        <link rel="canonical" href="https://maatriva.co.in/terms" />
         
         {/* Open Graph Tags */}
         <meta property="og:title" content="Terms & Conditions | Maatriva" />
@@ -27,14 +27,14 @@ export default function Terms() {
           content="Read the official Terms and Conditions for purchasing, using, and accessing Maatriva's AI-powered smart cradle products and health monitoring apps."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://maatriva.vercel.app/terms" />
-        <meta property="og:image" content="https://maatriva.vercel.app/AIPro.jpeg" />
+        <meta property="og:url" content="https://maatriva.co.in/terms" />
+        <meta property="og:image" content="https://maatriva.co.in/AIPro.jpeg" />
         
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Terms & Conditions | Maatriva" />
         <meta name="twitter:description" content="Read the official Terms and Conditions for purchasing, using, and accessing Maatriva's AI-powered smart cradle products and health monitoring apps." />
-        <meta name="twitter:image" content="https://maatriva.vercel.app/AIPro.jpeg" />
+        <meta name="twitter:image" content="https://maatriva.co.in/AIPro.jpeg" />
 
         {/* Structured Data */}
         <script type="application/ld+json">
@@ -46,7 +46,7 @@ export default function Terms() {
             "publisher": {
               "@type": "Organization",
               "name": "Maatriva",
-              "logo": "https://maatriva.vercel.app/android-chrome-512x512.png"
+              "logo": "https://maatriva.co.in/android-chrome-512x512.png"
             }
           })}
         </script>

@@ -44,20 +44,20 @@ export default function DetailedDiseases() {
         <title>Baby Disease Information | Maatriva</title>
         <meta name="description" content="Explore Maatriva's clinical registry detailing common infant wellness risks, pediatric diseases, warning indicators, and preventive baby care advice." />
         <meta name="keywords" content="infant disease registry, baby health indicators, pediatric symptoms, baby wellness database, Maatriva" />
-        <link rel="canonical" href="https://maatriva.vercel.app/diseases" />
+        <link rel="canonical" href="https://maatriva.co.in/diseases" />
         
         {/* Open Graph Tags */}
         <meta property="og:title" content="Baby Disease Information | Maatriva" />
         <meta property="og:description" content="Explore Maatriva's clinical registry detailing common infant wellness risks, pediatric diseases, warning indicators, and preventive baby care advice." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://maatriva.vercel.app/diseases" />
-        <meta property="og:image" content="https://maatriva.vercel.app/BasicCradle.jpeg" />
+        <meta property="og:url" content="https://maatriva.co.in/diseases" />
+        <meta property="og:image" content="https://maatriva.co.in/BasicCradle.jpeg" />
         
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Baby Disease Information | Maatriva" />
         <meta name="twitter:description" content="Explore Maatriva's clinical registry detailing common infant wellness risks, pediatric diseases, warning indicators, and preventive baby care advice." />
-        <meta name="twitter:image" content="https://maatriva.vercel.app/BasicCradle.jpeg" />
+        <meta name="twitter:image" content="https://maatriva.co.in/BasicCradle.jpeg" />
 
         {/* Structured Data */}
         <script type="application/ld+json">
@@ -69,7 +69,7 @@ export default function DetailedDiseases() {
             "publisher": {
               "@type": "MedicalOrganization",
               "name": "Maatriva",
-              "logo": "https://maatriva.vercel.app/android-chrome-512x512.png"
+              "logo": "https://maatriva.co.in/android-chrome-512x512.png"
             }
           })}
         </script>

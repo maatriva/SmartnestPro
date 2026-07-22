@@ -41,7 +41,7 @@ export default function Survey() {
           content="Complete the Maatriva baby health assessment survey. Help our pediatric AI analyze your infant's sleeping patterns and soothing requirements."
         />
         <meta name="keywords" content="baby health assessment, pediatric survey, smart baby care survey, infant wellness screening, Maatriva" />
-        <link rel="canonical" href="https://maatriva.vercel.app/survey" />
+        <link rel="canonical" href="https://maatriva.co.in/survey" />
         
         {/* Open Graph Tags */}
         <meta property="og:title" content="Baby Health Assessment | Maatriva" />
@@ -50,14 +50,14 @@ export default function Survey() {
           content="Complete the Maatriva baby health assessment survey. Help our pediatric AI analyze your infant's sleeping patterns and soothing requirements."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://maatriva.vercel.app/survey" />
-        <meta property="og:image" content="https://maatriva.vercel.app/BasicCradle.jpeg" />
+        <meta property="og:url" content="https://maatriva.co.in/survey" />
+        <meta property="og:image" content="https://maatriva.co.in/BasicCradle.jpeg" />
         
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Baby Health Assessment | Maatriva" />
         <meta name="twitter:description" content="Complete the Maatriva baby health assessment survey. Help our pediatric AI analyze your infant's sleeping patterns and soothing requirements." />
-        <meta name="twitter:image" content="https://maatriva.vercel.app/BasicCradle.jpeg" />
+        <meta name="twitter:image" content="https://maatriva.co.in/BasicCradle.jpeg" />
 
         {/* Structured Data */}
         <script type="application/ld+json">
@@ -69,7 +69,7 @@ export default function Survey() {
             "publisher": {
               "@type": "Organization",
               "name": "Maatriva",
-              "logo": "https://maatriva.vercel.app/android-chrome-512x512.png"
+              "logo": "https://maatriva.co.in/android-chrome-512x512.png"
             }
           })}
         </script>

@@ -4,4 +4,4 @@ Disallow: /login
 Disallow: /signup
 Disallow: /admin
 
-Sitemap: https://maatriva.vercel.app/sitemap.xml
+Sitemap: https://maatriva.co.in/sitemap.xml
