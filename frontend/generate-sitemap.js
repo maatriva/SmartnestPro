@@ -12,7 +12,7 @@ const routes = [
   { path: '/terms', priority: '0.4', changefreq: 'yearly' }
 ];
 
-const domain = 'https://maatriva.vercel.app';
+const domain = 'https://maatriva.co.in';
 const currentDate = new Date().toISOString().split('T')[0];
 
 const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
