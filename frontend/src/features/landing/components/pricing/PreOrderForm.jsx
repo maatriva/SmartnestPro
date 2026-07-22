@@ -114,7 +114,7 @@ export default function PreOrderForm({ selectedPlan, onClose }) {
           </h2>
           {selectedPlan && (
             <p className="text-[var(--primary)] font-medium mt-1">
-              {selectedPlan.name} {selectedPlan.price === "Custom" ? "(Custom Pricing)" : `Model (₹${selectedPlan.price})`}
+              {selectedPlan.name}
             </p>
           )}
         </div>

@@ -178,19 +178,7 @@ export default function PricingCard({ plan, onPreOrder }) {
             {plan.name}
           </h3>
 
-          {/* Price & Sub-description */}
-          <div className="text-3xl font-black text-[#5A78D6] mb-3 flex items-baseline tracking-tight">
-            {plan.price === "Custom" ? (
-              <span>Custom</span>
-            ) : (
-              <>
-                <AnimatedPrice value={finalPriceStr} duration={0.5} />
-                <span className="text-xs text-(--text-light) font-normal ml-2">
-                  {plan.isModelCard ? "one-time" : "one-time / sub"}
-                </span>
-              </>
-            )}
-          </div>
+
 
           {/* One line short description */}
           <p className="text-sm text-(--text-light) mb-6 leading-relaxed">
@@ -271,9 +259,7 @@ export default function PricingCard({ plan, onPreOrder }) {
                   </div>
                 </div>
                 
-                <span className="text-xs font-black text-[#5A78D6]">
-                  +₹10,000
-                </span>
+
               </div>
 
               {/* Expandable AI features card */}
