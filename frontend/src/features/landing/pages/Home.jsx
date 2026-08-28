@@ -5,6 +5,7 @@ import Hero from "../sections/Hero";
 
 const Diseases = lazy(() => import("../../diseases/components/diseases/Diseases"));
 const Features = lazy(() => import("../sections/Feature"));
+const AppDownloadSection = lazy(() => import("../sections/AppDownloadSection"));
 const HowItWorks = lazy(() => import("../sections/howItWorks"));
 const ParentStories = lazy(() => import("../../parentStories/ParentStories"));
 const SupportingParents = lazy(() => import("../sections/SupportingParents"));
@@ -93,6 +94,7 @@ export default function Home() {
       <Suspense fallback={<div className="h-96" />}>
         <Diseases />
         <Features />
+        <AppDownloadSection />
         <HowItWorks />
         <ParentStories />
         <SupportingParents />

@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef, useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download, Smartphone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import useAuth from "../../features/auth/hooks/useAuth";
@@ -54,16 +54,25 @@ const Navbar = () => {
         <ul className="hidden lg:flex items-center gap-8 font-semibold">
           {NAV_LINKS.map((link, i) => (
             <li key={i} className="nav-item">
-              <Link
-                to={link.path}
-                className={`nav-link inline-block hover:text-(--text-dark) transition duration-200 ${
-                  location.pathname === link.path
-                    ? "text-(--primary)"
-                    : ""
-                }`}
-              >
-                {link.name}
-              </Link>
+              {link.path.startsWith("/#") ? (
+                <a
+                  href={link.path}
+                  className="nav-link inline-block hover:text-(--text-dark) transition duration-200"
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <Link
+                  to={link.path}
+                  className={`nav-link inline-block hover:text-(--text-dark) transition duration-200 ${
+                    location.pathname === link.path
+                      ? "text-(--primary)"
+                      : ""
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              )}
             </li>
           ))}
 
@@ -85,6 +94,16 @@ const Navbar = () => {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center gap-4 nav-cta">
+          {/* Download App CTA */}
+          <a
+            href="/maatriva-app.apk"
+            download="Maatriva-App-v1.0.apk"
+            className="px-4 py-2 rounded-full clay-badge text-(--primary) font-bold text-sm flex items-center gap-2 hover:scale-105 transition-transform"
+          >
+            <Download size={16} />
+            <span>Download App</span>
+          </a>
+
           {user ? (
             <div className="flex items-center gap-4">
               <span className="text-(--text-dark) font-medium">
@@ -144,18 +163,29 @@ const Navbar = () => {
             >
               <div className="flex flex-col gap-6 text-center">
                 {NAV_LINKS.map((link, i) => (
-                  <Link
-                    key={i}
-                    to={link.path}
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`text-2xl font-bold transition-colors ${
-                      location.pathname === link.path
-                        ? "text-(--primary)"
-                        : "text-(--text-dark)"
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
+                  link.path.startsWith("/#") ? (
+                    <a
+                      key={i}
+                      href={link.path}
+                      onClick={() => setIsMenuOpen(false)}
+                      className="text-2xl font-bold text-(--text-dark) hover:text-(--primary) transition-colors"
+                    >
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link
+                      key={i}
+                      to={link.path}
+                      onClick={() => setIsMenuOpen(false)}
+                      className={`text-2xl font-bold transition-colors ${
+                        location.pathname === link.path
+                          ? "text-(--primary)"
+                          : "text-(--text-dark)"
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
+                  )
                 ))}
 
                 {user?.is_admin && (
@@ -170,6 +200,15 @@ const Navbar = () => {
               </div>
 
               <div className="mt-auto flex flex-col gap-4">
+                <a
+                  href="/maatriva-app.apk"
+                  download="Maatriva-App-v1.0.apk"
+                  className="w-full py-3 px-4 rounded-xl clay-btn clay-btn-primary font-bold text-center text-base flex items-center justify-center gap-2"
+                >
+                  <Download size={20} />
+                  <span>Download Maatriva App (APK)</span>
+                </a>
+
                 {user ? (
                   <>
                     <div className="text-center p-4 clay-card">
@@ -192,7 +231,7 @@ const Navbar = () => {
                 ) : (
                   <Link
                     to="/login"
-                    className="w-full py-4 clay-btn clay-btn-primary font-bold text-center text-lg flex items-center justify-center"
+                    className="w-full py-4 clay-btn clay-card font-bold text-center text-lg flex items-center justify-center text-(--text-dark)"
                   >
                     Login to Account
                   </Link>
