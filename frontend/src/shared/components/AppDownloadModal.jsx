@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Download, Smartphone, ShieldCheck, QrCode, Sparkles, CheckCircle2 } from "lucide-react";
+import { APP_DOWNLOAD_LINK } from "../constants/navigation";
 
 export default function AppDownloadModal({ isOpen, onClose }) {
   if (!isOpen) return null;
@@ -59,8 +60,10 @@ export default function AppDownloadModal({ isOpen, onClose }) {
           {/* Direct Download Action */}
           <div className="space-y-4">
             <a
-              href="/maatriva-app.apk"
-              download="Maatriva-App-v1.0.apk"
+              href={APP_DOWNLOAD_LINK}
+              download="app-release.apk"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full py-4 px-6 rounded-2xl clay-btn clay-btn-primary font-bold text-base sm:text-lg text-white flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-teal-500/25"
             >
               <Download size={22} />

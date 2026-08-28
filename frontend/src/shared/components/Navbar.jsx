@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import useAuth from "../../features/auth/hooks/useAuth";
 
-import { NAV_LINKS } from "../constants/navigation";
+import { NAV_LINKS, APP_DOWNLOAD_LINK } from "../constants/navigation";
 import useBodyScrollLock from "../hooks/useBodyScrollLock";
 import { navbarEntranceAnimation } from "../../animations/navbarAnimation";
 
@@ -96,8 +96,10 @@ const Navbar = () => {
         <div className="hidden lg:flex items-center gap-4 nav-cta">
           {/* Download App CTA */}
           <a
-            href="/maatriva-app.apk"
-            download="Maatriva-App-v1.0.apk"
+            href={APP_DOWNLOAD_LINK}
+            download="app-release.apk"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-4 py-2 rounded-full clay-badge text-(--primary) font-bold text-sm flex items-center gap-2 hover:scale-105 transition-transform"
           >
             <Download size={16} />
@@ -201,8 +203,10 @@ const Navbar = () => {
 
               <div className="mt-auto flex flex-col gap-4">
                 <a
-                  href="/maatriva-app.apk"
-                  download="Maatriva-App-v1.0.apk"
+                  href={APP_DOWNLOAD_LINK}
+                  download="app-release.apk"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full py-3 px-4 rounded-xl clay-btn clay-btn-primary font-bold text-center text-base flex items-center justify-center gap-2"
                 >
                   <Download size={20} />

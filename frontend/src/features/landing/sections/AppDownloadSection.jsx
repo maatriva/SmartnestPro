@@ -15,6 +15,7 @@ import {
   Play
 } from "lucide-react";
 import AppDownloadModal from "../../../shared/components/AppDownloadModal";
+import { APP_DOWNLOAD_LINK } from "../../../shared/constants/navigation";
 
 export default function AppDownloadSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -247,8 +248,10 @@ export default function AppDownloadSection() {
               <div className="flex flex-wrap gap-4 pt-2">
                 {/* Direct APK Download Button */}
                 <a
-                  href="/maatriva-app.apk"
-                  download="Maatriva-App-v1.0.apk"
+                  href={APP_DOWNLOAD_LINK}
+                  download="app-release.apk"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex-1 min-w-[200px] py-4 px-6 rounded-2xl clay-btn clay-btn-primary text-white font-black text-sm sm:text-base flex items-center justify-center gap-2.5 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-teal-500/25"
                 >
                   <Download size={20} />
