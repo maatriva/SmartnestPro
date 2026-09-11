@@ -42,8 +42,6 @@ function SmartCradleIntroCard() {
 export default function Survey() {
   const {
     page,
-    personalInfo,
-    setPersonalInfo,
     answers,
     submitted,
     loading,
@@ -67,32 +65,27 @@ export default function Survey() {
     switch (pageNum) {
       case 0:
         return {
-          title: "Personal Information",
-          subtitle: "Tell us a bit about yourself",
-        };
-      case 1:
-        return {
           title: "Section 1: Initial Assessment",
           subtitle: "Your current baby care & monitoring concerns (Q1–Q4)",
         };
-      case 2:
+      case 1:
         return {
           title: "Section 2: Smart Cradle Concept",
           subtitle: "Evaluating the intelligent cradle system (Q5–Q8)",
         };
-      case 3:
+      case 2:
         return {
           title: "Section 3: Purchase & Trust",
           subtitle: "Preferences, hospital validation & concerns (Q9–Q12)",
         };
-      case 4:
+      case 3:
         return {
           title: "Section 4: Feedback & Pricing",
           subtitle: "Advocacy, feedback & ₹45k price evaluation (Q13–Q16)",
         };
       default:
         return {
-          title: `Section ${pageNum}`,
+          title: `Section ${pageNum + 1}`,
           subtitle: "Step for the future",
         };
     }
@@ -182,113 +175,23 @@ export default function Survey() {
                 </div>
               </div>
 
-              {page === 0 ? (
-                <div className="grid gap-8">
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-(--text-dark) flex items-center gap-1">
-                      Full Name <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={personalInfo.name}
-                      onChange={(e) => {
-                        setValidationError("");
-                        setPersonalInfo({ ...personalInfo, name: e.target.value });
-                      }}
-                      placeholder="John Doe"
-                      className="w-full px-4 py-3 clay-input"
+              <div className="grid gap-10">
+                {/* Smart Cradle Introduction Card between Q4 and Q5 (Page 1) */}
+                {page === 1 && <SmartCradleIntroCard />}
+
+                {currentQuestions.map((q, i) => {
+                  const qIndex = start + i;
+                  return (
+                    <QuestionCard
+                      key={qIndex}
+                      q={q}
+                      qIndex={qIndex}
+                      answers={answers}
+                      handleChange={handleChange}
                     />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-(--text-dark) flex items-center gap-1">
-                      Email Address <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      value={personalInfo.email}
-                      onChange={(e) => {
-                        setValidationError("");
-                        setPersonalInfo({ ...personalInfo, email: e.target.value });
-                      }}
-                      placeholder="john@example.com"
-                      className="w-full px-4 py-3 clay-input"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-(--text-dark)">
-                      Phone Number (Optional)
-                    </label>
-                    <input
-                      type="tel"
-                      value={personalInfo.phone}
-                      onChange={(e) => {
-                        setValidationError("");
-                        setPersonalInfo({ ...personalInfo, phone: e.target.value });
-                      }}
-                      placeholder="+91 98765 43210"
-                      className="w-full px-4 py-3 clay-input"
-                    />
-                  </div>
-
-                  <div className="space-y-3">
-                    <label className="text-sm font-bold text-(--text-dark) flex items-center gap-1">
-                      What is your gender? <span className="text-red-500">*</span>
-                    </label>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {["Male", "Female", "Other", "Prefer not to say"].map((option) => {
-                        const isSelected = personalInfo.gender === option;
-                        return (
-                          <label
-                            key={option}
-                            className={`flex items-center gap-3 p-4 rounded-2xl cursor-pointer border transition-all duration-300 ${
-                              isSelected
-                                ? "bg-(--primary)/20 border-(--primary) shadow-[inset_2px_2px_4px_rgba(255,255,255,0.9),_inset_-2px_-2px_4px_rgba(0,0,0,0.05),_0_0_15px_rgba(74,111,165,0.2)]"
-                                : "bg-white/10 border-white/20 hover:bg-white/20"
-                            }`}
-                          >
-                            <input
-                              type="radio"
-                              name="gender"
-                              value={option}
-                              checked={isSelected}
-                              onChange={() => {
-                                setValidationError("");
-                                setPersonalInfo({ ...personalInfo, gender: option });
-                              }}
-                              className="accent-(--primary) w-4 h-4 cursor-pointer"
-                            />
-                            <span className="font-semibold text-sm text-(--text-dark)">
-                              {option}
-                            </span>
-                          </label>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <div className="grid gap-10">
-                  {/* Smart Cradle Introduction Card between Q4 and Q5 (Page 2) */}
-                  {page === 2 && <SmartCradleIntroCard />}
-
-                  {currentQuestions.map((q, i) => {
-                    const qIndex = start + i;
-                    return (
-                      <QuestionCard
-                        key={qIndex}
-                        q={q}
-                        qIndex={qIndex}
-                        answers={answers}
-                        handleChange={handleChange}
-                      />
-                    );
-                  })}
-                </div>
-              )}
+                  );
+                })}
+              </div>
             </div>
 
             {/* Validation Error Message */}

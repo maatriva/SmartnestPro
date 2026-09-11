@@ -3,8 +3,8 @@ import pool from "../db.js";
 export const createSurvey = async (req, res) => {
   const { name, email, phone, gender, answers, user_id } = req.body;
 
-  if (!name || !email) {
-    return res.status(400).json({ error: "Name and Email are required." });
+  if (!answers || (typeof answers === "object" && Object.keys(answers).length === 0)) {
+    return res.status(400).json({ error: "Survey answers are required." });
   }
 
   try {
@@ -13,9 +13,12 @@ export const createSurvey = async (req, res) => {
         ? JSON.stringify(answers)
         : answers;
 
+    const respondentName = name || (user_id ? "Registered User" : "Anonymous Respondent");
+    const respondentEmail = email || null;
+
     const result = await pool.query(
       "INSERT INTO surveys (name, email, phone, gender, answers, user_id) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
-      [name, email, phone || null, gender || null, sanitizedAnswers, user_id || null]
+      [respondentName, respondentEmail, phone || null, gender || null, sanitizedAnswers, user_id || null]
     );
 
     res.status(201).json({
