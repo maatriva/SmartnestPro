@@ -50,40 +50,69 @@ export default function SurveyCard({
           className="px-6 pb-6 pt-2 border-t border-white/60"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-            {Object.entries(answersObj).map(([key, value]) => {
-              const qIndex = parseInt(key);
-              const isOtherKey = key.includes("_other");
-              const questionObj = questions[qIndex];
-              const questionLabel = isOtherKey
-                ? `Q${qIndex + 1} (Specified Reason)`
-                : (questionObj?.number || `Q${qIndex + 1}`);
-              const questionText = questionObj?.question || "";
+            {Object.entries(answersObj)
+              .sort(([aKey], [bKey]) => {
+                const aNum = aKey.startsWith("Q") || aKey.startsWith("q")
+                  ? parseInt(aKey.replace(/\D/g, ""), 10)
+                  : parseInt(aKey, 10) + 1;
+                const bNum = bKey.startsWith("Q") || bKey.startsWith("q")
+                  ? parseInt(bKey.replace(/\D/g, ""), 10)
+                  : parseInt(bKey, 10) + 1;
+                return (aNum || 0) - (bNum || 0);
+              })
+              .map(([key, value]) => {
+                const isOtherKey = key.includes("_other");
+                const isQFormat = key.startsWith("Q") || key.startsWith("q");
+                const qNum = isQFormat
+                  ? parseInt(key.replace(/\D/g, ""), 10)
+                  : parseInt(key, 10) + 1;
+                const qIndex = qNum - 1;
+                const questionObj = questions[qIndex];
+                const questionLabel = isOtherKey
+                  ? `Q${qNum} (Specified Reason)`
+                  : (questionObj?.number || `Q${qNum}`);
+                const questionText = questionObj?.question || "";
+                const isPriority = Boolean(questionObj?.isPriority);
 
-              return (
-                <div key={key} className="p-4 clay-card">
-                  <div className="flex items-center justify-between gap-2 mb-1">
-                    <p className="text-xs font-black text-(--primary) uppercase tracking-wider">
-                      {questionLabel}
-                    </p>
-                    {isOtherKey && (
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-100 text-amber-800 border border-amber-200">
-                        Other Text
-                      </span>
+                return (
+                  <div 
+                    key={key} 
+                    className={`p-4 clay-card transition-all ${
+                      isPriority && !isOtherKey 
+                        ? "border border-(--primary)/30 bg-(--primary)/5 shadow-sm" 
+                        : ""
+                    }`}
+                  >
+                    <div className="flex items-center justify-between gap-2 mb-1">
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        <p className="text-xs font-black text-(--primary) uppercase tracking-wider">
+                          {questionLabel}
+                        </p>
+                        {isPriority && !isOtherKey && (
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-(--primary) text-white shadow-xs">
+                            Key Metric
+                          </span>
+                        )}
+                      </div>
+                      {isOtherKey && (
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-100 text-amber-800 border border-amber-200">
+                          Other Text
+                        </span>
+                      )}
+                    </div>
+
+                    {questionText && !isOtherKey && (
+                      <p className="text-xs text-(--text-light) font-medium line-clamp-2 mb-2">
+                        {questionText}
+                      </p>
                     )}
-                  </div>
 
-                  {questionText && !isOtherKey && (
-                    <p className="text-xs text-(--text-light) font-medium line-clamp-2 mb-2">
-                      {questionText}
+                    <p className="text-(--text-dark) font-semibold text-sm">
+                      {Array.isArray(value) ? value.join(", ") : String(value)}
                     </p>
-                  )}
-
-                  <p className="text-(--text-dark) font-semibold text-sm">
-                    {Array.isArray(value) ? value.join(", ") : String(value)}
-                  </p>
-                </div>
-              );
-            })}
+                  </div>
+                );
+              })}
           </div>
         </motion.div>
       )}

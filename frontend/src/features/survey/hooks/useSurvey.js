@@ -140,13 +140,25 @@ export default function useSurvey() {
   const submitSurvey = async () => {
     setLoading(true);
     try {
+      // Format answers using question numbers (Q1..Q16) for standardized PostgreSQL JSONB querying and analytics
+      const formattedAnswers = {};
+      questions.forEach((q, idx) => {
+        const val = answers[idx];
+        if (val !== undefined && val !== null && val !== "") {
+          formattedAnswers[q.number] = val;
+        }
+        if (answers[`${idx}_other`]) {
+          formattedAnswers[`${q.number}_other`] = answers[`${idx}_other`];
+        }
+      });
+
       await submitSurveyAnswers({
         name: personalInfo.name,
         email: personalInfo.email,
         phone: personalInfo.phone || null,
         gender: personalInfo.gender,
         user_id: user ? user.id : null,
-        answers,
+        answers: formattedAnswers,
       });
       setSubmitted(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
