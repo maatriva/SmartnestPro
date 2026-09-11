@@ -1,12 +1,43 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence } from "framer-motion";
+import { Sparkles, Info } from "lucide-react";
 import useSurvey from "../hooks/useSurvey";
 import SurveyProgress from "../components/SurveyProgress";
 import SurveyHeader from "../components/SurveyHeader";
 import SurveySuccess from "../components/SurveySuccess";
 import QuestionCard from "../components/QuestionCard";
 import SurveyControls from "../components/SurveyControls";
+
+function SmartCradleIntroCard() {
+  return (
+    <div className="clay-card p-6 sm:p-8 bg-gradient-to-br from-white/95 via-[#EBF5F6]/85 to-[#E1F1F3]/70 border-2 border-(--primary)/30 shadow-[0_12px_32px_rgba(74,111,165,0.15)] rounded-3xl mb-8 relative overflow-hidden">
+      <div className="flex items-center gap-2 mb-3 text-(--primary)">
+        <Sparkles size={18} className="fill-(--primary)/20" />
+        <span className="text-xs font-black uppercase tracking-widest bg-(--primary)/10 px-3 py-1 rounded-full border border-(--primary)/20">
+          Product Concept
+        </span>
+      </div>
+      <h3 className="text-xl sm:text-2xl font-black text-(--text-dark) mb-4">
+        Imagine a smart infant-monitoring cradle
+      </h3>
+      <div className="space-y-3 text-sm sm:text-base text-(--text) leading-relaxed font-medium">
+        <p>
+          A contactless monitoring system that uses cameras and sensors to observe your baby's posture, movement, crying and other relevant indicators while they rest.
+        </p>
+        <p>
+          The system can send alerts to parents when unusual patterns are detected, allowing them to check on the baby.
+        </p>
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-amber-500/10 border border-amber-500/25 text-amber-900 text-xs sm:text-sm font-semibold flex items-start gap-2.5 mt-2">
+          <Info size={18} className="shrink-0 mt-0.5 text-amber-600" />
+          <span>
+            It is designed as an additional layer of monitoring and early prediction and does not replace a doctor or medical care.
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Survey() {
   const {
@@ -31,6 +62,43 @@ export default function Survey() {
   if (submitted) {
     return <SurveySuccess />;
   }
+
+  const getSectionInfo = (pageNum) => {
+    switch (pageNum) {
+      case 0:
+        return {
+          title: "Personal Information",
+          subtitle: "Tell us a bit about yourself",
+        };
+      case 1:
+        return {
+          title: "Section 1: Initial Assessment",
+          subtitle: "Your current baby care & monitoring concerns (Q1–Q4)",
+        };
+      case 2:
+        return {
+          title: "Section 2: Smart Cradle Concept",
+          subtitle: "Evaluating the intelligent cradle system (Q5–Q8)",
+        };
+      case 3:
+        return {
+          title: "Section 3: Purchase & Trust",
+          subtitle: "Preferences, hospital validation & concerns (Q9–Q12)",
+        };
+      case 4:
+        return {
+          title: "Section 4: Feedback & Pricing",
+          subtitle: "Advocacy, feedback & ₹45k price evaluation (Q13–Q16)",
+        };
+      default:
+        return {
+          title: `Section ${pageNum}`,
+          subtitle: "Step for the future",
+        };
+    }
+  };
+
+  const sectionInfo = getSectionInfo(page);
 
   return (
     <div className="min-h-screen bg-(--bg) px-4 pt-32 pb-12 md:pt-36 md:pb-20 font-sans text-(--text-dark)">
@@ -96,15 +164,15 @@ export default function Survey() {
               
               <div className="flex justify-between items-center mb-10">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 clay-btn clay-btn-secondaryh flex items-center justify-center font-black text-xl">
+                  <div className="w-12 h-12 clay-btn clay-btn-secondary flex items-center justify-center font-black text-xl">
                     {page + 1}
                   </div>
                   <div>
                     <h2 className="text-xl font-bold text-(--text-dark)">
-                      {page === 0 ? "Personal Information" : `Section ${page}`}
+                      {sectionInfo.title}
                     </h2>
                     <p className="text-sm text-(--text-light)">
-                      {page === 0 ? "Tell us about yourself" : "Step for the future"}
+                      {sectionInfo.subtitle}
                     </p>
                   </div>
                 </div>
@@ -203,7 +271,10 @@ export default function Survey() {
                   </div>
                 </div>
               ) : (
-                <div className="grid gap-12">
+                <div className="grid gap-10">
+                  {/* Smart Cradle Introduction Card between Q4 and Q5 (Page 2) */}
+                  {page === 2 && <SmartCradleIntroCard />}
+
                   {currentQuestions.map((q, i) => {
                     const qIndex = start + i;
                     return (

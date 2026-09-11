@@ -28,25 +28,26 @@ export default function useSurvey() {
 
   const handleChange = (qIndex, option, type) => {
     setValidationError(""); // Clear error on change
-    if (type === "radio" || type === "text") {
+
+    if (type === "radio" || type === "scale" || type === "textarea") {
       setAnswers((prev) => ({ ...prev, [qIndex]: option }));
-    } else {
+    } else if (type === "other_text") {
+      setAnswers((prev) => ({ ...prev, [`${qIndex}_other`]: option }));
+    } else if (type === "checkbox") {
       const prevAnswers = answers[qIndex] || [];
+      const questionDef = questions[qIndex];
+      const maxSelections = questionDef?.maxSelections || 2;
+
       if (prevAnswers.includes(option)) {
-        setAnswers((prev) => {
-          const updated = {
-            ...prev,
-            [qIndex]: prevAnswers.filter((o) => o !== option),
-          };
-          if (qIndex === 7 && option === "Custom") {
-            delete updated["7_custom"];
-          }
-          if (qIndex === 11 && option === "Custom") {
-            delete updated["11_custom"];
-          }
-          return updated;
-        });
+        setAnswers((prev) => ({
+          ...prev,
+          [qIndex]: prevAnswers.filter((o) => o !== option),
+        }));
       } else {
+        if (prevAnswers.length >= maxSelections) {
+          setValidationError(`Select up to ${maxSelections} features only. Please deselect one to choose another.`);
+          return;
+        }
         setAnswers((prev) => ({
           ...prev,
           [qIndex]: [...prevAnswers, option],
@@ -64,10 +65,14 @@ export default function useSurvey() {
         personalInfo.gender
       );
     }
-    return currentQuestions.every((_, i) => {
+    return currentQuestions.every((q, i) => {
+      if (q.required === false) return true;
       const qIndex = start + i;
       const ans = answers[qIndex];
-      return ans !== undefined && (Array.isArray(ans) ? ans.length > 0 : true);
+      if (q.type === "checkbox") {
+        return Array.isArray(ans) && ans.length > 0 && ans.length <= (q.maxSelections || 2);
+      }
+      return ans !== undefined && ans !== null && ans !== "";
     });
   };
 
@@ -90,14 +95,26 @@ export default function useSurvey() {
         return;
       }
     } else {
-      const incomplete = currentQuestions.some((_, i) => {
+      for (let i = 0; i < currentQuestions.length; i++) {
+        const q = currentQuestions[i];
+        if (q.required === false) continue;
+
         const qIndex = start + i;
         const ans = answers[qIndex];
-        return ans === undefined || (Array.isArray(ans) && ans.length === 0);
-      });
-      if (incomplete) {
-        setValidationError("Please answer all questions on this page before moving to the next section.");
-        return;
+
+        if (q.type === "checkbox") {
+          if (!Array.isArray(ans) || ans.length === 0) {
+            setValidationError(`Please answer ${q.number || `Q${qIndex + 1}`}: Choose at least 1 feature (up to 2).`);
+            return;
+          }
+          if (ans.length > (q.maxSelections || 2)) {
+            setValidationError(`${q.number || `Q${qIndex + 1}`} allows a maximum of ${q.maxSelections || 2} selections.`);
+            return;
+          }
+        } else if (ans === undefined || ans === null || ans === "") {
+          setValidationError(`Please answer ${q.number || `Q${qIndex + 1}`} before continuing.`);
+          return;
+        }
       }
     }
 

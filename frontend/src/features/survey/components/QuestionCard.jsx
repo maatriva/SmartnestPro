@@ -1,77 +1,167 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { Star, Check, AlertCircle } from "lucide-react";
 
 export default function QuestionCard({ q, qIndex, answers, handleChange }) {
   const currentAnswer = answers[qIndex];
+  const otherAnswer = answers[`${qIndex}_other`] || "";
+  const isPriority = Boolean(q.isPriority);
+  const isOptional = q.required === false;
+
+  // Selected count for checkbox (Q6)
+  const selectedCheckboxCount = Array.isArray(currentAnswer) ? currentAnswer.length : 0;
+  const maxSelections = q.maxSelections || 2;
 
   return (
-    <div className="relative">
-      <div className="flex items-start gap-4 mb-6">
-        <span className="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-(--primary)/10 text-(--primary) flex items-center justify-center font-bold text-xs border border-(--primary)/20">
-          {qIndex + 1}
+    <div
+      className={`relative transition-all duration-300 rounded-3xl ${
+        isPriority
+          ? "p-6 sm:p-8 bg-gradient-to-br from-white/90 via-[#F3F7FA]/80 to-[#EBF3FF]/60 border-2 border-(--primary)/40 shadow-[0_10px_30px_rgba(90,120,214,0.12),inset_0_2px_4px_rgba(255,255,255,0.9)] ring-1 ring-(--primary)/20"
+          : "p-4 sm:p-6 bg-white/40 border border-white/60 rounded-3xl backdrop-blur-sm"
+      }`}
+    >
+      {/* Priority Badge */}
+      {isPriority && (
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-(--primary) text-white shadow-sm mb-4">
+          <Star size={13} className="fill-white" />
+          Key Evaluation Question
+        </div>
+      )}
+
+      {/* Header: Question Number, Title, Instructions & Required Status */}
+      <div className="flex items-start gap-3 sm:gap-4 mb-3">
+        <span
+          className={`mt-0.5 flex-shrink-0 w-8 h-8 rounded-2xl flex items-center justify-center font-black text-xs sm:text-sm border transition-all ${
+            isPriority
+              ? "bg-(--primary) text-white border-(--primary) shadow-sm"
+              : "bg-(--primary)/10 text-(--primary) border-(--primary)/20"
+          }`}
+        >
+          {q.number || `Q${qIndex + 1}`}
         </span>
-        <h4 className="text-xl md:text-2xl font-bold text-(--text-dark) leading-tight">
-          {q.question || "Rate your response"}
-        </h4>
+
+        <div className="flex-1 min-w-0">
+          <div className="flex flex-wrap items-center gap-2 mb-1.5">
+            <h4 className="text-lg sm:text-xl font-bold text-(--text-dark) leading-snug">
+              {q.question}
+            </h4>
+            {isOptional ? (
+              <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-500 border border-slate-200">
+                Optional
+              </span>
+            ) : (
+              <span className="text-xs font-semibold text-red-500 flex items-center gap-0.5" title="Required question">
+                *
+              </span>
+            )}
+          </div>
+
+          {/* Sub-instruction label */}
+          <div className="flex flex-wrap items-center gap-2 text-xs font-bold text-(--text-light)">
+            <span className="px-2.5 py-1 rounded-lg bg-white/70 border border-black/5 shadow-[inset_0_1px_2px_rgba(0,0,0,0.03)]">
+              {q.instruction || (q.type === "checkbox" ? `Select up to ${maxSelections}` : "Choose ONE")}
+            </span>
+            {q.type === "checkbox" && (
+              <span
+                className={`transition-colors ${
+                  selectedCheckboxCount === maxSelections
+                    ? "text-(--primary) font-black"
+                    : "text-(--text-light)"
+                }`}
+              >
+                ({selectedCheckboxCount} of {maxSelections} selected)
+              </span>
+            )}
+          </div>
+        </div>
       </div>
 
-      <div className="ml-0 md:ml-10">
-        {q.type === "range" ? (
-          <div className="space-y-6 py-4">
-            <input
-              type="range"
-              min="0"
-              max={q.options.length - 1}
-              step="1"
-              value={q.options.indexOf(currentAnswer) !== -1 ? q.options.indexOf(currentAnswer) : 0}
-              onChange={(e) => handleChange(qIndex, q.options[parseInt(e.target.value)], "radio")}
-              aria-label={q.question}
-              aria-valuetext={currentAnswer}
-              className="w-full h-3 bg-white/50 backdrop-blur rounded-lg appearance-none cursor-pointer accent-(--text-dark) focus:outline-none focus:ring-2 focus:ring-(--primary-light)/50"
-            />
-            <div className="flex justify-between px-2 gap-1">
-              {q.options.map((opt, idx) => (
-                <div key={idx} className="flex flex-col items-center gap-2 flex-1 min-w-0">
-                  <div className={`w-1.5 h-1.5 rounded-full transition-all shrink-0 ${
-                    currentAnswer === opt ? "bg-(--text-dark) scale-150" : "bg-gray-300"
-                  }`} />
-                  <span className={`text-[10px] sm:text-xs font-bold text-center break-words transition-all ${
-                    currentAnswer === opt ? "text-(--text-dark) scale-110" : "text-gray-400"
-                  }`}>
-                    {opt}
-                  </span>
-                </div>
-              ))}
+      <div className="mt-6 sm:ml-11">
+        {/* =========================================================
+            1) SCALE RATING (1-5 or 0-10)
+           ========================================================= */}
+        {q.type === "scale" && (
+          <div className="space-y-4">
+            {/* Number buttons row */}
+            <div
+              className={
+                q.scaleMax === 10
+                  ? "grid grid-cols-6 sm:grid-cols-11 gap-1.5 sm:gap-2"
+                  : "grid grid-cols-5 gap-2 sm:gap-3"
+              }
+            >
+              {q.options.map((opt) => {
+                const isSelected = String(currentAnswer) === String(opt);
+                return (
+                  <button
+                    key={opt}
+                    type="button"
+                    onClick={() => handleChange(qIndex, opt, "scale")}
+                    aria-pressed={isSelected}
+                    className={`py-3 sm:py-3.5 px-2 rounded-2xl font-black text-sm sm:text-base transition-all duration-200 cursor-pointer flex flex-col items-center justify-center ${
+                      isSelected
+                        ? "clay-btn clay-btn-primary text-white scale-105 shadow-md ring-2 ring-white"
+                        : "clay-card bg-white/70 hover:bg-white text-(--text-dark) border border-white/60 hover:scale-102"
+                    }`}
+                  >
+                    <span>{opt}</span>
+                  </button>
+                );
+              })}
             </div>
-          </div>
-        ) : (
-          <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {q.options.map((opt, idx) => {
-                const isSelected = q.type === "radio" 
-                    ? currentAnswer === opt 
-                    : currentAnswer?.includes(opt);
 
+            {/* End Labels (Min & Max) */}
+            <div className="flex justify-between items-start pt-2 px-1 text-xs font-bold text-(--text-light) gap-4">
+              <span className="max-w-[45%] text-left leading-relaxed">
+                {q.minLabel || `${q.scaleMin} = Lowest`}
+              </span>
+              <span className="max-w-[45%] text-right leading-relaxed">
+                {q.maxLabel || `${q.scaleMax} = Highest`}
+              </span>
+            </div>
+
+            {/* Selected confirmation preview */}
+            {currentAnswer !== undefined && currentAnswer !== null && currentAnswer !== "" && (
+              <div className="pt-1 flex items-center justify-end">
+                <span className="text-xs font-bold text-(--primary) bg-(--primary)/10 px-3 py-1 rounded-full border border-(--primary)/20">
+                  Selected score: {currentAnswer} / {q.scaleMax}
+                </span>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* =========================================================
+            2) SINGLE-CHOICE RADIO BUTTONS
+           ========================================================= */}
+        {q.type === "radio" && (
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+              {q.options.map((opt, idx) => {
+                const isSelected = currentAnswer === opt;
                 return (
                   <button
                     key={idx}
-                    onClick={() => handleChange(qIndex, opt, q.type)}
-                    className={`flex items-center justify-between p-5 rounded-2xl border-2 text-left transition-all duration-300 group/btn ${
-                      isSelected 
-                        ? "clay-btn clay-btn-primary text-white scale-[1.02]" 
-                        : "clay-card text-(--text) bg-white/50"
+                    type="button"
+                    onClick={() => handleChange(qIndex, opt, "radio")}
+                    className={`flex items-center justify-between p-4 sm:p-5 rounded-2xl border text-left transition-all duration-200 cursor-pointer group/btn ${
+                      isSelected
+                        ? "clay-btn clay-btn-primary text-white scale-[1.01] shadow-md"
+                        : "clay-card text-(--text-dark) bg-white/60 hover:bg-white/90 border-white/80"
                     }`}
                   >
-                    <span className="font-semibold">{opt}</span>
-                    <div className={`w-6 h-6 rounded-full border flex items-center justify-center flex-shrink-0 transition-all ${
-                      isSelected 
-                        ? "clay-badge bg-white text-(--primary) scale-110" 
-                        : "border-(--primary)/20 group-hover/btn:border-(--primary)/40 bg-white/40"
-                    }`}>
+                    <span className="font-semibold text-sm sm:text-base leading-snug pr-3">
+                      {opt}
+                    </span>
+                    <div
+                      className={`w-6 h-6 rounded-full border flex items-center justify-center flex-shrink-0 transition-all ${
+                        isSelected
+                          ? "bg-white text-(--primary) border-white shadow-inner scale-105"
+                          : "border-(--primary)/30 group-hover/btn:border-(--primary)/60 bg-white/50"
+                      }`}
+                    >
                       {isSelected && (
-                        q.type === "radio" 
-                          ? <div className="w-3 h-3 rounded-full bg-(--text-dark)" />
-                          : <div className="w-3 h-3 bg-(--text-dark) rounded-sm" />
+                        <div className="w-3 h-3 rounded-full bg-(--primary)" />
                       )}
                     </div>
                   </button>
@@ -79,48 +169,96 @@ export default function QuestionCard({ q, qIndex, answers, handleChange }) {
               })}
             </div>
 
-            {/* Custom input for Q8 (index 7) when Custom is selected */}
-            {qIndex === 7 && currentAnswer?.includes("Custom") && (
+            {/* Custom Input for "Other" */}
+            {q.hasOther && currentAnswer === "Other" && (
               <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-                className="mt-6"
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                className="pt-2"
               >
-                <label className="block text-sm font-black text-(--text-dark) mb-3 uppercase tracking-wider">
-                  Please specify your baby care challenge:
+                <label className="block text-xs font-bold text-(--text-dark) mb-2 uppercase tracking-wider">
+                  Please specify your answer:
                 </label>
-                <textarea
-                  value={answers["7_custom"] || ""}
-                  onChange={(e) => handleChange("7_custom", e.target.value, "text")}
-                  placeholder="Describe your specific challenge here..."
-                  rows={3}
-                  className="w-full p-5 rounded-2xl border-2 clay-input focus:outline-none text-sm font-semibold shadow-inner leading-relaxed"
+                <input
+                  type="text"
+                  value={otherAnswer}
+                  onChange={(e) => handleChange(qIndex, e.target.value, "other_text")}
+                  placeholder="Type your specific response here..."
+                  className="w-full px-4 py-3.5 rounded-2xl border-2 clay-input text-sm font-semibold shadow-inner focus:outline-none focus:ring-2 focus:ring-(--primary)/30"
                 />
               </motion.div>
             )}
+          </div>
+        )}
 
-            {/* Custom input for Q12 (index 11) when Custom is selected */}
-            {qIndex === 11 && currentAnswer?.includes("Custom") && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-                className="mt-6"
-              >
-                <label className="block text-sm font-black text-(--text-dark) mb-3 uppercase tracking-wider">
-                  Please specify other topics or features:
-                </label>
-                <textarea
-                  value={answers["11_custom"] || ""}
-                  onChange={(e) => handleChange("11_custom", e.target.value, "text")}
-                  placeholder="features you would like"
-                  rows={3}
-                  className="w-full p-5 rounded-2xl border-2 clay-input focus:outline-none text-sm font-semibold shadow-inner leading-relaxed"
-                />
-              </motion.div>
+        {/* =========================================================
+            3) CHECKBOX BUTTONS (Q6 with max selections constraint)
+           ========================================================= */}
+        {q.type === "checkbox" && (
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+              {q.options.map((opt, idx) => {
+                const isSelected = Array.isArray(currentAnswer) && currentAnswer.includes(opt);
+                const isMaxReached = selectedCheckboxCount >= maxSelections && !isSelected;
+
+                return (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => handleChange(qIndex, opt, "checkbox")}
+                    className={`flex items-center justify-between p-4 sm:p-5 rounded-2xl border text-left transition-all duration-200 cursor-pointer group/btn ${
+                      isSelected
+                        ? "clay-btn clay-btn-primary text-white scale-[1.01] shadow-md"
+                        : isMaxReached
+                        ? "clay-card text-gray-500 bg-white/30 opacity-75 border-dashed border-gray-300 hover:opacity-90"
+                        : "clay-card text-(--text-dark) bg-white/60 hover:bg-white/90 border-white/80"
+                    }`}
+                  >
+                    <span className="font-semibold text-sm sm:text-base leading-snug pr-3">
+                      {opt}
+                    </span>
+                    <div
+                      className={`w-6 h-6 rounded-lg border flex items-center justify-center flex-shrink-0 transition-all ${
+                        isSelected
+                          ? "bg-white text-(--primary) border-white shadow-inner scale-105"
+                          : "border-(--primary)/30 group-hover/btn:border-(--primary)/60 bg-white/50"
+                      }`}
+                    >
+                      {isSelected && (
+                        <Check size={16} className="text-(--primary) stroke-[3]" />
+                      )}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+
+            {selectedCheckboxCount === maxSelections && (
+              <p className="text-xs text-(--text-light) italic font-medium">
+                Tip: You have selected the maximum 2 features. Click a selected feature to deselect it before picking another.
+              </p>
             )}
-          </>
+          </div>
+        )}
+
+        {/* =========================================================
+            4) OPEN-ENDED TEXTAREA (Q14 & Q15)
+           ========================================================= */}
+        {q.type === "textarea" && (
+          <div className="space-y-2">
+            <textarea
+              value={currentAnswer || ""}
+              onChange={(e) => handleChange(qIndex, e.target.value, "textarea")}
+              placeholder={q.placeholder || "Write your response here..."}
+              rows={4}
+              className="w-full p-4 sm:p-5 rounded-2xl border-2 clay-input text-sm sm:text-base font-medium shadow-inner focus:outline-none focus:ring-2 focus:ring-(--primary)/30 leading-relaxed text-(--text-dark)"
+            />
+            <div className="flex justify-between items-center text-xs text-(--text-light) px-1 font-medium">
+              <span>This question is optional. You may skip it if you wish.</span>
+              <span>{(currentAnswer || "").length} characters</span>
+            </div>
+          </div>
         )}
       </div>
     </div>

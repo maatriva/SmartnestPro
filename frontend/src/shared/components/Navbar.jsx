@@ -235,7 +235,8 @@ const Navbar = () => {
                 ) : (
                   <Link
                     to="/login"
-                    className="w-full py-4 clay-btn clay-card font-bold text-center text-lg flex items-center justify-center text-(--text-dark)"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="w-full py-4 clay-btn clay-btn-primary font-bold text-center text-lg flex items-center justify-center text-white shadow-lg shadow-[#5A78D6]/25"
                   >
                     Login to Account
                   </Link>

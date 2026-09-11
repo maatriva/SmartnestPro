@@ -2,3 +2,6 @@ node_modules
 
 # Android release APK
 frontend/public/app-release.apk
+
+# Android build APK
+frontend/dist/*.apk

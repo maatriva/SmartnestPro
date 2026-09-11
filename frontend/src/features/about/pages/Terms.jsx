@@ -60,7 +60,7 @@ export default function Terms() {
         {/* Back Button */}
         <button
           onClick={() => navigate(-1)}
-          className="flex items-center gap-2 px-5 py-2.5 clay-badge hover:scale-105 transition-transform mb-8 font-bold text-sm cursor-pointer"
+          className="flex items-center gap-2 px-5 py-2.5 clay-btn clay-btn-secondary mb-8 font-bold text-sm cursor-pointer"
         >
           <ArrowLeft size={16} />
           Go Back
