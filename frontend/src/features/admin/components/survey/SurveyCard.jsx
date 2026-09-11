@@ -58,6 +58,9 @@ export default function SurveyCard({
                 const bNum = bKey.startsWith("Q") || bKey.startsWith("q")
                   ? parseInt(bKey.replace(/\D/g, ""), 10)
                   : parseInt(bKey, 10) + 1;
+                if ((aNum || 0) === (bNum || 0)) {
+                  return aKey.includes("_other") ? 1 : -1;
+                }
                 return (aNum || 0) - (bNum || 0);
               })
               .map(([key, value]) => {
@@ -108,7 +111,11 @@ export default function SurveyCard({
                     )}
 
                     <p className="text-(--text-dark) font-semibold text-sm">
-                      {Array.isArray(value) ? value.join(", ") : String(value)}
+                      {Array.isArray(value) 
+                        ? value.join(", ") 
+                        : (value === "" || value === null || value === undefined 
+                            ? <span className="italic text-gray-400 font-normal">Not provided</span> 
+                            : String(value))}
                     </p>
                   </div>
                 );

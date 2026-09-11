@@ -8,9 +8,14 @@ export const createSurvey = async (req, res) => {
   }
 
   try {
+    const sanitizedAnswers =
+      typeof answers === "object" && answers !== null
+        ? JSON.stringify(answers)
+        : answers;
+
     const result = await pool.query(
       "INSERT INTO surveys (name, email, phone, gender, answers, user_id) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
-      [name, email, phone || null, gender || null, answers, user_id || null]
+      [name, email, phone || null, gender || null, sanitizedAnswers, user_id || null]
     );
 
     res.status(201).json({

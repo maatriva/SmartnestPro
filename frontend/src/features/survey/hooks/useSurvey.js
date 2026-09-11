@@ -146,6 +146,8 @@ export default function useSurvey() {
         const val = answers[idx];
         if (val !== undefined && val !== null && val !== "") {
           formattedAnswers[q.number] = val;
+        } else {
+          formattedAnswers[q.number] = "";
         }
         if (answers[`${idx}_other`]) {
           formattedAnswers[`${q.number}_other`] = answers[`${idx}_other`];
