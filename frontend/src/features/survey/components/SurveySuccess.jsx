@@ -27,7 +27,7 @@ export default function SurveySuccess() {
         className="max-w-md w-full bg-white rounded-[24px] shadow-[0_10px_30px_rgba(34,59,102,0.1)] p-8 md:p-10 flex flex-col items-center text-center relative border border-slate-100"
       >
         {/* Gift Icon Wrapper */}
-        <div className="w-16 h-16 bg-[#EEF2FF] text-[#5A78D6] rounded-full flex items-center justify-center mb-6 shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)]">
+        <div className="w-16 h-16 bg-(--primary)/10 text-(--primary) rounded-full flex items-center justify-center mb-6 shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)]">
           <Gift size={32} className="animate-bounce" style={{ animationDuration: '3s' }} />
         </div>
 
@@ -43,7 +43,7 @@ export default function SurveySuccess() {
             href="https://surveyswap.io"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#5A78D6] hover:underline font-semibold"
+            className="text-(--primary) hover:underline font-semibold"
           >
             SurveySwap.io
           </a>
@@ -57,7 +57,7 @@ export default function SurveySuccess() {
           rel="noopener noreferrer"
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.98 }}
-          className="w-full py-4 px-6 bg-gradient-to-r from-[#7B8FF8] to-[#5A78D6] text-white text-center font-bold rounded-2xl shadow-lg shadow-[#5A78D6]/25 hover:shadow-[#5A78D6]/35 transition-all duration-300 block text-base"
+          className="w-full py-4 px-6 clay-btn clay-btn-primary text-white text-center font-bold text-base block shadow-lg shadow-[#5A78D6]/25"
         >
           Claim Karma
         </motion.a>
@@ -84,8 +84,8 @@ export default function SurveySuccess() {
           >
             {copied ? (
               <>
-                <Check size={14} className="text-green-500" />
-                <span className="text-green-600">Copied!</span>
+                <Check size={14} className="text-(--primary)" />
+                <span className="text-(--primary)">Copied!</span>
               </>
             ) : (
               <>

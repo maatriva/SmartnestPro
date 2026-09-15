@@ -29,7 +29,7 @@ export default function PreorderCard({
         className="p-6 cursor-pointer flex items-center justify-between"
       >
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-full bg-green-600 text-white flex items-center justify-center font-black shrink-0">
+          <div className="w-12 h-12 rounded-full bg-(--primary) text-white flex items-center justify-center font-black shrink-0">
             {order.name?.charAt(0) || "U"}
           </div>
           <div>

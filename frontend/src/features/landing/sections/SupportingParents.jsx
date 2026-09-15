@@ -210,7 +210,7 @@ export default function SupportingParents() {
             className="space-y-8"
           >
             <div className="flex items-center gap-3 border-b border-(--border) pb-4">
-              <div className="p-2.5 rounded-xl bg-blue-100/80 text-blue-500">
+              <div className="p-2.5 rounded-xl bg-(--primary)/10 text-(--primary)">
                 <Baby className="w-6 h-6" />
               </div>
               <h4 className="text-2xl font-bold text-(--text-dark)">
@@ -263,7 +263,7 @@ export default function SupportingParents() {
             className="space-y-8"
           >
             <div className="flex items-center gap-3 border-b border-(--border) pb-4">
-              <div className="p-2.5 rounded-xl bg-purple-100/80 text-purple-600">
+              <div className="p-2.5 rounded-xl bg-(--primary)/10 text-(--primary)">
                 <TrendingUp className="w-6 h-6" />
               </div>
               <h4 className="text-2xl font-bold text-(--text-dark)">
@@ -279,25 +279,25 @@ export default function SupportingParents() {
                 
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2.5 text-sm text-(--text)">
-                    <div className="mt-0.5 rounded-full p-0.5 bg-emerald-100 text-emerald-600 flex-shrink-0">
+                    <div className="mt-0.5 rounded-full p-0.5 bg-(--primary)/10 text-(--primary) flex-shrink-0">
                       <Check className="w-3 h-3 stroke-[3]" />
                     </div>
                     <span>Parenting guidance and support</span>
                   </li>
                   <li className="flex items-start gap-2.5 text-sm text-(--text)">
-                    <div className="mt-0.5 rounded-full p-0.5 bg-emerald-100 text-emerald-600 flex-shrink-0">
+                    <div className="mt-0.5 rounded-full p-0.5 bg-(--primary)/10 text-(--primary) flex-shrink-0">
                       <Check className="w-3 h-3 stroke-[3]" />
                     </div>
                     <span>Developmental milestone tracking</span>
                   </li>
                   <li className="flex items-start gap-2.5 text-sm text-(--text)">
-                    <div className="mt-0.5 rounded-full p-0.5 bg-emerald-100 text-emerald-600 flex-shrink-0">
+                    <div className="mt-0.5 rounded-full p-0.5 bg-(--primary)/10 text-(--primary) flex-shrink-0">
                       <Check className="w-3 h-3 stroke-[3]" />
                     </div>
                     <span>Feeding and sleep recommendations</span>
                   </li>
                   <li className="flex items-start gap-2.5 text-sm text-(--text)">
-                    <div className="mt-0.5 rounded-full p-0.5 bg-emerald-100 text-emerald-600 flex-shrink-0">
+                    <div className="mt-0.5 rounded-full p-0.5 bg-(--primary)/10 text-(--primary) flex-shrink-0">
                       <Check className="w-3 h-3 stroke-[3]" />
                     </div>
                     <span>Everyday caregiving assistance</span>
@@ -312,7 +312,7 @@ export default function SupportingParents() {
                 <div className="relative z-10">
                   <div className="flex justify-between items-center mb-1">
                     <h5 className="font-bold text-lg text-(--text-dark)">MAATRIVA Voice Assistant</h5>
-                    <span className="px-2 py-0.5 text-[9px] font-bold tracking-wider uppercase bg-purple-100 text-purple-600 rounded-full">
+                    <span className="px-2 py-0.5 text-[9px] font-bold tracking-wider uppercase bg-(--primary)/10 text-(--primary) rounded-full">
                       Pro Version
                     </span>
                   </div>
@@ -320,31 +320,31 @@ export default function SupportingParents() {
                   
                   <ul className="space-y-3">
                     <li className="flex items-start gap-2.5 text-sm text-(--text)">
-                      <div className="mt-0.5 rounded-full p-0.5 bg-emerald-100 text-emerald-600 flex-shrink-0">
+                      <div className="mt-0.5 rounded-full p-0.5 bg-(--primary)/10 text-(--primary) flex-shrink-0">
                         <Check className="w-3 h-3 stroke-[3]" />
                       </div>
                       <span>Real-time voice interaction</span>
                     </li>
                     <li className="flex items-start gap-2.5 text-sm text-(--text)">
-                      <div className="mt-0.5 rounded-full p-0.5 bg-emerald-100 text-emerald-600 flex-shrink-0">
+                      <div className="mt-0.5 rounded-full p-0.5 bg-(--primary)/10 text-(--primary) flex-shrink-0">
                         <Check className="w-3 h-3 stroke-[3]" />
                       </div>
                       <span>Advanced health monitoring</span>
                     </li>
                     <li className="flex items-start gap-2.5 text-sm text-(--text)">
-                      <div className="mt-0.5 rounded-full p-0.5 bg-emerald-100 text-emerald-600 flex-shrink-0">
+                      <div className="mt-0.5 rounded-full p-0.5 bg-(--primary)/10 text-(--primary) flex-shrink-0">
                         <Check className="w-3 h-3 stroke-[3]" />
                       </div>
                       <span>Illness-risk prediction support</span>
                     </li>
                     <li className="flex items-start gap-2.5 text-sm text-(--text)">
-                      <div className="mt-0.5 rounded-full p-0.5 bg-emerald-100 text-emerald-600 flex-shrink-0">
+                      <div className="mt-0.5 rounded-full p-0.5 bg-(--primary)/10 text-(--primary) flex-shrink-0">
                         <Check className="w-3 h-3 stroke-[3]" />
                       </div>
                       <span>Intelligent emergency escalation</span>
                     </li>
                     <li className="flex items-start gap-2.5 text-sm text-(--text)">
-                      <div className="mt-0.5 rounded-full p-0.5 bg-emerald-100 text-emerald-600 flex-shrink-0">
+                      <div className="mt-0.5 rounded-full p-0.5 bg-(--primary)/10 text-(--primary) flex-shrink-0">
                         <Check className="w-3 h-3 stroke-[3]" />
                       </div>
                       <span>Enhanced personalized recommendations</span>

@@ -7,11 +7,11 @@ export default function FloatingParticles() {
   const particles = useMemo(() => {
     const palette = [
       "#f6d8ca", // Soft Peach
-      "#d7eef0", // Soft Teal
+      "var(--bg-secondary)", // Soft Brand Secondary
       "#e8dbfc", // Soft Lavender
       "#fef3c7", // Soft Yellow
       "#ffe4e6", // Soft Pink
-      "var(--primary-light)", // Light blue-grey
+      "var(--primary-light)", // Light Brand Primary
     ];
 
     return Array.from({ length: 15 }, (_, i) => ({

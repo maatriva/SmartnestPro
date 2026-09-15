@@ -364,13 +364,13 @@ export default function TeamOrbit() {
                 />
               </div>
               <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
-                <span className="inline-block px-3 py-1.5 rounded-full clay-badge text-[10px] font-black uppercase tracking-[0.2em] bg-teal-100/50 text-teal-800 border border-white/40 mb-2">
+                <span className="inline-block px-3 py-1.5 rounded-full clay-badge text-[10px] font-black uppercase tracking-[0.2em] bg-(--primary)/10 text-(--primary) border border-white/40 mb-2">
                   {member.isFounder ? "Founder" : "Co-Founder"}
                 </span>
-                <h3 className="text-2xl font-black text-teal-950 dark:text-white leading-tight tracking-tight mb-1">
+                <h3 className="text-2xl font-black text-(--text-dark) leading-tight tracking-tight mb-1">
                   {member.name}
                 </h3>
-                <h4 className="text-xs font-black uppercase tracking-[0.18em] text-teal-600 dark:text-teal-400 mb-3">
+                <h4 className="text-xs font-black uppercase tracking-[0.18em] text-(--primary) mb-3">
                   {member.role}
                 </h4>
                 {member.linkedin && (
@@ -378,7 +378,7 @@ export default function TeamOrbit() {
                     href={member.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-9 w-9 items-center justify-center rounded-full clay-badge bg-white/60 text-blue-600 shadow-sm border border-white/40 hover:scale-105 transition-transform"
+                    className="flex h-9 w-9 items-center justify-center rounded-full clay-badge bg-white/60 text-(--primary) shadow-sm border border-white/40 hover:scale-105 transition-transform"
                     aria-label={`${member.name} LinkedIn`}
                   >
                     <Linkedin size={16} strokeWidth={2.5} />
@@ -409,21 +409,21 @@ export default function TeamOrbit() {
               transition={{ duration: 0.35, ease: "easeInOut" }}
               className="overflow-hidden"
             >
-              <div className="border-t border-teal-100 dark:border-zinc-800/40 pt-4 space-y-4 mt-2">
-                <p className="text-sm font-semibold leading-relaxed text-teal-900/80 dark:text-zinc-300 tracking-wide border-l-2 border-teal-200 dark:border-teal-400/30 pl-3 whitespace-pre-line">
+              <div className="border-t border-(--border) pt-4 space-y-4 mt-2">
+                <p className="text-sm font-semibold leading-relaxed text-(--text) tracking-wide border-l-2 border-(--primary)/30 pl-3 whitespace-pre-line">
                   {member.copy}
                 </p>
                 
                 {member.achievements && member.achievements.length > 0 && (
                   <div>
-                    <h5 className="text-[10px] font-black uppercase tracking-[0.15em] text-teal-950 dark:text-white mb-2 flex items-center gap-2">
-                      <Award size={12} className="text-teal-500 shrink-0" />
+                    <h5 className="text-[10px] font-black uppercase tracking-[0.15em] text-(--text-dark) mb-2 flex items-center gap-2">
+                      <Award size={12} className="text-(--primary) shrink-0" />
                       Achievements
                     </h5>
                     <ul className="space-y-2">
                       {member.achievements.map((achievement, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-xs text-teal-900/75 dark:text-zinc-400 font-semibold">
-                          <CheckCircle2 size={14} className="text-teal-500 shrink-0 mt-0.5" />
+                        <li key={idx} className="flex items-start gap-2 text-xs text-(--text) font-semibold">
+                          <CheckCircle2 size={14} className="text-(--primary) shrink-0 mt-0.5" />
                           <span>{achievement}</span>
                         </li>
                       ))}
@@ -433,14 +433,14 @@ export default function TeamOrbit() {
 
                 {member.contributions && member.contributions.length > 0 && (
                   <div>
-                    <h5 className="text-[10px] font-black uppercase tracking-[0.15em] text-teal-950 dark:text-white mb-2 flex items-center gap-2">
-                      <Terminal size={12} className="text-teal-500 shrink-0" />
+                    <h5 className="text-[10px] font-black uppercase tracking-[0.15em] text-(--text-dark) mb-2 flex items-center gap-2">
+                      <Terminal size={12} className="text-(--primary) shrink-0" />
                       Contributions
                     </h5>
                     <ul className="space-y-2">
                       {member.contributions.map((contribution, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-xs text-teal-900/75 dark:text-zinc-400 font-semibold">
-                          <CheckCircle2 size={14} className="text-teal-500 shrink-0 mt-0.5" />
+                        <li key={idx} className="flex items-start gap-2 text-xs text-(--text) font-semibold">
+                          <CheckCircle2 size={14} className="text-(--primary) shrink-0 mt-0.5" />
                           <span>{contribution}</span>
                         </li>
                       ))}
@@ -481,7 +481,7 @@ export default function TeamOrbit() {
             ease: "easeInOut",
           }}
           style={{ willChange: "transform" }}
-          className="absolute -top-20 -left-20 w-80 h-80 rounded-full bg-gradient-to-br from-cyan-300/25 to-teal-400/25 blur-3xl pointer-events-none"
+          className="absolute -top-20 -left-20 w-80 h-80 rounded-full bg-gradient-to-br from-(--primary-light)/20 to-(--primary)/20 blur-3xl pointer-events-none"
         />
         {/* Blob 2 */}
         <motion.div
@@ -496,7 +496,7 @@ export default function TeamOrbit() {
             ease: "easeInOut",
           }}
           style={{ willChange: "transform" }}
-          className="absolute -bottom-20 -right-20 w-96 h-96 rounded-full bg-gradient-to-tr from-indigo-300/20 to-purple-400/20 blur-3xl pointer-events-none"
+          className="absolute -bottom-20 -right-20 w-96 h-96 rounded-full bg-gradient-to-tr from-(--primary-light)/15 to-(--primary)/15 blur-3xl pointer-events-none"
         />
         
         {/* Floating Particles */}
@@ -520,7 +520,7 @@ export default function TeamOrbit() {
               delay: p.delay,
             }}
             style={{ willChange: "transform" }}
-            className="absolute w-3 h-3 rounded-full bg-teal-200/50 shadow-[0_0_6px_rgba(184,227,226,0.4)] pointer-events-none"
+            className="absolute w-3 h-3 rounded-full bg-(--primary-light)/30 shadow-[0_0_6px_rgba(90,120,214,0.3)] pointer-events-none"
           />
         ))}
       </div>
@@ -544,12 +544,12 @@ export default function TeamOrbit() {
                 <div
                   className={`relative w-12 h-12 sm:w-14 sm:h-14 rounded-full p-0.5 clay-badge overflow-visible transition-all duration-300 transform ${
                     isActive
-                      ? "scale-110 border-teal-300 ring-2 ring-teal-300/80 shadow-[0_0_12px_rgba(184,227,226,0.7)]"
-                      : "hover:scale-105 border-white/60 hover:border-teal-200/40"
+                      ? "scale-110 border-(--primary) ring-2 ring-(--primary)/60 shadow-[0_0_12px_rgba(90,120,214,0.5)]"
+                      : "hover:scale-105 border-white/60 hover:border-(--primary)/40"
                   }`}
                 >
                   {isActive && (
-                    <div className="absolute -inset-1 rounded-full ring-2 ring-teal-300/80 animate-ping opacity-45 pointer-events-none" />
+                    <div className="absolute -inset-1 rounded-full ring-2 ring-(--primary)/60 animate-ping opacity-45 pointer-events-none" />
                   )}
                   
                   <img
@@ -690,13 +690,13 @@ export default function TeamOrbit() {
             >
               {/* Top drag handle indicator */}
               <div className="w-full flex justify-center py-4 cursor-pointer" onClick={closePanel}>
-                <div className="w-16 h-1.5 rounded-full bg-teal-900/10 dark:bg-white/10" />
+                <div className="w-16 h-1.5 rounded-full bg-(--primary)/15 dark:bg-white/10" />
               </div>
               
               {/* Close button */}
               <button
                 onClick={closePanel}
-                className="absolute top-4 right-4 sm:top-6 sm:right-8 flex h-10 w-10 items-center justify-center rounded-full clay-badge text-teal-900/60 hover:text-red-500 hover:border-red-200/40 bg-white/50 dark:bg-zinc-900/50 backdrop-blur active:scale-95 transition-all cursor-pointer z-55 border border-white/40"
+                className="absolute top-4 right-4 sm:top-6 sm:right-8 flex h-10 w-10 items-center justify-center rounded-full clay-badge text-(--text-light) hover:text-red-500 hover:border-red-200/40 bg-white/50 dark:bg-zinc-900/50 backdrop-blur active:scale-95 transition-all cursor-pointer z-55 border border-white/40"
               >
                 <X size={18} strokeWidth={2.5} />
               </button>
@@ -712,7 +712,7 @@ export default function TeamOrbit() {
                   {/* Left Column: Photo & Socials */}
                   <div className="lg:col-span-5 flex flex-col items-center">
                     <TiltWrapper className="w-48 h-48 sm:w-56 sm:h-56 rounded-[32px] overflow-hidden p-1 bg-white/30 dark:bg-white/5 border border-white/40 dark:border-white/10 shadow-xl relative group">
-                      <div className="absolute inset-0 bg-gradient-to-tr from-teal-500/10 to-indigo-500/10 pointer-events-none z-10" />
+                      <div className="absolute inset-0 bg-gradient-to-tr from-(--primary-light)/10 to-(--primary)/10 pointer-events-none z-10" />
                       <img
                         src={selectedEmployee.image}
                         alt={selectedEmployee.name}
@@ -730,7 +730,7 @@ export default function TeamOrbit() {
                           href={selectedEmployee.linkedin}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex h-12 w-12 items-center justify-center rounded-full clay-badge bg-white/60 dark:bg-zinc-900/60 text-blue-600 dark:text-blue-400 shadow-md cursor-pointer border border-white/40"
+                          className="flex h-12 w-12 items-center justify-center rounded-full clay-badge bg-white/60 dark:bg-zinc-900/60 text-(--primary) shadow-md cursor-pointer border border-white/40"
                         >
                           <Linkedin size={20} strokeWidth={2.5} />
                         </motion.a>
@@ -741,7 +741,7 @@ export default function TeamOrbit() {
                   {/* Right Column: Information details */}
                   <div className="lg:col-span-7 flex flex-col text-left">
                     <div className="mb-4">
-                      <span className="inline-block px-3 py-1.5 rounded-full clay-badge text-[10px] font-black uppercase tracking-[0.2em] bg-teal-100/50 text-teal-800 border border-white/40">
+                      <span className="inline-block px-3 py-1.5 rounded-full clay-badge text-[10px] font-black uppercase tracking-[0.2em] bg-(--primary)/10 text-(--primary) border border-white/40">
                         {selectedEmployee.isFounder ? "Founder" : "Co-Founder"}
                       </span>
                     </div>
@@ -749,7 +749,7 @@ export default function TeamOrbit() {
                     {/* Name: Smooth 60 FPS Container Reveal */}
                     <motion.h2
                       variants={childFadeUpVariants}
-                      className="text-3xl sm:text-5xl font-black text-teal-950 dark:text-white leading-tight tracking-tight mb-2"
+                      className="text-3xl sm:text-5xl font-black text-(--text-dark) leading-tight tracking-tight mb-2"
                     >
                       {selectedEmployee.name}
                     </motion.h2>
@@ -757,7 +757,7 @@ export default function TeamOrbit() {
                     {/* Designation/Role: Smooth 60 FPS Container Reveal */}
                     <motion.h3
                       variants={childFadeUpVariants}
-                      className="text-xs sm:text-sm font-black uppercase tracking-[0.18em] text-teal-600 dark:text-teal-400 mb-6"
+                      className="text-xs sm:text-sm font-black uppercase tracking-[0.18em] text-(--primary) mb-6"
                     >
                       {selectedEmployee.role}
                     </motion.h3>
@@ -765,17 +765,17 @@ export default function TeamOrbit() {
                     {/* Biography: Highly Optimized Paragraph-Level Spring Reveal with whitespace support */}
                     <motion.p
                       variants={childFadeUpVariants}
-                      className="text-sm sm:text-base font-semibold leading-relaxed text-teal-900/80 dark:text-zinc-300 tracking-wide mb-8 border-l-2 border-teal-200 dark:border-teal-400/30 pl-4 whitespace-pre-line"
+                      className="text-sm sm:text-base font-semibold leading-relaxed text-(--text) tracking-wide mb-8 border-l-2 border-(--primary)/30 pl-4 whitespace-pre-line"
                     >
                       {selectedEmployee.copy}
                     </motion.p>
 
                     {/* Achievements & Contributions grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-8 mt-4 border-t border-teal-100 dark:border-zinc-800/40 pt-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-8 mt-4 border-t border-(--border) pt-8">
                       {/* Achievements */}
                       <div>
-                        <h4 className="text-xs font-black uppercase tracking-[0.2em] text-teal-950 dark:text-white mb-4 flex items-center gap-2">
-                          <Award size={14} className="text-teal-500" />
+                        <h4 className="text-xs font-black uppercase tracking-[0.2em] text-(--text-dark) mb-4 flex items-center gap-2">
+                          <Award size={14} className="text-(--primary)" />
                           Key Achievements
                         </h4>
                         <ul className="space-y-3">
@@ -783,9 +783,9 @@ export default function TeamOrbit() {
                             <motion.li
                               key={idx}
                               variants={childFadeLeftVariants}
-                              className="flex items-start gap-2.5 text-xs sm:text-sm text-teal-900/75 dark:text-zinc-400 font-semibold"
+                              className="flex items-start gap-2.5 text-xs sm:text-sm text-(--text) font-semibold"
                             >
-                              <CheckCircle2 size={16} className="text-teal-500 shrink-0 mt-0.5" />
+                              <CheckCircle2 size={16} className="text-(--primary) shrink-0 mt-0.5" />
                               <span>{achievement}</span>
                             </motion.li>
                           ))}
@@ -794,8 +794,8 @@ export default function TeamOrbit() {
 
                       {/* Contributions */}
                       <div>
-                        <h4 className="text-xs font-black uppercase tracking-[0.2em] text-teal-950 dark:text-white mb-4 flex items-center gap-2">
-                          <Terminal size={14} className="text-teal-500" />
+                        <h4 className="text-xs font-black uppercase tracking-[0.2em] text-(--text-dark) mb-4 flex items-center gap-2">
+                          <Terminal size={14} className="text-(--primary)" />
                           Product Contributions
                         </h4>
                         <ul className="space-y-3">
@@ -803,9 +803,9 @@ export default function TeamOrbit() {
                             <motion.li
                               key={idx}
                               variants={childFadeLeftVariants}
-                              className="flex items-start gap-2.5 text-xs sm:text-sm text-teal-900/75 dark:text-zinc-400 font-semibold"
+                              className="flex items-start gap-2.5 text-xs sm:text-sm text-(--text) font-semibold"
                             >
-                              <CheckCircle2 size={16} className="text-teal-500 shrink-0 mt-0.5" />
+                              <CheckCircle2 size={16} className="text-(--primary) shrink-0 mt-0.5" />
                               <span>{contribution}</span>
                             </motion.li>
                           ))}
@@ -906,8 +906,8 @@ const OrbitCard = React.memo(function OrbitCard({
           onClick={onClick}
           className={`w-full h-full clay-card flex flex-col items-center justify-center p-3 text-center cursor-pointer relative border-2 transition-all duration-300 ${
             isActive 
-              ? "border-teal-300 bg-teal-100/30 ring-2 ring-teal-300/50 shadow-[0_0_15px_rgba(184,227,226,0.6)]" 
-              : "border-white/80 hover:border-teal-200/50"
+              ? "border-(--primary) bg-(--primary)/10 ring-2 ring-(--primary)/40 shadow-[0_0_15px_rgba(90,120,214,0.3)]" 
+              : "border-white/80 hover:border-(--primary)/40"
           }`}
         >
           {/* Profile Avatar Frame */}
@@ -930,8 +930,8 @@ const OrbitCard = React.memo(function OrbitCard({
             {member.role.split(" ")[0]}
           </span>
 
-          {/* Blue Pill "Click to know" Badge */}
-          <span className="block text-[8px] font-black uppercase tracking-wider text-blue-600 bg-blue-50/70 border border-blue-200/40 px-2 py-0.5 rounded-full mt-1.5 overflow-hidden whitespace-nowrap">
+          {/* Click to know Badge */}
+          <span className="block text-[8px] font-black uppercase tracking-wider text-(--primary) bg-(--primary)/10 border border-(--primary)/20 px-2 py-0.5 rounded-full mt-1.5 overflow-hidden whitespace-nowrap">
             Click to know
           </span>
         </div>

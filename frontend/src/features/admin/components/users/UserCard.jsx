@@ -33,7 +33,7 @@ export default function UserCard({
               w-12
               h-12
               rounded-full
-              bg-blue-600
+              bg-(--primary)
               text-white
               flex
               items-center

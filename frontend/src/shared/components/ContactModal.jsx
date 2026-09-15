@@ -147,8 +147,8 @@ export default function ContactModal({
                 <p
                   className={`text-sm ${
                     status.type === "success"
-                      ? "text-green-500"
-                      : "text-red-500"
+                      ? "text-(--primary) font-semibold"
+                      : "text-red-500 font-semibold"
                   }`}
                 >
                   {status.message}

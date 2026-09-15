@@ -52,7 +52,7 @@ export default function AdminDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F8F9FA] via-[#E9F5F6] to-[#A8DADC]/30 p-4 md:p-8">
+    <div className="min-h-screen bg-(--bg) p-4 md:p-8">
       <Helmet>
         <title>Admin Dashboard | Maatriva</title>
         <meta name="robots" content="noindex, nofollow" />
@@ -69,7 +69,7 @@ export default function AdminDashboard() {
             onClick={() => {setActiveTab("users"); setExpandedItem(null);}}
             className={`cursor-pointer clay-card p-6 flex items-center gap-4 transition-all ${activeTab === 'users' ? 'ring-4 ring-(--primary)/40 shadow-[inset_4px_4px_8px_rgba(255,255,255,0.9),_inset_-4px_-4px_8px_rgba(0,0,0,0.1),_0_0_15px_rgba(74,111,165,0.4)]' : ''}`}
           >
-            <div className="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center shadow-inner shrink-0">
+            <div className="w-14 h-14 bg-(--primary)/10 text-(--primary) rounded-2xl flex items-center justify-center shadow-inner shrink-0">
               <Users size={28} />
             </div>
             <div>
@@ -83,7 +83,7 @@ export default function AdminDashboard() {
             onClick={() => {setActiveTab("surveys"); setExpandedItem(null);}}
             className={`cursor-pointer clay-card p-6 flex items-center gap-4 transition-all ${activeTab === 'surveys' ? 'ring-4 ring-(--primary)/40 shadow-[inset_4px_4px_8px_rgba(255,255,255,0.9),_inset_-4px_-4px_8px_rgba(0,0,0,0.1),_0_0_15px_rgba(74,111,165,0.4)]' : ''}`}
           >
-            <div className="w-14 h-14 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center shadow-inner shrink-0">
+            <div className="w-14 h-14 bg-(--primary-light)/20 text-(--primary) rounded-2xl flex items-center justify-center shadow-inner shrink-0">
               <ClipboardList size={28} />
             </div>
             <div>
@@ -97,7 +97,7 @@ export default function AdminDashboard() {
             onClick={() => {setActiveTab("preorders"); setExpandedItem(null);}}
             className={`cursor-pointer clay-card p-6 flex items-center gap-4 transition-all ${activeTab === 'preorders' ? 'ring-4 ring-(--primary)/40 shadow-[inset_4px_4px_8px_rgba(255,255,255,0.9),_inset_-4px_-4px_8px_rgba(0,0,0,0.1),_0_0_15px_rgba(74,111,165,0.4)]' : ''}`}
           >
-            <div className="w-14 h-14 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center shadow-inner shrink-0">
+            <div className="w-14 h-14 bg-(--primary)/10 text-(--primary) rounded-2xl flex items-center justify-center shadow-inner shrink-0">
               <TrendingUp size={28} />
             </div>
             <div>
@@ -111,7 +111,7 @@ export default function AdminDashboard() {
             onClick={() => {setActiveTab("contacts"); setExpandedItem(null);}}
             className={`cursor-pointer clay-card p-6 flex items-center gap-4 transition-all ${activeTab === 'contacts' ? 'ring-4 ring-(--primary)/40 shadow-[inset_4px_4px_8px_rgba(255,255,255,0.9),_inset_-4px_-4px_8px_rgba(0,0,0,0.1),_0_0_15px_rgba(74,111,165,0.4)]' : ''}`}
           >
-            <div className="w-14 h-14 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center shadow-inner shrink-0">
+            <div className="w-14 h-14 bg-(--primary-light)/20 text-(--primary) rounded-2xl flex items-center justify-center shadow-inner shrink-0">
               <Mail size={28} />
             </div>
             <div>

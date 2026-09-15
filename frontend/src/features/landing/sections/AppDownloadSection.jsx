@@ -21,31 +21,31 @@ export default function AppDownloadSection() {
 
   const appFeatures = [
     {
-      icon: <Activity className="text-teal-500" size={20} />,
+      icon: <Activity className="text-(--primary)" size={20} />,
       title: "Real-Time Vital Monitoring",
       description: "Continuous tracking of baby breathing patterns, heart rate, and body temperature with instant safety alerts."
     },
     {
-      icon: <Volume2 className="text-emerald-500" size={20} />,
+      icon: <Volume2 className="text-(--primary)" size={20} />,
       title: "AI Cry Translator",
       description: "Advanced acoustic AI decodes your baby's cry into actionable needs—Hungry, Tired, Colic, or Wet diaper."
     },
     {
-      icon: <Zap className="text-blue-500" size={20} />,
+      icon: <Zap className="text-(--primary)" size={20} />,
       title: "Automated Cradle Soothing",
       description: "Trigger or automate soothing swing motions, gentle white noise, and thermal comfort routines remotely."
     },
     {
-      icon: <Moon className="text-purple-500" size={20} />,
+      icon: <Moon className="text-(--primary)" size={20} />,
       title: "Sleep Quality Analytics",
       description: "Detailed nightly sleep cycles, movement history, and clinical-grade health logs for your pediatrician."
     }
   ];
 
   return (
-    <section id="app" className="py-20 px-6 relative overflow-hidden bg-transparent">
+    <section id="app" className="py-24 px-6 relative overflow-hidden blend-features text-(--text)">
       {/* Background radial glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-500/10 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-(--primary)/10 rounded-full blur-3xl pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
@@ -54,7 +54,7 @@ export default function AppDownloadSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full clay-badge border border-teal-500/20 mb-4"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full clay-badge border border-(--primary)/20 mb-4"
           >
             <Sparkles size={16} className="text-(--primary)" />
             <span className="text-xs sm:text-sm font-bold text-(--text-dark)">
@@ -120,9 +120,9 @@ export default function AppDownloadSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 * index }}
-                  className="clay-card p-5 rounded-2xl border border-teal-200/20 hover:scale-[1.02] transition-transform duration-200"
+                  className="clay-card p-5 rounded-2xl border border-white/60 hover:scale-[1.02] transition-transform duration-200"
                 >
-                  <div className="p-2.5 rounded-xl bg-teal-500/10 w-fit mb-3">
+                  <div className="p-2.5 rounded-xl bg-(--primary)/10 text-(--primary) w-fit mb-3">
                     {feat.icon}
                   </div>
                   <h4 className="text-base font-bold text-(--text-dark) mb-1">
@@ -141,7 +141,7 @@ export default function AppDownloadSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="clay-card p-6 sm:p-8 rounded-3xl border border-teal-200/30 bg-teal-500/5 space-y-6"
+              className="clay-card p-6 sm:p-8 rounded-3xl border border-(--primary)/20 bg-(--primary)/5 space-y-6"
             >
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
@@ -185,8 +185,8 @@ export default function AppDownloadSection() {
               </div>
 
               {/* Badges / Guarantees */}
-              <div className="flex flex-wrap items-center justify-between gap-4 text-xs font-bold text-(--text-light) pt-2 border-t border-teal-200/20">
-                <span className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400">
+              <div className="flex flex-wrap items-center justify-between gap-4 text-xs font-bold text-(--text-light) pt-2 border-t border-(--border)">
+                <span className="flex items-center gap-1 text-(--primary)">
                   <ShieldCheck size={16} /> Verified APK (Safe & Malware Free)
                 </span>
                 <span className="flex items-center gap-1">

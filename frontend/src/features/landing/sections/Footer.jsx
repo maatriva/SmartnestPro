@@ -38,11 +38,11 @@ export default function Footer() {
     <>
       <footer
         id="footer"
-        className="footer-blend backdrop-blur-xl text-(--text) py-16 px-6 relative overflow-hidden border-t border-teal-200/20 z-20"
+        className="footer-blend backdrop-blur-xl text-(--text) py-16 px-6 relative overflow-hidden border-t border-(--border) z-20"
       >
         <div className="max-w-7xl mx-auto">
           {/* Main Footer Content */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-teal-200/20">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-(--border)">
             {/* Brand Section */}
             <div className="md:col-span-5 space-y-4">
               <div className="flex items-center gap-2">
@@ -64,7 +64,7 @@ export default function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-full clay-badge text-(--primary) hover:text-blue-600 flex items-center justify-center hover:scale-110 transition-all cursor-pointer"
+                    className="w-9 h-9 rounded-full clay-badge text-(--primary) hover:text-(--primary-hover) flex items-center justify-center hover:scale-110 transition-all cursor-pointer"
                     aria-label={link.name}
                   >
                     {getSocialIcon(link.icon)}

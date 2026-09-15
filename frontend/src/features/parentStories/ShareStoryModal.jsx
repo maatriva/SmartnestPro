@@ -214,7 +214,7 @@ export default function ShareStoryModal({ isOpen, onClose }) {
                   animate={{ scale: 1 }}
                   transition={{ type: "spring", stiffness: 200, damping: 15 }}
                 >
-                  <CheckCircle2 size={64} className="text-emerald-500 mb-4" />
+                  <CheckCircle2 size={64} className="text-(--primary) mb-4" />
                 </motion.div>
                 <h3 className="text-2xl font-bold text-(--text-dark) mb-2 text-center">Story Received!</h3>
                 <p className="text-(--text-light) text-center max-w-sm">

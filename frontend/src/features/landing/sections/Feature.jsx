@@ -14,7 +14,7 @@ export default function Features() {
   return (
     <section
       id="features"
-      className="py-24 px-6 blend-features text-(--text) overflow-hidden"
+      className="py-24 px-6 clay-even-section text-(--text) overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
 

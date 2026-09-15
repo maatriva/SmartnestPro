@@ -11,7 +11,7 @@ import SurveyControls from "../components/SurveyControls";
 
 function SmartCradleIntroCard() {
   return (
-    <div className="clay-card p-6 sm:p-8 bg-gradient-to-br from-white/95 via-[#EBF5F6]/85 to-[#E1F1F3]/70 border-2 border-(--primary)/30 shadow-[0_12px_32px_rgba(74,111,165,0.15)] rounded-3xl mb-8 relative overflow-hidden">
+    <div className="clay-card p-6 sm:p-8 bg-gradient-to-br from-white/95 via-white/80 to-(--primary-light)/15 border-2 border-(--primary)/30 shadow-[0_12px_32px_rgba(90,120,214,0.15)] rounded-3xl mb-8 relative overflow-hidden">
       <div className="flex items-center gap-2 mb-3 text-(--primary)">
         <Sparkles size={18} className="fill-(--primary)/20" />
         <span className="text-xs font-black uppercase tracking-widest bg-(--primary)/10 px-3 py-1 rounded-full border border-(--primary)/20">

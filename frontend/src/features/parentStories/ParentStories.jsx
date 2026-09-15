@@ -251,7 +251,7 @@ export default function ParentStories() {
           <div className="cta-right">
             <button
               onClick={() => setIsModalOpen(true)}
-              className="cta-button"
+              className="clay-btn clay-btn-primary cta-button"
               aria-haspopup="dialog"
             >
               Share Your Story

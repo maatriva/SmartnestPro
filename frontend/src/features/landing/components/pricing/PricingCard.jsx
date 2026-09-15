@@ -106,9 +106,9 @@ export default function PricingCard({ plan, onPreOrder }) {
       }}
       className={`relative w-full rounded-[24px] border-2 bg-white p-8 flex flex-col justify-between h-full select-none transition-all duration-300 z-10 ${
         plan.popular
-          ? "border-[#7B8CFF]/85 shadow-[0_12px_36px_rgba(123,140,255,0.18)]"
+          ? "border-(--primary-light)/85 shadow-[0_12px_36px_rgba(90,120,214,0.18)]"
           : "border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.03)]"
-      } hover:border-[#7B8CFF]/60 hover:shadow-[0_22px_45px_rgba(123,140,255,0.2)]`}
+      } hover:border-(--primary-light)/60 hover:shadow-[0_22px_45px_rgba(90,120,214,0.2)]`}
       style={{
         willChange: "transform",
       }}
@@ -142,7 +142,7 @@ export default function PricingCard({ plan, onPreOrder }) {
         className="absolute inset-0 pointer-events-none rounded-[24px] transition-opacity duration-300 z-0"
         style={{
           opacity: glow.opacity,
-          background: `radial-gradient(400px circle at ${glow.x}% ${glow.y}%, rgba(123, 140, 255, 0.18), transparent 45%)`,
+          background: `radial-gradient(400px circle at ${glow.x}% ${glow.y}%, rgba(90, 120, 214, 0.18), transparent 45%)`,
         }}
       />
 
@@ -150,23 +150,23 @@ export default function PricingCard({ plan, onPreOrder }) {
         <div>
           {/* Header & Badge */}
           <div className="flex justify-between items-start mb-4">
-            <span className="text-[11px] font-extrabold tracking-wider text-indigo-500 uppercase">
+            <span className="text-[11px] font-extrabold tracking-wider text-(--primary) uppercase">
               {plan.isModelCard ? "Cradle Model" : "Plan & Service"}
             </span>
             
             {plan.badge ? (
               <span className={`px-2.5 py-0.5 text-[10px] font-bold rounded-full ${
                 plan.badge === "Most Popular" 
-                  ? "bg-indigo-500 text-white shadow-sm"
-                  : "bg-[#7B8CFF]/15 text-[#5A78D6]"
+                  ? "bg-(--primary) text-white shadow-sm"
+                  : "bg-(--primary)/15 text-(--primary)"
               }`}>
                 {plan.badge}
               </span>
             ) : (
-              <div className="flex items-center bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-full text-[10px] font-semibold text-emerald-600">
+              <div className="flex items-center bg-(--primary)/10 border border-(--primary)/20 px-2.5 py-1 rounded-full text-[10px] font-semibold text-(--primary)">
                 <span className="relative flex h-2 w-2 mr-1.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-(--primary-light) opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-(--primary)"></span>
                 </span>
                 In Stock
               </div>
@@ -219,7 +219,7 @@ export default function PricingCard({ plan, onPreOrder }) {
                 <div className="flex items-center gap-3">
                   <div className={`w-5 h-5 rounded-md border flex items-center justify-center transition-all duration-300 ${
                     addAI 
-                      ? "bg-indigo-500 border-indigo-600 text-white shadow-sm shadow-indigo-500/30 scale-105" 
+                      ? "bg-(--primary) border-(--primary) text-white shadow-sm shadow-(--primary)/30 scale-105" 
                       : "border-slate-300 bg-white/50 hover:border-slate-400"
                   }`}>
                     {addAI && (
@@ -251,7 +251,7 @@ export default function PricingCard({ plan, onPreOrder }) {
                           e.stopPropagation();
                           setShowAIFeatures(!showAIFeatures);
                         }}
-                        className="text-[#5A78D6] underline hover:text-[#7B8FF8] font-bold focus:outline-none focus:ring-1 focus:ring-(--primary-light)/50 rounded px-1"
+                        className="text-(--primary) underline hover:text-(--primary-light) font-bold focus:outline-none focus:ring-1 focus:ring-(--primary-light)/50 rounded px-1"
                       >
                         Tell me about AI subscription features
                       </a>
@@ -277,19 +277,19 @@ export default function PricingCard({ plan, onPreOrder }) {
                     </h5>
                     <ul className="space-y-1.5 text-(--text-light)">
                       <li className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#5A78D6]" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-(--primary)" />
                         <span>Deep health & sleep analytics</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#5A78D6]" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-(--primary)" />
                         <span>Real-time disease & anomaly alerts</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#5A78D6]" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-(--primary)" />
                         <span>Caretaker & pediatrician dashboard</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#5A78D6]" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-(--primary)" />
                         <span>24/7 AI chat assistant & voice prompts</span>
                       </li>
                     </ul>
@@ -313,7 +313,7 @@ export default function PricingCard({ plan, onPreOrder }) {
                 variants={featureItemVariants}
                 className="flex items-center gap-3 text-sm text-(--text) font-medium"
               >
-                <div className="flex items-center justify-center w-5 h-5 rounded-full bg-[#7B8CFF]/12 text-[#5A78D6]">
+                <div className="flex items-center justify-center w-5 h-5 rounded-full bg-(--primary)/12 text-(--primary)">
                   <Check className="w-3 h-3 stroke-[3]" />
                 </div>
                 <span>{feature}</span>

@@ -23,16 +23,16 @@ export default function AppDownloadModal({ isOpen, onClose }) {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 20 }}
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          className="relative w-full max-w-lg clay-card bg-(--bg) p-6 sm:p-8 rounded-3xl z-10 text-(--text) border border-teal-200/30 shadow-2xl overflow-hidden"
+          className="relative w-full max-w-lg clay-card bg-(--bg) p-6 sm:p-8 rounded-3xl z-10 text-(--text) border border-(--primary)/20 shadow-2xl overflow-hidden"
         >
           {/* Decorative background glow */}
-          <div className="absolute -top-16 -right-16 w-36 h-36 bg-teal-500/10 rounded-full blur-2xl pointer-events-none" />
-          <div className="absolute -bottom-16 -left-16 w-36 h-36 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
+          <div className="absolute -top-16 -right-16 w-36 h-36 bg-(--primary)/10 rounded-full blur-2xl pointer-events-none" />
+          <div className="absolute -bottom-16 -left-16 w-36 h-36 bg-(--primary-light)/10 rounded-full blur-2xl pointer-events-none" />
 
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-5 right-5 p-2 rounded-full text-(--text-light) hover:text-(--text-dark) hover:bg-teal-500/10 transition-colors"
+            className="absolute top-5 right-5 p-2 rounded-full text-(--text-light) hover:text-(--text-dark) hover:bg-(--primary)/10 transition-colors"
             aria-label="Close modal"
           >
             <X size={20} />
@@ -40,11 +40,11 @@ export default function AppDownloadModal({ isOpen, onClose }) {
 
           {/* Header */}
           <div className="flex items-center gap-3 mb-4">
-            <div className="p-3 rounded-2xl clay-badge bg-teal-500/10 text-(--primary)">
+            <div className="p-3 rounded-2xl clay-badge bg-(--primary)/10 text-(--primary)">
               <Smartphone size={28} />
             </div>
             <div>
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-teal-500/15 text-(--primary)">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-(--primary)/15 text-(--primary)">
                 <Sparkles size={12} /> Android App Release
               </span>
               <h3 className="text-xl sm:text-2xl font-black text-(--text-dark) tracking-tight">
@@ -64,14 +64,14 @@ export default function AppDownloadModal({ isOpen, onClose }) {
               download="app-release.apk"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-4 px-6 rounded-2xl clay-btn clay-btn-primary font-bold text-base sm:text-lg text-white flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-teal-500/25"
+              className="w-full py-4 px-6 rounded-2xl clay-btn clay-btn-primary font-bold text-base sm:text-lg text-white flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-[#5A78D6]/25"
             >
               <Download size={22} />
               <span>Download Direct Android APK</span>
             </a>
 
             <div className="flex items-center justify-between text-xs font-bold text-(--text-light) px-2">
-              <span className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400">
+              <span className="flex items-center gap-1 text-(--primary)">
                 <ShieldCheck size={14} /> Safe & Verified Build
               </span>
               <span>v1.0.0 • ~18 MB</span>
@@ -79,7 +79,7 @@ export default function AppDownloadModal({ isOpen, onClose }) {
           </div>
 
           {/* QR Code Section for phone scanning */}
-          <div className="mt-6 pt-6 border-t border-teal-200/20 flex flex-col sm:flex-row items-center gap-4 bg-teal-500/5 p-4 rounded-2xl border border-teal-500/10">
+          <div className="mt-6 pt-6 border-t border-(--border) flex flex-col sm:flex-row items-center gap-4 bg-(--primary)/5 p-4 rounded-2xl border border-(--primary)/10">
             <div className="w-24 h-24 p-2 bg-white rounded-xl shadow-md flex items-center justify-center shrink-0 relative group">
               {/* Styled mock QR Code SVG */}
               <svg viewBox="0 0 100 100" className="w-full h-full text-slate-900 fill-current">

@@ -19,7 +19,7 @@ export default function Diseases() {
   return (
     <section
       id="diseases"
-      className="py-24 px-6 clay-even-section text-(--text) overflow-x-hidden"
+      className="py-24 px-6 blend-features text-(--text) overflow-x-hidden"
     >
       <div className="max-w-7xl mx-auto">
         <DiseasesHeader />
