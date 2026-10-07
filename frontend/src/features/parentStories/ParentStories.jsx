@@ -4,7 +4,6 @@ import { ChevronLeft, ChevronRight, Heart, Star, Baby } from "lucide-react";
 import StoryCard from "./StoryCard";
 
 const ShareStoryModal = lazy(() => import("./ShareStoryModal"));
-import { STORIES } from "./storiesData";
 import "./ParentStories.scss";
 import API from "../../shared/services/api";
 
@@ -21,48 +20,66 @@ export default function ParentStories() {
   const [direction, setDirection] = useState(0); // -1 for prev, 1 for next
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [storiesList, setStoriesList] = useState(STORIES);
+  const [storiesList, setStoriesList] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
+    let isMounted = true;
     const fetchStories = async () => {
       try {
+        setLoading(true);
         const response = await API.get("/stories");
-        if (response.data && response.data.length > 0) {
-          const dbStories = response.data.map((dbStory) => {
-            let role = "Parent";
-            if (dbStory.child_age) {
-              const lower = dbStory.child_age.toLowerCase();
-              if (lower.includes("mother") || lower.includes("father") || lower.includes("parent")) {
-                role = dbStory.child_age;
-              } else {
-                role = `Parent of a ${dbStory.child_age}`;
+        if (isMounted) {
+          if (response.data && Array.isArray(response.data)) {
+            const dbStories = response.data.map((dbStory) => {
+              let role = "Parent";
+              if (dbStory.child_age) {
+                const lower = dbStory.child_age.toLowerCase();
+                if (lower.includes("mother") || lower.includes("father") || lower.includes("parent")) {
+                  role = dbStory.child_age;
+                } else {
+                  role = `Parent of a ${dbStory.child_age}`;
+                }
               }
-            }
-            return {
-              id: `db-${dbStory.id}`,
-              title: dbStory.story_title,
-              story: dbStory.story_description,
-              name: dbStory.parent_name,
-              role: role,
-              location: dbStory.location || "India",
-              image: dbStory.photo_url || STORIES[0].image,
-            };
-          });
-          // Combine DB stories with static ones
-          setStoriesList([...dbStories, ...STORIES]);
+              return {
+                id: `db-${dbStory.id}`,
+                title: dbStory.story_title,
+                story: dbStory.story_description,
+                name: dbStory.parent_name,
+                role: role,
+                location: dbStory.location || "India",
+                image: dbStory.photo_url || null,
+              };
+            });
+            setStoriesList(dbStories);
+            setCurrentIndex(0);
+          } else {
+            setStoriesList([]);
+          }
         }
       } catch (error) {
         console.error("Error fetching stories from DB:", error);
+        if (isMounted) {
+          setStoriesList([]);
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
     fetchStories();
+    return () => {
+      isMounted = false;
+    };
   }, [isModalOpen]);
 
   const handleNext = useCallback(() => {
     setDirection(1);
     setStoriesList((current) => {
+      if (current.length <= 1) return current;
       setCurrentIndex((prev) => (prev + 1) % current.length);
       return current;
     });
@@ -71,6 +88,7 @@ export default function ParentStories() {
   const handlePrev = useCallback(() => {
     setDirection(-1);
     setStoriesList((current) => {
+      if (current.length <= 1) return current;
       setCurrentIndex((prev) => (prev - 1 + current.length) % current.length);
       return current;
     });
@@ -84,7 +102,7 @@ export default function ParentStories() {
   // Keyboard navigation for carousel
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (isModalOpen) return;
+      if (isModalOpen || storiesList.length <= 1) return;
       if (e.key === "ArrowLeft") {
         handlePrev();
       } else if (e.key === "ArrowRight") {
@@ -93,16 +111,16 @@ export default function ParentStories() {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [handleNext, handlePrev, isModalOpen]);
+  }, [handleNext, handlePrev, isModalOpen, storiesList.length]);
 
   // Auto-slide effect (every 6 seconds)
   useEffect(() => {
-    if (isHovered || isModalOpen) return;
+    if (isHovered || isModalOpen || storiesList.length <= 1) return;
     const interval = setInterval(() => {
       handleNext();
     }, 6000);
     return () => clearInterval(interval);
-  }, [currentIndex, isHovered, isModalOpen, handleNext]);
+  }, [currentIndex, isHovered, isModalOpen, handleNext, storiesList.length]);
 
   // Slide Animation configurations
   const slideVariants = {
@@ -172,92 +190,126 @@ export default function ParentStories() {
           </p>
         </motion.div>
 
-        {/* Carousel Area */}
-        <div 
-          className="carousel-wrapper"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          {/* Navigation Buttons - Left */}
-          <button 
-            className="carousel-nav-btn prev"
-            onClick={handlePrev}
-            aria-label="Previous story"
-          >
-            <ChevronLeft size={24} />
-          </button>
-
-          {/* Carousel Slide wrapper */}
-          <div className="overflow-hidden p-4">
-            <AnimatePresence initial={false} custom={direction} mode="wait">
-              <motion.div
-                key={currentIndex}
-                custom={direction}
-                variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                drag="x"
-                dragConstraints={{ left: 0, right: 0 }}
-                dragElastic={0.2}
-                onDragEnd={onDragEnd}
-                className="w-full"
-              >
-                <StoryCard story={storiesList[currentIndex] || STORIES[0]} />
-              </motion.div>
-            </AnimatePresence>
+        {loading ? (
+          <div className="clay-card p-12 text-center max-w-2xl mx-auto my-8">
+            <div className="inline-block w-8 h-8 border-4 border-(--primary) border-t-transparent rounded-full animate-spin mb-4" />
+            <p className="text-sm font-semibold text-(--text-light)">Loading real parent stories...</p>
           </div>
+        ) : storiesList.length > 0 ? (
+          <>
+            {/* Carousel Area */}
+            <div 
+              className="carousel-wrapper"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              {/* Navigation Buttons - Left */}
+              {storiesList.length > 1 && (
+                <button 
+                  className="carousel-nav-btn prev"
+                  onClick={handlePrev}
+                  aria-label="Previous story"
+                >
+                  <ChevronLeft size={24} />
+                </button>
+              )}
 
-          {/* Navigation Buttons - Right */}
-          <button 
-            className="carousel-nav-btn next"
-            onClick={handleNext}
-            aria-label="Next story"
-          >
-            <ChevronRight size={24} />
-          </button>
-        </div>
+              {/* Carousel Slide wrapper */}
+              <div className="overflow-hidden p-4">
+                <AnimatePresence initial={false} custom={direction} mode="wait">
+                  <motion.div
+                    key={currentIndex}
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    drag={storiesList.length > 1 ? "x" : false}
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={0.2}
+                    onDragEnd={storiesList.length > 1 ? onDragEnd : undefined}
+                    className="w-full"
+                  >
+                    <StoryCard story={storiesList[currentIndex]} />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
 
-        {/* Pagination Dots */}
-        <div className="carousel-dots-container" role="tablist" aria-label="Stories pagination">
-          {storiesList.map((_, index) => (
-            <button
-              key={index}
-              role="tab"
-              aria-selected={currentIndex === index}
-              aria-label={`Go to slide ${index + 1}`}
-              className={`carousel-dot ${currentIndex === index ? "active" : ""}`}
-              onClick={() => handleDotClick(index)}
-            />
-          ))}
-        </div>
-
-        {/* Premium CTA Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="cta-card-container"
-        >
-          <div className="cta-left">
-            <div className="cta-illustration" aria-hidden="true">
-              <Baby />
+              {/* Navigation Buttons - Right */}
+              {storiesList.length > 1 && (
+                <button 
+                  className="carousel-nav-btn next"
+                  onClick={handleNext}
+                  aria-label="Next story"
+                >
+                  <ChevronRight size={24} />
+                </button>
+              )}
             </div>
-            <h3 className="cta-text">
-              Your story could inspire another parent. Share your experience with MAATRIVA.
+
+            {/* Pagination Dots */}
+            {storiesList.length > 1 && (
+              <div className="carousel-dots-container" role="tablist" aria-label="Stories pagination">
+                {storiesList.map((_, index) => (
+                  <button
+                    key={index}
+                    role="tab"
+                    aria-selected={currentIndex === index}
+                    aria-label={`Go to slide ${index + 1}`}
+                    className={`carousel-dot ${currentIndex === index ? "active" : ""}`}
+                    onClick={() => handleDotClick(index)}
+                  />
+                ))}
+              </div>
+            )}
+
+            {/* Premium CTA Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="cta-card-container"
+            >
+              <div className="cta-left">
+                <div className="cta-illustration" aria-hidden="true">
+                  <Baby />
+                </div>
+                <h3 className="cta-text">
+                  Your story could inspire another parent. Share your experience with MAATRIVA.
+                </h3>
+              </div>
+              <div className="cta-right">
+                <button
+                  onClick={() => setIsModalOpen(true)}
+                  className="clay-btn clay-btn-primary cta-button cursor-pointer"
+                  aria-haspopup="dialog"
+                >
+                  Share Your Story
+                </button>
+              </div>
+            </motion.div>
+          </>
+        ) : (
+          /* Real Stories Empty State */
+          <div className="clay-card p-8 sm:p-12 text-center max-w-2xl mx-auto my-8 flex flex-col items-center">
+            <div className="w-16 h-16 rounded-full clay-badge flex items-center justify-center text-(--primary) mb-6">
+              <Heart size={32} />
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-bold text-(--text-dark) mb-3">
+              Be the First to Share Your Story
             </h3>
-          </div>
-          <div className="cta-right">
+            <p className="text-sm sm:text-base text-(--text-light) leading-relaxed mb-8 max-w-md">
+              We only publish genuine parent experiences. If you have been part of our early journey or tested Maatriva, we would love to feature your story!
+            </p>
             <button
               onClick={() => setIsModalOpen(true)}
-              className="clay-btn clay-btn-primary cta-button"
-              aria-haspopup="dialog"
+              className="clay-btn clay-btn-primary px-8 py-3.5 text-sm font-bold shadow-lg shadow-[#5A78D6]/25 cursor-pointer"
             >
-              Share Your Story
+              Share Your Experience
             </button>
           </div>
-        </motion.div>
+        )}
       </div>
 
       {/* Share Story Modal */}

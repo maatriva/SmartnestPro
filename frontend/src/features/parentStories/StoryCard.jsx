@@ -50,14 +50,20 @@ export default function StoryCard({ story }) {
         viewport={{ once: true, margin: "-100px" }}
         variants={imageVariants}
       >
-        <img 
-          src={story.image} 
-          alt={`Story image of ${story.name}`} 
-          width="400"
-          height="400"
-          className="story-image"
-          loading="lazy"
-        />
+        {story.image ? (
+          <img 
+            src={story.image} 
+            alt={`Story image of ${story.name}`} 
+            width="400"
+            height="400"
+            className="story-image"
+            loading="lazy"
+          />
+        ) : (
+          <div className="story-image flex items-center justify-center bg-(--primary)/10 text-(--primary) min-h-[300px]">
+            <span className="text-6xl font-black">{story.name?.charAt(0)?.toUpperCase() || "P"}</span>
+          </div>
+        )}
         <div className="story-image-overlay" />
       </motion.div>
 

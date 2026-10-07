@@ -20,8 +20,13 @@ const ModelCursor = () => {
       renderer = new THREE.WebGLRenderer({
         antialias: true,
         alpha: true,
+        powerPreference: "high-performance",
       });
       renderer.setSize(width, height);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.1;
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
       mountRef.current.appendChild(renderer.domElement);
     } catch (error) {
       console.error("Error creating WebGL context:", error);
@@ -29,9 +34,24 @@ const ModelCursor = () => {
       return;
     }
 
-    // 💡 Light
-    const light = new THREE.HemisphereLight(0xffffff, 0x444444, 2);
-    scene.add(light);
+    // 💡 Studio Lighting Setup
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0xcbe8ea, 1.8);
+    hemiLight.position.set(0, 20, 0);
+    scene.add(hemiLight);
+
+    const dirLight1 = new THREE.DirectionalLight(0xffffff, 2.2);
+    dirLight1.position.set(5, 8, 5);
+    scene.add(dirLight1);
+
+    const dirLight2 = new THREE.DirectionalLight(0x7b8ff8, 1.2);
+    dirLight2.position.set(-5, 4, -4);
+    scene.add(dirLight2);
+
+    const dirLight3 = new THREE.DirectionalLight(0xffffff, 0.8);
+    dirLight3.position.set(0, -3, 4);
+    scene.add(dirLight3);
+
+    camera.position.set(0, 0.7, 3.8);
 
     // ✅ OrbitControls
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -40,7 +60,8 @@ const ModelCursor = () => {
     controls.rotateSpeed = 0.8;
     controls.enableZoom = false;
     controls.autoRotate = true; 
-    controls.autoRotateSpeed = 2.0;
+    controls.autoRotateSpeed = 1.8;
+    controls.target.set(0, 0, 0);
 
     let model;
     let animationId;
@@ -49,9 +70,25 @@ const ModelCursor = () => {
     loader.load(
       "/3Dmodel.glb",
       (gltf) => {
-        model = gltf.scene;
-        model.scale.set(3.2, 3.2, 3.2);
-        scene.add(model);
+        // Auto-center the model around its geometric bounding box center
+        const box = new THREE.Box3().setFromObject(gltf.scene);
+        const center = box.getCenter(new THREE.Vector3());
+        const size = box.getSize(new THREE.Vector3());
+
+        gltf.scene.position.x = -center.x;
+        gltf.scene.position.y = -center.y;
+        gltf.scene.position.z = -center.z;
+
+        const pivot = new THREE.Group();
+        pivot.add(gltf.scene);
+
+        // Scale to comfortably fit viewport
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const targetSize = 2.8;
+        pivot.scale.setScalar(targetSize / maxDim);
+
+        scene.add(pivot);
+        model = pivot;
       },
       undefined,
       (error) => {
