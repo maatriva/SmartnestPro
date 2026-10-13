@@ -3,7 +3,7 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
-const ModelCursor = () => {
+const ModelCursor = ({ targetSize = 3.4 }) => {
   const mountRef = useRef(null);
 
   useEffect(() => {
@@ -84,7 +84,6 @@ const ModelCursor = () => {
 
         // Scale to comfortably fit viewport
         const maxDim = Math.max(size.x, size.y, size.z);
-        const targetSize = 2.8;
         pivot.scale.setScalar(targetSize / maxDim);
 
         scene.add(pivot);
@@ -145,7 +144,7 @@ const ModelCursor = () => {
         mountRef.current.removeChild(renderer.domElement);
       }
     };
-  }, []);
+  }, [targetSize]);
 
   return (
     <div

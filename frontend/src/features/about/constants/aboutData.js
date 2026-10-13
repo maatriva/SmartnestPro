@@ -205,7 +205,7 @@ As a co-founding member, he helped lead Maatriva to gain recognition and incubat
     socials: {
       github: "https://github.com/arman-sharma",
       twitter: "https://twitter.com/arman_dev",
-      email: "mailto:arman@maatriva.com"
+      email: "mailto:arman@maatriva.co.in"
     }
   },
 ];

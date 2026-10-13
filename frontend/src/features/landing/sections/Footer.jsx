@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { Facebook, Linkedin, Instagram, Youtube, Sparkles } from "lucide-react";
 
@@ -8,6 +8,7 @@ import { SOCIAL_LINKS, FOOTER_LINKS } from "../data/footerData";
 
 export default function Footer() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleCloseModal = useCallback(() => setIsModalOpen(false), []);
 
   const {
     formData,
@@ -15,9 +16,7 @@ export default function Footer() {
     status,
     handleChange,
     handleSubmit,
-  } = useContactForm(() =>
-    setIsModalOpen(false)
-  );
+  } = useContactForm(handleCloseModal);
 
   const getSocialIcon = (name) => {
     switch (name) {
@@ -135,7 +134,7 @@ export default function Footer() {
 
       <ContactModal
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        onClose={handleCloseModal}
         formData={formData}
         handleChange={handleChange}
         handleSubmit={handleSubmit}

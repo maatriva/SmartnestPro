@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, Send } from "lucide-react";
 import { questions } from "../../../survey/constants/questions";
 
 export default function SurveyCard({
@@ -8,27 +8,28 @@ export default function SurveyCard({
   expandedItem,
   setExpandedItem,
   parseAnswers,
+  onSendAlert,
 }) {
   const isExpanded = expandedItem === `survey-${survey.id}`;
   const answersObj = parseAnswers(survey.answers) || {};
 
   return (
-    <div className="clay-card overflow-hidden my-3">
+    <div className="clay-card overflow-hidden my-3 border border-slate-100 hover:border-(--primary)/30 transition-all duration-300">
       <div
         onClick={() =>
           setExpandedItem(isExpanded ? null : `survey-${survey.id}`)
         }
-        className="p-6 cursor-pointer flex items-center justify-between"
+        className="p-5 cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-4"
       >
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-full bg-(--primary) text-white flex items-center justify-center font-black shrink-0">
-            {survey.name?.charAt(0) || "A"}
+          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-500 to-indigo-600 text-white flex items-center justify-center font-black text-lg shadow-sm shrink-0">
+            {survey.name?.charAt(0)?.toUpperCase() || "S"}
           </div>
           <div>
-            <h4 className="font-bold text-(--text-dark)">{survey.name}</h4>
+            <h4 className="font-bold text-(--text-dark) text-base">{survey.name}</h4>
 
-            <p className="text-xs text-(--text-light) font-bold uppercase tracking-wider flex flex-wrap items-center gap-x-2 gap-y-0.5">
-              <span className="break-all">{survey.email}</span>
+            <p className="text-xs text-(--text-light) font-semibold flex flex-wrap items-center gap-x-2 gap-y-0.5 mt-1">
+              {survey.email && <span className="break-all">{survey.email}</span>}
               {survey.phone && <span>• Phone: {survey.phone}</span>}
               {survey.gender && <span>• Gender: {survey.gender}</span>}
               <span>• {new Date(survey.created_at).toLocaleDateString()}</span>
@@ -36,11 +37,34 @@ export default function SurveyCard({
           </div>
         </div>
 
-        {isExpanded ? (
-          <ChevronUp className="text-gray-400" />
-        ) : (
-          <ChevronDown className="text-gray-400" />
-        )}
+        <div className="flex items-center justify-between sm:justify-end gap-3 pt-2 sm:pt-0 border-t sm:border-0 border-slate-100">
+          {survey.email && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                if (onSendAlert) {
+                  onSendAlert({
+                    email: survey.email,
+                    name: survey.name,
+                    target: "individual",
+                    subject: `Regarding your Maatriva Clinical Survey Response`,
+                    title: `Feedback on Your Survey Submission`,
+                    message: `Hi ${survey.name},\n\nThank you for completing the Maatriva pediatric health assessment survey. Your feedback helps us fine-tune our sensors and algorithms.\n\nWarm regards,\nMaatriva Clinical Team`,
+                  });
+                }
+              }}
+              className="py-1.5 px-3.5 rounded-xl clay-btn clay-btn-primary text-xs font-black flex items-center gap-1.5 shadow-sm"
+            >
+              <Send size={12} />
+              <span>Send Alert</span>
+            </button>
+          )}
+
+          <div className="p-1 rounded-full text-slate-400 hover:text-slate-600">
+            {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+          </div>
+        </div>
       </div>
 
       {isExpanded && (

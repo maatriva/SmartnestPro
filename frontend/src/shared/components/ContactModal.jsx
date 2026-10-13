@@ -13,13 +13,15 @@ export default function ContactModal({
 }) {
   const modalRef = useRef(null);
   const initialFocusRef = useRef(null);
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
 
   useEffect(() => {
     if (!isOpen) return;
 
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
-        onClose();
+        onCloseRef.current?.();
       }
       if (e.key === "Tab") {
         const focusableElements = modalRef.current?.querySelectorAll(
@@ -47,16 +49,17 @@ export default function ContactModal({
     window.addEventListener("keydown", handleKeyDown);
     document.body.style.overflow = "hidden";
 
-    // Focus first input field initially
-    setTimeout(() => {
+    // Focus first input field only once when modal opens
+    const timer = setTimeout(() => {
       initialFocusRef.current?.focus();
     }, 100);
 
     return () => {
+      clearTimeout(timer);
       window.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "";
     };
-  }, [isOpen, onClose]);
+  }, [isOpen]);
 
   return (
     <AnimatePresence>

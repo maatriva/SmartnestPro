@@ -18,11 +18,13 @@ export default function PreOrderForm({ selectedPlan, onClose }) {
   });
 
   const [loading, setLoading] = useState(false);
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
 
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
-        onClose();
+        onCloseRef.current?.();
       }
       if (e.key === "Tab") {
         const focusableElements = modalRef.current?.querySelectorAll(
@@ -51,15 +53,16 @@ export default function PreOrderForm({ selectedPlan, onClose }) {
     document.body.style.overflow = "hidden";
 
     // Focus first input field initially
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       initialFocusRef.current?.focus();
     }, 100);
 
     return () => {
+      clearTimeout(timer);
       window.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "";
     };
-  }, [onClose]);
+  }, []);
 
   const handleChange = (key) => (e) => {
     setForm({ ...form, [key]: e.target.value });
