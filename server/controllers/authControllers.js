@@ -2,6 +2,7 @@ import pool from "../db.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { validateEmail } from "../utils/validation.js";
+import { sendWelcomeEmail } from "../services/emailService.js";
 
 const JWT_SECRET = process.env.JWT_SECRET;
 import { OAuth2Client } from "google-auth-library";
@@ -48,6 +49,11 @@ export const googleLogin = async (req, res) => {
       );
 
       user = newUser.rows[0];
+
+      // Dispatch welcome email asynchronously for new Google signup
+      sendWelcomeEmail({ name: user.name, email: user.email }).catch((err) => {
+        console.error("[Auth Controller] Welcome email error (Google signup):", err);
+      });
     } else {
       user = result.rows[0];
     }
@@ -84,8 +90,14 @@ export const signup = async (req, res) => {
   const user = result.rows[0];
   const token = jwt.sign(user, JWT_SECRET);
 
+  // Dispatch welcome email asynchronously
+  sendWelcomeEmail({ name: user.name, email: user.email, isProfessional }).catch((err) => {
+    console.error("[Auth Controller] Welcome email error:", err);
+  });
+
   res.json({ user, token });
 };
+
 
 
 export const login = async (req, res) => {

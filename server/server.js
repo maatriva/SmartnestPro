@@ -46,4 +46,4 @@ app.get("/", (req, res) => {
   res.send("API running 🚀");
 });
 
-app.listen(PORT, () => console.log(`https://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`http://localhost:${PORT}`));

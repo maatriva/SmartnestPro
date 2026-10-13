@@ -30,5 +30,25 @@ This is the Express backend for Maatriva, using PostgreSQL for data storage.
 
 -   `GET /`: Home (Health check)
 -   `GET /api/setup`: One-time setup to create the database table
+-   `POST /api/contacts`: Submit contact form (triggers Resend emails)
+-   `POST /api/preorders`: Submit pre-order / inquiry (triggers Resend emails)
+-   `POST /api/auth/signup`: User registration (triggers Resend welcome email)
 -   `POST /api/surveys`: Submit survey data
 -   `GET /api/surveys`: Retrieve all survey results
+
+## Resend Email Configuration
+
+Transactional emails are powered by [Resend](https://resend.com).
+
+1. Add your credentials to [server/.env](file:///d:/ORGO%20bhaiya/smart%20nest%20pro/server/.env):
+   ```env
+   RESEND_API_KEY=re_your_api_key_here
+   EMAIL_FROM=Maatriva <onboarding@resend.dev> # Or your verified domain: hello@yourdomain.com
+   ADMIN_EMAIL=admin@maatriva.co.in
+   ```
+
+2. Test your Resend configuration anytime:
+   ```bash
+   npm run test:email -- your-email@example.com
+   ```
+
