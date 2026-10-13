@@ -35,8 +35,8 @@ const DiseaseChip = memo(function DiseaseChip({
 
         ${
           activeIndex === index
-            ? "clay-card text-(--text-dark) scale-110"
-            : "clay-badge text-(--text-light)"
+            ? "clay-card-secondary border-(--primary)/60 ring-2 ring-(--primary)/30 text-(--text-dark) scale-110 shadow-md font-bold"
+            : "clay-card-secondary text-(--text) hover:border-(--primary)/40"
         }
       `}
     >

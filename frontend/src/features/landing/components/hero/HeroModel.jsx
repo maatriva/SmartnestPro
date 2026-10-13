@@ -64,17 +64,17 @@ export default function HeroModel() {
       <div className="absolute inset-0 flex items-center justify-center">
         <motion.div
           animate={{
-            y: [-10, 10, -10],
+            y: [-8, 8, -8],
           }}
           transition={{
-            duration: 5,
+            duration: 6,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="w-[240px] h-[240px] sm:w-[320px] sm:h-[320px] lg:w-[450px] lg:h-[450px] flex items-center justify-center"
+          className="w-[310px] h-[310px] sm:w-[420px] sm:h-[420px] lg:w-[600px] lg:h-[600px] flex items-center justify-center relative"
         >
           <Suspense fallback={<div className="w-12 h-12 border-4 border-(--primary) border-t-transparent rounded-full animate-spin" />}>
-            <ModelCursor />
+            <ModelCursor targetSize={3} />
           </Suspense>
         </motion.div>
       </div>

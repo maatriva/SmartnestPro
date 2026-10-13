@@ -43,7 +43,7 @@ export default function AppDownloadSection() {
   ];
 
   return (
-    <section id="app" className="py-24 px-6 relative overflow-hidden blend-features text-(--text)">
+    <section id="app" className="py-24 px-6 relative overflow-hidden clay-even-section text-(--text)">
       {/* Background radial glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-(--primary)/10 rounded-full blur-3xl pointer-events-none -z-10" />
 
@@ -120,7 +120,7 @@ export default function AppDownloadSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 * index }}
-                  className="clay-card p-5 rounded-2xl border border-white/60 hover:scale-[1.02] transition-transform duration-200"
+                  className="clay-card-secondary p-5 rounded-2xl hover:scale-[1.02] transition-transform duration-200"
                 >
                   <div className="p-2.5 rounded-xl bg-(--primary)/10 text-(--primary) w-fit mb-3">
                     {feat.icon}
@@ -141,7 +141,7 @@ export default function AppDownloadSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="clay-card p-6 sm:p-8 rounded-3xl border border-(--primary)/20 bg-(--primary)/5 space-y-6"
+              className="clay-card-secondary p-6 sm:p-8 rounded-3xl space-y-6"
             >
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>

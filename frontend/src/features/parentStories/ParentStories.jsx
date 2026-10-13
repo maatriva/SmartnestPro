@@ -156,7 +156,7 @@ export default function ParentStories() {
   };
 
   return (
-    <section id="parent-stories" className="py-24 px-6 blend-features text-(--text) overflow-x-hidden relative">
+    <section id="parent-stories" className="py-24 px-6 clay-even-section text-(--text) overflow-x-hidden relative">
       {/* Slow floating decorations */}
       <div className="floating-decorations" aria-hidden="true">
         <div className="decoration-item footprint-1"><FootprintsIcon /></div>

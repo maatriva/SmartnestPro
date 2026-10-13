@@ -14,7 +14,7 @@ export default function TrendingSideNav() {
       { id: "parent-stories", label: "Parent Stories" },
       { id: "supporting-parents", label: "Parent Support" },
       // { id: "demo", label: "Demo" },
-      { id: "pricing", label: "Pricing" },
+      { id: "products", label: "Products" },
       // { id: "testimonials", label: "Testimonials" },
       { id: "footer", label: "Footer" },
     ],

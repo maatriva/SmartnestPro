@@ -46,7 +46,7 @@ export const FOOTER_LINKS = [
   },
 
   {
-    label: "Pricing",
-    path: "/#pricing",
+    label: "Products",
+    path: "/#products",
   },
 ];

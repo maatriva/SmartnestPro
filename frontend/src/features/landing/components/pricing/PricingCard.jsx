@@ -104,11 +104,11 @@ export default function PricingCard({ plan, onPreOrder }) {
         y: { type: "spring", stiffness: 140, damping: 18 },
         scale: { duration: 0.25, ease: "easeOut" },
       }}
-      className={`relative w-full rounded-[24px] border-2 bg-white p-8 flex flex-col justify-between h-full select-none transition-all duration-300 z-10 ${
-        plan.popular
-          ? "border-(--primary-light)/85 shadow-[0_12px_36px_rgba(90,120,214,0.18)]"
-          : "border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.03)]"
-      } hover:border-(--primary-light)/60 hover:shadow-[0_22px_45px_rgba(90,120,214,0.2)]`}
+      className={`relative w-full rounded-[24px] border-2 clay-card-secondary p-8 flex flex-col justify-between h-full select-none transition-all duration-300 z-10 ${
+        plan.popular || plan.badge === "Most Popular"
+          ? "border-(--primary-light)/85 shadow-[0_12px_36px_rgba(90,120,214,0.22)] ring-2 ring-(--primary)/20"
+          : "border-[rgba(184,227,226,0.8)] shadow-[0_8px_32px_rgba(0,0,0,0.04)]"
+      } hover:border-(--primary-light)/70 hover:shadow-[0_22px_45px_rgba(90,120,214,0.25)]`}
       style={{
         willChange: "transform",
       }}

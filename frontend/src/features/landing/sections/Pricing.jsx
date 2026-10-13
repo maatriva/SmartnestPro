@@ -12,10 +12,11 @@ export default function Pricing() {
 
   return (
     <section
-      id="pricing"
+      id="products"
       ref={sectionRef}
-      className="py-24 px-6 blend-pricing text-(--text) relative"
+      className="py-24 px-6 clay-even-section text-(--text) relative"
     >
+      <span id="pricing" className="absolute -top-24 pointer-events-none" aria-hidden="true" />
       <div className="max-w-7xl mx-auto">
         <PricingHeader />
 

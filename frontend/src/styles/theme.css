@@ -487,7 +487,12 @@
 
 .footer-blend {
   position: relative;
-  background: var(--bg-glass) !important;
+  background: linear-gradient(
+    to bottom,
+    rgba(250, 252, 252, 0.75) 0%,
+    var(--bg-secondary) 24px,
+    var(--bg-secondary) 100%
+  ) !important;
   border-top: none !important;
 }
 
@@ -503,23 +508,25 @@
   z-index: 10;
 }
 
-/* 🔄 How It Works Cards override to match Features Section aesthetics */
+/* 🔄 How It Works Cards - Frosted Glass Clay Card styling for Aqua section */
 .hiw-card {
-  background: rgba(184, 227, 226, 0.45) !important;
-  border: 2px solid rgba(184, 227, 226, 0.6) !important;
+  background: var(--bg-glass) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 2px solid rgba(250, 252, 252, 0.8) !important;
   box-shadow: 
-    inset 6px 6px 14px rgba(255, 255, 255, 0.5),
-    inset -6px -6px 14px rgba(166, 180, 200, 0.15),
-    10px 10px 24px rgba(103, 210, 218, 0.25) !important;
+    inset 6px 6px 14px rgba(250, 252, 252, 0.85),
+    inset -6px -6px 14px rgba(166, 180, 200, 0.25),
+    10px 10px 24px rgba(103, 210, 218, 0.35) !important;
 }
 
 .hiw-card:hover {
-  background: rgba(184, 227, 226, 0.6) !important;
-  border-color: rgba(184, 227, 226, 0.75) !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(255, 255, 255, 0.95) !important;
   box-shadow: 
-    inset 8px 8px 18px rgba(255, 255, 255, 0.7),
-    inset -8px -8px 18px rgba(166, 180, 200, 0.25),
-    18px 25px 40px rgba(103, 210, 218, 0.45) !important;
+    inset 8px 8px 18px rgba(255, 255, 255, 0.95),
+    inset -8px -8px 18px rgba(166, 180, 200, 0.35),
+    18px 25px 40px rgba(103, 210, 218, 0.55) !important;
 }
 
 
