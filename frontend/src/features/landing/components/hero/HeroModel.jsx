@@ -74,7 +74,7 @@ export default function HeroModel() {
           className="w-[310px] h-[310px] sm:w-[420px] sm:h-[420px] lg:w-[600px] lg:h-[600px] flex items-center justify-center relative"
         >
           <Suspense fallback={<div className="w-12 h-12 border-4 border-(--primary) border-t-transparent rounded-full animate-spin" />}>
-            <ModelCursor targetSize={3} />
+            <ModelCursor targetSize={3} modelColor="#8EC1D1" />
           </Suspense>
         </motion.div>
       </div>

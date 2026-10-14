@@ -4,9 +4,9 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment";
 
-const MODEL_PATH = "/3Dmodel.glb?v=2.2";
+const MODEL_PATH = "/3Dmodel.glb?v=4.1";
 
-const ModelCursor = ({ targetSize = 3.7 }) => {
+const ModelCursor = ({ targetSize = 3.7, modelColor = "#8EC1D1" }) => {
   const mountRef = useRef(null);
   const [loading, setLoading] = useState(true);
   const [loadProgress, setLoadProgress] = useState(0);
@@ -42,7 +42,7 @@ const ModelCursor = ({ targetSize = 3.7 }) => {
       renderer.setSize(initialWidth, initialHeight);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      renderer.toneMappingExposure = 1.05;
+      renderer.toneMappingExposure = 1.0;
       renderer.outputColorSpace = THREE.SRGBColorSpace;
       container.appendChild(renderer.domElement);
     } catch (error) {
@@ -51,26 +51,26 @@ const ModelCursor = ({ targetSize = 3.7 }) => {
       return;
     }
 
-    // 💡 Environment Map for realistic PBR reflections on Stainless Steel, Boucle & Glass Screen
+    // 💡 Environment Map for realistic soft reflections
     const pmremGenerator = new THREE.PMREMGenerator(renderer);
     pmremGenerator.compileEquirectangularShader();
     const envTexture = pmremGenerator.fromScene(new RoomEnvironment(), 0.04).texture;
     scene.environment = envTexture;
 
-    // 💡 Studio Key, Fill & Contouring Lights
-    const hemiLight = new THREE.HemisphereLight(0xffffff, 0xcbe8ea, 1.6);
+    // 💡 Calibrated Studio Lighting (prevents pastel colors from washing out into white)
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x4a6572, 0.7);
     hemiLight.position.set(0, 20, 0);
     scene.add(hemiLight);
 
-    const dirLight1 = new THREE.DirectionalLight(0xffffff, 2.0);
+    const dirLight1 = new THREE.DirectionalLight(0xffffff, 1.1);
     dirLight1.position.set(5, 8, 5);
     scene.add(dirLight1);
 
-    const dirLight2 = new THREE.DirectionalLight(0x7b8ff8, 1.0);
+    const dirLight2 = new THREE.DirectionalLight(0x8fa3f8, 0.5);
     dirLight2.position.set(-5, 4, -4);
     scene.add(dirLight2);
 
-    const dirLight3 = new THREE.DirectionalLight(0xffffff, 0.7);
+    const dirLight3 = new THREE.DirectionalLight(0xffffff, 0.3);
     dirLight3.position.set(0, -2, 4);
     scene.add(dirLight3);
 
@@ -102,10 +102,41 @@ const ModelCursor = ({ targetSize = 3.7 }) => {
         gltf.scene.position.y = -center.y;
         gltf.scene.position.z = -center.z;
 
-        // Enhance mesh materials
+        // Apply requested color (default #BCE0E8) and optimize materials
         gltf.scene.traverse((child) => {
-          if (child.isMesh && child.material) {
-            child.material.side = THREE.FrontSide;
+          if (child.isMesh) {
+            const materials = Array.isArray(child.material)
+              ? child.material
+              : [child.material];
+
+            materials.forEach((mat) => {
+              if (mat) {
+                const meshName = (child.name || "").toLowerCase();
+                const matName = (mat.name || "").toLowerCase();
+
+                if (meshName.includes("eye") || matName.includes("eye")) {
+                  mat.color.set("#111115");
+                  mat.roughness = 0.1;
+                } else if (meshName.includes("tusk") || meshName.includes("nail") || matName.includes("ivory")) {
+                  mat.color.set("#F7F5EE");
+                  mat.roughness = 0.35;
+                } else if (meshName.includes("rod") || matName.includes("steel")) {
+                  mat.color.set("#D4D8E2");
+                  mat.roughness = 0.25;
+                  mat.metalness = 0.9;
+                } else if (meshName.includes("screen")) {
+                  mat.color.set("#0a0a0f");
+                } else {
+                  // Primary color: modelColor
+                  mat.color.set(modelColor);
+                  mat.roughness = 0.45;
+                  mat.metalness = 0.08;
+                }
+
+                mat.side = THREE.DoubleSide;
+                mat.needsUpdate = true;
+              }
+            });
           }
         });
 
@@ -186,7 +217,7 @@ const ModelCursor = ({ targetSize = 3.7 }) => {
         container.removeChild(renderer.domElement);
       }
     };
-  }, [targetSize]);
+  }, [targetSize, modelColor]);
 
   return (
     <div className="relative w-full h-full flex items-center justify-center">
