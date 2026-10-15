@@ -6,7 +6,15 @@ import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment
 
 const MODEL_PATH = "/3Dmodel.glb?v=4.1";
 
-const ModelCursor = ({ targetSize = 3.7, modelColor = "#8EC1D1" }) => {
+const ModelCursor = ({
+  targetSize = 3.7,
+  modelColor = "#8FA2B4", // Elephant body soft slate blue-grey
+  frameColor = "#FFFFFF", // Crib frame & base board crisp white
+  mattressColor = "#D4E2C4", // Soft pastel pale sage/mint pistachio green
+  rodColor = "#6E5B4B", // Bronze / antique brass warm metallic rods
+  tuskColor = "#FAF6ED", // Warm ivory white for tusks & nails
+  metalColor = "#B8BCC6", // Clean stainless steel pins & accents
+}) => {
   const mountRef = useRef(null);
   const [loading, setLoading] = useState(true);
   const [loadProgress, setLoadProgress] = useState(0);
@@ -42,7 +50,7 @@ const ModelCursor = ({ targetSize = 3.7, modelColor = "#8EC1D1" }) => {
       renderer.setSize(initialWidth, initialHeight);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      renderer.toneMappingExposure = 1.0;
+      renderer.toneMappingExposure = 1.05;
       renderer.outputColorSpace = THREE.SRGBColorSpace;
       container.appendChild(renderer.domElement);
     } catch (error) {
@@ -57,21 +65,21 @@ const ModelCursor = ({ targetSize = 3.7, modelColor = "#8EC1D1" }) => {
     const envTexture = pmremGenerator.fromScene(new RoomEnvironment(), 0.04).texture;
     scene.environment = envTexture;
 
-    // 💡 Calibrated Studio Lighting (prevents pastel colors from washing out into white)
-    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x4a6572, 0.7);
+    // 💡 Balanced Studio Lighting (faithful, neutral product illumination matching Blender reference)
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x5a6875, 0.75);
     hemiLight.position.set(0, 20, 0);
     scene.add(hemiLight);
 
-    const dirLight1 = new THREE.DirectionalLight(0xffffff, 1.1);
+    const dirLight1 = new THREE.DirectionalLight(0xffffff, 1.2);
     dirLight1.position.set(5, 8, 5);
     scene.add(dirLight1);
 
-    const dirLight2 = new THREE.DirectionalLight(0x8fa3f8, 0.5);
-    dirLight2.position.set(-5, 4, -4);
+    const dirLight2 = new THREE.DirectionalLight(0xf2f6fa, 0.6);
+    dirLight2.position.set(-5, 4, -3);
     scene.add(dirLight2);
 
-    const dirLight3 = new THREE.DirectionalLight(0xffffff, 0.3);
-    dirLight3.position.set(0, -2, 4);
+    const dirLight3 = new THREE.DirectionalLight(0xfff8f0, 0.4);
+    dirLight3.position.set(2, 6, -5);
     scene.add(dirLight3);
 
     // OrbitControls for smooth drag-to-inspect interaction
@@ -102,41 +110,76 @@ const ModelCursor = ({ targetSize = 3.7, modelColor = "#8EC1D1" }) => {
         gltf.scene.position.y = -center.y;
         gltf.scene.position.z = -center.z;
 
-        // Apply requested color (default #BCE0E8) and optimize materials
+        // Apply realistic materials and colors calibrated to the 3D design reference
         gltf.scene.traverse((child) => {
           if (child.isMesh) {
-            const materials = Array.isArray(child.material)
-              ? child.material
-              : [child.material];
+            let meshMats = child.material;
+            if (!meshMats) {
+              meshMats = new THREE.MeshStandardMaterial();
+              child.material = meshMats;
+            }
 
-            materials.forEach((mat) => {
-              if (mat) {
-                const meshName = (child.name || "").toLowerCase();
-                const matName = (mat.name || "").toLowerCase();
+            const materials = Array.isArray(meshMats) ? meshMats : [meshMats];
 
-                if (meshName.includes("eye") || matName.includes("eye")) {
-                  mat.color.set("#111115");
-                  mat.roughness = 0.1;
-                } else if (meshName.includes("tusk") || meshName.includes("nail") || matName.includes("ivory")) {
-                  mat.color.set("#F7F5EE");
-                  mat.roughness = 0.35;
-                } else if (meshName.includes("rod") || matName.includes("steel")) {
-                  mat.color.set("#D4D8E2");
-                  mat.roughness = 0.25;
-                  mat.metalness = 0.9;
-                } else if (meshName.includes("screen")) {
-                  mat.color.set("#0a0a0f");
-                } else {
-                  // Primary color: modelColor
-                  mat.color.set(modelColor);
-                  mat.roughness = 0.45;
-                  mat.metalness = 0.08;
-                }
+            const updatedMaterials = materials.map((origMat) => {
+              const mat = origMat ? origMat.clone() : new THREE.MeshStandardMaterial();
+              const meshName = (child.name || "").toLowerCase();
+              const matName = (mat.name || "").toLowerCase();
 
-                mat.side = THREE.DoubleSide;
-                mat.needsUpdate = true;
+              if (meshName.includes("eye") || matName.includes("eye")) {
+                // Glossy dark black baby eyes
+                mat.color.set("#111115");
+                mat.roughness = 0.08;
+                mat.metalness = 0.1;
+              } else if (meshName.includes("tusk") || meshName.includes("nail") || matName.includes("ivory")) {
+                // Elephant tusks and toenails: warm ivory porcelain
+                mat.color.set(tuskColor);
+                mat.roughness = 0.32;
+                mat.metalness = 0.02;
+              } else if (meshName.startsWith("rod_") || meshName.includes("rod")) {
+                // Bassinet vertical bars: warm bronze / antique brass metallic
+                mat.color.set(rodColor);
+                mat.roughness = 0.32;
+                mat.metalness = 0.78;
+              } else if (meshName.includes("hinge") || meshName.includes("pin") || meshName === "tail_2") {
+                // Mechanical hinge pins & connectors: clean brushed steel
+                mat.color.set(metalColor);
+                mat.roughness = 0.25;
+                mat.metalness = 0.9;
+              } else if (meshName.includes("mattress") || matName.includes("mattress")) {
+                // Crib mattress: soft pastel pale sage / mint pistachio cream
+                mat.color.set(mattressColor);
+                mat.roughness = 0.85;
+                mat.metalness = 0.0;
+              } else if (
+                meshName.includes("bassinet") ||
+                meshName.includes("frame") ||
+                meshName === "screen_carrier" ||
+                meshName === "tail_3" ||
+                matName.includes("warmwhite")
+              ) {
+                // Crib frame structure, base board, and screen frame: pristine white
+                mat.color.set(frameColor);
+                mat.roughness = 0.28;
+                mat.metalness = 0.02;
+              } else if (meshName.includes("display") || meshName.includes("screen")) {
+                // OLED display screen glass
+                mat.color.set("#09090D");
+                mat.roughness = 0.05;
+                mat.metalness = 0.2;
+              } else {
+                // Elephant body (head, ears, trunk, body, rump, legs, belly shelf, tail)
+                mat.color.set(modelColor);
+                mat.roughness = 0.55;
+                mat.metalness = 0.04;
               }
+
+              mat.side = THREE.DoubleSide;
+              mat.needsUpdate = true;
+              return mat;
             });
+
+            child.material = Array.isArray(meshMats) ? updatedMaterials : updatedMaterials[0];
           }
         });
 
@@ -217,7 +260,7 @@ const ModelCursor = ({ targetSize = 3.7, modelColor = "#8EC1D1" }) => {
         container.removeChild(renderer.domElement);
       }
     };
-  }, [targetSize, modelColor]);
+  }, [targetSize, modelColor, frameColor, mattressColor, rodColor, tuskColor, metalColor]);
 
   return (
     <div className="relative w-full h-full flex items-center justify-center">
