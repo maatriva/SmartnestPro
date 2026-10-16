@@ -10,6 +10,7 @@ export const navbarEntranceAnimation = (navRef) => {
       opacity: 0,
       duration: 1,
       ease: "power4.out",
+      clearProps: "transform",
     });
 
     const logo = navRef.current.querySelector(".nav-logo");

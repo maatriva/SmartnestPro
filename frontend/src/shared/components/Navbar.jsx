@@ -1,4 +1,5 @@
 import { useLayoutEffect, useRef, useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Download, Smartphone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -140,112 +141,137 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[-1] lg:hidden"
-              onClick={() => setIsMenuOpen(false)}
-            />
+      {/* Mobile Menu rendered via Portal to escape transform containing-block */}
+      {typeof document !== "undefined" &&
+        createPortal(
+          <AnimatePresence>
+            {isMenuOpen && (
+              <div className="lg:hidden">
+                {/* Backdrop */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[90]"
+                  onClick={() => setIsMenuOpen(false)}
+                />
 
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{
-                type: "spring",
-                damping: 25,
-                stiffness: 200,
-              }}
-              className="fixed top-24 right-4 bottom-4 left-4 lg:hidden clay-card overflow-y-auto flex flex-col p-8 z-[-1] pt-12"
-            >
-              <div className="flex flex-col gap-6 text-center">
-                {NAV_LINKS.map((link, i) => (
-                  link.path.startsWith("/#") ? (
-                    <a
-                      key={i}
-                      href={link.path}
-                      onClick={() => setIsMenuOpen(false)}
-                      className="text-2xl font-bold text-(--text-dark) hover:text-(--primary) transition-colors"
-                    >
-                      {link.name}
-                    </a>
-                  ) : (
-                    <Link
-                      key={i}
-                      to={link.path}
-                      onClick={() => setIsMenuOpen(false)}
-                      className={`text-2xl font-bold transition-colors ${
-                        location.pathname === link.path
-                          ? "text-(--primary)"
-                          : "text-(--text-dark)"
-                      }`}
-                    >
-                      {link.name}
-                    </Link>
-                  )
-                ))}
-
-                {user?.is_admin && (
-                  <Link
-                    to="/admin"
-                    onClick={() => setIsMenuOpen(false)}
-                    className="text-2xl font-bold text-(--primary)"
-                  >
-                    Admin Dashboard
-                  </Link>
-                )}
-              </div>
-
-              <div className="mt-auto flex flex-col gap-4">
-                <a
-                  href={APP_DOWNLOAD_LINK}
-                  download="maatriva-app.apk"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-3 px-4 rounded-xl clay-btn clay-btn-primary font-bold text-center text-base flex items-center justify-center gap-2"
+                {/* Floating Mobile Card */}
+                <motion.div
+                  initial={{ opacity: 0, y: -20, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                  transition={{
+                    type: "spring",
+                    damping: 25,
+                    stiffness: 280,
+                  }}
+                  className="fixed top-24 left-4 right-4 bottom-6 max-w-md mx-auto z-[95] clay-card-static bg-(--bg) overflow-y-auto flex flex-col p-6 rounded-3xl border border-(--primary)/20 shadow-2xl justify-between"
                 >
-                  <Download size={20} />
-                  <span>Download Maatriva App (APK)</span>
-                </a>
-
-                {user ? (
-                  <>
-                    <div className="text-center p-4 clay-card">
-                      <p className="text-(--text-light) text-sm mb-1 font-semibold">
-                        Logged in as
-                      </p>
-
-                      <p className="font-bold text-(--text-dark)">
-                        {user.name}
-                      </p>
+                  {/* Header Row */}
+                  <div className="flex items-center justify-between pb-3 mb-2 border-b border-(--border) shrink-0">
+                    <div className="flex items-center gap-2">
+                      <img
+                        src="/Faviconsimple (2).png"
+                        alt="Maatriva Logo"
+                        width="32"
+                        height="32"
+                        className="w-8 h-8 object-contain"
+                      />
+                      <span className="font-extrabold text-lg text-(--text-dark) tracking-tight">
+                        Maatriva
+                      </span>
                     </div>
-
                     <button
-                      onClick={logout}
-                      className="w-full py-4 clay-btn clay-btn-destructive font-bold text-lg"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="p-1.5 rounded-xl text-(--text-dark) hover:bg-(--bg-hover) transition-colors"
+                      aria-label="Close menu"
                     >
-                      Logout
+                      <X size={22} />
                     </button>
-                  </>
-                ) : (
-                  <Link
-                    to="/login"
-                    onClick={() => setIsMenuOpen(false)}
-                    className="w-full py-4 clay-btn clay-btn-primary font-bold text-center text-lg flex items-center justify-center text-white shadow-lg shadow-[#5A78D6]/25"
-                  >
-                    Login to Account
-                  </Link>
-                )}
+                  </div>
+
+                  {/* Nav Links */}
+                  <div className="flex flex-col gap-1.5 my-auto py-2">
+                    {NAV_LINKS.map((link, i) => (
+                      link.path.startsWith("/#") ? (
+                        <a
+                          key={i}
+                          href={link.path}
+                          onClick={() => setIsMenuOpen(false)}
+                          className="px-4 py-3 rounded-2xl text-lg font-bold text-(--text-dark) hover:text-(--primary) hover:bg-(--primary)/10 transition-colors text-center"
+                        >
+                          {link.name}
+                        </a>
+                      ) : (
+                        <Link
+                          key={i}
+                          to={link.path}
+                          onClick={() => setIsMenuOpen(false)}
+                          className={`px-4 py-3 rounded-2xl text-lg font-bold transition-colors text-center ${
+                            location.pathname === link.path
+                              ? "text-(--primary) bg-(--primary)/10"
+                              : "text-(--text-dark) hover:text-(--primary) hover:bg-(--primary)/5"
+                          }`}
+                        >
+                          {link.name}
+                        </Link>
+                      )
+                    ))}
+
+                    {user?.is_admin && (
+                      <Link
+                        to="/admin"
+                        onClick={() => setIsMenuOpen(false)}
+                        className="px-4 py-3 rounded-2xl text-lg font-bold text-(--primary) bg-(--primary)/10 text-center"
+                      >
+                        Admin Dashboard
+                      </Link>
+                    )}
+                  </div>
+
+                  {/* Actions CTA */}
+                  <div className="pt-3 border-t border-(--border) flex flex-col gap-3 shrink-0">
+                    <a
+                      href={APP_DOWNLOAD_LINK}
+                      download="maatriva-app.apk"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-3.5 px-4 rounded-xl clay-btn clay-btn-primary font-bold text-center text-sm flex items-center justify-center gap-2 shadow-md shadow-[#5A78D6]/20"
+                    >
+                      <Download size={18} />
+                      <span>Download Maatriva App</span>
+                    </a>
+
+                    {user ? (
+                      <div className="flex items-center justify-between gap-3 p-2.5 px-3.5 rounded-xl clay-card-secondary">
+                        <div className="truncate">
+                          <p className="text-(--text-light) text-xs font-semibold">Logged in as</p>
+                          <p className="font-bold text-(--text-dark) text-sm truncate">{user.name}</p>
+                        </div>
+                        <button
+                          onClick={logout}
+                          className="px-4 py-1.5 clay-btn clay-btn-destructive font-bold text-xs shrink-0"
+                        >
+                          Logout
+                        </button>
+                      </div>
+                    ) : (
+                      <Link
+                        to="/login"
+                        onClick={() => setIsMenuOpen(false)}
+                        className="w-full py-3 px-4 rounded-xl clay-btn clay-btn-secondary text-(--text-dark) font-bold text-center text-sm flex items-center justify-center"
+                      >
+                        Login to Account
+                      </Link>
+                    )}
+                  </div>
+                </motion.div>
               </div>
-            </motion.div>
-          </>
+            )}
+          </AnimatePresence>,
+          document.body
         )}
-      </AnimatePresence>
     </nav>
   );
 };
