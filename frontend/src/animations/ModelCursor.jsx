@@ -4,16 +4,29 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment";
 
-const MODEL_PATH = "/3Dmodel.glb?v=4.1";
+const MODEL_PATH = "/3Dmodel.glb?v=4.3";
+
+// Helper to sanitize hex strings (e.g. #272c30ff -> #272c30) for Three.js compatibility
+const sanitizeColor = (color, fallback = "#272C30") => {
+  if (!color || typeof color !== "string") return fallback;
+  const trimmed = color.trim();
+  if (trimmed.startsWith("#") && trimmed.length === 9) {
+    return trimmed.slice(0, 7);
+  }
+  return trimmed;
+};
 
 const ModelCursor = ({
   targetSize = 3.7,
-  modelColor = "#8E9EAB", // Elephant body soft misty slate blue
-  frameColor = "#FFFFFF", // Crib frame & base board crisp white
-  mattressColor = "#D4E2C4", // Soft pastel pale sage/mint pistachio green
-  rodColor = "#C2A676", // Brushed champagne gold metallic rods
+  modelColor = "#272C30", // Elephant body dark slate charcoal
+  frameColor = "#375266", // Cradle frame dark slate blue-grey
+  mattressColor = "#161B11", // Mattress deep dark sage
+  rodColor = "#375266", // Supporting rods matching frame
+  metalColor = "#375266", // Supporting hinge pins & hardware matching frame
   tuskColor = "#FAF6ED", // Warm ivory white for tusks & nails
-  metalColor = "#B8BCC6", // Clean stainless steel pins & accents
+  eyeColor = "#15181B", // Cute glossy dark onyx button eyes
+  detailColor = "#252D33", // Small dark details
+  backgroundColor = null, // Optional scene background
 }) => {
   const mountRef = useRef(null);
   const [loading, setLoading] = useState(true);
@@ -28,6 +41,9 @@ const ModelCursor = ({
     const initialHeight = container.clientHeight || 360;
 
     const scene = new THREE.Scene();
+    if (backgroundColor) {
+      scene.background = new THREE.Color(sanitizeColor(backgroundColor, "#F2F0E9"));
+    }
 
     // Natural 48° FOV (mimics standard ~50mm portrait lens for product design)
     const camera = new THREE.PerspectiveCamera(
@@ -97,6 +113,16 @@ const ModelCursor = ({
     let model = null;
     let animationId = null;
 
+    // Sanitized colors for Three.js
+    const sModelColor = sanitizeColor(modelColor, "#272C30");
+    const sFrameColor = sanitizeColor(frameColor, "#375266");
+    const sMattressColor = sanitizeColor(mattressColor, "#161B11");
+    const sRodColor = sanitizeColor(rodColor || frameColor, sFrameColor);
+    const sMetalColor = sanitizeColor(metalColor || frameColor, sFrameColor);
+    const sTuskColor = sanitizeColor(tuskColor, "#FAF6ED");
+    const sEyeColor = sanitizeColor(eyeColor, "#15181B");
+    const sDetailColor = sanitizeColor(detailColor, "#252D33");
+
     const loader = new GLTFLoader();
     loader.load(
       MODEL_PATH,
@@ -110,7 +136,7 @@ const ModelCursor = ({
         gltf.scene.position.y = -center.y;
         gltf.scene.position.z = -center.z;
 
-        // Apply realistic materials and colors calibrated to the 3D design reference
+        // Apply realistic materials and colors calibrated to the design reference
         gltf.scene.traverse((child) => {
           if (child.isMesh) {
             let meshMats = child.material;
@@ -127,28 +153,33 @@ const ModelCursor = ({
               const matName = (mat.name || "").toLowerCase();
 
               if (meshName.includes("eye") || matName.includes("eye")) {
-                // Glossy dark black baby eyes
-                mat.color.set("#111115");
-                mat.roughness = 0.08;
+                // Eyes: friendly glossy dark onyx button eyes with natural catchlight
+                mat.color.set(sEyeColor);
+                mat.roughness = 0.05;
                 mat.metalness = 0.1;
               } else if (meshName.includes("tusk") || meshName.includes("nail") || matName.includes("ivory")) {
                 // Elephant tusks and toenails: warm ivory porcelain
-                mat.color.set(tuskColor);
-                mat.roughness = 0.32;
+                mat.color.set(sTuskColor);
+                mat.roughness = 0.35;
                 mat.metalness = 0.02;
               } else if (meshName.startsWith("rod_") || meshName.includes("rod")) {
-                // Bassinet vertical bars: warm bronze / antique brass metallic
-                mat.color.set(rodColor);
-                mat.roughness = 0.32;
-                mat.metalness = 0.78;
-              } else if (meshName.includes("hinge") || meshName.includes("pin") || meshName === "tail_2") {
-                // Mechanical hinge pins & connectors: clean brushed steel
-                mat.color.set(metalColor);
-                mat.roughness = 0.25;
-                mat.metalness = 0.9;
+                // Cradle frame supporting vertical rods: matches cradle frame
+                mat.color.set(sRodColor);
+                mat.roughness = 0.30;
+                mat.metalness = 0.45;
+              } else if (
+                meshName.includes("hinge") ||
+                meshName.includes("pin") ||
+                matName.includes("pin") ||
+                meshName === "tail_2"
+              ) {
+                // Supporting hinge pins, pivot hardware & connectors: matches cradle frame
+                mat.color.set(sMetalColor);
+                mat.roughness = 0.28;
+                mat.metalness = 0.45;
               } else if (meshName.includes("mattress") || matName.includes("mattress")) {
-                // Crib mattress: soft pastel pale sage / mint pistachio cream
-                mat.color.set(mattressColor);
+                // Crib mattress / inner cradle panel: deep dark sage
+                mat.color.set(sMattressColor);
                 mat.roughness = 0.85;
                 mat.metalness = 0.0;
               } else if (
@@ -158,20 +189,19 @@ const ModelCursor = ({
                 meshName === "tail_3" ||
                 matName.includes("warmwhite")
               ) {
-                // Crib frame structure, base board, and screen frame: pristine white
-                mat.color.set(frameColor);
-                mat.roughness = 0.28;
-                mat.metalness = 0.02;
+                // Cradle frame structure, base board, and screen frame: unified dark slate blue-grey
+                mat.color.set(sFrameColor);
+                mat.roughness = 0.32;
+                mat.metalness = 0.45;
               } else if (meshName.includes("display") || meshName.includes("screen")) {
-                // OLED display screen glass
-                mat.color.set("#09090D");
-                mat.roughness = 0.05;
-                mat.metalness = 0.2;
+                // Small dark details: OLED display screen & glass
+                mat.color.set(sDetailColor);
+                mat.roughness = 0.10;
+                mat.metalness = 0.20;
               } else {
                 // Elephant body (head, ears, trunk, body, rump, legs, belly shelf, tail)
-                mat.color.set(modelColor);
+                mat.color.set(sModelColor);
                 mat.roughness = 0.55;
-                mat.metalness = 0.04;
               }
 
               mat.side = THREE.DoubleSide;
@@ -260,7 +290,7 @@ const ModelCursor = ({
         container.removeChild(renderer.domElement);
       }
     };
-  }, [targetSize, modelColor, frameColor, mattressColor, rodColor, tuskColor, metalColor]);
+  }, [targetSize, modelColor, frameColor, mattressColor, rodColor, tuskColor, metalColor, eyeColor, detailColor, backgroundColor]);
 
   return (
     <div className="relative w-full h-full flex items-center justify-center">
