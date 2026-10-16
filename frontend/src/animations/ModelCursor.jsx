@@ -8,10 +8,10 @@ const MODEL_PATH = "/3Dmodel.glb?v=4.1";
 
 const ModelCursor = ({
   targetSize = 3.7,
-  modelColor = "#8FA2B4", // Elephant body soft slate blue-grey
+  modelColor = "#8E9EAB", // Elephant body soft misty slate blue
   frameColor = "#FFFFFF", // Crib frame & base board crisp white
   mattressColor = "#D4E2C4", // Soft pastel pale sage/mint pistachio green
-  rodColor = "#6E5B4B", // Bronze / antique brass warm metallic rods
+  rodColor = "#C2A676", // Brushed champagne gold metallic rods
   tuskColor = "#FAF6ED", // Warm ivory white for tusks & nails
   metalColor = "#B8BCC6", // Clean stainless steel pins & accents
 }) => {
