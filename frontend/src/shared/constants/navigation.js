@@ -1,4 +1,4 @@
-export const APP_DOWNLOAD_LINK = "https://download.maatriva.co.in/app-release.apk";
+export const APP_DOWNLOAD_LINK = "/maatriva-app.apk";
 
 export const NAV_LINKS = [
   { name: "Home", path: "/" },

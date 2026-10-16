@@ -61,7 +61,7 @@ export default function AppDownloadModal({ isOpen, onClose }) {
           <div className="space-y-4">
             <a
               href={APP_DOWNLOAD_LINK}
-              download="app-release.apk"
+              download="maatriva-app.apk"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full py-4 px-6 rounded-2xl clay-btn clay-btn-primary font-bold text-base sm:text-lg text-white flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-[#5A78D6]/25"
@@ -74,7 +74,7 @@ export default function AppDownloadModal({ isOpen, onClose }) {
               <span className="flex items-center gap-1 text-(--primary)">
                 <ShieldCheck size={14} /> Safe & Verified Build
               </span>
-              <span>v1.0.0 • ~18 MB</span>
+              <span>v1.0.0 • ~112 MB</span>
             </div>
           </div>
 

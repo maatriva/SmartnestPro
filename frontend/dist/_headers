@@ -10,3 +10,11 @@
 
 /robots.txt
   Content-Type: text/plain
+
+/maatriva-app.apk
+  Content-Type: application/vnd.android.package-archive
+  Content-Disposition: attachment; filename="maatriva-app.apk"
+
+/app-release.apk
+  Content-Type: application/vnd.android.package-archive
+  Content-Disposition: attachment; filename="maatriva-app.apk"

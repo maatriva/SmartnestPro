@@ -97,7 +97,7 @@ const Navbar = () => {
           {/* Download App CTA */}
           <a
             href={APP_DOWNLOAD_LINK}
-            download="app-release.apk"
+            download="maatriva-app.apk"
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2 rounded-full clay-badge text-(--primary) font-bold text-sm flex items-center gap-2 hover:scale-105 transition-transform"
@@ -204,7 +204,7 @@ const Navbar = () => {
               <div className="mt-auto flex flex-col gap-4">
                 <a
                   href={APP_DOWNLOAD_LINK}
-                  download="app-release.apk"
+                  download="maatriva-app.apk"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-3 px-4 rounded-xl clay-btn clay-btn-primary font-bold text-center text-base flex items-center justify-center gap-2"

@@ -165,7 +165,7 @@ export default function AppDownloadSection() {
                 {/* Direct APK Download Button */}
                 <a
                   href={APP_DOWNLOAD_LINK}
-                  download="app-release.apk"
+                  download="maatriva-app.apk"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 min-w-[200px] py-4 px-6 clay-btn clay-btn-primary text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2.5 transition-all shadow-lg shadow-[#5A78D6]/25"
