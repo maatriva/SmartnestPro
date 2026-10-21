@@ -76,13 +76,13 @@ export default function HeroModel() {
           <Suspense fallback={<div className="w-12 h-12 border-4 border-(--primary) border-t-transparent rounded-full animate-spin" />}>
             <ModelCursor
               targetSize={3}
-              modelColor="#272C30"
-              frameColor="#375266"
-              mattressColor="#161B11"
-              rodColor="#375266"
-              metalColor="#375266"
+              modelColor="#53616F"
+              frameColor="#A6ADB2"
+              mattressColor="#849B70"
+              rodColor="#A6ADB2"
+              metalColor="#A6ADB2"
               tuskColor="#FAF6ED"
-              eyeColor="#15181B"
+              eyeColor="#252D33"
               detailColor="#252D33"
             />
           </Suspense>

@@ -7,7 +7,7 @@ import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment
 const MODEL_PATH = "/3Dmodel.glb?v=4.3";
 
 // Helper to sanitize hex strings (e.g. #272c30ff -> #272c30) for Three.js compatibility
-const sanitizeColor = (color, fallback = "#272C30") => {
+const sanitizeColor = (color, fallback = "#53616F") => {
   if (!color || typeof color !== "string") return fallback;
   const trimmed = color.trim();
   if (trimmed.startsWith("#") && trimmed.length === 9) {
@@ -18,14 +18,14 @@ const sanitizeColor = (color, fallback = "#272C30") => {
 
 const ModelCursor = ({
   targetSize = 3.7,
-  modelColor = "#272C30", // Elephant body dark slate charcoal
-  frameColor = "#375266", // Cradle frame dark slate blue-grey
-  mattressColor = "#161B11", // Mattress deep dark sage
-  rodColor = "#375266", // Supporting rods matching frame
-  metalColor = "#375266", // Supporting hinge pins & hardware matching frame
+  modelColor = "#53616F", // Elephant body
+  frameColor = "#A6ADB2", // Cradle frame
+  mattressColor = "#849B70", // Inner mattress
+  rodColor = "#A6ADB2", // Supporting rods matching frame
+  metalColor = "#A6ADB2", // Supporting hinge pins & hardware matching frame
   tuskColor = "#FAF6ED", // Warm ivory white for tusks & nails
-  eyeColor = "#15181B", // Cute glossy dark onyx button eyes
-  detailColor = "#252D33", // Small dark details
+  eyeColor = "#252D33", // Eyes / dark details
+  detailColor = "#252D33", // Eyes / dark details
   backgroundColor = null, // Optional scene background
 }) => {
   const mountRef = useRef(null);
@@ -114,13 +114,13 @@ const ModelCursor = ({
     let animationId = null;
 
     // Sanitized colors for Three.js
-    const sModelColor = sanitizeColor(modelColor, "#272C30");
-    const sFrameColor = sanitizeColor(frameColor, "#375266");
-    const sMattressColor = sanitizeColor(mattressColor, "#161B11");
+    const sModelColor = sanitizeColor(modelColor, "#53616F");
+    const sFrameColor = sanitizeColor(frameColor, "#A6ADB2");
+    const sMattressColor = sanitizeColor(mattressColor, "#849B70");
     const sRodColor = sanitizeColor(rodColor || frameColor, sFrameColor);
     const sMetalColor = sanitizeColor(metalColor || frameColor, sFrameColor);
     const sTuskColor = sanitizeColor(tuskColor, "#FAF6ED");
-    const sEyeColor = sanitizeColor(eyeColor, "#15181B");
+    const sEyeColor = sanitizeColor(eyeColor, "#252D33");
     const sDetailColor = sanitizeColor(detailColor, "#252D33");
 
     const loader = new GLTFLoader();
