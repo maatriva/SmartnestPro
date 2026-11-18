@@ -6,6 +6,7 @@ import Footer from "../../features/landing/sections/Footer";
 
 import FloatingParticles from "../../shared/UI/FloatingParticles";
 import ScrollToTop from "../../shared/UI/ScrollToTop";
+import CelestialStarTrail from "../../animations/CelestialStarTrail";
 
 const TrendingSideNav = lazy(() =>
   import("../../features/landing/components/TrendingSideNav")
@@ -16,11 +17,15 @@ export default function MainLayout() {
 
   return (
     <div className="relative bg-(--bg) text-(--text) overflow-x-hidden w-full">
-
       <ScrollToTop />
 
+      {/* Glowing Star Trail Cursor for desktop */}
+      <CelestialStarTrail />
+
+      {/* Floating Ambient Celestial Spheres */}
       <FloatingParticles />
 
+      {/* Sticky Floating Pill Navbar */}
       <Navbar />
 
       {location.pathname === "/" && (

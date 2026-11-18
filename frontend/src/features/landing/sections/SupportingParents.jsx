@@ -12,7 +12,7 @@ import {
   ChevronDown,
   ChevronUp
 } from "lucide-react";
-import supportingParentsImage from "../../images/supportingParents.jpg";
+import supportingParentsImage from "../../images/supportingParents.webp";
 
 export default function SupportingParents() {
   const sectionRef = useRef(null);
@@ -22,7 +22,7 @@ export default function SupportingParents() {
     <section
       id="supporting-parents"
       ref={sectionRef}
-      className="py-24 px-6 blend-features text-(--text) overflow-hidden relative"
+      className="clay-section blend-features text-(--text)"
     >
       {/* Decorative Background Orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -30,7 +30,7 @@ export default function SupportingParents() {
         <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-(--primary) opacity-5 blur-[120px] rounded-full" />
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto clay-container relative z-10">
         
         {/* Section Header */}
         <motion.div
@@ -38,17 +38,17 @@ export default function SupportingParents() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="clay-section-header"
         >
-          <div className="inline-block px-4 py-2 clay-badge text-sm font-bold mb-4">
+          <div className="inline-block px-4 py-1.5 clay-badge text-xs sm:text-sm font-bold mb-3">
             Beyond Tech
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-(--text-dark) mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) leading-tight mb-3">
             Supporting Parents
             <br />
             <span className="text-(--primary)">Beyond Technology</span>
           </h2>
-          <p className="text-xl text-(--text-light)">
+          <p className="text-base sm:text-lg text-(--text-light) font-medium max-w-2xl mx-auto leading-relaxed">
             Your AI Parenting Companion — 24/7 intelligent guidance, monitoring, and reassurance for both babies and parents.
           </p>
         </motion.div>
@@ -120,19 +120,13 @@ export default function SupportingParents() {
 
         </div>
 
-        {/* Lower Row: Full-Width Details Block */}
-        <motion.div
-          initial={false}
-          animate={{ 
-            height: isExpanded ? "auto" : 0, 
-            opacity: isExpanded ? 1 : 0,
-            marginTop: isExpanded ? 48 : 0,
-            paddingTop: isExpanded ? 48 : 0,
-            borderTopColor: isExpanded ? "rgba(229, 231, 235, 0.4)" : "rgba(229, 231, 235, 0)"
-          }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="overflow-hidden w-full space-y-16 border-t"
+        {/* Lower Row: Full-Width Details Block with Smooth 60fps Grid Rows */}
+        <div
+          className={`grid transition-[grid-template-rows,opacity] duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] w-full border-t border-(--border)/40 ${
+            isExpanded ? "grid-rows-[1fr] opacity-100 mt-12 pt-12" : "grid-rows-[0fr] opacity-0 mt-0 pt-0"
+          }`}
         >
+          <div className="overflow-hidden w-full space-y-16">
           
           {/* Maternal Wellbeing Section (3 columns on desktop) - Delayed 1s */}
           <motion.div 
@@ -369,7 +363,8 @@ export default function SupportingParents() {
             </p>
           </motion.div>
 
-        </motion.div>
+          </div>
+        </div>
 
       </div>
     </section>

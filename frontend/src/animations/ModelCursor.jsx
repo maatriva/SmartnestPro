@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment";
 
-const MODEL_PATH = "/3Dmodel.glb?v=4.3";
+const MODEL_PATH = "/3Dmodel-opt.glb?v=5.0";
 
-// Helper to sanitize hex strings (e.g. #272c30ff -> #272c30) for Three.js compatibility
-const sanitizeColor = (color, fallback = "#53616F") => {
+const sanitizeColor = (color, fallback = "#D9825F") => {
   if (!color || typeof color !== "string") return fallback;
   const trimmed = color.trim();
   if (trimmed.startsWith("#") && trimmed.length === 9) {
@@ -16,118 +16,164 @@ const sanitizeColor = (color, fallback = "#53616F") => {
   return trimmed;
 };
 
+// Generate soft circular contact shadow texture
+const createContactShadowTexture = () => {
+  const canvas = document.createElement("canvas");
+  canvas.width = 256;
+  canvas.height = 256;
+  const ctx = canvas.getContext("2d");
+
+  const gradient = ctx.createRadialGradient(128, 128, 10, 128, 128, 110);
+  gradient.addColorStop(0, "rgba(58, 43, 43, 0.45)");
+  gradient.addColorStop(0.4, "rgba(217, 130, 95, 0.18)");
+  gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
+
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, 256, 256);
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.needsUpdate = true;
+  return texture;
+};
+
 const ModelCursor = ({
-  targetSize = 3.7,
-  modelColor = "#53616F", // Elephant body
-  frameColor = "#A6ADB2", // Cradle frame
-  mattressColor = "#849B70", // Inner mattress
-  rodColor = "#A6ADB2", // Supporting rods matching frame
-  metalColor = "#A6ADB2", // Supporting hinge pins & hardware matching frame
-  tuskColor = "#FAF6ED", // Warm ivory white for tusks & nails
-  eyeColor = "#252D33", // Eyes / dark details
-  detailColor = "#252D33", // Eyes / dark details
-  backgroundColor = null, // Optional scene background
+  targetSize = 3.6,
+  modelColor = "#D9825F", // Terracotta clay body
+  frameColor = "#F2B8A8", // Rose clay frame
+  mattressColor = "#A8B89A", // Sage calming mattress
+  rodColor = "#F2B8A8", // Rose clay supporting rods
+  metalColor = "#F0C675", // Honey gold hinges, pins & hardware
+  tuskColor = "#F0C675", // Honey gold tusks & accents
+  eyeColor = "#3A2B2B", // Cocoa button eyes
+  detailColor = "#3A2B2B", // Cocoa details
+  onLoaded,
 }) => {
   const mountRef = useRef(null);
   const [loading, setLoading] = useState(true);
   const [loadProgress, setLoadProgress] = useState(0);
   const [hasInteracted, setHasInteracted] = useState(false);
+  const [isLowPower, setIsLowPower] = useState(false);
 
   useEffect(() => {
     if (!mountRef.current) return;
+
+    // Detect low-end hardware / battery saver
+    const hwConcurrency = navigator.hardwareConcurrency || 4;
+    const isMobile = window.innerWidth < 768;
+    const isWeakDevice = hwConcurrency <= 2 || (isMobile && hwConcurrency <= 4);
+    setIsLowPower(isWeakDevice);
 
     const container = mountRef.current;
     const initialWidth = container.clientWidth || 360;
     const initialHeight = container.clientHeight || 360;
 
     const scene = new THREE.Scene();
-    if (backgroundColor) {
-      scene.background = new THREE.Color(sanitizeColor(backgroundColor, "#F2F0E9"));
-    }
 
-    // Natural 48° FOV (mimics standard ~50mm portrait lens for product design)
+    // Natural 46° FOV for product clay sculpture display
     const camera = new THREE.PerspectiveCamera(
-      48,
+      46,
       initialWidth / initialHeight,
       0.1,
-      1000
+      100
     );
-
-    // Initial 3/4 isometric beauty perspective (shows front trunk, interior cradle bed, and side silhouette)
-    camera.position.set(2.4, 1.35, 3.1);
+    camera.position.set(2.2, 1.25, 2.9);
 
     let renderer;
     try {
       renderer = new THREE.WebGLRenderer({
-        antialias: true,
+        antialias: !isWeakDevice,
         alpha: true,
         powerPreference: "high-performance",
+        precision: isWeakDevice ? "mediump" : "highp",
       });
       renderer.setSize(initialWidth, initialHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      // Cap devicePixelRatio at 1.5 to guarantee 60fps on retina / mobile devices
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, isWeakDevice ? 1.0 : 1.5));
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      renderer.toneMappingExposure = 1.05;
+      renderer.toneMappingExposure = 1.08;
       renderer.outputColorSpace = THREE.SRGBColorSpace;
       container.appendChild(renderer.domElement);
     } catch (error) {
-      console.error("Error creating WebGL context:", error);
+      console.error("WebGL initialization error:", error);
       setLoading(false);
       return;
     }
 
-    // 💡 Environment Map for realistic soft reflections
+    // 💡 Environment Map for subtle ambient clay sheen
     const pmremGenerator = new THREE.PMREMGenerator(renderer);
     pmremGenerator.compileEquirectangularShader();
     const envTexture = pmremGenerator.fromScene(new RoomEnvironment(), 0.04).texture;
     scene.environment = envTexture;
 
-    // 💡 Balanced Studio Lighting (faithful, neutral product illumination matching Blender reference)
-    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x5a6875, 0.75);
-    hemiLight.position.set(0, 20, 0);
+    // 💡 CELESTIAL CLAY STUDIO LIGHTING:
+    // 1. Warm sunlight key light (top-right front)
+    const keyLight = new THREE.DirectionalLight(0xfff5eb, 1.35);
+    keyLight.position.set(5, 7, 5);
+    scene.add(keyLight);
+
+    // 2. Soft plum dusk fill light (#3B2A4A / #68436B) for rich purple shadow tones
+    const plumFillLight = new THREE.DirectionalLight(0x68436b, 0.95);
+    plumFillLight.position.set(-5, 3, -2);
+    scene.add(plumFillLight);
+
+    // 3. Soft cream rim light (#FFF6EE) to create a gentle clay glowing rim
+    const rimLight = new THREE.DirectionalLight(0xfff8f2, 1.1);
+    rimLight.position.set(0, 5, -5);
+    scene.add(rimLight);
+
+    // 4. Subtle ambient hemisphere light
+    const hemiLight = new THREE.HemisphereLight(0xfff6ee, 0x3b2a4a, 0.6);
     scene.add(hemiLight);
 
-    const dirLight1 = new THREE.DirectionalLight(0xffffff, 1.2);
-    dirLight1.position.set(5, 8, 5);
-    scene.add(dirLight1);
+    // 🌑 Soft Contact Shadow Plane underneath
+    const shadowGeo = new THREE.PlaneGeometry(3.2, 3.2);
+    const shadowTex = createContactShadowTexture();
+    const shadowMat = new THREE.MeshBasicMaterial({
+      map: shadowTex,
+      transparent: true,
+      opacity: 0.65,
+      depthWrite: false,
+    });
+    const shadowMesh = new THREE.Mesh(shadowGeo, shadowMat);
+    shadowMesh.rotation.x = -Math.PI / 2;
+    shadowMesh.position.y = -1.15;
+    scene.add(shadowMesh);
 
-    const dirLight2 = new THREE.DirectionalLight(0xf2f6fa, 0.6);
-    dirLight2.position.set(-5, 4, -3);
-    scene.add(dirLight2);
-
-    const dirLight3 = new THREE.DirectionalLight(0xfff8f0, 0.4);
-    dirLight3.position.set(2, 6, -5);
-    scene.add(dirLight3);
-
-    // OrbitControls for smooth drag-to-inspect interaction
+    // OrbitControls for manual drag inspection
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
-    controls.dampingFactor = 0.05;
-    controls.rotateSpeed = 0.8;
-    controls.enableZoom = false; // Prevent scroll hijack on landing page
-    controls.enablePan = false; // Keep model centered
+    controls.dampingFactor = 0.06;
+    controls.rotateSpeed = 0.75;
+    controls.enableZoom = false; // Prevent page scroll hijack
+    controls.enablePan = false;
     controls.autoRotate = true;
-    controls.autoRotateSpeed = 1.3;
-    controls.target.set(0, 0, 0);
-    controls.maxPolarAngle = Math.PI / 2 + 0.15; // Prevent viewing from underneath
+    controls.autoRotateSpeed = 0.9; // Smooth slow showcase spin
+    controls.target.set(0, -0.05, 0);
+    controls.maxPolarAngle = Math.PI / 2 + 0.1;
+    controls.minPolarAngle = Math.PI / 5;
 
     let model = null;
     let animationId = null;
 
-    // Sanitized colors for Three.js
-    const sModelColor = sanitizeColor(modelColor, "#53616F");
-    const sFrameColor = sanitizeColor(frameColor, "#A6ADB2");
-    const sMattressColor = sanitizeColor(mattressColor, "#849B70");
-    const sRodColor = sanitizeColor(rodColor || frameColor, sFrameColor);
-    const sMetalColor = sanitizeColor(metalColor || frameColor, sFrameColor);
-    const sTuskColor = sanitizeColor(tuskColor, "#FAF6ED");
-    const sEyeColor = sanitizeColor(eyeColor, "#252D33");
-    const sDetailColor = sanitizeColor(detailColor, "#252D33");
+    // Colors
+    const sModelColor = sanitizeColor(modelColor, "#D9825F");
+    const sFrameColor = sanitizeColor(frameColor, "#F2B8A8");
+    const sMattressColor = sanitizeColor(mattressColor, "#A8B89A");
+    const sRodColor = sanitizeColor(rodColor, sFrameColor);
+    const sMetalColor = sanitizeColor(metalColor, "#F0C675");
+    const sTuskColor = sanitizeColor(tuskColor, "#F0C675");
+    const sEyeColor = sanitizeColor(eyeColor, "#3A2B2B");
+    const sDetailColor = sanitizeColor(detailColor, "#3A2B2B");
+
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath("/draco/gltf/");
+    dracoLoader.preload();
 
     const loader = new GLTFLoader();
+    loader.setDRACOLoader(dracoLoader);
     loader.load(
       MODEL_PATH,
       (gltf) => {
-        // Auto-center the model around its geometric bounding box center
         const box = new THREE.Box3().setFromObject(gltf.scene);
         const center = box.getCenter(new THREE.Vector3());
         const size = box.getSize(new THREE.Vector3());
@@ -136,7 +182,7 @@ const ModelCursor = ({
         gltf.scene.position.y = -center.y;
         gltf.scene.position.z = -center.z;
 
-        // Apply realistic materials and colors calibrated to the design reference
+        // Apply Matte, Tactile Clay Materials
         gltf.scene.traverse((child) => {
           if (child.isMesh) {
             let meshMats = child.material;
@@ -153,34 +199,34 @@ const ModelCursor = ({
               const matName = (mat.name || "").toLowerCase();
 
               if (meshName.includes("eye") || matName.includes("eye")) {
-                // Eyes: friendly glossy dark onyx button eyes with natural catchlight
+                // Button eye: cocoa onyx
                 mat.color.set(sEyeColor);
-                mat.roughness = 0.05;
-                mat.metalness = 0.1;
+                mat.roughness = 0.2;
+                mat.metalness = 0.08;
               } else if (meshName.includes("tusk") || meshName.includes("nail") || matName.includes("ivory")) {
-                // Elephant tusks and toenails: warm ivory porcelain
+                // Tusks: Honey gold ceramic clay
                 mat.color.set(sTuskColor);
-                mat.roughness = 0.35;
-                mat.metalness = 0.02;
+                mat.roughness = 0.45;
+                mat.metalness = 0.12;
               } else if (meshName.startsWith("rod_") || meshName.includes("rod")) {
-                // Cradle frame supporting vertical rods: matches cradle frame
+                // Supporting rods: Rose clay matte
                 mat.color.set(sRodColor);
-                mat.roughness = 0.30;
-                mat.metalness = 0.45;
+                mat.roughness = 0.65;
+                mat.metalness = 0.08;
               } else if (
                 meshName.includes("hinge") ||
                 meshName.includes("pin") ||
                 matName.includes("pin") ||
                 meshName === "tail_2"
               ) {
-                // Supporting hinge pins, pivot hardware & connectors: matches cradle frame
+                // Hardware pins: Honey gold accent
                 mat.color.set(sMetalColor);
-                mat.roughness = 0.28;
-                mat.metalness = 0.45;
+                mat.roughness = 0.4;
+                mat.metalness = 0.2;
               } else if (meshName.includes("mattress") || matName.includes("mattress")) {
-                // Crib mattress / inner cradle panel: deep dark sage
+                // Mattress: Soft sage calming clay
                 mat.color.set(sMattressColor);
-                mat.roughness = 0.85;
+                mat.roughness = 0.88;
                 mat.metalness = 0.0;
               } else if (
                 meshName.includes("bassinet") ||
@@ -189,19 +235,20 @@ const ModelCursor = ({
                 meshName === "tail_3" ||
                 matName.includes("warmwhite")
               ) {
-                // Cradle frame structure, base board, and screen frame: unified dark slate blue-grey
+                // Frame: Rose clay
                 mat.color.set(sFrameColor);
-                mat.roughness = 0.32;
-                mat.metalness = 0.45;
+                mat.roughness = 0.72;
+                mat.metalness = 0.05;
               } else if (meshName.includes("display") || meshName.includes("screen")) {
-                // Small dark details: OLED display screen & glass
+                // Screen: Cocoa OLED
                 mat.color.set(sDetailColor);
-                mat.roughness = 0.10;
-                mat.metalness = 0.20;
+                mat.roughness = 0.15;
+                mat.metalness = 0.15;
               } else {
-                // Elephant body (head, ears, trunk, body, rump, legs, belly shelf, tail)
+                // Main Elephant Body: Terracotta matte clay
                 mat.color.set(sModelColor);
-                mat.roughness = 0.55;
+                mat.roughness = 0.82; // Matte clay texture
+                mat.metalness = 0.03;
               }
 
               mat.side = THREE.DoubleSide;
@@ -216,13 +263,15 @@ const ModelCursor = ({
         const pivot = new THREE.Group();
         pivot.add(gltf.scene);
 
-        // Scale to comfortably fit viewport
         const maxDim = Math.max(size.x, size.y, size.z);
         pivot.scale.setScalar(targetSize / maxDim);
 
         scene.add(pivot);
         model = pivot;
         setLoading(false);
+        if (typeof onLoaded === "function") {
+          onLoaded();
+        }
       },
       (xhr) => {
         if (xhr.total > 0) {
@@ -236,23 +285,70 @@ const ModelCursor = ({
       }
     );
 
+    // Mouse tilt with smooth lerp damping
+    let targetRotationX = 0;
+    let targetRotationY = 0;
+    let currentRotationX = 0;
+    let currentRotationY = 0;
+
+    const handleMouseMove = (e) => {
+      const rect = container.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      targetRotationY = x * 0.35;
+      targetRotationX = y * 0.25;
+    };
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+
+    // IntersectionObserver & Visibility API to pause rendering when off-screen or tab hidden
     let isVisible = true;
+    let isTabVisible = !document.hidden;
+
     const intersectionObserver = new IntersectionObserver(
       ([entry]) => {
         isVisible = entry.isIntersecting;
       },
-      { threshold: 0.1 }
+      { threshold: 0.05 }
     );
     intersectionObserver.observe(container);
 
+    const handleVisibilityChange = () => {
+      isTabVisible = !document.hidden;
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    // Scroll-linked rotation easing
+    let scrollY = window.scrollY;
+    const handleScroll = () => {
+      scrollY = window.scrollY;
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    // 60FPS RAF Render Loop (Only transforms, lerp, and paused when not visible)
     const animate = () => {
       animationId = requestAnimationFrame(animate);
 
-      if (!isVisible) return;
+      if (!isVisible || !isTabVisible) return;
+
+      const time = Date.now() * 0.0015;
 
       if (model) {
-        // Gentle breathing float animation
-        model.position.y = Math.sin(Date.now() * 0.0012) * 0.08;
+        // Smooth idle bobbing float
+        model.position.y = Math.sin(time) * 0.06;
+
+        // Smooth mouse tilt lerp
+        currentRotationX += (targetRotationX - currentRotationX) * 0.06;
+        currentRotationY += (targetRotationY - currentRotationY) * 0.06;
+
+        // Scroll easing tilt into next section
+        const scrollFactor = Math.min(scrollY / 800, 1);
+        model.rotation.x = currentRotationX + scrollFactor * 0.18;
+        model.rotation.z = -currentRotationY * 0.5;
+
+        // Eased scale into next section
+        const baseScale = targetSize / 3.6;
+        const targetScale = baseScale * (1 - scrollFactor * 0.08);
+        model.scale.setScalar(targetScale);
       }
 
       controls.update();
@@ -261,7 +357,6 @@ const ModelCursor = ({
 
     animate();
 
-    // ResizeObserver ensures exact canvas dimensions on all screen sizes & layout changes
     const resizeObserver = new ResizeObserver((entries) => {
       for (const entry of entries) {
         const { width, height } = entry.contentRect;
@@ -278,44 +373,49 @@ const ModelCursor = ({
     container.addEventListener("pointerdown", onPointerDown);
 
     return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
       container.removeEventListener("pointerdown", onPointerDown);
       resizeObserver.disconnect();
       intersectionObserver.disconnect();
       cancelAnimationFrame(animationId);
       controls.dispose();
+      dracoLoader.dispose();
       pmremGenerator.dispose();
       if (envTexture) envTexture.dispose();
+      shadowTex.dispose();
+      shadowGeo.dispose();
+      shadowMat.dispose();
       renderer.dispose();
       if (container && renderer.domElement && container.contains(renderer.domElement)) {
         container.removeChild(renderer.domElement);
       }
     };
-  }, [targetSize, modelColor, frameColor, mattressColor, rodColor, tuskColor, metalColor, eyeColor, detailColor, backgroundColor]);
+  }, [targetSize, modelColor, frameColor, mattressColor, rodColor, tuskColor, metalColor, eyeColor, detailColor]);
 
   return (
     <div className="relative w-full h-full flex items-center justify-center">
       {/* 3D Canvas Mount Point */}
       <div
         ref={mountRef}
-        className="w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing touch-none select-none"
-        aria-label="Interactive 3D model of Maatriva Smart Cradle"
+        className="w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing touch-none select-none relative z-10"
+        aria-label="Interactive 3D model of Maatriva Smart Cradle in Celestial Clay"
       />
 
-      {/* Loading Indicator */}
+      {/* Subtle Loading Badge */}
       {loading && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/40 backdrop-blur-sm rounded-3xl transition-opacity duration-300 z-20">
-          <div className="w-10 h-10 border-3 border-(--primary)/20 border-t-(--primary) rounded-full animate-spin mb-3" />
-          <p className="text-xs font-semibold text-(--primary) tracking-wide">
-            Loading 3D Model{loadProgress > 0 ? ` (${loadProgress}%)` : "..."}
-          </p>
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full clay-badge text-[11px] font-bold text-(--primary) flex items-center gap-2 pointer-events-none z-20">
+          <div className="w-3 h-3 border-2 border-(--primary)/20 border-t-(--primary) rounded-full animate-spin" />
+          <span>Setting up 3D view{loadProgress > 0 ? ` (${loadProgress}%)` : "..."}</span>
         </div>
       )}
 
       {/* Interactive Helper Badge */}
       {!loading && !hasInteracted && (
-        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 pointer-events-none px-3.5 py-1 rounded-full bg-white/70 backdrop-blur-md border border-(--primary)/20 shadow-sm text-[11px] font-medium text-(--primary) flex items-center gap-1.5 opacity-80 animate-bounce">
-          <span>✦</span>
-          <span>Drag to rotate in 3D</span>
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 pointer-events-none px-4 py-1.5 rounded-full clay-badge text-[11px] font-bold text-(--primary) flex items-center gap-1.5 opacity-90 shadow-sm z-20">
+          <span className="w-2 h-2 rounded-full bg-(--accent) animate-ping" />
+          <span>Drag to inspect 3D cradle</span>
         </div>
       )}
     </div>

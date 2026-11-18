@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import Tilt from "react-parallax-tilt";
 import { useLocation } from "react-router-dom";
 
@@ -7,23 +7,25 @@ export default function TrendingSideNav() {
 
   const items = useMemo(
     () => [
-      { id: "home", label: "AI Monitoring" },
-      { id: "diseases", label: "Diseases" },
+      { id: "home", label: "Hero Sanctuary" },
+      { id: "our-story", label: "Our Story" },
       { id: "features", label: "Features" },
+      { id: "diseases", label: "Diseases" },
+      { id: "app", label: "Mobile App" },
       { id: "how-it-works", label: "How It Works" },
       { id: "parent-stories", label: "Parent Stories" },
       { id: "supporting-parents", label: "Parent Support" },
-      // { id: "demo", label: "Demo" },
-      { id: "products", label: "Products" },
-      // { id: "testimonials", label: "Testimonials" },
-      { id: "footer", label: "Footer" },
+      { id: "products", label: "Cradle Models" },
+      { id: "faq", label: "FAQ" },
+      { id: "contact", label: "Night Sky Contact" },
+      { id: "achievements", label: "Achievements" },
     ],
     [],
   );
 
   const [activeSectionId, setActiveSectionId] = useState("home");
+  const lastActiveRef = useRef("home");
 
-  // ✅ FIXED SCROLL DETECTION (NO FLICKER)
   useEffect(() => {
     let ticking = false;
 
@@ -33,22 +35,23 @@ export default function TrendingSideNav() {
           let current = "home";
           let minDistance = Infinity;
 
-          items.forEach((item) => {
-            const el = document.getElementById(item.id);
-            if (!el) return;
+          for (let i = 0; i < items.length; i++) {
+            const el = document.getElementById(items[i].id);
+            if (!el) continue;
 
             const rect = el.getBoundingClientRect();
-
-            // 🔥 adjust for navbar height
             const offset = Math.abs(rect.top - 120);
 
             if (offset < minDistance && rect.top <= window.innerHeight * 0.6) {
               minDistance = offset;
-              current = item.id;
+              current = items[i].id;
             }
-          });
+          }
 
-          setActiveSectionId(current);
+          if (current !== lastActiveRef.current) {
+            lastActiveRef.current = current;
+            setActiveSectionId(current);
+          }
           ticking = false;
         });
 
@@ -62,7 +65,6 @@ export default function TrendingSideNav() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [items]);
 
-  // ✅ CLEAN SCROLL (NO STATE FORCE)
   function scrollToSection(id) {
     const el = document.getElementById(id);
     if (!el) return;
@@ -73,18 +75,17 @@ export default function TrendingSideNav() {
     });
   }
 
-  // ❌ Don't show on other pages
   if (location.pathname !== "/") return null;
 
   return (
     <aside className="fixed right-5 top-1/2 -translate-y-1/2 z-50 hidden md:block pointer-events-none">
-      <div className="clay-card px-3 py-4 max-h-[70vh] overflow-y-auto pointer-events-auto">
-        <div className="flex flex-col items-center gap-4">
+      <div className="clay-card px-3 py-4 max-h-[75vh] overflow-y-auto pointer-events-auto">
+        <div className="flex flex-col items-center gap-3.5">
           {items.map((item) => {
             const active = activeSectionId === item.id;
 
             return (
-              <Tilt key={item.id}>
+              <Tilt key={item.id} tiltMaxAngleX={15} tiltMaxAngleY={15} scale={1.1}>
                 <button
                   onClick={() => scrollToSection(item.id)}
                   className="focus:outline-none cursor-pointer focus:ring-2 focus:ring-(--primary-light)/80 rounded-full p-0.5"
@@ -95,8 +96,8 @@ export default function TrendingSideNav() {
                   <span
                     className={`rounded-full block transition-all duration-300 ${
                       active
-                        ? "w-4 h-4 bg-(--primary) shadow-[inset_2px_2px_4px_rgba(255,255,255,0.4),_inset_-2px_-2px_4px_rgba(0,0,0,0.2),_0_4px_8px_rgba(74,111,165,0.3)]"
-                        : "w-2.5 h-2.5 bg-(--text-light) hover:bg-(--primary) shadow-[inset_1px_1px_2px_rgba(255,255,255,0.3),_inset_-1px_-1px_2px_rgba(0,0,0,0.15)]"
+                        ? "w-4 h-4 bg-(--primary) shadow-[inset_2px_2px_4px_rgba(255,255,255,0.7),_inset_-2px_-2px_4px_rgba(100,30,10,0.3),_0_0_12px_rgba(217,130,95,0.6)]"
+                        : "w-2.5 h-2.5 bg-(--text-light)/40 hover:bg-(--primary) shadow-[inset_1px_1px_2px_rgba(255,255,255,0.5)]"
                     }`}
                   />
                 </button>

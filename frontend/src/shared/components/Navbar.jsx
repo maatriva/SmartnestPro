@@ -1,11 +1,10 @@
 import { useLayoutEffect, useRef, useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Download, Smartphone } from "lucide-react";
+import { Menu, X, Download, Sparkles, Heart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import useAuth from "../../features/auth/hooks/useAuth";
-
 import { NAV_LINKS, APP_DOWNLOAD_LINK } from "../constants/navigation";
 import useBodyScrollLock from "../hooks/useBodyScrollLock";
 import { navbarEntranceAnimation } from "../../animations/navbarAnimation";
@@ -13,16 +12,13 @@ import { navbarEntranceAnimation } from "../../animations/navbarAnimation";
 const Navbar = () => {
   const navRef = useRef(null);
   const { user, logout } = useAuth();
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const location = useLocation();
 
   useBodyScrollLock(isMenuOpen);
 
   useLayoutEffect(() => {
     const ctx = navbarEntranceAnimation(navRef);
-
     return () => ctx.revert();
   }, []);
 
@@ -33,42 +29,47 @@ const Navbar = () => {
   return (
     <nav
       ref={navRef}
-      className="demo-navbar fixed top-0 left-0 right-0 z-100 px-4 md:px-6 py-4 bg-transparent text-(--text)"
+      className="demo-navbar fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-4 bg-transparent text-(--text) pointer-events-none"
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between h-20 px-4 sm:px-6 clay-navbar relative">
+      <div className="max-w-6xl mx-auto flex items-center justify-between h-18 sm:h-20 px-5 sm:px-7 clay-navbar rounded-full relative shadow-lg pointer-events-auto">
         
-        {/* Logo */}
+        {/* Brand Logo */}
         <Link
           to="/"
-          className="nav-logo inline-block font-bold tracking-wide flex items-center justify-center"
+          className="nav-logo inline-flex items-center group py-1"
+          aria-label="Maatriva Home"
         >
-          <img
-            src="/Faviconsimple (2).png"
-            alt="Maatriva Logo"
-            width="100"
-            height="100"
-            className="w-[100px] h-[100px] md:w-[100px] md:h-[100px] object-contain scale-125 md:scale-150"
-          />
+          <picture>
+            <source srcSet="/maatriva-logo.webp" type="image/webp" />
+            <img
+              src="/maatriva-logo.png"
+              alt="Maatriva Logo"
+              width="170"
+              height="54"
+              decoding="async"
+              className="h-10 sm:h-12 md:h-13 w-auto object-contain group-hover:scale-105 transition-transform"
+            />
+          </picture>
         </Link>
 
-        {/* Desktop Navigation */}
-        <ul className="hidden lg:flex items-center gap-8 font-semibold">
+        {/* Desktop Navigation Links */}
+        <ul className="hidden lg:flex items-center gap-7 font-bold text-sm">
           {NAV_LINKS.map((link, i) => (
             <li key={i} className="nav-item">
               {link.path.startsWith("/#") ? (
                 <a
                   href={link.path}
-                  className="nav-link inline-block hover:text-(--text-dark) transition duration-200"
+                  className="nav-link inline-block text-(--text) hover:text-(--primary) transition duration-200"
                 >
                   {link.name}
                 </a>
               ) : (
                 <Link
                   to={link.path}
-                  className={`nav-link inline-block hover:text-(--text-dark) transition duration-200 ${
+                  className={`nav-link inline-block transition duration-200 ${
                     location.pathname === link.path
-                      ? "text-(--primary)"
-                      : ""
+                      ? "text-(--primary) font-black"
+                      : "text-(--text) hover:text-(--primary)"
                   }`}
                 >
                   {link.name}
@@ -83,7 +84,7 @@ const Navbar = () => {
                 to="/admin"
                 className={`nav-link inline-block text-(--primary) font-black hover:text-(--text-dark) transition duration-200 ${
                   location.pathname === "/admin"
-                    ? "bg-(--primary-light) px-3 py-1 rounded-full text-white"
+                    ? "bg-(--primary) px-3 py-1 rounded-full text-white"
                     : ""
                 }`}
               >
@@ -93,70 +94,69 @@ const Navbar = () => {
           )}
         </ul>
 
-        {/* Desktop CTA */}
-        <div className="hidden lg:flex items-center gap-4 nav-cta">
-          {/* Download App CTA */}
+        {/* Desktop Actions */}
+        <div className="hidden lg:flex items-center gap-3 nav-cta">
+          {/* Download App Pill */}
           <a
             href={APP_DOWNLOAD_LINK}
             download="maatriva-app.apk"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 rounded-full clay-badge text-(--primary) font-bold text-sm flex items-center gap-2 hover:scale-105 transition-transform"
+            className="px-4 py-2 rounded-full clay-badge text-(--primary) font-bold text-xs flex items-center gap-1.5 hover:scale-105 active:scale-95 transition-all shadow-sm"
           >
-            <Download size={16} />
-            <span>Download App</span>
+            <Download size={14} />
+            <span>Download APK</span>
           </a>
 
           {user ? (
-            <div className="flex items-center gap-4">
-              <span className="text-(--text-dark) font-medium">
+            <div className="flex items-center gap-3">
+              <span className="text-(--text-dark) text-sm font-semibold">
                 Hi, {user.name.split(" ")[0]}
               </span>
-
               <button
                 onClick={logout}
-                className="px-5 py-2 clay-btn clay-btn-destructive text-sm"
+                className="px-4 py-1.5 clay-btn clay-btn-secondary text-xs"
               >
                 Logout
               </button>
             </div>
           ) : (
             <Link
-              to="/login"
-              className="px-6 py-2.5 clay-btn clay-btn-primary"
+              to="/survey"
+              className="px-5 py-2.5 clay-btn clay-btn-primary text-xs sm:text-sm font-bold shadow-md hover:shadow-lg"
             >
-              Login
+              Take Survey
             </Link>
           )}
         </div>
 
-        {/* Mobile Toggle */}
+        {/* Mobile Clay Hamburger Toggle */}
         <button
-          className="lg:hidden p-2 text-(--text-dark) hover:bg-(--bg-hover) rounded-xl transition-colors"
+          className="lg:hidden w-11 h-11 rounded-full clay-badge flex items-center justify-center text-(--text-dark) hover:scale-105 active:scale-95 transition-all cursor-pointer shadow-sm"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMenuOpen}
         >
-          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
-      {/* Mobile Menu rendered via Portal to escape transform containing-block */}
+      {/* Mobile Drawer Navigation */}
       {typeof document !== "undefined" &&
         createPortal(
           <AnimatePresence>
             {isMenuOpen && (
-              <div className="lg:hidden">
+              <div className="lg:hidden pointer-events-auto">
                 {/* Backdrop */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[90]"
+                  className="fixed inset-0 bg-[#2D1F3B]/50 backdrop-blur-sm z-90"
                   onClick={() => setIsMenuOpen(false)}
                 />
 
-                {/* Floating Mobile Card */}
+                {/* Floating Clay Mobile Menu Card */}
                 <motion.div
                   initial={{ opacity: 0, y: -20, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -166,40 +166,41 @@ const Navbar = () => {
                     damping: 25,
                     stiffness: 280,
                   }}
-                  className="fixed top-24 left-4 right-4 bottom-6 max-w-md mx-auto z-[95] clay-card-static bg-(--bg) overflow-y-auto flex flex-col p-6 rounded-3xl border border-(--primary)/20 shadow-2xl justify-between"
+                  className="fixed top-20 left-4 right-4 max-w-md mx-auto z-95 clay-card p-6 rounded-3xl shadow-2xl flex flex-col gap-5"
                 >
                   {/* Header Row */}
-                  <div className="flex items-center justify-between pb-3 mb-2 border-b border-(--border) shrink-0">
-                    <div className="flex items-center gap-2">
-                      <img
-                        src="/Faviconsimple (2).png"
-                        alt="Maatriva Logo"
-                        width="32"
-                        height="32"
-                        className="w-8 h-8 object-contain"
-                      />
-                      <span className="font-extrabold text-lg text-(--text-dark) tracking-tight">
-                        Maatriva
-                      </span>
+                  <div className="flex items-center justify-between pb-3 border-b border-(--border)/40">
+                    <div className="flex items-center">
+                      <picture>
+                        <source srcSet="/maatriva-logo.webp" type="image/webp" />
+                        <img
+                          src="/maatriva-logo.png"
+                          alt="Maatriva Logo"
+                          width="140"
+                          height="40"
+                          decoding="async"
+                          className="h-9 w-auto object-contain"
+                        />
+                      </picture>
                     </div>
                     <button
                       onClick={() => setIsMenuOpen(false)}
-                      className="p-1.5 rounded-xl text-(--text-dark) hover:bg-(--bg-hover) transition-colors"
+                      className="w-9 h-9 rounded-full clay-badge flex items-center justify-center text-(--text-dark)"
                       aria-label="Close menu"
                     >
-                      <X size={22} />
+                      <X size={18} />
                     </button>
                   </div>
 
                   {/* Nav Links */}
-                  <div className="flex flex-col gap-1.5 my-auto py-2">
+                  <div className="flex flex-col gap-2 py-2">
                     {NAV_LINKS.map((link, i) => (
                       link.path.startsWith("/#") ? (
                         <a
                           key={i}
                           href={link.path}
                           onClick={() => setIsMenuOpen(false)}
-                          className="px-4 py-3 rounded-2xl text-lg font-bold text-(--text-dark) hover:text-(--primary) hover:bg-(--primary)/10 transition-colors text-center"
+                          className="px-4 py-3 rounded-2xl font-bold text-base text-(--text-dark) hover:bg-(--primary-soft) hover:text-(--primary) transition-all"
                         >
                           {link.name}
                         </a>
@@ -208,63 +209,36 @@ const Navbar = () => {
                           key={i}
                           to={link.path}
                           onClick={() => setIsMenuOpen(false)}
-                          className={`px-4 py-3 rounded-2xl text-lg font-bold transition-colors text-center ${
+                          className={`px-4 py-3 rounded-2xl font-bold text-base transition-all ${
                             location.pathname === link.path
-                              ? "text-(--primary) bg-(--primary)/10"
-                              : "text-(--text-dark) hover:text-(--primary) hover:bg-(--primary)/5"
+                              ? "bg-(--primary-soft) text-(--primary)"
+                              : "text-(--text-dark) hover:bg-(--primary-soft) hover:text-(--primary)"
                           }`}
                         >
                           {link.name}
                         </Link>
                       )
                     ))}
-
-                    {user?.is_admin && (
-                      <Link
-                        to="/admin"
-                        onClick={() => setIsMenuOpen(false)}
-                        className="px-4 py-3 rounded-2xl text-lg font-bold text-(--primary) bg-(--primary)/10 text-center"
-                      >
-                        Admin Dashboard
-                      </Link>
-                    )}
                   </div>
 
-                  {/* Actions CTA */}
-                  <div className="pt-3 border-t border-(--border) flex flex-col gap-3 shrink-0">
+                  {/* Mobile Actions */}
+                  <div className="pt-2 border-t border-(--border)/40 flex flex-col gap-3">
                     <a
                       href={APP_DOWNLOAD_LINK}
                       download="maatriva-app.apk"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full py-3.5 px-4 rounded-xl clay-btn clay-btn-primary font-bold text-center text-sm flex items-center justify-center gap-2 shadow-md shadow-[#5A78D6]/20"
+                      className="w-full py-3 rounded-full clay-btn clay-btn-secondary text-sm font-bold flex items-center justify-center gap-2 text-center"
                     >
-                      <Download size={18} />
-                      <span>Download Maatriva App</span>
+                      <Download size={16} />
+                      <span>Download Android APK</span>
                     </a>
 
-                    {user ? (
-                      <div className="flex items-center justify-between gap-3 p-2.5 px-3.5 rounded-xl clay-card-secondary">
-                        <div className="truncate">
-                          <p className="text-(--text-light) text-xs font-semibold">Logged in as</p>
-                          <p className="font-bold text-(--text-dark) text-sm truncate">{user.name}</p>
-                        </div>
-                        <button
-                          onClick={logout}
-                          className="px-4 py-1.5 clay-btn clay-btn-destructive font-bold text-xs shrink-0"
-                        >
-                          Logout
-                        </button>
-                      </div>
-                    ) : (
-                      <Link
-                        to="/login"
-                        onClick={() => setIsMenuOpen(false)}
-                        className="w-full py-3 px-4 rounded-xl clay-btn clay-btn-secondary text-(--text-dark) font-bold text-center text-sm flex items-center justify-center"
-                      >
-                        Login to Account
-                      </Link>
-                    )}
+                    <Link
+                      to="/survey"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="w-full py-3.5 rounded-full clay-btn clay-btn-primary text-sm font-bold text-center"
+                    >
+                      Take Baby Care Survey
+                    </Link>
                   </div>
                 </motion.div>
               </div>

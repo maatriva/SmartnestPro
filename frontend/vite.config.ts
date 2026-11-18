@@ -9,6 +9,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
     ViteImageOptimizer({
+      includePublic: false,
       png: {
         quality: 75,
       },

@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import AppDownloadModal from "../../../shared/components/AppDownloadModal";
 import { APP_DOWNLOAD_LINK } from "../../../shared/constants/navigation";
-import appMockupImage from "../../images/maatrivaAppMockup.png";
+import appMockupImage from "../../images/maatrivaAppMockup.webp";
 
 export default function AppDownloadSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -43,18 +43,18 @@ export default function AppDownloadSection() {
   ];
 
   return (
-    <section id="app" className="py-24 px-6 relative overflow-hidden clay-even-section text-(--text)">
+    <section id="app" className="clay-section relative clay-even-section text-(--text)">
       {/* Background radial glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-(--primary)/10 rounded-full blur-3xl pointer-events-none -z-10" />
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto clay-container">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="clay-section-header">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full clay-badge border border-(--primary)/20 mb-4"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full clay-badge border border-(--primary)/20 mb-3"
           >
             <Sparkles size={16} className="text-(--primary)" />
             <span className="text-xs sm:text-sm font-bold text-(--text-dark)">
@@ -67,7 +67,7 @@ export default function AppDownloadSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) tracking-tight leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) tracking-tight leading-tight mb-3"
           >
             Your Baby's Care & Vitals, <br />
             <span className="text-(--primary)">Right in Your Pocket</span>
@@ -78,7 +78,7 @@ export default function AppDownloadSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="mt-4 text-base sm:text-lg font-semibold text-(--text-light) leading-relaxed"
+            className="text-base sm:text-lg font-medium text-(--text-light) leading-relaxed max-w-2xl mx-auto"
           >
             Stay seamlessly connected to your baby cradle anywhere in the world. Receive instant alerts, stream HD audio, and let AI assist you 24/7.
           </motion.p>
@@ -105,7 +105,7 @@ export default function AppDownloadSection() {
                 width="576"
                 height="1024"
                 loading="lazy"
-                className="w-full h-auto object-contain drop-shadow-[0_20px_45px_rgba(34,59,102,0.22)] select-none pointer-events-none"
+                className="w-full h-auto object-contain drop-shadow-[0_20px_45px_rgba(217,130,95,0.22)] select-none pointer-events-none"
               />
             </div>
           </motion.div>

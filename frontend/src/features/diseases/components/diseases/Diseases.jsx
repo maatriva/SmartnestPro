@@ -19,9 +19,9 @@ export default function Diseases() {
   return (
     <section
       id="diseases"
-      className="py-24 px-6 clay-even-section text-(--text) overflow-x-hidden"
+      className="clay-section clay-even-section text-(--text)"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto clay-container">
         <DiseasesHeader />
       </div>
 
@@ -31,8 +31,8 @@ export default function Diseases() {
         onClick={toggleDisease}
       />
 
-      <div className="max-w-7xl mx-auto">
-        <div className="flex w-full justify-center mt-12">
+      <div className="max-w-7xl mx-auto clay-container">
+        <div className="flex w-full justify-center mt-10 sm:mt-12">
           <button
             onClick={() => navigate("/diseases")}
             className="px-6 py-3 clay-btn clay-btn-primary"

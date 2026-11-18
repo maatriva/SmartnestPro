@@ -1,8 +1,6 @@
 @import './tailwind.css';
 @import './theme.css';
 
-
-
 .fade-in {
   animation: fadeIn 0.8s ease-in forwards;
 }
@@ -17,6 +15,10 @@
 }
 
 /* Navbar Link Underline Animation */
+.nav-link {
+  position: relative;
+}
+
 .nav-link::after {
   content: '';
   position: absolute;
@@ -25,8 +27,12 @@
   width: 0%;
   height: 2px;
   background-color: var(--primary);
-  /* background-color: currentColor; */
   transition: width 0.3s ease;
+  border-radius: 9999px;
+}
+
+.nav-link:hover::after {
+  width: 100%;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -36,64 +42,47 @@
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
+/* Smooth scroll handled via unified Lenis + GSAP RAF loop */
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior intentionally managed by Lenis to prevent conflict */
 }
 
-/* Styling custom scrollbars for a premium MedTech look */
+/* Styling custom scrollbars for Celestial Clay look */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.03);
-  border-radius: 9999px;
+  background: var(--bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(90, 120, 214, 0.25); /* Primary/25 */
+  background: rgba(217, 130, 95, 0.35);
   border-radius: 9999px;
-  border: 2px solid transparent;
+  border: 2px solid var(--bg);
   background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(90, 120, 214, 0.5); /* Primary/50 */
-  border: 2px solid transparent;
+  background: rgba(217, 130, 95, 0.65);
+  border: 2px solid var(--bg);
   background-clip: padding-box;
 }
 
 /* For Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(90, 120, 214, 0.25) rgba(0, 0, 0, 0.03);
+  scrollbar-color: rgba(217, 130, 95, 0.35) var(--bg);
 }
 
 body {
   width: 100%;
-}
-
-
-
-.float-container {
-  animation: floating 4s ease-in-out infinite;
-}
-
-@keyframes floating {
-  0% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-30px);
-  }
-
-  100% {
-    transform: translateY(0px);
-  }
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
 }

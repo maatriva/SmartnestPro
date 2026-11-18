@@ -14,18 +14,20 @@ export default function Pricing() {
     <section
       id="products"
       ref={sectionRef}
-      className="py-24 px-6 clay-even-section text-(--text) relative"
+      className="clay-section clay-even-section text-(--text) relative"
     >
       <span id="pricing" className="absolute -top-24 pointer-events-none" aria-hidden="true" />
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto clay-container">
         <PricingHeader />
 
-        {/* Primary Cradle Models Comparison (3 columns on Desktop, 2 on Tablet with last centered, stacked on Mobile) */}
-        <div className="pricing-grid flex flex-wrap justify-center gap-8 relative z-20">
+        {/* Primary Cradle Models Comparison (3 columns on Desktop, symmetric 2 on Tablet with last centered, stacked on Mobile) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch relative z-20">
           {Object.values(CRADLE_MODELS).map((model, idx) => (
             <div
               key={model.name}
-              className="w-full md:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] flex"
+              className={`flex flex-col h-full ${
+                idx === 2 ? "md:col-span-2 md:max-w-md md:mx-auto lg:col-span-1 lg:max-w-none w-full" : "w-full"
+              }`}
             >
               <PricingCard
                 plan={{

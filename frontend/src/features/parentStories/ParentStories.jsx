@@ -156,7 +156,7 @@ export default function ParentStories() {
   };
 
   return (
-    <section id="parent-stories" className="py-24 px-6 clay-even-section text-(--text) overflow-x-hidden relative">
+    <section id="parent-stories" className="clay-section clay-even-section text-(--text) relative">
       {/* Slow floating decorations */}
       <div className="floating-decorations" aria-hidden="true">
         <div className="decoration-item footprint-1"><FootprintsIcon /></div>
@@ -169,7 +169,7 @@ export default function ParentStories() {
         <div className="decoration-item circle-2" />
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto clay-container relative z-10">
         
         {/* Section Header */}
         <motion.div
@@ -177,15 +177,16 @@ export default function ParentStories() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="clay-section-header"
         >
-          <div className="inline-block px-4 py-2 clay-badge text-sm font-bold mb-4">
-            PARENT STORIES
+          <div className="inline-block px-4 py-1.5 clay-badge text-xs sm:text-sm font-bold mb-3">
+            Parent Stories
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-(--text-dark) mb-6">
-            Every Parent Has a Story.<br />Every Story Matters.
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) leading-tight mb-3">
+            Every Parent Has a Story.<br />
+            <span className="text-(--primary)">Every Story Matters.</span>
           </h2>
-          <p className="text-xl text-(--text-light)">
+          <p className="text-base sm:text-lg text-(--text-light) font-medium max-w-2xl mx-auto leading-relaxed">
             Hear from parents whose parenting journey became easier, calmer, and more confident with MAATRIVA.
           </p>
         </motion.div>

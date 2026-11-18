@@ -1,76 +1,96 @@
 @custom-variant dark (&:is(.dark *));
 
-
-
 :root {
   --font-size: 16px;
-  --background: #ffffff;
-  --foreground: oklch(0.145 0 0);
-  --card: #ffffff;
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: #5A78D6;
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.95 0.0058 264.53);
-  --secondary-foreground: #030213;
-  --muted: #ececf0;
-  --muted-foreground: #717182;
-  --accent: #e9ebef;
-  --accent-foreground: #030213;
-  --destructive: #d4183d;
-  --destructive-foreground: #ffffff;
-  --border: #E5E7EB;
-  --input: transparent;
-  --input-background: #f3f3f5;
-  --switch-background: #cbced4;
-  --font-weight-medium: 500;
-  --font-weight-normal: 400;
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 16px;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: #030213;
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  
+  /* 🌙 Celestial Clay Core Palette */
+  --cream: #FFF6EE;
+  --terracotta: #D9825F;
+  --rose-clay: #F2B8A8;
+  --honey-gold: #F0C675;
+  --sage: #A8B89A;
+  --plum-dusk: #3B2A4A;
+  --plum-dusk-deep: #2A1D36;
+  --cocoa: #3A2B2B;
+  --cocoa-light: #5A4747;
+  --cocoa-muted: #7A6666;
 
-  /* 🌈 Background System */
-  --bg: #bff5f5;
-  --bg-light: #FAFCFC;
-  --bg-secondary: #B8E3E2;
-  --bg-secondaryh: #a5d2d1;
-  --bg-glass: rgba(250, 252, 252, 0.75);
-  --bg-hover: #d5f2f1;
+  /* Theme mappings */
+  --bg: #FFF6EE;
+  --bg-light: #FFFBF7;
+  --bg-secondary: #FAECE1;
+  --bg-secondaryh: #F3DDD0;
+  --bg-glass: rgba(255, 246, 238, 0.88);
+  --bg-hover: #F8E5D7;
+  --background: #FFF6EE;
+  --foreground: #3A2B2B;
 
-  /* 💜 Accent System (Lavender-Blue Gradient Colors) */
-  --primary-hover: #4862B5;
-  --primary-light: #7B8FF8;
+  --card: #FFF8F2;
+  --card-foreground: #3A2B2B;
+  --popover: #FFF8F2;
+  --popover-foreground: #3A2B2B;
 
-  /* 🖤 Text */
-  --text: #4A4A4A;
-  --text-dark: #223B66;
-  --text-light: #6B7280;
+  --primary: #D9825F;
+  --primary-foreground: #FFFFFF;
+  --primary-hover: #C5714E;
+  --primary-light: #F2B8A8;
+  --primary-soft: rgba(217, 130, 95, 0.15);
 
-  /* 🤍 UI */
+  --secondary: #F2B8A8;
+  --secondary-foreground: #3A2B2B;
+
+  --accent: #F0C675;
+  --accent-foreground: #3A2B2B;
+
+  --muted: #F3E5D8;
+  --muted-foreground: #7A6666;
+  --border: rgba(217, 130, 95, 0.2);
+
+  --destructive: #D9534F;
+  --destructive-foreground: #FFFFFF;
+
+  --text: #4E3D3D;
+  --text-dark: #3A2B2B;
+  --text-light: #7A6666;
   --white: #FFFFFF;
 
-  /* ✨ Effects */
-  --shadow: 0 4px 20px rgba(0,0,0,0.08);
-  --shadow-primary: 0 6px 20px rgba(90, 120, 214, 0.4);
+  --radius: 28px;
+  --radius-lg: 32px;
+  --radius-xl: 40px;
 
-  /* 🔘 Radius */
-  --radius-lg: 20px;
+  /* ✨ Soft Clay Shadows */
+  --clay-highlight: rgba(255, 255, 255, 0.95);
+  --clay-shadow-warm: rgba(217, 130, 95, 0.16);
+  --clay-shadow-ambient: rgba(58, 43, 43, 0.08);
+
+  --shadow: 0 10px 30px rgba(58, 43, 43, 0.08);
+  --shadow-primary: 0 10px 25px rgba(217, 130, 95, 0.35);
+
+  --font-family-display: 'Baloo 2', 'Fraunces', cursive, sans-serif;
+  --font-family-sans: 'Nunito', 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* 📏 Spacing System Design Tokens (Consistent 8px scale & clamp) */
+  --section-py: clamp(64px, 8vw, 120px);
+  --section-px: clamp(16px, 4vw, 32px);
+  --section-container-max: 1280px;
+
+  /* 8px Spacing Scale */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+  --space-8: 64px;
+  --space-10: 80px;
+  --space-12: 96px;
+
+  /* Consistent Vertical Rhythm */
+  --section-header-mb: clamp(36px, 5vw, 56px);
+  --heading-gap-badge: 12px;
+  --heading-gap-title: 16px;
+  --heading-gap-subtext: 24px;
 }
-
-
 
 @theme inline {
   --color-background: var(--background);
@@ -90,443 +110,459 @@
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
-  --color-input: var(--input);
-  --color-input-background: var(--input-background);
-  --color-switch-background: var(--switch-background);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Specific theme colors */
+  --color-cream: #FFF6EE;
+  --color-terracotta: #D9825F;
+  --color-rose-clay: #F2B8A8;
+  --color-honey-gold: #F0C675;
+  --color-sage: #A8B89A;
+  --color-plum-dusk: #3B2A4A;
+  --color-cocoa: #3A2B2B;
+
+  --font-display: 'Baloo 2', 'Fraunces', cursive, sans-serif;
+  --font-sans: 'Nunito', 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-family-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
   }
 
-  html {
-    font-size: var(--font-size);
-  }
-
-  h1 {
-    font-size: var(--text-2xl);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
-  }
-
-  h2 {
-    font-size: var(--text-xl);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
-  }
-
-  h3 {
-    font-size: var(--text-lg);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
-  }
-
-  h4 {
-    font-size: var(--text-base);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
-  }
-
-  label {
-    font-size: var(--text-base);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
-  }
-
-  button {
-    font-size: var(--text-base);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
-  }
-
-  input {
-    font-size: var(--text-base);
-    font-weight: var(--font-weight-normal);
-    line-height: 1.5;
-  }
-}
-.marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee 20s linear infinite;
-}
-
-@keyframes marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-display);
+    color: var(--text-dark);
+    font-weight: 700;
+    letter-spacing: -0.01em;
   }
 }
 
-.marquee:hover {
-  animation-play-state: paused;
-}
+/* ==========================================
+   ✨ CELESTIAL CLAYMORPHISM UI CLASSES
+   ========================================== */
 
-
+/* 🌅 Dawn Gradient Sky Hero */
 .clay-hero {
-  background:
-    radial-gradient(circle at 22% 22%, rgba(255, 255, 255, 0.5), transparent 28%),
-    radial-gradient(circle at 78% 72%, rgba(246, 216, 202, 0.45), transparent 24%),
-    linear-gradient(145deg, #c7eff0 0%, #a8dadc 52%, #8bc8ce 100%);
-}
-
-.clay-hero::before,
-.clay-hero::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    #3B2A4A 0%,
+    #533961 18%,
+    #84577B 38%,
+    #C47F8B 58%,
+    #F2B8A8 78%,
+    #FFF6EE 100%
+  );
+  position: relative;
 }
 
 .clay-hero::before {
-  top: 0;
-  height: 10rem;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.48), transparent);
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 15% 25%, rgba(240, 198, 117, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 85% 35%, rgba(242, 184, 168, 0.2) 0%, transparent 45%),
+    radial-gradient(circle at 50% 60%, rgba(255, 246, 238, 0.3) 0%, transparent 50%);
+  pointer-events: none;
 }
 
-.clay-hero::after {
-  bottom: 0;
-  height: 16px;
-  background: linear-gradient(to top, rgba(255, 255, 255, 0.7), transparent);
+/* 🌙 Night Sky / Plum Dusk Sections */
+.night-sky-section {
+  background: linear-gradient(180deg, #2D1F3B 0%, #3B2A4A 50%, #2A1D36 100%) !important;
+  color: #FFF6EE !important;
+  position: relative;
+  overflow: clip;
 }
 
-.clay-even-section {
-  background: var(--bg-glass) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  border: 2px solid rgba(250, 252, 252, 0.8) !important;
-  box-shadow: 
-    inset 6px 6px 14px rgba(250, 252, 252, 0.85),
-    inset -6px -6px 14px rgba(166, 180, 200, 0.25),
-    10px 10px 24px rgba(103, 210, 218, 0.45) !important;
+/* 📏 Universal Spacing System & Responsive Containers */
+.clay-section {
+  padding-top: var(--section-py) !important;
+  padding-bottom: var(--section-py) !important;
+  padding-left: var(--section-px) !important;
+  padding-right: var(--section-px) !important;
+  position: relative;
+  overflow: clip; /* Clean clip for background blobs & particles without horizontal scroll */
 }
 
-.blend-features {
-  background: linear-gradient(
-    to bottom,
-    rgba(250, 252, 252, 0.75) 0%,
-    var(--bg-secondary) 16px,
-    var(--bg-secondary) calc(100% - 16px),
-    rgba(250, 252, 252, 0.75) 100%
-  ) !important;
+.clay-container {
+  max-width: var(--section-container-max);
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 
-.blend-pricing {
-  background: linear-gradient(
-    to bottom,
-    rgba(250, 252, 252, 0.75) 0%,
-    var(--bg-secondary) 16px,
-    var(--bg-secondary) calc(100% - 16px),
-    rgba(250, 252, 252, 0.75) 100%
-  ) !important;
+.clay-section-header {
+  text-align: center;
+  max-width: 48rem; /* 768px */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: var(--section-header-mb);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-
-
-/* ==========================================
-   ✨ PREMIUM CLAYMORPHISM UI CLASSES
-   ========================================== */
-
-/* 🎴 Clay Cards and Containers */
-.clay-card {
-  background: var(--bg-glass);
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  border: 2px solid rgba(250, 252, 252, 0.8) !important;
-  box-shadow: 
-    inset 6px 6px 14px rgba(250, 252, 252, 0.85),
-    inset -6px -6px 14px rgba(166, 180, 200, 0.25),
-    10px 10px 24px rgba(103, 210, 218, 0.45) !important;
+/* 🏆 Celestial Clay Achievement Card */
+.clay-achievement-card {
+  background: linear-gradient(145deg, #FFFDFB 0%, #FFF4EB 100%) !important;
+  border: 2px solid rgba(255, 255, 255, 0.95) !important;
   border-radius: 28px !important;
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, border-color 0.3s ease !important;
+  box-shadow: 
+    inset 3px 3px 6px rgba(255, 255, 255, 0.9),
+    inset -3px -3px 6px rgba(217, 130, 95, 0.15),
+    0 10px 24px rgba(26, 17, 34, 0.28),
+    0 2px 6px rgba(0, 0, 0, 0.15) !important;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease !important;
+  will-change: transform;
+}
+
+.clay-achievement-card:hover {
+  transform: translateY(-6px) scale(1.02) !important;
+  box-shadow: 
+    inset 3px 3px 6px rgba(255, 255, 255, 0.9),
+    inset -3px -3px 6px rgba(217, 130, 95, 0.15),
+    0 16px 36px rgba(26, 17, 34, 0.4),
+    0 0 24px rgba(240, 198, 117, 0.35) !important;
+}
+
+.night-sky-section h2,
+.night-sky-section h3,
+.night-sky-section h4 {
+  color: #FFF6EE !important;
+}
+
+.night-sky-section p {
+  color: #E2D3E4 !important;
+}
+
+/* 🎴 Puffy Clay Cards */
+.clay-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 248, 242, 0.88) 100%) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 2px solid rgba(255, 255, 255, 0.95) !important;
+  border-radius: 32px !important;
+  box-shadow: 
+    inset 4px 4px 8px rgba(255, 255, 255, 0.95),
+    inset -4px -4px 10px rgba(217, 130, 95, 0.12),
+    0 12px 28px rgba(58, 43, 43, 0.07),
+    0 2px 6px rgba(217, 130, 95, 0.04) !important;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  will-change: auto;
 }
 
 .clay-card:hover {
-  transform: translateY(-12px) scale(1.03) !important;
-  box-shadow: 
-    inset 8px 8px 18px rgba(255, 255, 255, 0.95),
-    inset -8px -8px 18px rgba(166, 180, 200, 0.35),
-    18px 25px 40px rgba(103, 210, 218, 0.65) !important;
+  transform: translateY(-6px) scale(1.015) !important;
 }
 
-/* 🎴 Static Clay Card without hover translation/scaling */
+/* 🎴 Static Clay Card without scaling */
 .clay-card-static {
-  background: var(--bg-glass);
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  border: 2px solid rgba(250, 252, 252, 0.8) !important;
-  box-shadow: 
-    inset 6px 6px 14px rgba(250, 252, 252, 0.85),
-    inset -6px -6px 14px rgba(166, 180, 200, 0.25),
-    10px 10px 24px rgba(103, 210, 218, 0.45) !important;
-  border-radius: 28px !important;
-  transition: box-shadow 0.4s ease, border-color 0.3s ease !important;
-}
-
-.clay-card-static:hover {
-  box-shadow: 
-    inset 8px 8px 18px rgba(255, 255, 255, 0.95),
-    inset -8px -8px 18px rgba(166, 180, 200, 0.35),
-    12px 12px 28px rgba(103, 210, 218, 0.35) !important;
-}
-
-/* 🎴 Contrasting Clay Card for lighter sections */
-.clay-card-secondary {
-  background: rgba(184, 227, 226, 0.45) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  border: 2px solid rgba(184, 227, 226, 0.6) !important;
-  box-shadow: 
-    inset 6px 6px 14px rgba(255, 255, 255, 0.5),
-    inset -6px -6px 14px rgba(166, 180, 200, 0.15),
-    10px 10px 24px rgba(103, 210, 218, 0.25) !important;
-  border-radius: 28px !important;
-  transition: box-shadow 0.4s ease, border-color 0.3s ease, background 0.3s ease !important;
-}
-
-.clay-card-secondary:hover {
-  background: rgba(184, 227, 226, 0.55) !important;
-  border-color: rgba(184, 227, 226, 0.7) !important;
-  box-shadow: 
-    inset 7px 7px 16px rgba(255, 255, 255, 0.6),
-    inset -7px -7px 16px rgba(166, 180, 200, 0.2),
-    12px 12px 28px rgba(103, 210, 218, 0.3) !important;
-}
-
-/* 🔘 Clay Buttons */
-.clay-btn {
-  border-radius: 50px !important;
-  border: 1px solid rgba(255, 255, 255, 0.4) !important;
-  font-weight: 700 !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
-  box-shadow: 
-    inset 4px 4px 8px rgba(255, 255, 255, 0.6),
-    inset -4px -4px 8px rgba(166, 180, 200, 0.35) !important;
-  transition: all 0.3s ease !important;
-}
- 
-.clay-btn-primary {
-  background: linear-gradient(135deg, #7B8FF8, #5A78D6) !important;
-  color: #ffffff !important;
-  box-shadow: 
-    inset 4px 4px 8px rgba(255, 255, 255, 0.5),
-    inset -4px -4px 8px rgba(20, 30, 90, 0.45) !important;
-}
- 
-.clay-btn-primary:hover {
-  transform: scale(1.05) !important;
-  background: linear-gradient(135deg, #8C9EFF, #6E88E6) !important;
-  box-shadow: 
-    inset 5px 5px 10px rgba(255, 255, 255, 0.65),
-    inset -5px -5px 10px rgba(20, 30, 90, 0.55) !important;
-}
- 
-.clay-btn-primary:active {
-  transform: scale(0.98) !important;
-  box-shadow: 
-    inset 4px 4px 8px rgba(10, 15, 60, 0.6),
-    inset -4px -4px 8px rgba(255, 255, 255, 0.25) !important;
-}
- 
-.clay-btn-secondary {
-  background: #F4F8F8 !important;
-  color: #223B66 !important;
-  border-color: rgba(255, 255, 255, 0.8) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 248, 242, 0.88) 100%) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 2px solid rgba(255, 255, 255, 0.95) !important;
+  border-radius: 32px !important;
   box-shadow: 
     inset 4px 4px 8px rgba(255, 255, 255, 0.95),
-    inset -4px -4px 8px rgba(166, 180, 200, 0.45) !important;
+    inset -4px -4px 10px rgba(217, 130, 95, 0.12),
+    0 12px 28px rgba(58, 43, 43, 0.07) !important;
 }
- 
+
+/* 🎴 Dark Night Clay Card */
+.clay-card-dark {
+  background: linear-gradient(135deg, rgba(68, 50, 85, 0.92) 0%, rgba(48, 33, 62, 0.95) 100%) !important;
+  border: 2px solid rgba(242, 184, 168, 0.25) !important;
+  border-radius: 32px !important;
+  box-shadow: 
+    inset 4px 4px 10px rgba(255, 255, 255, 0.15),
+    inset -4px -4px 10px rgba(0, 0, 0, 0.35),
+    0 16px 36px rgba(0, 0, 0, 0.25) !important;
+}
+
+.clay-card-dark:hover {
+  transform: translateY(-6px) scale(1.02) !important;
+  border-color: rgba(240, 198, 117, 0.5) !important;
+  box-shadow: 
+    inset 5px 5px 12px rgba(255, 255, 255, 0.25),
+    inset -5px -5px 12px rgba(0, 0, 0, 0.45),
+    0 22px 45px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* 🎴 Secondary Clay Card for alternating sections */
+.clay-card-secondary {
+  background: linear-gradient(135deg, rgba(250, 236, 225, 0.95) 0%, rgba(243, 221, 208, 0.9) 100%) !important;
+  backdrop-filter: blur(16px);
+  border: 2px solid rgba(255, 255, 255, 0.9) !important;
+  border-radius: 32px !important;
+  box-shadow: 
+    inset 4px 4px 8px rgba(255, 255, 255, 0.9),
+    inset -4px -4px 8px rgba(217, 130, 95, 0.14),
+    0 10px 24px rgba(58, 43, 43, 0.06) !important;
+}
+
+/* 🔘 Puffy Clay Buttons (Squish and bounce: scale 0.96 on press) */
+.clay-btn {
+  border-radius: 9999px !important;
+  font-family: var(--font-family-display) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, background 0.25s ease !important;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.clay-btn:active {
+  transform: scale(0.96) !important;
+}
+
+/* Primary Terracotta Clay Button */
+.clay-btn-primary {
+  background: linear-gradient(135deg, #E28D6A 0%, #D9825F 55%, #C26F4C 100%) !important;
+  color: #FFFFFF !important;
+  border: 2px solid rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 
+    inset 3px 3px 7px rgba(255, 255, 255, 0.6),
+    inset -3px -3px 7px rgba(120, 50, 20, 0.35),
+    0 10px 24px rgba(217, 130, 95, 0.38) !important;
+}
+
+.clay-btn-primary:hover {
+  transform: translateY(-2px) scale(1.03) !important;
+  background: linear-gradient(135deg, #E89A79 0%, #E08966 55%, #CB7552 100%) !important;
+  box-shadow: 
+    inset 4px 4px 9px rgba(255, 255, 255, 0.75),
+    inset -4px -4px 9px rgba(120, 50, 20, 0.4),
+    0 14px 30px rgba(217, 130, 95, 0.45) !important;
+}
+
+.clay-btn-primary:active {
+  transform: scale(0.96) !important;
+  box-shadow: 
+    inset 4px 4px 8px rgba(100, 40, 15, 0.55),
+    inset -2px -2px 6px rgba(255, 255, 255, 0.3),
+    0 4px 10px rgba(217, 130, 95, 0.2) !important;
+}
+
+/* Secondary Rose Clay / Cream Button */
+.clay-btn-secondary {
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFF5EC 100%) !important;
+  color: #3A2B2B !important;
+  border: 2px solid rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 
+    inset 3px 3px 7px rgba(255, 255, 255, 1),
+    inset -3px -3px 7px rgba(217, 130, 95, 0.15),
+    0 8px 20px rgba(58, 43, 43, 0.08) !important;
+}
+
 .clay-btn-secondary:hover {
-  transform: scale(1.05) !important;
-  background: #ffffff !important;
+  transform: translateY(-2px) scale(1.03) !important;
+  background: #FFFFFF !important;
   box-shadow: 
-    inset 5px 5px 10px rgba(255, 255, 255, 1),
-    inset -5px -5px 10px rgba(166, 180, 200, 0.6) !important;
+    inset 4px 4px 9px rgba(255, 255, 255, 1),
+    inset -4px -4px 9px rgba(217, 130, 95, 0.22),
+    0 12px 26px rgba(58, 43, 43, 0.12) !important;
 }
 
-.clay-btn-secondary:active {
-  transform: scale(0.98) !important;
+/* Honey Gold Accent Button */
+.clay-btn-accent {
+  background: linear-gradient(135deg, #F8D58D 0%, #F0C675 60%, #E0B359 100%) !important;
+  color: #3A2B2B !important;
+  border: 2px solid rgba(255, 255, 255, 0.6) !important;
   box-shadow: 
-    inset 3px 3px 6px rgba(166, 180, 200, 0.6),
-    inset -3px -3px 6px rgba(255, 255, 255, 0.95) !important;
-}
- 
-.clay-btn-destructive {
-  background: linear-gradient(135deg, #ff6b8b, #d4183d) !important;
-  color: #ffffff !important;
-  box-shadow: 
-    inset 4px 4px 8px rgba(255, 255, 255, 0.45),
-    inset -4px -4px 8px rgba(90, 8, 25, 0.55) !important;
-}
- 
-.clay-btn-destructive:hover {
-  transform: scale(1.05) !important;
-  background: linear-gradient(135deg, #ff809c, #e5294e) !important;
-  box-shadow: 
-    inset 5px 5px 10px rgba(255, 255, 255, 0.55),
-    inset -5px -5px 10px rgba(90, 8, 25, 0.65) !important;
+    inset 3px 3px 7px rgba(255, 255, 255, 0.7),
+    inset -3px -3px 7px rgba(150, 110, 30, 0.3),
+    0 10px 24px rgba(240, 198, 117, 0.4) !important;
 }
 
-.clay-btn-destructive:active {
-  transform: scale(0.98) !important;
+/* Sage Calm Button */
+.clay-btn-sage {
+  background: linear-gradient(135deg, #B9C7AC 0%, #A8B89A 60%, #95A687 100%) !important;
+  color: #FFFFFF !important;
+  border: 2px solid rgba(255, 255, 255, 0.5) !important;
   box-shadow: 
-    inset 4px 4px 8px rgba(90, 8, 25, 0.65),
-    inset -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
-}
- 
-.clay-btn-secondaryh {
-  background: linear-gradient(135deg, #7B8FF8, #5A78D6) !important;
-  color: #ffffff !important;
-  box-shadow: 
-    inset 4px 4px 8px rgba(255, 255, 255, 0.5),
-    inset -4px -4px 8px rgba(20, 30, 90, 0.45) !important;
-}
- 
-.clay-btn-secondaryh:hover {
-  transform: scale(1.05) !important;
-  background: linear-gradient(135deg, #8C9EFF, #6E88E6) !important;
-  box-shadow: 
-    inset 5px 5px 10px rgba(255, 255, 255, 0.65),
-    inset -5px -5px 10px rgba(20, 30, 90, 0.55) !important;
+    inset 3px 3px 7px rgba(255, 255, 255, 0.6),
+    inset -3px -3px 7px rgba(60, 75, 50, 0.3),
+    0 10px 24px rgba(168, 184, 154, 0.35) !important;
 }
 
-.clay-btn-secondaryh:active {
-  transform: scale(0.98) !important;
+/* 🏷️ Clay Badges & Pills */
+.clay-badge {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 246, 238, 0.8) 100%) !important;
+  color: var(--primary) !important;
+  border-radius: 9999px !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.95) !important;
   box-shadow: 
-    inset 4px 4px 8px rgba(10, 15, 60, 0.6),
-    inset -4px -4px 8px rgba(255, 255, 255, 0.25) !important;
+    inset 2px 2px 4px rgba(255, 255, 255, 0.95),
+    inset -2px -2px 4px rgba(217, 130, 95, 0.12),
+    0 4px 12px rgba(58, 43, 43, 0.05) !important;
+  font-family: var(--font-family-display);
 }
 
-
+.clay-badge-dark {
+  background: rgba(68, 50, 85, 0.85) !important;
+  color: #F0C675 !important;
+  border-radius: 9999px !important;
+  border: 1.5px solid rgba(240, 198, 117, 0.3) !important;
+  box-shadow: 
+    inset 2px 2px 5px rgba(255, 255, 255, 0.18),
+    inset -2px -2px 5px rgba(0, 0, 0, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.2) !important;
+  font-family: var(--font-family-display);
+}
 
 /* 📥 Clay Inputs */
 .clay-input {
-  background: rgba(255, 255, 255, 0.6) !important;
-  border: 2px solid rgba(255, 255, 255, 0.7) !important;
+  background: rgba(255, 255, 255, 0.85) !important;
+  border: 2px solid rgba(255, 255, 255, 0.95) !important;
   border-radius: 20px !important;
   color: var(--text-dark) !important;
   box-shadow: 
-    inset 3px 3px 6px rgba(0, 0, 0, 0.05),
-    inset -3px -3px 6px rgba(255, 255, 255, 0.85),
-    0 2px 6px rgba(0, 0, 0, 0.02) !important;
+    inset 3px 3px 6px rgba(58, 43, 43, 0.06),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.95),
+    0 2px 8px rgba(58, 43, 43, 0.03) !important;
   transition: all 0.3s ease !important;
 }
 
 .clay-input:focus {
-  background: rgba(255, 255, 255, 0.85) !important;
-  border-color: var(--primary-light) !important;
+  background: #FFFFFF !important;
+  border-color: var(--primary) !important;
   box-shadow: 
-    inset 3px 3px 6px rgba(0, 0, 0, 0.06),
+    inset 3px 3px 6px rgba(58, 43, 43, 0.04),
     inset -3px -3px 6px rgba(255, 255, 255, 0.95),
-    0 0 0 4px rgba(143, 168, 255, 0.25) !important;
+    0 0 0 4px rgba(217, 130, 95, 0.25) !important;
+  outline: none !important;
 }
 
-/* 🏷️ Clay Badges */
-.clay-badge {
-  background: rgba(255, 255, 255, 0.55) !important;
-  color: var(--primary) !important;
-  border-radius: 9999px !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.8) !important;
-  box-shadow: 
-    inset 2px 2px 5px rgba(255, 255, 255, 0.8),
-    inset -2px -2px 5px rgba(166, 180, 200, 0.15),
-    0 4px 10px rgba(0, 0, 0, 0.03) !important;
-}
-
-/* 🔮 Clay 3D Orbs / Floating Spheres */
-.clay-orb {
-  border-radius: 50% !important;
-  box-shadow:
-    inset 8px 8px 16px rgba(255, 255, 255, 0.85),
-    inset -10px -10px 20px rgba(0, 0, 0, 0.12),
-    0 12px 24px rgba(0, 0, 0, 0.06) !important;
-}
-
-/* 🧭 Clay Navbar Wrapper */
+/* 🧭 Clay Floating Pill Navbar */
 .clay-navbar {
-  background: var(--white) !important;
+  background: rgba(255, 248, 242, 0.88) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
-  border: 2px solid rgba(255, 255, 255, 0.7) !important;
+  border: 2px solid rgba(255, 255, 255, 0.95) !important;
   box-shadow: 
-    inset 4px 4px 10px rgba(255, 255, 255, 0.85),
-    inset -4px -4px 10px rgba(166, 180, 200, 0.18),
-    0 10px 25px rgba(166, 180, 200, 0.22) !important;
-  border-radius: 24px !important;
+    inset 3px 3px 8px rgba(255, 255, 255, 0.95),
+    inset -3px -3px 8px rgba(217, 130, 95, 0.12),
+    0 12px 30px rgba(58, 43, 43, 0.08) !important;
+  border-radius: 9999px !important;
 }
 
-/* 🌊 Section Transition Blending & Shadows */
-
-
-.footer-blend {
+/* 🌓 Section Transitions & Blending */
+.clay-even-section {
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-secondary) 100%) !important;
   position: relative;
-  background: linear-gradient(
-    to bottom,
-    rgba(250, 252, 252, 0.75) 0%,
-    var(--bg-secondary) 24px,
-    var(--bg-secondary) 100%
-  ) !important;
-  border-top: none !important;
 }
 
-.footer-blend::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 20px;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.015), transparent);
-  pointer-events: none;
-  z-index: 10;
+.blend-features {
+  background: var(--bg) !important;
+  position: relative;
 }
 
-/* 🔄 How It Works Cards - Frosted Glass Clay Card styling for Aqua section */
-.hiw-card {
-  background: var(--bg-glass) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  border: 2px solid rgba(250, 252, 252, 0.8) !important;
+.blend-pricing {
+  background: var(--bg-secondary) !important;
+  position: relative;
+}
+
+/* 🌙 Clay Moon Glow (Animate only transform & opacity for 60fps compositing) */
+.clay-moon {
+  background: radial-gradient(circle at 35% 35%, #FFF7D6 0%, #F5D38A 50%, #E8B95E 100%);
+  border-radius: 50%;
   box-shadow: 
-    inset 6px 6px 14px rgba(250, 252, 252, 0.85),
-    inset -6px -6px 14px rgba(166, 180, 200, 0.25),
-    10px 10px 24px rgba(103, 210, 218, 0.35) !important;
+    inset 8px 8px 16px rgba(255, 255, 255, 0.9),
+    inset -10px -10px 20px rgba(180, 120, 20, 0.35),
+    0 0 60px rgba(240, 198, 117, 0.5),
+    0 0 100px rgba(240, 198, 117, 0.25);
+  animation: moonBreathe 5s ease-in-out infinite alternate;
+  will-change: transform;
 }
 
-.hiw-card:hover {
-  background: rgba(255, 255, 255, 0.9) !important;
-  border-color: rgba(255, 255, 255, 0.95) !important;
+@keyframes moonBreathe {
+  0% {
+    transform: translateY(0px) scale(1);
+  }
+  100% {
+    transform: translateY(-12px) scale(1.02);
+  }
+}
+
+/* ☁️ Clay Clouds */
+.clay-cloud {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(248, 235, 225, 0.85) 100%);
+  border-radius: 9999px;
   box-shadow: 
-    inset 8px 8px 18px rgba(255, 255, 255, 0.95),
-    inset -8px -8px 18px rgba(166, 180, 200, 0.35),
-    18px 25px 40px rgba(103, 210, 218, 0.55) !important;
+    inset 4px 4px 10px rgba(255, 255, 255, 0.95),
+    inset -4px -4px 10px rgba(217, 130, 95, 0.12),
+    0 10px 25px rgba(58, 43, 43, 0.06);
 }
 
+/* ⭐ Twinkling Stars */
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
 
+.twinkle-star {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+/* 🌊 Wavy Edge Separator */
+.wavy-divider {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.wavy-divider svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 60px;
+}
+
+/* Floating Blob Keyframes */
+@keyframes morphBlob {
+  0%, 100% {
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+    transform: rotate(0deg);
+  }
+  33% {
+    border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
+    transform: rotate(120deg);
+  }
+  66% {
+    border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+    transform: rotate(240deg);
+  }
+}
+
+.morphing-blob {
+  animation: morphBlob 16s ease-in-out infinite;
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .clay-moon {
+    animation: none !important;
+  }
+  .morphing-blob {
+    animation: none !important;
+  }
+}
