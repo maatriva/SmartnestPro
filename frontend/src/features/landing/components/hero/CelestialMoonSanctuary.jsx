@@ -149,14 +149,14 @@ export default function CelestialMoonSanctuary() {
             <Suspense fallback={null}>
               <ModelCursor
                 targetSize={3.6}
-                modelColor="#D9825F" // Terracotta clay body
-                frameColor="#F2B8A8" // Rose clay frame
-                mattressColor="#A8B89A" // Sage calming mattress
-                rodColor="#F2B8A8"
-                metalColor="#F0C675" // Honey gold accents
-                tuskColor="#F0C675"
-                eyeColor="#3A2B2B"
-                detailColor="#3A2B2B"
+                modelColor="#F7F2EB" // Warm Pearl Bisque Ivory body
+                frameColor="#D9825F" // Terracotta Rose clay frame
+                mattressColor="#9BB59B" // Calming Mint Sage mattress
+                rodColor="#ECC880" // Champagne Honey Gold supporting rods
+                metalColor="#ECC880" // Honey gold accents & pins
+                tuskColor="#FFFBF5" // Soft Ivory White tusks
+                eyeColor="#2C1E21" // Deep Cocoa Onyx button eyes
+                detailColor="#20161C" // Cocoa OLED display
                 onLoaded={() => setIs3DReady(true)}
               />
             </Suspense>

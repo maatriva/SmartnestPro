@@ -27,7 +27,7 @@ export default function HeroContent({
   };
 
   return (
-    <div className="relative z-20">
+    <div className="relative z-20 clay-hero-panel bg-white/40 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none p-6 sm:p-8 lg:p-0 rounded-3xl lg:rounded-none border border-white/60 lg:border-none shadow-xl lg:shadow-none">
       {/* Celestial Pill Badge */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -121,7 +121,7 @@ export default function HeroContent({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.7, duration: 0.6 }}
-        className="mt-10 flex flex-wrap items-center gap-6 pt-6 border-t border-(--border)/40 text-xs sm:text-sm text-(--text-light) font-semibold"
+        className="mt-10 flex flex-wrap items-center gap-6 pt-6 border-t border-(--border)/40 text-sm sm:text-base text-(--text-dark) font-bold"
       >
         <div className="flex items-center gap-2">
           <div className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-700 flex items-center justify-center">

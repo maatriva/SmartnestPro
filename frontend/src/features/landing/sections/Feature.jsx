@@ -10,6 +10,7 @@ export default function Features() {
     <section
       id="features"
       className="clay-section blend-features text-(--text)"
+      aria-label="Core Features of Maatriva Smart Cradle"
     >
       {/* Decorative Warm Blobs */}
       <div className="absolute top-1/4 -left-20 w-96 h-96 bg-(--honey-gold) opacity-10 blur-[120px] rounded-full pointer-events-none" />
@@ -18,52 +19,18 @@ export default function Features() {
       <div className="max-w-7xl mx-auto clay-container relative z-10">
         <FeaturesHeader />
 
-        {/* Bento Grid Layout */}
+        {/* Symmetric Bento Grid Layout: 3 Columns on Desktop, 2 on Tablet, 1 on Mobile */}
         <div
           ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch"
         >
-          {/* Card 0: Large 2-column featured card (AI Learning) */}
-          <FeatureCard
-            feature={FEATURES[0]}
-            index={0}
-            isLarge={true}
-          />
-
-          {/* Card 1: 1-column card (Smart Soothing) */}
-          <FeatureCard
-            feature={FEATURES[1]}
-            index={1}
-            isLarge={false}
-          />
-
-          {/* Row 2: 3 uniform cards (App Control, Safe & Secure, Sound Library) */}
-          <FeatureCard
-            feature={FEATURES[2]}
-            index={2}
-            isLarge={false}
-          />
-
-          <FeatureCard
-            feature={FEATURES[3]}
-            index={3}
-            isLarge={false}
-          />
-
-          <FeatureCard
-            feature={FEATURES[4]}
-            index={4}
-            isLarge={false}
-          />
-
-          {/* Row 3: Climate Control full-width or wide */}
-          <div className="md:col-span-3">
+          {FEATURES.map((feature, index) => (
             <FeatureCard
-              feature={FEATURES[5]}
-              index={5}
-              isLarge={false}
+              key={feature.title}
+              feature={feature}
+              index={index}
             />
-          </div>
+          ))}
         </div>
       </div>
     </section>

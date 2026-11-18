@@ -1,47 +1,47 @@
 import {
+  Camera,
+  Activity,
   Brain,
-  Moon,
-  Smartphone,
-  Shield,
-  Music,
-  ThermometerSun,
+  Waves,
+  Mic,
+  Users,
 } from "lucide-react";
 
 export const FEATURES = [
   {
+    icon: Camera,
+    title: "Live HD Camera",
+    description: "Crystal-clear 1080p stream with soothing invisible infrared night vision for quiet check-ins.",
+    tag: "High-Definition Stream",
+  },
+  {
+    icon: Activity,
+    title: "9-Sensor Vitals",
+    description: "Continuous non-contact tracking of breathing rhythm, heart rate, skin temperature, and sleep cycles.",
+    tag: "100% Non-Contact",
+  },
+  {
     icon: Brain,
-    title: "AI Learning",
-    description:
-      "Adapts to your baby's unique sleep patterns and preferences over time.",
+    title: "AI Monitoring",
+    description: "Real-time acoustic cry classification and predictive sleep patterns to comfort baby before distress.",
+    tag: "Intelligent Edge AI",
   },
   {
-    icon: Moon,
-    title: "Smart Soothing",
-    description:
-      "Automatic rocking, white noise, and lullabies when baby needs comfort.",
+    icon: Waves,
+    title: "Motorized Cradle",
+    description: "Gentle pediatric-approved rocking speeds with automatic calm triggers that mimic a mother's sway.",
+    tag: "Adaptive Soothing",
   },
   {
-    icon: Smartphone,
-    title: "App Control",
-    description:
-      "Monitor and control everything from your phone, anywhere, anytime.",
+    icon: Mic,
+    title: "Lullabies & Voice Vault",
+    description: "Personalized parent voice recordings, calming womb acoustics, and clinically curated sleep melodies.",
+    tag: "Acoustic Comfort",
   },
   {
-    icon: Shield,
-    title: "Safe & Secure",
-    description:
-      "Medical-grade materials with built-in safety sensors and alerts.",
-  },
-  {
-    icon: Music,
-    title: "Sound Library",
-    description:
-      "100+ curated lullabies and white noise options for better sleep.",
-  },
-  {
-    icon: ThermometerSun,
-    title: "Climate Control",
-    description:
-      "Monitors temperature and humidity for optimal sleeping conditions.",
+    icon: Users,
+    title: "Caregiver Access",
+    description: "Granular multi-device sharing for parents, grandparents, and pediatricians with bank-grade privacy.",
+    tag: "Multi-User Access",
   },
 ];

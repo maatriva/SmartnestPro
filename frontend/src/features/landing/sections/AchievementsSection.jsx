@@ -123,11 +123,11 @@ export default function AchievementsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full clay-badge-dark text-xs sm:text-sm font-bold mb-3 border border-white/10"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full clay-badge-dark text-xs sm:text-sm font-bold mb-3"
           >
-            <Moon size={14} className="text-(--accent) fill-(--accent)/30" />
+            <Moon size={14} className="text-(--primary) fill-(--primary)/20" />
             <span>Recognition & Milestones</span>
-            <Sparkles size={14} className="text-(--accent)" />
+            <Sparkles size={14} className="text-(--primary)" />
           </motion.div>
 
           <motion.h2
@@ -135,9 +135,9 @@ export default function AchievementsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.55, delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight font-display tracking-tight"
+            className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) leading-tight font-display tracking-tight"
           >
-            Our <span className="text-[#F0C675]">Achievements</span>
+            Our <span className="text-(--primary)">Achievements</span>
           </motion.h2>
 
           <motion.p
@@ -145,7 +145,7 @@ export default function AchievementsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.55, delay: 0.2 }}
-            className="mt-3 text-sm sm:text-base text-[#E2D3E4] font-medium max-w-xl mx-auto leading-relaxed"
+            className="mt-3 text-base sm:text-lg text-(--text) font-medium max-w-xl mx-auto leading-relaxed"
           >
             Proudly recognized globally and incubated, mentored, and supported by India’s premier technical institutions and innovation foundations.
           </motion.p>

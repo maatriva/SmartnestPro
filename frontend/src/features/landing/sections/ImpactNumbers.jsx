@@ -63,7 +63,7 @@ function CounterItem({ end, suffix = "", decimals = 0, label, sublabel, icon: Ic
       </div>
 
       {/* Sublabel */}
-      <p className="text-xs sm:text-sm text-(--text-light) font-semibold mt-1">
+      <p className="text-sm text-(--text-dark) font-semibold mt-1">
         {sublabel}
       </p>
     </motion.div>

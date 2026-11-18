@@ -9,7 +9,7 @@ export default function DiseasesHeader() {
         Diseases Monitored by Our AI
       </h2>
 
-      <p className="text-base sm:text-lg text-(--text-light) font-medium max-w-2xl mx-auto leading-relaxed">
+      <p className="text-base sm:text-lg text-(--text) font-medium max-w-2xl mx-auto leading-relaxed">
         Our smart baby cradle tracks vital patterns continuously to
         detect early symptoms with pediatric precision.
       </p>

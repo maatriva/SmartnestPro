@@ -156,7 +156,7 @@ export default function PricingCard({ plan, onPreOrder }) {
 
 
           {/* One line short description */}
-          <p className="text-sm text-(--text-light) mb-6 leading-relaxed">
+          <p className="text-base text-(--text) mb-6 leading-relaxed font-medium">
             {plan.description}
           </p>
 
@@ -212,10 +212,10 @@ export default function PricingCard({ plan, onPreOrder }) {
                   </div>
                   
                   <div className="flex flex-col text-left">
-                    <span className="text-xs font-bold text-(--text-dark)">
+                    <span className="text-sm font-bold text-(--text-dark)">
                       Add 1-Year AI Subscription
                     </span>
-                    <span className="text-[10px] text-(--text-light) flex flex-wrap items-center gap-1 mt-0.5">
+                    <span className="text-xs text-(--text) font-semibold flex flex-wrap items-center gap-1 mt-0.5">
                       Advanced health monitoring & alerts.
                       <a
                         href="#ai-features"
@@ -226,7 +226,7 @@ export default function PricingCard({ plan, onPreOrder }) {
                           e.stopPropagation();
                           setShowAIFeatures(!showAIFeatures);
                         }}
-                        className="text-(--primary) underline hover:text-(--primary-light) font-bold focus:outline-none focus:ring-1 focus:ring-(--primary-light)/50 rounded px-1"
+                        className="text-(--primary) underline hover:text-(--primary-hover) font-bold focus:outline-none focus:ring-1 focus:ring-(--primary)/50 rounded px-1"
                       >
                         Tell me about AI subscription features
                       </a>

@@ -8,7 +8,7 @@ export default function PricingHeader() {
         Our Products
       </h2>
 
-      <p className="text-base sm:text-lg text-(--text-light) font-medium max-w-2xl mx-auto leading-relaxed">
+      <p className="text-base sm:text-lg text-(--text) font-medium max-w-2xl mx-auto leading-relaxed">
         Explore our AI-powered smart cradle models designed for infant safety, soothing sleep, and 24/7 care.
       </p>
     </div>

@@ -1,28 +1,54 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { 
   Heart, 
+  ShieldAlert, 
   Sparkles, 
-  Baby, 
-  TrendingUp, 
-  Clock, 
-  MessageSquare, 
-  AlertTriangle, 
-  Check,
-  ChevronDown,
-  ChevronUp
+  Activity, 
+  BellRing, 
+  ShieldCheck, 
+  HeartHandshake,
+  CheckCircle2,
+  AlertTriangle
 } from "lucide-react";
 import supportingParentsImage from "../../images/supportingParents.webp";
 
 export default function SupportingParents() {
   const sectionRef = useRef(null);
-  const [isExpanded, setIsExpanded] = useState(false);
+
+  const safetyPillars = [
+    {
+      icon: <ShieldAlert className="text-(--primary)" size={26} />,
+      title: "Contactless Respiratory & Apnea Alerts",
+      description: "Continuous passive monitoring detects irregular breathing intervals or sudden temperature fluctuations instantly—without attaching any wires, socks, or wearable straps to your baby's delicate skin.",
+      badge: "Clinical Safety",
+    },
+    {
+      icon: <BellRing className="text-(--primary)" size={26} />,
+      title: "Real-Time Cry Triage & Prompt Alerts",
+      description: "Proprietary acoustic AI identifies the specific nature of every cry—distinguishing hunger, tiredness, colic pain, or distress—and alerts parents right away with clear recommended actions.",
+      badge: "Smart Triage",
+    },
+    {
+      icon: <Heart className="text-(--primary)" size={26} />,
+      title: "Parent Peace of Mind & Better Sleep",
+      description: "Nighttime anxiety is the leading cause of sleep deprivation for new parents. Maatriva's continuous background vigil allows parents to sleep soundly, knowing they will be alerted if baby stirs.",
+      badge: "Parental Wellness",
+    },
+    {
+      icon: <HeartHandshake className="text-(--primary)" size={26} />,
+      title: "Maternal Mental Health & Caregiver Support",
+      description: "Designed in collaboration with maternal health experts, the companion assistant helps recognize caregiver burnout, providing compassionate, evidence-based guidance during vulnerable postpartum months.",
+      badge: "Maternal Care",
+    },
+  ];
 
   return (
     <section
       id="supporting-parents"
       ref={sectionRef}
       className="clay-section blend-features text-(--text)"
+      aria-label="Safety, Critical Alerts, and Parent Peace of Mind"
     >
       {/* Decorative Background Orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -36,334 +62,132 @@ export default function SupportingParents() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6 }}
           className="clay-section-header"
         >
-          <div className="inline-block px-4 py-1.5 clay-badge text-xs sm:text-sm font-bold mb-3">
-            Beyond Tech
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 clay-badge text-xs sm:text-sm font-bold mb-3 border border-(--primary)/20">
+            <ShieldCheck size={16} className="text-(--primary)" />
+            <span>Safety & Trust</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) leading-tight mb-3">
-            Supporting Parents
-            <br />
-            <span className="text-(--primary)">Beyond Technology</span>
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) leading-tight mb-3 font-display">
+            Critical Alerts & Parent <br />
+            <span className="text-(--primary)">Peace of Mind</span>
           </h2>
-          <p className="text-base sm:text-lg text-(--text-light) font-medium max-w-2xl mx-auto leading-relaxed">
-            Your AI Parenting Companion — 24/7 intelligent guidance, monitoring, and reassurance for both babies and parents.
+
+          <p className="text-base sm:text-lg md:text-xl text-(--text) font-medium max-w-2xl mx-auto leading-relaxed">
+            Every feature in Maatriva is designed to keep your newborn safe and relieve late-night parental worry with clear, plain-language insights.
           </p>
         </motion.div>
 
-        {/* Upper Row: 50/50 Grid with reduced gap (gap-6 lg:gap-8) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center">
+        {/* Top Hero Trust Block: Photo in Clay Frame + Core Reassurance */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center mb-14">
           
-          {/* Left Side: Image */}
+          {/* Left Side: Photo Frame with High-Opacity Overlay Clay Panel */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="clay-card p-4 bg-white/50 backdrop-blur-md rounded-3xl border border-white/80 shadow-xl overflow-hidden"
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-5"
           >
-            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-[16/10]">
-              <img
-                src={supportingParentsImage}
-                alt="Your AI Parenting Companion"
-                width="1200"
-                height="800"
-                loading="lazy"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-85" />
-              
-              {/* Floating Badge/Info on Image */}
-              <div className="absolute bottom-6 left-6 right-6 text-white">
-                <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-semibold uppercase tracking-wider mb-2">
-                  Inside Maatriva
-                </span>
-                <h3 className="text-lg font-bold">Comprehensive Care Ecosystem</h3>
-                <p className="text-xs text-white/85 mt-1">Connecting infant monitoring with caregiver mental wellness.</p>
+            <div className="clay-card p-4 sm:p-5 rounded-[36px] overflow-hidden shadow-2xl relative">
+              <div className="relative rounded-[26px] overflow-hidden aspect-[4/3] sm:aspect-[16/11]">
+                <img
+                  src={supportingParentsImage}
+                  alt="Mother and newborn resting peacefully with Maatriva smart monitoring"
+                  width="1200"
+                  height="800"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover"
+                />
+                
+                {/* 85%+ Opacity Clay Scrim Panel for Guaranteed Legibility */}
+                <div className="absolute inset-x-3 bottom-3 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-white shadow-lg">
+                  <div className="flex items-center gap-2 text-xs font-black text-(--primary) uppercase tracking-wider mb-1">
+                    <Sparkles size={14} />
+                    <span>Non-Invasive Infant Safeguard</span>
+                  </div>
+                  <p className="text-sm sm:text-base text-(--text-dark) font-bold leading-snug">
+                    Zero wearable electrodes • 100% contactless peace of mind for whole family.
+                  </p>
+                </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Right Side: Title, Intro & Learn More Button */}
+          {/* Right Side: Reassurance Statement with High Contrast */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="space-y-6"
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-7 space-y-6"
           >
-            <h3 className="text-3xl sm:text-4xl font-extrabold text-(--text-dark) leading-tight">
-              Meet the MAATRIVA AI Assistant
+            <div className="inline-block px-3.5 py-1 rounded-full bg-(--primary)/15 text-(--primary) text-xs font-bold uppercase tracking-wider">
+              Pediatric Guidance
+            </div>
+
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-(--text-dark) leading-tight font-display">
+              Intelligent Support Grounded in Clinical Infant Care
             </h3>
-            <p className="text-lg text-(--text) leading-relaxed">
-              More than just a smart cradle, the MAATRIVA Smart Cradle comes with an intelligent AI Assistant designed to support parents throughout their caregiving journey. Available 24/7 through chat and voice interaction, it transforms complex infant data into simple, actionable insights, helping families make informed decisions with confidence.
+
+            <p className="text-base sm:text-lg text-(--text) leading-relaxed font-medium">
+              More than a smart bassinet, Maatriva serves as a continuous guardian. It bridges infant sleep data with compassionate parental reassurance, turning complex biological signals into calm, actionable clarity.
             </p>
-            
-            {/* Action Button */}
-            <div className="pt-2">
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  setIsExpanded(!isExpanded);
-                }}
-                className="clay-btn clay-btn-primary px-8 py-3.5 text-sm flex items-center gap-2 hover:cursor-pointer transition-all duration-300"
-              >
-                <span>{isExpanded ? "Show Less" : "Learn More"}</span>
-                {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-              </button>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div className="clay-card p-4 rounded-2xl flex items-center gap-3">
+                <CheckCircle2 size={20} className="text-emerald-600 shrink-0" />
+                <span className="text-sm sm:text-base font-bold text-(--text-dark)">Instant Apnea Threshold Alerts</span>
+              </div>
+              <div className="clay-card p-4 rounded-2xl flex items-center gap-3">
+                <CheckCircle2 size={20} className="text-emerald-600 shrink-0" />
+                <span className="text-sm sm:text-base font-bold text-(--text-dark)">Encrypted Pediatric Data Vault</span>
+              </div>
             </div>
           </motion.div>
 
         </div>
 
-        {/* Lower Row: Full-Width Details Block with Smooth 60fps Grid Rows */}
-        <div
-          className={`grid transition-[grid-template-rows,opacity] duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] w-full border-t border-(--border)/40 ${
-            isExpanded ? "grid-rows-[1fr] opacity-100 mt-12 pt-12" : "grid-rows-[0fr] opacity-0 mt-0 pt-0"
-          }`}
-        >
-          <div className="overflow-hidden w-full space-y-16">
-          
-          {/* Maternal Wellbeing Section (3 columns on desktop) - Delayed 1s */}
-          <motion.div 
-            animate={{
-              y: isExpanded ? 0 : 20,
-              opacity: isExpanded ? 1 : 0
-            }}
-            transition={{ duration: 0.4, delay: isExpanded ? 1.0 : 0, ease: "easeOut" }}
-            className="space-y-8"
-          >
-            <div className="flex items-center gap-3 border-b border-(--border) pb-4">
-              <div className="p-2.5 rounded-xl bg-pink-100/80 text-pink-500">
-                <Heart className="w-6 h-6" />
-              </div>
-              <h4 className="text-2xl font-bold text-(--text-dark)">
-                Supporting Maternal Wellbeing
-              </h4>
-            </div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              {/* Card 1: Anxiety */}
-              <div className="clay-card p-6 flex flex-col justify-between">
-                <div className="flex items-start gap-4">
-                  <div className="mt-1 p-2 rounded-lg bg-white/60 text-pink-500 shadow-sm flex-shrink-0">
-                    <Sparkles className="w-4 h-4" />
+        {/* 4 Equal-Height Safety & Alert Cards (2x2 Grid on Desktop) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-stretch">
+          {safetyPillars.map((pillar, index) => (
+            <motion.div
+              key={pillar.title}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 * index, duration: 0.5 }}
+              className="clay-card p-7 sm:p-8 rounded-3xl flex flex-col justify-between hover:scale-[1.01] transition-transform"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-5">
+                  <div className="p-3.5 rounded-2xl clay-badge text-(--primary) shadow-xs">
+                    {pillar.icon}
                   </div>
-                  <div>
-                    <h5 className="font-bold text-lg text-(--text-dark) mb-2">Reducing Postpartum Anxiety</h5>
-                    <p className="text-(--text) text-sm leading-relaxed">
-                      Continuous monitoring of breathing patterns, heart rate, sleep quality, and environmental conditions provides parents with real-time reassurance. By minimizing unnecessary alerts and delivering clear explanations, the AI helps reduce stress and late-night worry.
-                    </p>
-                  </div>
+                  <span className="text-xs font-extrabold uppercase tracking-wider text-(--primary) bg-(--bg-secondary) px-3 py-1 rounded-full border border-(--primary)/15">
+                    {pillar.badge}
+                  </span>
                 </div>
-              </div>
 
-              {/* Card 2: Warning Signs */}
-              <div className="clay-card p-6 flex flex-col justify-between">
-                <div className="flex items-start gap-4">
-                  <div className="mt-1 p-2 rounded-lg bg-white/60 text-pink-500 shadow-sm flex-shrink-0">
-                    <AlertTriangle className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h5 className="font-bold text-lg text-(--text-dark) mb-2">Helping Detect Early Warning Signs</h5>
-                    <p className="text-(--text) text-sm leading-relaxed">
-                      The AI performs regular wellness check-ins and monitors caregiver interaction patterns. If signs of parental exhaustion or emotional distress are detected, the system can encourage support-seeking behaviors and notify trusted caregivers when needed.
-                    </p>
-                  </div>
-                </div>
-              </div>
+                <h4 className="text-xl sm:text-2xl font-bold text-(--text-dark) mb-3 font-display">
+                  {pillar.title}
+                </h4>
 
-              {/* Card 3: Compassionate Guidance */}
-              <div className="clay-card p-6 flex flex-col justify-between">
-                <div className="flex items-start gap-4">
-                  <div className="mt-1 p-2 rounded-lg bg-white/60 text-pink-500 shadow-sm flex-shrink-0">
-                    <MessageSquare className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h5 className="font-bold text-lg text-(--text-dark) mb-2">Compassionate Guidance</h5>
-                    <p className="text-(--text) text-sm leading-relaxed">
-                      For mothers facing postpartum depression, anxiety, or emotional overwhelm, the assistant provides calm, evidence-based guidance, helping reduce uncertainty and making infant care feel more manageable.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Empowering First-Time Parents Section (4 columns on desktop) - Delayed 1.1s */}
-          <motion.div 
-            animate={{
-              y: isExpanded ? 0 : 20,
-              opacity: isExpanded ? 1 : 0
-            }}
-            transition={{ duration: 0.4, delay: isExpanded ? 1.1 : 0, ease: "easeOut" }}
-            className="space-y-8"
-          >
-            <div className="flex items-center gap-3 border-b border-(--border) pb-4">
-              <div className="p-2.5 rounded-xl bg-(--primary)/10 text-(--primary)">
-                <Baby className="w-6 h-6" />
-              </div>
-              <h4 className="text-2xl font-bold text-(--text-dark)">
-                Empowering First-Time Parents
-              </h4>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {/* Cry analysis */}
-              <div className="clay-card p-6">
-                <h5 className="font-bold text-base text-(--text-dark) mb-2">Understand Every Cry</h5>
-                <p className="text-(--text) text-sm leading-relaxed">
-                  Advanced cry analysis helps identify whether a baby may be hungry, uncomfortable, tired, or in distress, reducing guesswork and helping parents respond faster.
+                <p className="text-base sm:text-lg text-(--text) leading-relaxed font-medium">
+                  {pillar.description}
                 </p>
               </div>
 
-              {/* Learn As Your Baby Grows */}
-              <div className="clay-card p-6">
-                <h5 className="font-bold text-base text-(--text-dark) mb-2">Learn As Your Baby Grows</h5>
-                <p className="text-(--text) text-sm leading-relaxed">
-                  Receive personalized developmental insights, milestone tracking, feeding reminders, and age-appropriate parenting guidance tailored to your baby's growth stage.
-                </p>
+              <div className="mt-6 pt-4 border-t border-(--border)/30 flex items-center gap-2 text-xs font-bold text-(--text-dark)">
+                <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                <span>Active 24/7 Monitoring Protocol</span>
               </div>
-
-              {/* Simple Health Insights */}
-              <div className="clay-card p-6">
-                <h5 className="font-bold text-base text-(--text-dark) mb-2">Simple Health Insights</h5>
-                <p className="text-(--text) text-sm leading-relaxed">
-                  Instead of overwhelming medical data, the assistant explains infant health metrics in easy-to-understand language, helping parents know what is normal and when professional medical attention may be needed.
-                </p>
-              </div>
-
-              {/* 24/7 Parenting Support */}
-              <div className="clay-card p-6">
-                <h5 className="font-bold text-base text-(--text-dark) mb-2">24/7 Parenting Support</h5>
-                <p className="text-(--text) text-sm leading-relaxed">
-                  Whether it's 2 PM or 2 AM, the MAATRIVA AI Assistant is always available to answer questions, provide guidance, and offer reassurance when parents need it most.
-                </p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Two Levels of Intelligence Section (2 columns on desktop) - Delayed 1.2s */}
-          <motion.div 
-            animate={{
-              y: isExpanded ? 0 : 20,
-              opacity: isExpanded ? 1 : 0
-            }}
-            transition={{ duration: 0.4, delay: isExpanded ? 1.2 : 0, ease: "easeOut" }}
-            className="space-y-8"
-          >
-            <div className="flex items-center gap-3 border-b border-(--border) pb-4">
-              <div className="p-2.5 rounded-xl bg-(--primary)/10 text-(--primary)">
-                <TrendingUp className="w-6 h-6" />
-              </div>
-              <h4 className="text-2xl font-bold text-(--text-dark)">
-                Two Levels of Intelligence
-              </h4>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              {/* Chat Assistant */}
-              <div className="clay-card p-6 border border-white bg-white/70">
-                <h5 className="font-bold text-lg text-(--text-dark) mb-1">MAATRIVA Chat Assistant</h5>
-                <p className="text-xs text-(--text-light) mb-6">Everyday support on the go</p>
-                
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-2.5 text-sm text-(--text)">
-                    <div className="mt-0.5 rounded-full p-0.5 bg-(--primary)/10 text-(--primary) flex-shrink-0">
-                      <Check className="w-3 h-3 stroke-[3]" />
-                    </div>
-                    <span>Parenting guidance and support</span>
-                  </li>
-                  <li className="flex items-start gap-2.5 text-sm text-(--text)">
-                    <div className="mt-0.5 rounded-full p-0.5 bg-(--primary)/10 text-(--primary) flex-shrink-0">
-                      <Check className="w-3 h-3 stroke-[3]" />
-                    </div>
-                    <span>Developmental milestone tracking</span>
-                  </li>
-                  <li className="flex items-start gap-2.5 text-sm text-(--text)">
-                    <div className="mt-0.5 rounded-full p-0.5 bg-(--primary)/10 text-(--primary) flex-shrink-0">
-                      <Check className="w-3 h-3 stroke-[3]" />
-                    </div>
-                    <span>Feeding and sleep recommendations</span>
-                  </li>
-                  <li className="flex items-start gap-2.5 text-sm text-(--text)">
-                    <div className="mt-0.5 rounded-full p-0.5 bg-(--primary)/10 text-(--primary) flex-shrink-0">
-                      <Check className="w-3 h-3 stroke-[3]" />
-                    </div>
-                    <span>Everyday caregiving assistance</span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Voice Assistant Pro */}
-              <div className="clay-card p-6 border border-white bg-white/70 relative overflow-hidden">
-                <div className="absolute -top-12 -right-12 w-28 h-28 bg-(--primary)/5 rounded-full blur-xl" />
-                
-                <div className="relative z-10">
-                  <div className="flex justify-between items-center mb-1">
-                    <h5 className="font-bold text-lg text-(--text-dark)">MAATRIVA Voice Assistant</h5>
-                    <span className="px-2 py-0.5 text-[9px] font-bold tracking-wider uppercase bg-(--primary)/10 text-(--primary) rounded-full">
-                      Pro Version
-                    </span>
-                  </div>
-                  <p className="text-xs text-(--text-light) mb-6">Advanced real-time intelligence</p>
-                  
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-2.5 text-sm text-(--text)">
-                      <div className="mt-0.5 rounded-full p-0.5 bg-(--primary)/10 text-(--primary) flex-shrink-0">
-                        <Check className="w-3 h-3 stroke-[3]" />
-                      </div>
-                      <span>Real-time voice interaction</span>
-                    </li>
-                    <li className="flex items-start gap-2.5 text-sm text-(--text)">
-                      <div className="mt-0.5 rounded-full p-0.5 bg-(--primary)/10 text-(--primary) flex-shrink-0">
-                        <Check className="w-3 h-3 stroke-[3]" />
-                      </div>
-                      <span>Advanced health monitoring</span>
-                    </li>
-                    <li className="flex items-start gap-2.5 text-sm text-(--text)">
-                      <div className="mt-0.5 rounded-full p-0.5 bg-(--primary)/10 text-(--primary) flex-shrink-0">
-                        <Check className="w-3 h-3 stroke-[3]" />
-                      </div>
-                      <span>Illness-risk prediction support</span>
-                    </li>
-                    <li className="flex items-start gap-2.5 text-sm text-(--text)">
-                      <div className="mt-0.5 rounded-full p-0.5 bg-(--primary)/10 text-(--primary) flex-shrink-0">
-                        <Check className="w-3 h-3 stroke-[3]" />
-                      </div>
-                      <span>Intelligent emergency escalation</span>
-                    </li>
-                    <li className="flex items-start gap-2.5 text-sm text-(--text)">
-                      <div className="mt-0.5 rounded-full p-0.5 bg-(--primary)/10 text-(--primary) flex-shrink-0">
-                        <Check className="w-3 h-3 stroke-[3]" />
-                      </div>
-                      <span>Enhanced personalized recommendations</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Bottom/Footer banner - Delayed 1.3s */}
-          <motion.div 
-            animate={{
-              y: isExpanded ? 0 : 20,
-              opacity: isExpanded ? 1 : 0
-            }}
-            transition={{ duration: 0.4, delay: isExpanded ? 1.3 : 0, ease: "easeOut" }}
-            className="clay-card p-6 border border-white bg-white/40 backdrop-blur-md rounded-2xl text-center"
-          >
-            <p className="text-(--text-dark) font-medium leading-relaxed">
-              With <strong>MAATRIVA</strong>, parents don't just monitor their baby's wellbeing — they gain a trusted companion that provides reassurance, guidance, and support every step of the way.
-            </p>
-          </motion.div>
-
-          </div>
+            </motion.div>
+          ))}
         </div>
 
       </div>

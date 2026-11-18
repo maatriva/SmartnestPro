@@ -20,7 +20,7 @@ export default function HowItWorksHeader() {
         Get started in
         <br />
         <span className="text-(--primary)">
-          4 simple steps
+          3 simple steps
         </span>
       </h2>
 

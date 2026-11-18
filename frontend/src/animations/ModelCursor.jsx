@@ -38,14 +38,14 @@ const createContactShadowTexture = () => {
 
 const ModelCursor = ({
   targetSize = 3.6,
-  modelColor = "#D9825F", // Terracotta clay body
-  frameColor = "#F2B8A8", // Rose clay frame
-  mattressColor = "#A8B89A", // Sage calming mattress
-  rodColor = "#F2B8A8", // Rose clay supporting rods
-  metalColor = "#F0C675", // Honey gold hinges, pins & hardware
-  tuskColor = "#F0C675", // Honey gold tusks & accents
-  eyeColor = "#3A2B2B", // Cocoa button eyes
-  detailColor = "#3A2B2B", // Cocoa details
+  modelColor = "#F7F2EB", // Warm Pearl Bisque Ivory body
+  frameColor = "#D9825F", // Terracotta Rose clay frame
+  mattressColor = "#9BB59B", // Calming Mint Sage mattress
+  rodColor = "#ECC880", // Champagne Honey Gold supporting rods
+  metalColor = "#ECC880", // Honey gold hinges, pins & hardware
+  tuskColor = "#FFFBF5", // Soft Ivory White tusks & accents
+  eyeColor = "#2C1E21", // Deep Cocoa button eyes
+  detailColor = "#20161C", // Cocoa OLED screen & details
   onLoaded,
 }) => {
   const mountRef = useRef(null);
@@ -280,8 +280,32 @@ const ModelCursor = ({
         }
       },
       (error) => {
-        console.error("Model load error:", error);
-        setLoading(false);
+        console.warn("Draco model load attempt failed, falling back to standard GLB...", error);
+        const standardLoader = new GLTFLoader();
+        standardLoader.load(
+          "/3Dmodel.glb",
+          (fallbackGltf) => {
+            const box = new THREE.Box3().setFromObject(fallbackGltf.scene);
+            const center = box.getCenter(new THREE.Vector3());
+            const size = box.getSize(new THREE.Vector3());
+            fallbackGltf.scene.position.x = -center.x;
+            fallbackGltf.scene.position.y = -center.y;
+            fallbackGltf.scene.position.z = -center.z;
+            const pivot = new THREE.Group();
+            pivot.add(fallbackGltf.scene);
+            const maxDim = Math.max(size.x, size.y, size.z);
+            pivot.scale.setScalar(targetSize / maxDim);
+            scene.add(pivot);
+            model = pivot;
+            setLoading(false);
+            if (typeof onLoaded === "function") onLoaded();
+          },
+          undefined,
+          (err2) => {
+            console.error("All 3D model loaders failed:", err2);
+            setLoading(false);
+          }
+        );
       }
     );
 
