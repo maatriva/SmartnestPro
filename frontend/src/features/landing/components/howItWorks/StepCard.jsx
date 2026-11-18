@@ -32,11 +32,11 @@ export default function StepCard({ step, index, totalSteps = 3 }) {
             </span>
           </div>
 
-          <h3 className="text-xl sm:text-2xl font-bold text-(--text-dark) mb-3 tracking-tight font-display">
+          <h3 className="text-xl sm:text-2xl font-bold text-(--text-dark) mb-3 tracking-tight font-display min-h-[3.25rem] flex items-center [text-wrap:balance]">
             {step.title}
           </h3>
 
-          <p className="text-(--text) leading-relaxed text-base sm:text-lg font-medium">
+          <p className="text-(--text) leading-relaxed text-base sm:text-lg font-medium [text-wrap:pretty]">
             {step.description}
           </p>
         </div>

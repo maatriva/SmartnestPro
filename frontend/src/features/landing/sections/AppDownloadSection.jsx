@@ -82,9 +82,9 @@ export default function AppDownloadSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) tracking-tight leading-tight mb-3 font-display"
+            className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) tracking-tight leading-tight mb-3 font-display text-center [text-wrap:balance]"
           >
-            Your Baby's Care & Vitals, <br />
+            Your Baby's Care & Vitals,{" "}
             <span className="text-(--primary)">Right in Your Pocket</span>
           </motion.h2>
 
@@ -93,7 +93,7 @@ export default function AppDownloadSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-base sm:text-lg md:text-xl font-medium text-(--text) leading-relaxed max-w-2xl mx-auto"
+            className="text-base sm:text-lg md:text-xl font-medium text-(--text) leading-relaxed max-w-2xl mx-auto text-center [text-wrap:balance]"
           >
             Stay seamlessly connected to your smart cradle from anywhere. Receive instant alerts, review health trends, and soothe baby with peace of mind.
           </motion.p>
@@ -140,7 +140,7 @@ export default function AppDownloadSection() {
 
               {/* Bottom Clay Status Pill */}
               <div className="mt-3 py-1 px-3 text-center text-[11px] font-bold text-(--text-dark) bg-white/70 rounded-full border border-white/80 shadow-xs flex items-center justify-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-(--primary) animate-pulse" />
                 <span>Live Cradle Sync Active</span>
               </div>
             </motion.div>
@@ -162,10 +162,10 @@ export default function AppDownloadSection() {
                     <div className="p-3 rounded-2xl clay-badge w-fit mb-3.5 text-(--primary) shadow-xs">
                       {feat.icon}
                     </div>
-                    <h3 className="text-lg sm:text-xl font-bold text-(--text-dark) mb-2 font-display">
+                    <h3 className="text-lg sm:text-xl font-bold text-(--text-dark) mb-2 font-display min-h-[3rem] flex items-center [text-wrap:balance]">
                       {feat.title}
                     </h3>
-                    <p className="text-base text-(--text) leading-relaxed font-medium">
+                    <p className="text-base text-(--text) leading-relaxed font-medium [text-wrap:pretty]">
                       {feat.description}
                     </p>
                   </div>

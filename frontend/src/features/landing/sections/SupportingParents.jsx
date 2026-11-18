@@ -140,11 +140,11 @@ export default function SupportingParents() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               <div className="clay-card p-4 rounded-2xl flex items-center gap-3">
-                <CheckCircle2 size={20} className="text-emerald-600 shrink-0" />
+                <CheckCircle2 size={20} className="text-(--primary) shrink-0" />
                 <span className="text-sm sm:text-base font-bold text-(--text-dark)">Instant Apnea Threshold Alerts</span>
               </div>
               <div className="clay-card p-4 rounded-2xl flex items-center gap-3">
-                <CheckCircle2 size={20} className="text-emerald-600 shrink-0" />
+                <CheckCircle2 size={20} className="text-(--primary) shrink-0" />
                 <span className="text-sm sm:text-base font-bold text-(--text-dark)">Encrypted Pediatric Data Vault</span>
               </div>
             </div>
@@ -183,7 +183,7 @@ export default function SupportingParents() {
               </div>
 
               <div className="mt-6 pt-4 border-t border-(--border)/30 flex items-center gap-2 text-xs font-bold text-(--text-dark)">
-                <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                <span className="w-2 h-2 rounded-full bg-(--primary)" />
                 <span>Active 24/7 Monitoring Protocol</span>
               </div>
             </motion.div>

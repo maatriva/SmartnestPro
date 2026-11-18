@@ -2,16 +2,16 @@ import { Helmet } from "react-helmet-async";
 import { Suspense, lazy } from "react";
 
 import Hero from "../sections/Hero";
+import TrustStrip from "../components/hero/TrustStrip";
+import StickyMobileCTA from "../components/hero/StickyMobileCTA";
 
-const OurStorySection = lazy(() => import("../sections/OurStorySection"));
-const Features = lazy(() => import("../sections/Feature"));
-const Diseases = lazy(() => import("../../diseases/components/diseases/Diseases"));
-const AppDownloadSection = lazy(() => import("../sections/AppDownloadSection"));
+const ProblemSection = lazy(() => import("../sections/ProblemSection"));
 const HowItWorks = lazy(() => import("../sections/howItWorks"));
-const ImpactNumbers = lazy(() => import("../sections/ImpactNumbers"));
-const ParentStories = lazy(() => import("../../parentStories/ParentStories"));
-const SupportingParents = lazy(() => import("../sections/SupportingParents"));
-const Pricing = lazy(() => import("../sections/Pricing"));
+const HealthFocusSection = lazy(() => import("../sections/HealthFocusSection"));
+const AppDownloadSection = lazy(() => import("../sections/AppDownloadSection"));
+const HowWeHelpSection = lazy(() => import("../sections/HowWeHelpSection"));
+const SafetyPrivacySection = lazy(() => import("../sections/SafetyPrivacySection"));
+const AchievementsSection = lazy(() => import("../sections/AchievementsSection"));
 const FAQSection = lazy(() => import("../sections/FAQSection"));
 const ContactNightSkySection = lazy(() => import("../sections/ContactNightSkySection"));
 
@@ -93,43 +93,43 @@ export default function Home() {
         </script>
       </Helmet>
 
-      {/* 1. Hero with Dawn Gradient, Bobbing Clay Moon & Floating Clouds */}
+      {/* 1. Hero with 3D Cradle, Celestial Moon & Minimal Distraction */}
       <Hero />
 
+      {/* 2. Slim Trust Strip with verified institutional partners */}
+      <TrustStrip />
+
       <Suspense fallback={<div className="h-48" />}>
-        {/* 2. About / Our Story with Clay Illustration & Scroll Reveal */}
-        <OurStorySection />
+        {/* 3. The Problem: Short, empathetic challenges parents face */}
+        <ProblemSection />
 
-        {/* 3. What We Offer: 3D Tilt Puffy Clay Cards */}
-        <Features />
-
-        {/* 4. Pediatric Monitoring Registry */}
-        <Diseases />
-
-        {/* 5. Mobile Companion App */}
-        <AppDownloadSection />
-
-        {/* 6. How It Works: Constellation Journey Timeline */}
+        {/* 4. How It Works: 3 Steps (Pair, Continuous AI Vigil, Real-Time Alerts) */}
         <HowItWorks />
 
-        {/* 7. Impact Numbers: Animated Count-up Counters in Clay Badges */}
-        <ImpactNumbers />
+        {/* 5. Health Focus: What we watch over (Baby & Postpartum Mother with Know More Modals) */}
+        <HealthFocusSection />
 
-        {/* 8. Supporting Parents: Holistic AI Companion Ecosystem */}
-        <SupportingParents />
+        {/* 6. App Showcase: Real App Screens & Mobile Companion Features */}
+        <AppDownloadSection />
 
-        {/* 9. Parent Stories: Soft Clay Carousel */}
-        <ParentStories />
+        {/* 7. How We Help: Support for real journeys across 4 user profiles */}
+        <HowWeHelpSection />
 
-        {/* 10. Pricing Plans & Cradle Models */}
-        <Pricing />
+        {/* 8. Safety & Privacy: Encrypted streams, parent access, expiring passes, data ownership */}
+        <SafetyPrivacySection />
 
-        {/* 11. FAQ: Clay Accordion */}
+        {/* 9. Achievements: Full authentic institutional partner grid */}
+        <AchievementsSection />
+
+        {/* 10. FAQ: High-clarity Clay Accordion */}
         <FAQSection />
 
-        {/* 12. Contact / CTA: Night-sky Section in Plum Dusk with Soft Form */}
+        {/* 11. Final CTA: Night-sky Warm Clay Section with Inquiry Form */}
         <ContactNightSkySection />
       </Suspense>
+
+      {/* Sticky Mobile "Get Maatriva" CTA button (auto-hides when #contact is visible) */}
+      <StickyMobileCTA />
     </div>
   );
 }

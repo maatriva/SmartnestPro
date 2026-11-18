@@ -57,7 +57,7 @@ export default function SurveySuccess() {
           rel="noopener noreferrer"
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.98 }}
-          className="w-full py-4 px-6 clay-btn clay-btn-primary text-white text-center font-bold text-base block shadow-lg shadow-[#5A78D6]/25"
+          className="w-full py-4 px-6 clay-btn clay-btn-primary text-white text-center font-bold text-base block shadow-lg shadow-(--primary)/25"
         >
           Claim Karma
         </motion.a>

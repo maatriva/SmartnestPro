@@ -283,7 +283,7 @@
 }
 
 .cta-button {
-  background: linear-gradient(135deg, #7B8FF8, #5A78D6);
+  background: linear-gradient(135deg, #E28D6A, #D9825F);
   color: #ffffff;
   font-weight: 700;
   padding: 1rem 2.5rem;
@@ -291,25 +291,25 @@
   border: 1px solid rgba(255, 255, 255, 0.4);
   box-shadow: 
     inset 4px 4px 8px rgba(255, 255, 255, 0.45),
-    inset -4px -4px 8px rgba(20, 30, 90, 0.4),
-    0 8px 24px rgba(90, 120, 214, 0.25);
+    inset -4px -4px 8px rgba(120, 50, 20, 0.3),
+    0 8px 24px rgba(217, 130, 95, 0.25);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
 
   &:hover {
     transform: translateY(-4px) scale(1.03);
-    background: linear-gradient(135deg, #8C9EFF, #6E88E6);
+    background: linear-gradient(135deg, #EE9A78, #E28D6A);
     box-shadow: 
       inset 5px 5px 10px rgba(255, 255, 255, 0.55),
-      inset -5px -5px 10px rgba(20, 30, 90, 0.5),
-      0 12px 28px rgba(90, 120, 214, 0.4); // soft lavender glow
+      inset -5px -5px 10px rgba(120, 50, 20, 0.35),
+      0 12px 28px rgba(217, 130, 95, 0.35); // warm terracotta glow
   }
 
   &:active {
     transform: translateY(0) scale(0.98);
     box-shadow: 
-      inset 4px 4px 8px rgba(10, 15, 60, 0.5),
-      inset -4px -4px 8px rgba(255, 255, 255, 0.2);
+      inset 4px 4px 8px rgba(100, 30, 10, 0.4),
+      inset -4px -4px 8px rgba(255, 255, 255, 0.3);
   }
 }
 

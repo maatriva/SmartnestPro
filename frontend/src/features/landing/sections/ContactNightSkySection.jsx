@@ -72,13 +72,12 @@ export default function ContactNightSkySection() {
               <span>We're Here For You</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) leading-tight font-display">
-              Let's Bring Peace
-              <br />
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) leading-tight font-display [text-wrap:balance]">
+              Let's Bring Peace{" "}
               <span className="text-(--primary)">To Your Nursery.</span>
             </h2>
 
-            <p className="text-base sm:text-lg text-(--text) leading-relaxed font-medium">
+            <p className="text-base sm:text-lg text-(--text) leading-relaxed font-medium [text-wrap:pretty]">
               Have questions about how Maatriva adapts to your newborn? Want to explore partnerships or hospital nursery deployments? Reach out and our team will get back to you with care.
             </p>
 
@@ -109,10 +108,10 @@ export default function ContactNightSkySection() {
             className="lg:col-span-7"
           >
             <div className="clay-card-dark p-8 sm:p-10 relative shadow-xl">
-              <h3 className="text-2xl font-bold text-(--text-dark) mb-2 font-display">
+              <h3 className="text-2xl sm:text-3xl font-bold text-(--text-dark) mb-2 font-display [text-wrap:balance]">
                 Send a Gentle Message
               </h3>
-              <p className="text-sm text-(--text) mb-6 font-medium">
+              <p className="text-sm sm:text-base text-(--text) mb-6 font-medium [text-wrap:pretty]">
                 Whether you're an expectant parent, pediatrician, or partner, we'd love to connect.
               </p>
 
@@ -200,8 +199,8 @@ export default function ContactNightSkySection() {
                   <div
                     className={`p-3.5 rounded-2xl text-xs sm:text-sm font-bold ${
                       status.type === "success"
-                        ? "bg-emerald-50 text-emerald-800 border border-emerald-300"
-                        : "bg-red-50 text-red-800 border border-red-300"
+                        ? "bg-amber-50/90 text-(--primary) border border-(--primary)/30"
+                        : "bg-rose-50/90 text-(--primary) border border-(--primary)/30"
                     }`}
                   >
                     {status.message}

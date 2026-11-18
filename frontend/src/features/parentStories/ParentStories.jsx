@@ -305,7 +305,7 @@ export default function ParentStories() {
             </p>
             <button
               onClick={() => setIsModalOpen(true)}
-              className="clay-btn clay-btn-primary px-8 py-3.5 text-sm font-bold shadow-lg shadow-[#5A78D6]/25 cursor-pointer"
+              className="clay-btn clay-btn-primary px-8 py-3.5 text-sm font-bold shadow-lg shadow-(--primary)/25 cursor-pointer"
             >
               Share Your Experience
             </button>

@@ -1,0 +1,38 @@
+{
+  "title": "Safety and Privacy First",
+  "subtitle": "Your baby’s sanctuary and your family’s privacy are protected with zero compromises.",
+  "cards": [
+    {
+      "id": "encrypted-video",
+      "confirmed": true,
+      "needsConfirmation": false,
+      "icon": "shield",
+      "title": "End-to-End Encrypted Streaming",
+      "description": "Video and two-way audio streams travel over direct encrypted TLS channels with zero open listening ports on your home network."
+    },
+    {
+      "id": "parent-controlled",
+      "confirmed": true,
+      "needsConfirmation": false,
+      "icon": "lock",
+      "title": "Parent-Controlled Access",
+      "description": "Only verified parents hold primary administrative keys. You decide exactly who can view, listen, or control cradle soothing functions."
+    },
+    {
+      "id": "expiring-access",
+      "confirmed": true,
+      "needsConfirmation": false,
+      "icon": "clock",
+      "title": "Expiring Temporary Passes",
+      "description": "Grant babysitters or grandparents time-bound passes via QR code that expire automatically when their scheduled care window ends."
+    },
+    {
+      "id": "family-data",
+      "confirmed": true,
+      "needsConfirmation": false,
+      "icon": "file-shield",
+      "title": "Data Stays with Your Family",
+      "description": "Your newborn's biometric trends, cry audio, and sleep analytics belong to you. We never sell or monetize private nursery data to third parties."
+    }
+  ]
+}

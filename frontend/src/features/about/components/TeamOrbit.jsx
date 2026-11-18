@@ -696,7 +696,7 @@ export default function TeamOrbit() {
               {/* Close button */}
               <button
                 onClick={closePanel}
-                className="absolute top-4 right-4 sm:top-6 sm:right-8 flex h-10 w-10 items-center justify-center rounded-full clay-badge text-(--text-light) hover:text-red-500 hover:border-red-200/40 bg-white/50 dark:bg-zinc-900/50 backdrop-blur active:scale-95 transition-all cursor-pointer z-55 border border-white/40"
+                className="absolute top-4 right-4 sm:top-6 sm:right-8 flex h-10 w-10 items-center justify-center rounded-full clay-badge text-(--text-light) hover:text-(--primary) hover:border-(--primary)/40 bg-white/50 dark:bg-zinc-900/50 backdrop-blur active:scale-95 transition-all cursor-pointer z-55 border border-white/40"
               >
                 <X size={18} strokeWidth={2.5} />
               </button>

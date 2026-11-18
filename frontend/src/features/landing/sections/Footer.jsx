@@ -5,7 +5,15 @@ import { Facebook, Linkedin, Instagram, Youtube, Sparkles, Heart } from "lucide-
 import ContactModal from "../../../shared/components/ContactModal";
 import useContactForm from "../hooks/useContactForm";
 import { SOCIAL_LINKS, FOOTER_LINKS } from "../data/footerData";
-import AchievementsSection from "./AchievementsSection";
+
+const RECOGNIZED_PARTNERS = [
+  { name: "F6S AI #24", href: "#achievements" },
+  { name: "IHFC — IIT Delhi", href: "#achievements" },
+  { name: "IIT Delhi", href: "#achievements" },
+  { name: "IIT Mandi Catalyst", href: "#achievements" },
+  { name: "IIT Mandi", href: "#achievements" },
+  { name: "Wadhwani Foundation", href: "#achievements" },
+];
 
 export default function Footer() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -56,9 +64,6 @@ export default function Footer() {
             <path d="M0,0 C200,80 400,-30 600,45 C800,120 1000,10 1200,60 L1200,120 L0,120 Z" />
           </svg>
         </div>
-
-        {/* 🏆 Achievements Section - Direct integration with zero color break */}
-        <AchievementsSection />
 
         {/* Twinkling Stars in Footer Links Canvas */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -194,6 +199,26 @@ export default function Footer() {
               >
                 Get in Touch
               </button>
+            </div>
+          </div>
+
+          {/* Recognized By Mention */}
+          <div className="py-4 border-b border-(--border)/30 flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm font-medium text-(--text)">
+            <div className="flex items-center gap-2 text-(--text-dark) font-bold">
+              <Sparkles size={14} className="text-(--primary)" />
+              <span>Recognised & Supported by:</span>
+            </div>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-(--text) font-semibold">
+              {RECOGNIZED_PARTNERS.map((partner, idx) => (
+                <a
+                  key={idx}
+                  href={partner.href}
+                  className="hover:text-(--primary) transition-colors inline-flex items-center gap-1"
+                >
+                  <span>{partner.name}</span>
+                  {idx < RECOGNIZED_PARTNERS.length - 1 && <span className="text-(--border) ml-3">·</span>}
+                </a>
+              ))}
             </div>
           </div>
 

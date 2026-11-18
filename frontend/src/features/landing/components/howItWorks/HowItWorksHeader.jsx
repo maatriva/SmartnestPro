@@ -16,15 +16,14 @@ export default function HowItWorksHeader() {
         How It Works
       </div>
 
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) leading-tight mb-3">
-        Get started in
-        <br />
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) leading-tight mb-3 [text-wrap:balance]">
+        Get started in{" "}
         <span className="text-(--primary)">
           3 simple steps
         </span>
       </h2>
 
-      <p className="text-base sm:text-lg text-(--text-light) font-medium max-w-2xl mx-auto leading-relaxed">
+      <p className="text-base sm:text-lg text-(--text) font-medium max-w-2xl mx-auto leading-relaxed [text-wrap:balance]">
         From unboxing to sweet dreams, we've made it incredibly easy to set up
         and nurture your newborn.
       </p>

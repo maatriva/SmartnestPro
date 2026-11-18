@@ -48,7 +48,7 @@ export default function AboutHero() {
           </p>
           <Link
             to="/#features"
-            className="mt-9 px-8 py-4 clay-btn clay-btn-primary text-base font-bold inline-flex items-center justify-center text-center cursor-pointer transition-all duration-300 shadow-lg shadow-[#5A78D6]/25"
+            className="mt-9 px-8 py-4 clay-btn clay-btn-primary text-base font-bold inline-flex items-center justify-center text-center cursor-pointer transition-all duration-300 shadow-lg shadow-(--primary)/25"
           >
             Discover the Innovation
           </Link>

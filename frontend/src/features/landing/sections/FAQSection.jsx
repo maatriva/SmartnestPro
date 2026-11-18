@@ -51,12 +51,11 @@ export default function FAQSection() {
             <HelpCircle size={15} className="text-(--primary)" />
             <span>Parent Inquiries</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) leading-tight mb-3">
-            Frequently Asked
-            <br />
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) leading-tight mb-3 text-center [text-wrap:balance]">
+            Frequently Asked{" "}
             <span className="text-(--primary)">Questions</span>
           </h2>
-          <p className="text-base sm:text-lg text-(--text-light) font-medium max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-(--text) font-medium max-w-2xl mx-auto leading-relaxed text-center [text-wrap:balance]">
             Clear, honest answers to help you make informed decisions for your newborn.
           </p>
         </div>
@@ -80,7 +79,7 @@ export default function FAQSection() {
                   className="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-lg sm:text-xl font-bold text-(--text-dark) tracking-tight">
+                  <span className="text-lg sm:text-xl font-bold text-(--text-dark) tracking-tight [text-wrap:balance]">
                     {item.question}
                   </span>
 

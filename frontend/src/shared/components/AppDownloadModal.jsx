@@ -64,7 +64,7 @@ export default function AppDownloadModal({ isOpen, onClose }) {
               download="maatriva-app.apk"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-4 px-6 rounded-2xl clay-btn clay-btn-primary font-bold text-base sm:text-lg text-white flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-[#5A78D6]/25"
+              className="w-full py-4 px-6 rounded-2xl clay-btn clay-btn-primary font-bold text-base sm:text-lg text-white flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-(--primary)/25"
             >
               <Download size={22} />
               <span>Download Direct Android APK</span>

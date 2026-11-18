@@ -25,23 +25,36 @@ export default function useHeroTextAnimation(ref) {
 
     textNodes.forEach((textNode) => {
       const text = textNode.nodeValue || "";
+      if (!text.trim()) return;
 
       const frag = document.createDocumentFragment();
+      // Split preserving words and whitespace tokens
+      const tokens = text.split(/(\s+)/);
 
-      [...text].forEach((char) => {
-        if (char === " ") {
-          frag.appendChild(document.createTextNode(" "));
+      tokens.forEach((token) => {
+        if (!token) return;
+
+        if (/^\s+$/.test(token)) {
+          // Whitespace token: keep as standard text node for natural inter-word spacing
+          frag.appendChild(document.createTextNode(token));
           return;
         }
 
-        const span = document.createElement("span");
+        // Word token: wrap in an unbreakable inline-block word container
+        const wordSpan = document.createElement("span");
+        wordSpan.style.display = "inline-block";
+        wordSpan.style.whiteSpace = "nowrap";
 
-        span.textContent = char;
-        span.style.display = "inline-block";
+        [...token].forEach((char) => {
+          const charSpan = document.createElement("span");
+          charSpan.textContent = char;
+          charSpan.style.display = "inline-block";
 
-        frag.appendChild(span);
+          wordSpan.appendChild(charSpan);
+          spans.push(charSpan);
+        });
 
-        spans.push(span);
+        frag.appendChild(wordSpan);
       });
 
       textNode.parentNode.replaceChild(frag, textNode);

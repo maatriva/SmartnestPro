@@ -60,13 +60,14 @@ export default function HeroContent({
           md:text-6xl
           lg:text-7xl
           font-black
-          leading-[1.1]
+          leading-[1.12]
           text-(--text-dark)
           tracking-tight
+          [text-wrap:balance]
         "
       >
         {title.first}
-        <br />
+        <br className="hidden sm:inline" />{" "}
         <span className="text-(--primary) drop-shadow-sm">
           {title.second}
         </span>
@@ -86,34 +87,27 @@ export default function HeroContent({
           max-w-xl
           text-(--text)
           font-medium
+          [text-wrap:pretty]
         "
       >
         {description}
       </motion.p>
 
-      {/* Two Puffy CTA Buttons */}
+      {/* ONE Primary CTA Button */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 0.6 }}
-        className="flex flex-wrap items-center gap-4 mt-8"
+        className="mt-8"
       >
         <Link
           to="/survey"
           onClick={triggerStarBurst}
-          className="clay-btn clay-btn-primary px-8 py-4 text-base sm:text-lg font-bold inline-flex items-center gap-2 justify-center shadow-lg hover:shadow-xl"
+          className="clay-btn clay-btn-primary px-9 py-4 text-base sm:text-lg font-bold inline-flex items-center gap-2.5 justify-center shadow-lg hover:shadow-xl active:scale-95 transition-transform"
         >
-          <span>{buttonText || "Take Baby Survey"}</span>
+          <span>{buttonText || "Experience Maatriva"}</span>
           <ArrowRight size={18} />
         </Link>
-
-        <a
-          href="#features"
-          onClick={triggerStarBurst}
-          className="clay-btn clay-btn-secondary px-7 py-4 text-base font-bold inline-flex items-center gap-2 justify-center text-(--text-dark) shadow-md hover:shadow-lg"
-        >
-          <span>Explore Cradle</span>
-        </a>
       </motion.div>
 
       {/* Trust Mini Bar */}
@@ -124,7 +118,7 @@ export default function HeroContent({
         className="mt-10 flex flex-wrap items-center gap-6 pt-6 border-t border-(--border)/40 text-sm sm:text-base text-(--text-dark) font-bold"
       >
         <div className="flex items-center gap-2">
-          <div className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-700 flex items-center justify-center">
+          <div className="w-5 h-5 rounded-full bg-(--primary-soft) text-(--primary) flex items-center justify-center">
             <ShieldCheck size={14} />
           </div>
           <span>Pediatric-safe Non-contact AI</span>

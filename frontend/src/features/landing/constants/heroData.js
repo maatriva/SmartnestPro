@@ -1,13 +1,13 @@
 export const HERO_DATA = {
-  badge: "AI Powered Baby Care",
+  badge: "AI-Powered Infant Wellness",
 
   title: {
-    first: "Sleep Better,",
-    second: "Parent Smarter",
+    first: "The Smart Cradle for",
+    second: "Peaceful Infant Sleep",
   },
 
   description:
-    "The world's first AI-powered smart cradle that learns your baby's needs, automates soothing routines, and provides peace of mind for every parent.",
+    "Contactless vital monitoring, automated soothing rhythms, and real-time peace of mind for new parents—with zero wearable wires.",
 
-  buttonText: "Survey",
+  buttonText: "Experience Maatriva",
 };

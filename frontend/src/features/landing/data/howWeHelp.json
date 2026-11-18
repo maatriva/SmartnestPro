@@ -1,0 +1,136 @@
+{
+  "title": "Support for every part of the journey.",
+  "subtitle": "Care that fits real families, from the first night to the first year.",
+  "disclaimer": "Maatriva supports parents and care teams. It does not replace medical advice, diagnosis, or treatment.",
+  "audiences": [
+    {
+      "id": "new-mothers",
+      "tabLabel": "New Mothers",
+      "headline": "Rest, with peace of mind.",
+      "description": "The early postpartum weeks are deeply demanding. Maatriva's gentle automated soothing and quiet vigilance let you rest between feeds, knowing you will be alerted the moment your newborn needs your touch.",
+      "needsMedicalReview": true,
+      "screenType": "sleep-lullaby",
+      "benefits": [
+        {
+          "icon": "moon",
+          "title": "Automated Sleep Soothing",
+          "text": "Motorized cradle automatically triggers gentle, pediatric-approved sway rhythms when restless stirring begins."
+        },
+        {
+          "icon": "sound",
+          "title": "Voice Vault & Lullabies",
+          "text": "Plays comforting womb sounds, white noise, and custom family recordings to settle baby naturally."
+        },
+        {
+          "icon": "eye",
+          "title": "Crystal Night-Vision View",
+          "text": "Infrared camera lets you check on your resting infant without turning on harsh nursery lights."
+        }
+      ],
+      "postpartumHelpBox": {
+        "title": "Postpartum Wellbeing & Emotional Health Support",
+        "message": "Feeling very sad, anxious, or hopeless after birth? You are not alone, and help works. Please talk to your doctor.",
+        "emergencyNote": "If you have thoughts of harming yourself or your baby, please seek immediate medical care.",
+        "healthFocusAnchor": "health-focus"
+      },
+      "realLifeMoment": {
+        "time": "3:15 AM",
+        "vignette": "The cradle sways gently at a whisper pace while mom rests peacefully.",
+        "caption": "Nighttime Vigil: Gentle sway helps baby resettle after a feed without waking the entire household."
+      }
+    },
+    {
+      "id": "working-mothers",
+      "tabLabel": "Working Mothers",
+      "headline": "Close, even when you are away.",
+      "description": "Returning to work or stepping out shouldn't mean losing connection. Enjoy encrypted HD streaming, real-time status notifications, and safe caregiver coordination so you can focus with a calm heart.",
+      "needsMedicalReview": true,
+      "screenType": "live-camera",
+      "benefits": [
+        {
+          "icon": "camera",
+          "title": "Remote Live Streaming",
+          "text": "Encrypted HD video and two-way audio let you peek in and whisper hello from your office desk or commute."
+        },
+        {
+          "icon": "bell",
+          "title": "Contextual Event Alerts",
+          "text": "Receive clear notifications when baby falls asleep, wakes up, or begins a cry sequence."
+        },
+        {
+          "icon": "shield",
+          "title": "Master Parent Permission Control",
+          "text": "You remain in total control of who can view the stream, with single-tap instant access revocation."
+        }
+      ],
+      "realLifeMoment": {
+        "time": "2:30 PM",
+        "vignette": "A quick glance between meetings reveals baby sleeping deeply.",
+        "caption": "Daytime Continuity: Check vital trends and room temperature during lunch breaks with zero guesswork."
+      }
+    },
+    {
+      "id": "families-caregivers",
+      "tabLabel": "Families & Caregivers",
+      "headline": "Everyone on the same page.",
+      "description": "Caregiving takes a village. Seamlessly invite grandparents, trusted nannies, or family members with role-limited QR passes, scheduled access windows, and clear visual instructions.",
+      "needsMedicalReview": true,
+      "screenType": "caregiver-qr",
+      "benefits": [
+        {
+          "icon": "users",
+          "title": "Caregiver Invitation Wizard",
+          "text": "Easily onboard helpers via simple QR code scans—no complex account setups or technical hurdles."
+        },
+        {
+          "icon": "lock",
+          "title": "Role-Limited Permissions",
+          "text": "Decide exactly what each helper sees: audio-only, soothing remote controls, or view-only mode."
+        },
+        {
+          "icon": "clock",
+          "title": "Expiring Access with Live Countdown",
+          "text": "Set temporary passes that expire automatically when the babysitter's scheduled shift concludes."
+        }
+      ],
+      "realLifeMoment": {
+        "time": "5:45 PM",
+        "vignette": "Grandparents verify comfortable nursery warmth before bedtime.",
+        "caption": "Shared Teamwork: Extended family stays involved and reassured without disturbing parental routines."
+      }
+    },
+    {
+      "id": "hospitals-clinics",
+      "tabLabel": "Hospitals, Clinics & Pediatricians",
+      "headline": "Clear baby data for better consultations.",
+      "description": "Bridge home nursery observations with professional clinical consultations. Maatriva logs physiological trends into clean, organized charts that parents can share with pediatric teams.",
+      "needsMedicalReview": true,
+      "screenType": "pdf-export",
+      "partnerCallout": "For clinics and hospitals: partner with us",
+      "contactAnchor": "contact",
+      "consultationNotice": "Supports consultation discussions; does not replace physician evaluation or clinical diagnosis.",
+      "benefits": [
+        {
+          "icon": "file-text",
+          "title": "Continuous Vitals History",
+          "text": "Track longitudinal respiratory rates, temperature stability, and sleep continuity over weeks."
+        },
+        {
+          "icon": "download",
+          "title": "Structured PDF Export",
+          "text": "Generate concise clinical summary reports formatted for quick pediatric intake during routine checkups."
+        },
+        {
+          "icon": "stethoscope",
+          "title": "Objective Consultation Context",
+          "text": "Eliminate parental recall stress during 15-minute clinical checkups with clear 14-day trend charts."
+        }
+      ],
+      "realLifeMoment": {
+        "time": "10:15 AM",
+        "vignette": "Doctor and parents review overnight respiratory rhythm curves before clinical guidance.",
+        "caption": "Informed Discussions: Objective data empowers doctors and parents to communicate with clarity."
+      }
+    }
+  ]
+}

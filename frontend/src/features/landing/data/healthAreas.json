@@ -1,0 +1,283 @@
+{
+  "baby": [
+    {
+      "id": "baby-breathing",
+      "enabled": true,
+      "needsMedicalReview": true,
+      "iconType": "breathing",
+      "title": "Breathing Rhythm & Patterns",
+      "shortDescription": "Tracking respiratory continuity, cadence, and pauses during deep infant sleep.",
+      "whatItIs": "A newborn's breathing pattern is naturally irregular and can shift between fast and slow rhythms. Monitoring tracks the steadiness of baby's chest movement and continuous airflow without any attached wires.",
+      "whyItMatters": "Infants under one year are vulnerable to prolonged pauses in respiration and shallow airflow. Early awareness of labored breathing gives parents peace of mind and timely indicators.",
+      "warningSigns": [
+        "Rapid, unusually fast, or labored breathing with flared nostrils",
+        "Chest visibly sinking in deeply beneath the ribs (retractions)",
+        "Pauses in breathing that last more than a few seconds",
+        "Bluish or pale tint around the lips, tongue, or nail beds",
+        "Grunting noises with each exhale or feeding poorly"
+      ],
+      "howMaatrivaHelps": "How Maatriva is designed to support: Contactless passive radar and optical micro-movement observation are being developed to help observe chest expansion during sleep. Note: Maatriva is an observational wellness tool and does not provide clinical diagnosis or treatment.",
+      "emergencyAction": "If baby is struggling to breathe, turning blue or pale, or unresponsive, call emergency services immediately or take baby to the nearest emergency room.",
+      "sources": [
+        { "name": "American Academy of Pediatrics (AAP)", "url": "https://www.aap.org/" },
+        { "name": "World Health Organization (WHO)", "url": "https://www.who.int/" }
+      ]
+    },
+    {
+      "id": "baby-heart-rate",
+      "enabled": true,
+      "needsMedicalReview": true,
+      "iconType": "heart",
+      "title": "Heart Rate & Circulation",
+      "shortDescription": "Observing gentle resting cardiovascular pulses without adhesives or skin sensors.",
+      "whatItIs": "A baby's heart beats much faster than an adult's and naturally responds to sleep phases, crying, feeding, and body temperature.",
+      "whyItMatters": "Sustained changes in pulse stability can indicate physiological stress, dehydration, fever onset, or systemic distress.",
+      "warningSigns": [
+        "Heart beating noticeably too fast or unusually slow while quietly resting",
+        "Skin looking unusually pale, grayish, or mottled",
+        "Baby feels unusually cool or clammy to the touch",
+        "Extreme lethargy or lack of energy to feed"
+      ],
+      "howMaatrivaHelps": "How Maatriva is designed to support: Non-invasive pulse trend tracking is being engineered to identify shifts from baby's personal baseline. Note: Maatriva is an observational wellness tool and does not provide medical evaluation or clinical triage.",
+      "emergencyAction": "If your baby becomes limp, pale, or has an abnormally racing or slowing heart accompanied by lethargy, seek emergency medical care immediately.",
+      "sources": [
+        { "name": "American Academy of Pediatrics (AAP)", "url": "https://www.aap.org/" },
+        { "name": "March of Dimes", "url": "https://www.marchofdimes.org/" }
+      ]
+    },
+    {
+      "id": "baby-temperature",
+      "enabled": true,
+      "needsMedicalReview": true,
+      "iconType": "temperature",
+      "title": "Body Temperature Regulation",
+      "shortDescription": "Continuous thermal tracking to safeguard against overheating or hypothermia.",
+      "whatItIs": "Newborns have immature temperature regulation systems and lose heat four times faster than adults, while also being susceptible to overheating from heavy swaddles.",
+      "whyItMatters": "Both fever and low body temperature can be early signs of infection, environmental stress, or illness in young infants.",
+      "warningSigns": [
+        "Forehead, chest, or neck feeling noticeably hot or unusually cold",
+        "Flushed cheeks, damp hair, or heat rash from heavy wrapping",
+        "Shivering, cold extremities with pale skin, or extreme lethargy",
+        "Refusal to feed or crying weakly when held"
+      ],
+      "howMaatrivaHelps": "How Maatriva is designed to support: Multi-point contactless infrared ambient and surface thermal sensing helps watch the cradle micro-climate. Note: Maatriva is an observational wellness tool and does not provide medical evaluation or clinical triage.",
+      "emergencyAction": "A rectal temperature of 100.4°F (38°C) or higher in an infant under 3 months, or a temperature below 97°F (36.1°C), is a medical emergency requiring urgent doctor care.",
+      "sources": [
+        { "name": "American Academy of Pediatrics (AAP)", "url": "https://www.aap.org/" },
+        { "name": "National Health Mission India (NHM)", "url": "https://nhm.gov.in/" }
+      ]
+    },
+    {
+      "id": "baby-blood-oxygen",
+      "enabled": true,
+      "needsMedicalReview": true,
+      "iconType": "oxygen",
+      "title": "Blood Oxygen Continuity",
+      "shortDescription": "Monitoring baseline oxygenation patterns and nighttime respiratory efficiency.",
+      "whatItIs": "Blood oxygen saturation reflects how effectively oxygen inhaled through the lungs is transported through the bloodstream to vital organs.",
+      "whyItMatters": "Drops in oxygenation can occur quietly during respiratory pauses, sleep airway obstructions, or airway congestion.",
+      "warningSigns": [
+        "Duskiness or blue tint around baby's mouth, lips, or fingernails",
+        "Labored breathing with nostrils widening or chest pulling inward",
+        "Extreme sleepiness where baby cannot be woken for scheduled feeds",
+        "Weak, high-pitched, or raspy cry"
+      ],
+      "howMaatrivaHelps": "How Maatriva is designed to support: Research-stage optical wellness algorithms aim to provide passive oversight without restrictive bands or tape on delicate newborn feet. Note: Maatriva is an observational wellness tool and does not provide clinical diagnosis or treatment.",
+      "emergencyAction": "If your baby shows blue discoloration around the mouth or appears unresponsive, call emergency services immediately.",
+      "sources": [
+        { "name": "World Health Organization (WHO)", "url": "https://www.who.int/" },
+        { "name": "American Academy of Pediatrics (AAP)", "url": "https://www.aap.org/" }
+      ]
+    },
+    {
+      "id": "baby-sleep-movement",
+      "enabled": true,
+      "needsMedicalReview": true,
+      "iconType": "moon",
+      "title": "Sleep Cycles & Micro-Movement",
+      "shortDescription": "Logging restful sleep phases, restlessness, and roll-over safety postures.",
+      "whatItIs": "Infants cycle rapidly between light REM sleep and deep restorative sleep. Movement patterns provide deep insight into neurological settling and physical comfort.",
+      "whyItMatters": "Detecting sudden restless waking or unsafe face-down stomach posture helps parents maintain safe sleep environments recommended by pediatric guidelines.",
+      "warningSigns": [
+        "Baby accidentally rolling onto their stomach before developmental readiness",
+        "Prolonged thrashing or inability to settle despite repeated soothing",
+        "Unusual muscle rigidity or repetitive twitching that does not stop when touched",
+        "Sudden, drastic changes in total daily sleep duration"
+      ],
+      "howMaatrivaHelps": "How Maatriva is designed to support: 3D sensor tracking maps restless episodes and posture trends on the parent mobile companion. Note: Maatriva is an observational wellness tool and does not provide clinical diagnosis or treatment.",
+      "emergencyAction": "If baby displays uncontrollable rhythmic twitching, seizures, or remains completely unresponsive upon waking, seek immediate emergency medical care.",
+      "sources": [
+        { "name": "American Academy of Pediatrics (AAP)", "url": "https://www.aap.org/" },
+        { "name": "March of Dimes", "url": "https://www.marchofdimes.org/" }
+      ]
+    },
+    {
+      "id": "baby-cry-sound",
+      "enabled": true,
+      "needsMedicalReview": true,
+      "iconType": "sound",
+      "title": "Cry Acoustic & Distress Patterns",
+      "shortDescription": "Acoustic classification distinguishing hunger, tiredness, pain, and colic.",
+      "whatItIs": "Crying is an infant's primary language. Acoustic features such as pitch, cadence, and breath rhythm vary significantly depending on the underlying need.",
+      "whyItMatters": "Persistent inconsolable crying can indicate acute physical discomfort, colic pain, or ear infections, and causes immense stress for sleep-deprived caregivers.",
+      "warningSigns": [
+        "Inconsolable crying that continues for hours without relief",
+        "High-pitched, shrill shriek that sounds distinct from normal crying",
+        "Crying accompanied by arching back, clenched fists, and a swollen belly",
+        "Weak, whiny, or barely audible cry paired with listlessness"
+      ],
+      "howMaatrivaHelps": "How Maatriva is designed to support: On-device acoustic neural models analyze cry spectral contours to suggest likely causes (hunger, colic, fatigue, soothing). Note: Maatriva is an observational wellness tool and does not provide clinical diagnosis or treatment.",
+      "emergencyAction": "If excessive crying is accompanied by fever, vomiting, a bulging soft spot (fontanelle), or breathing trouble, contact your pediatrician or emergency services right away.",
+      "sources": [
+        { "name": "American Academy of Pediatrics (AAP)", "url": "https://www.aap.org/" },
+        { "name": "National Health Mission India (NHM)", "url": "https://nhm.gov.in/" }
+      ]
+    }
+  ],
+  "mother": [
+    {
+      "id": "mother-hemorrhage",
+      "enabled": true,
+      "needsMedicalReview": true,
+      "iconType": "bleeding",
+      "title": "Heavy Bleeding (Postpartum Hemorrhage)",
+      "shortDescription": "Understanding lochia versus abnormal, excessive bleeding up to 12 weeks after birth.",
+      "whatItIs": "Postpartum bleeding (lochia) is normal as the uterus heals, but secondary postpartum hemorrhage involves heavy, abnormal bleeding that can occur up to 12 weeks after delivery.",
+      "whyItMatters": "Excessive blood loss is one of the leading causes of serious maternal complications worldwide. Recognizing when bleeding exceeds normal parameters enables life-saving early care.",
+      "warningSigns": [
+        "Sudden heavy or worsening vaginal bleeding that soaked more than one pad in an hour",
+        "Passing blood clots larger than an egg or lemon",
+        "Feeling faint, dizzy, lightheaded, or unusually weak",
+        "A racing or pounding heartbeat, cold clammy skin, or pale appearance"
+      ],
+      "howMaatrivaHelps": "How Maatriva is designed to support: Educational guidance in the companion app helps mothers log symptoms and provides structured warning checklists for postnatal review. Note: Maatriva is an observational wellness tool and does not provide clinical diagnosis or treatment.",
+      "emergencyAction": "Soaking more than one maxi pad in an hour, passing large egg-sized clots, or feeling faint is a critical emergency. Call your local emergency number or go to the nearest hospital immediately.",
+      "sources": [
+        { "name": "World Health Organization (WHO)", "url": "https://www.who.int/" },
+        { "name": "March of Dimes", "url": "https://www.marchofdimes.org/" }
+      ]
+    },
+    {
+      "id": "mother-preeclampsia",
+      "enabled": true,
+      "needsMedicalReview": true,
+      "iconType": "pressure",
+      "title": "High Blood Pressure (Postpartum Preeclampsia)",
+      "shortDescription": "Vigilance for elevated blood pressure and vascular stress following delivery.",
+      "whatItIs": "Postpartum preeclampsia is a serious condition involving high blood pressure and protein in the urine that typically arises within 48 hours to 6 weeks after giving birth.",
+      "whyItMatters": "Preeclampsia can develop even in mothers who had normal blood pressure throughout pregnancy. If untreated, it can affect vital organ function and brain health.",
+      "warningSigns": [
+        "Severe, persistent headache that does not ease with medication",
+        "Vision changes such as blurriness, seeing spots, or light sensitivity",
+        "Sharp pain in the upper right side of your abdomen or belly",
+        "Shortness of breath or trouble catching your breath",
+        "Sudden, pronounced swelling of your face, hands, or ankles"
+      ],
+      "howMaatrivaHelps": "How Maatriva is designed to support: The companion app includes guided postpartum symptom checklists to encourage proactive recovery logging. Note: Maatriva is an observational wellness tool and does not provide clinical diagnosis or treatment.",
+      "emergencyAction": "If you experience a severe headache with vision changes, upper right belly pain, or sudden facial swelling, seek urgent emergency hospital care immediately.",
+      "sources": [
+        { "name": "World Health Organization (WHO)", "url": "https://www.who.int/" },
+        { "name": "National Health Mission India (NHM)", "url": "https://nhm.gov.in/" }
+      ]
+    },
+    {
+      "id": "mother-infection",
+      "enabled": true,
+      "needsMedicalReview": true,
+      "iconType": "infection",
+      "title": "Infection & Postpartum Sepsis",
+      "shortDescription": "Monitoring signs of uterine, wound, mastitis, or bloodstream infections.",
+      "whatItIs": "Infections can develop in the uterus, bladder, breast tissue (mastitis), or at cesarean or perineal tear incision sites following childbirth.",
+      "whyItMatters": "Untreated localized infections can quickly escalate into sepsis, a life-threatening systemic response that requires immediate intravenous medical therapy.",
+      "warningSigns": [
+        "Fever, shivering, chills, or sudden flu-like body aches",
+        "Fast breathing or unusually racing heart rate while resting",
+        "Confusion, disorientation, or feeling extremely unwell",
+        "Bad-smelling or unusual vaginal discharge",
+        "A cesarean incision or perineal stitches that become red, swollen, hot, or weep fluid",
+        "Severe lower abdominal pain or hard, burning red patches on the breast"
+      ],
+      "howMaatrivaHelps": "How Maatriva is designed to support: Digital awareness reminders encourage mothers to note healing milestones and contact clinicians early. Note: Maatriva is an observational wellness tool and does not provide clinical diagnosis or treatment.",
+      "emergencyAction": "High fever, chills, confusion, or a rapidly spreading red, painful incision are signs of serious infection requiring immediate emergency evaluation.",
+      "sources": [
+        { "name": "World Health Organization (WHO)", "url": "https://www.who.int/" },
+        { "name": "National Health Mission India (NHM)", "url": "https://nhm.gov.in/" }
+      ]
+    },
+    {
+      "id": "mother-blood-clots",
+      "enabled": true,
+      "needsMedicalReview": true,
+      "iconType": "clot",
+      "title": "Blood Clots (DVT & Embolism)",
+      "shortDescription": "Recognizing deep vein thrombosis and pulmonary complications after birth.",
+      "whatItIs": "During and after pregnancy, blood clots more easily to prevent excess bleeding. Sometimes clots can form inside deep veins, most often in the legs (Deep Vein Thrombosis).",
+      "whyItMatters": "If a clot breaks free and travels to the lungs (Pulmonary Embolism), it creates an urgent life-threatening blockage of pulmonary blood flow.",
+      "warningSigns": [
+        "Swelling, tenderness, redness, or unusual warmth in one leg (often the calf)",
+        "Pain in the leg when walking or flexing your foot",
+        "Sudden shortness of breath, gasping for air, or rapid breathing",
+        "Sharp chest pain that worsens when taking a deep breath or coughing",
+        "Coughing up blood or feeling suddenly lightheaded"
+      ],
+      "howMaatrivaHelps": "How Maatriva is designed to support: Prompts gentle daily mobility reminders and educational checklists for new mothers. Note: Maatriva is an observational wellness tool and does not provide clinical diagnosis or treatment.",
+      "emergencyAction": "Sudden chest pain, difficulty breathing, or coughing up blood is a life-threatening emergency. Call emergency services immediately.",
+      "sources": [
+        { "name": "World Health Organization (WHO)", "url": "https://www.who.int/" },
+        { "name": "March of Dimes", "url": "https://www.marchofdimes.org/" }
+      ]
+    },
+    {
+      "id": "mother-depression",
+      "enabled": true,
+      "needsMedicalReview": true,
+      "iconType": "mind",
+      "title": "Postpartum Depression & Emotional Health",
+      "shortDescription": "Distinguishing the transient 'baby blues' from clinical postpartum depression and anxiety.",
+      "whatItIs": "While many mothers experience mild emotional shifts in the first two weeks ('baby blues'), postpartum depression is a clinical medical condition involving deep emotional, chemical, and psychological shifts.",
+      "whyItMatters": "Postpartum depression affects approximately 1 in 7 mothers and is not a sign of personal weakness. Effective, compassionate treatment and talk therapy are available.",
+      "warningSigns": [
+        "Persistent feelings of sadness, numbness, intense anxiety, or despair lasting more than two weeks",
+        "Severe exhaustion paired with insomnia even when baby is sleeping peacefully",
+        "Feeling detached, unable to bond with baby, or overwhelmed by guilt",
+        "Panic attacks, racing thoughts, or excessive worry about baby's health",
+        "Thoughts of hurting yourself or your baby (seek immediate crisis care)"
+      ],
+      "howMaatrivaHelps": "How Maatriva is designed to support: The companion app includes evidence-aligned self-reflection mood check-ins and direct links to confidential maternal support networks. Note: Maatriva is an observational wellness tool and does not provide clinical diagnosis or treatment.",
+      "emergencyAction": "If you have thoughts of self-harm, harming your baby, or feel you cannot stay safe, call an emergency helpline, your doctor, or go to the nearest emergency center immediately. You are not alone and help is ready.",
+      "sources": [
+        { "name": "World Health Organization (WHO)", "url": "https://www.who.int/" },
+        { "name": "American Academy of Pediatrics (AAP)", "url": "https://www.aap.org/" }
+      ]
+    },
+    {
+      "id": "mother-anemia-recovery",
+      "enabled": true,
+      "needsMedicalReview": true,
+      "iconType": "recovery",
+      "title": "Anemia, Nutrition & Physical Recovery",
+      "shortDescription": "Restoring iron levels, physical vitality, and tissue healing following delivery.",
+      "whatItIs": "Blood loss during labor combined with the nutritional demands of breastfeeding and recovery can lead to postpartum anemia and profound physical depletion.",
+      "whyItMatters": "Adequate iron and restful recovery support tissue repair, healthy breast milk synthesis, immune defense, and stable energy for infant care.",
+      "warningSigns": [
+        "Unrelenting fatigue and weakness that does not improve after sleep",
+        "Noticeable paleness in skin, inner lower eyelids, or nail beds",
+        "Dizziness, feeling lightheaded when standing, or brain fog",
+        "Shortness of breath or rapid pulse when doing gentle, routine tasks",
+        "Persistent cold intolerance with icy hands and feet"
+      ],
+      "howMaatrivaHelps": "How Maatriva is designed to support: Highlights post-natal checkup milestones and hydration/rest suggestions in the family dashboard. Note: Maatriva is an observational wellness tool and does not provide clinical diagnosis or treatment.",
+      "emergencyAction": "If you experience sudden severe dizziness with fainting, chest fluttering, or severe breathlessness, contact your healthcare provider or emergency room.",
+      "sources": [
+        { "name": "National Health Mission India (NHM)", "url": "https://nhm.gov.in/" },
+        { "name": "World Health Organization (WHO)", "url": "https://www.who.int/" }
+      ]
+    }
+  ],
+  "disclaimer": "This information is for awareness only and is not medical advice. Maatriva does not replace a doctor. In an emergency, call your local emergency number or go to the nearest hospital.",
+  "motherReassurance": "Most mothers recover well. Knowing the warning signs helps you act early.",
+  "reviewInfo": {
+    "status": "pending_verification",
+    "requiredFields": ["reviewerName", "qualifications", "institution", "reviewDate"]
+  }
+}

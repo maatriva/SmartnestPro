@@ -302,7 +302,7 @@ export default function PricingCard({ plan, onPreOrder }) {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={handleBuyNow}
-          className="relative w-full py-3.5 clay-btn clay-btn-primary text-white rounded-full font-bold shadow-lg shadow-[#5A78D6]/25 overflow-hidden cursor-pointer select-none group cta-btn-hover flex items-center justify-center gap-2 mt-auto"
+          className="relative w-full py-3.5 clay-btn clay-btn-primary text-white rounded-full font-bold shadow-lg shadow-(--primary)/25 overflow-hidden cursor-pointer select-none group cta-btn-hover flex items-center justify-center gap-2 mt-auto"
         >
           <div className="shine-effect" />
           <ShoppingBag className="w-4 h-4" />

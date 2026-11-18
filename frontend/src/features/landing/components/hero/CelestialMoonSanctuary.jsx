@@ -8,7 +8,7 @@ export default function CelestialMoonSanctuary() {
   const containerRef = useRef(null);
   const shouldReduceMotion = useReducedMotion();
   const [hasWebGL, setHasWebGL] = useState(true);
-  const [shouldLoad3D, setShouldLoad3D] = useState(false);
+  const [shouldLoad3D, setShouldLoad3D] = useState(true);
   const [is3DReady, setIs3DReady] = useState(false);
 
   useEffect(() => {
@@ -26,20 +26,7 @@ export default function CelestialMoonSanctuary() {
       setHasWebGL(false);
       return;
     }
-
-    if (shouldReduceMotion) return;
-
-    // Lazy-load Three.js and 3D model after first paint on all devices (desktop + modern phones)
-    const trigger3D = () => setShouldLoad3D(true);
-
-    if ("requestIdleCallback" in window) {
-      const handle = window.requestIdleCallback(trigger3D, { timeout: 800 });
-      return () => window.cancelIdleCallback && window.cancelIdleCallback(handle);
-    } else {
-      const timer = setTimeout(trigger3D, 300);
-      return () => clearTimeout(timer);
-    }
-  }, [shouldReduceMotion]);
+  }, []);
 
   // Smooth mouse coordinates for ambient parallax
   const mouseX = useMotionValue(0);
@@ -101,57 +88,16 @@ export default function CelestialMoonSanctuary() {
         </div>
       </motion.div>
 
-      {/* Floating Sage Clay Planet */}
-      <motion.div
-        style={{ x: planetX, y: planetY }}
-        className="absolute top-8 right-4 sm:right-10 z-10 pointer-events-none"
-      >
-        <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-[#B9C7AC] to-[#8E9F7F] shadow-[inset_2px_2px_5px_rgba(255,255,255,0.7),inset_-3px_-3px_6px_rgba(40,55,30,0.3),0_8px_16px_rgba(58,43,43,0.12)] flex items-center justify-center">
-          <div className="w-18 sm:w-22 h-3.5 border border-[#FFF6EE]/40 rounded-full -rotate-12" />
-        </div>
-      </motion.div>
-
-      {/* Floating Terracotta Mini Heart Orb */}
-      <div className="absolute bottom-12 left-4 sm:left-10 z-20 pointer-events-none">
-        <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-gradient-to-br from-[#E28D6A] to-[#C26F4C] shadow-[inset_2px_2px_4px_rgba(255,255,255,0.6),inset_-2px_-2px_5px_rgba(80,30,10,0.35),0_6px_14px_rgba(217,130,95,0.3)] flex items-center justify-center text-white">
-          <Heart size={16} className="fill-white/90" />
-        </div>
-      </div>
-
-      {/* 🌟 SMART CRADLE HERO VISUAL (Instant LCP Poster + Smooth 3D Crossfade) 🌟 */}
+      {/* 🌟 SMART CRADLE HERO VISUAL (ONLY THE LIVE 3D MODEL IS SHOWN) 🌟 */}
       <div className="relative z-15 w-full h-full flex items-center justify-center">
-        {/* Instant Lightweight WebP Poster (<30KB) - Preloaded for instant FCP/LCP */}
-        <motion.div
-          animate={shouldReduceMotion ? {} : { y: [0, -8, 0] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className={`absolute inset-0 flex items-center justify-center transition-opacity duration-700 ${
-            is3DReady ? "opacity-0 pointer-events-none" : "opacity-100"
-          }`}
-        >
-          <img
-            src="/cradle-poster.webp"
-            alt="Maatriva Smart Cradle with AI contactless vitals and sleep monitoring in Celestial Clay"
-            width="491"
-            height="462"
-            fetchPriority="high"
-            decoding="async"
-            className="max-w-[78%] sm:max-w-[85%] max-h-[78%] sm:max-h-[85%] object-contain select-none pointer-events-none drop-shadow-[0_24px_36px_rgba(58,43,43,0.18)]"
-          />
-        </motion.div>
-
-        {/* Live Interactive 3D Model in Celestial Clay */}
-        {shouldLoad3D && hasWebGL && !shouldReduceMotion && (
-          <div
-            className={`w-full h-full flex items-center justify-center transition-opacity duration-700 ${
-              is3DReady ? "opacity-100" : "opacity-0 pointer-events-none"
-            }`}
-          >
+        {hasWebGL && !shouldReduceMotion && (
+          <div className="w-full h-full flex items-center justify-center">
             <Suspense fallback={null}>
               <ModelCursor
                 targetSize={3.6}
                 modelColor="#F7F2EB" // Warm Pearl Bisque Ivory body
                 frameColor="#D9825F" // Terracotta Rose clay frame
-                mattressColor="#9BB59B" // Calming Mint Sage mattress
+                mattressColor="#F7EFE6" // Warm Organic Cotton Bisque (Harmonious Ivory)
                 rodColor="#ECC880" // Champagne Honey Gold supporting rods
                 metalColor="#ECC880" // Honey gold accents & pins
                 tuskColor="#FFFBF5" // Soft Ivory White tusks
@@ -175,7 +121,7 @@ export default function CelestialMoonSanctuary() {
           </div>
           <div>
             <div className="flex items-center gap-1.5 text-xs font-black text-[#D9825F]">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+              <span className="w-2 h-2 rounded-full bg-(--primary) animate-ping" />
               <span>Peaceful Sleep</span>
             </div>
             <p className="text-xs text-[#3A2B2B]/85 font-semibold mt-0.5 leading-snug">

@@ -8,16 +8,16 @@ export default function Hero() {
   const headingRef = useRef(null);
   useHeroTextAnimation(headingRef);
 
-  // Generate twinkling celestial stars
+  // Clean, subtle twinkling celestial stars (reduced by half for optimal clarity)
   const stars = useMemo(() => {
-    return Array.from({ length: 32 }, (_, i) => ({
+    return Array.from({ length: 16 }, (_, i) => ({
       id: i,
-      x: `${Math.random() * 100}%`,
-      y: `${Math.random() * 75}%`,
-      size: Math.random() * 3 + 1.5,
-      delay: Math.random() * 4,
-      duration: Math.random() * 2 + 2,
-      opacity: Math.random() * 0.7 + 0.3,
+      x: `${(i * 23) % 100}%`,
+      y: `${(i * 19) % 70}%`,
+      size: (i % 3) * 0.8 + 1.2,
+      delay: (i % 4) * 0.8,
+      duration: 3 + (i % 3) * 0.8,
+      opacity: 0.6,
     }));
   }, []);
 
@@ -26,7 +26,7 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen overflow-hidden clay-hero pt-28 pb-16 lg:pt-32 lg:pb-24 flex items-center"
     >
-      {/* Twinkling Stars in Dawn Sky */}
+      {/* Subtle Twinkling Stars in Dawn Sky */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
         {stars.map((star) => (
           <span
@@ -39,15 +39,14 @@ export default function Hero() {
               height: `${star.size}px`,
               animationDelay: `${star.delay}s`,
               animationDuration: `${star.duration}s`,
-              boxShadow: `0 0 ${star.size * 2}px rgba(240, 198, 117, 0.9)`,
+              boxShadow: `0 0 ${star.size * 2}px rgba(240, 198, 117, 0.7)`,
             }}
           />
         ))}
 
-        {/* Ambient Warm Celestial Blobs */}
-        <div className="absolute top-1/4 -left-20 w-80 h-80 bg-(--primary) opacity-20 blur-[100px] rounded-full pointer-events-none" />
-        <div className="absolute top-10 right-10 w-96 h-96 bg-[#F0C675] opacity-20 blur-[120px] rounded-full pointer-events-none" />
-        <div className="absolute bottom-10 left-1/3 w-96 h-96 bg-(--rose-clay) opacity-25 blur-[120px] rounded-full pointer-events-none" />
+        {/* Soft Ambient Warm Celestial Glow */}
+        <div className="absolute top-1/4 -left-20 w-80 h-80 bg-(--primary) opacity-10 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-10 right-10 w-96 h-96 bg-[#F0C675] opacity-15 blur-[120px] rounded-full pointer-events-none" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">

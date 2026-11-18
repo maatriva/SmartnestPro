@@ -40,7 +40,7 @@ const ModelCursor = ({
   targetSize = 3.6,
   modelColor = "#F7F2EB", // Warm Pearl Bisque Ivory body
   frameColor = "#D9825F", // Terracotta Rose clay frame
-  mattressColor = "#9BB59B", // Calming Mint Sage mattress
+  mattressColor = "#F7EFE6", // Warm Organic Cotton Bisque (Harmonious Ivory)
   rodColor = "#ECC880", // Champagne Honey Gold supporting rods
   metalColor = "#ECC880", // Honey gold hinges, pins & hardware
   tuskColor = "#FFFBF5", // Soft Ivory White tusks & accents
@@ -111,18 +111,18 @@ const ModelCursor = ({
     keyLight.position.set(5, 7, 5);
     scene.add(keyLight);
 
-    // 2. Soft plum dusk fill light (#3B2A4A / #68436B) for rich purple shadow tones
-    const plumFillLight = new THREE.DirectionalLight(0x68436b, 0.95);
-    plumFillLight.position.set(-5, 3, -2);
-    scene.add(plumFillLight);
+    // 2. Soft rose clay fill light (#F2B8A8) for warm, natural clay shadow tones
+    const roseFillLight = new THREE.DirectionalLight(0xf2b8a8, 0.85);
+    roseFillLight.position.set(-5, 3, -2);
+    scene.add(roseFillLight);
 
     // 3. Soft cream rim light (#FFF6EE) to create a gentle clay glowing rim
     const rimLight = new THREE.DirectionalLight(0xfff8f2, 1.1);
     rimLight.position.set(0, 5, -5);
     scene.add(rimLight);
 
-    // 4. Subtle ambient hemisphere light
-    const hemiLight = new THREE.HemisphereLight(0xfff6ee, 0x3b2a4a, 0.6);
+    // 4. Subtle ambient hemisphere light (Dawn sky + Terracotta earth bounce)
+    const hemiLight = new THREE.HemisphereLight(0xfff8f2, 0xd9825f, 0.6);
     scene.add(hemiLight);
 
     // 🌑 Soft Contact Shadow Plane underneath
@@ -158,7 +158,7 @@ const ModelCursor = ({
     // Colors
     const sModelColor = sanitizeColor(modelColor, "#D9825F");
     const sFrameColor = sanitizeColor(frameColor, "#F2B8A8");
-    const sMattressColor = sanitizeColor(mattressColor, "#A8B89A");
+    const sMattressColor = sanitizeColor(mattressColor, "#F7EFE6");
     const sRodColor = sanitizeColor(rodColor, sFrameColor);
     const sMetalColor = sanitizeColor(metalColor, "#F0C675");
     const sTuskColor = sanitizeColor(tuskColor, "#F0C675");
