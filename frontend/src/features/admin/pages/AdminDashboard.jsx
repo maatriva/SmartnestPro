@@ -242,17 +242,17 @@ export default function AdminDashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-(--bg)">
+      <div className="min-h-dvh flex items-center justify-center bg-(--bg-canvas)">
         <div className="text-center space-y-4">
           <motion.div
             animate={{ scale: [1, 1.15, 1], rotate: [0, 180, 360] }}
             transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-            className="w-16 h-16 mx-auto rounded-3xl bg-gradient-to-tr from-(--primary) to-indigo-600 flex items-center justify-center text-white shadow-xl shadow-(--primary)/30"
+            className="w-16 h-16 mx-auto rounded-3xl bg-(--brand-accent) flex items-center justify-center text-white shadow-lg"
           >
             <Sparkles size={32} />
           </motion.div>
-          <p className="text-lg font-black text-(--text-dark)">Loading Command Center...</p>
-          <p className="text-xs text-(--text-light) font-bold">Synchronizing real-time analytics</p>
+          <p className="text-lg font-bold text-(--text-primary)">Loading Command Center...</p>
+          <p className="text-xs text-(--text-secondary) font-medium">Synchronizing real-time analytics</p>
         </div>
       </div>
     );
@@ -268,7 +268,7 @@ export default function AdminDashboard() {
   const adminUsers = (stats?.users || []).filter((u) => u.is_admin).length;
 
   return (
-    <div className="min-h-screen bg-(--bg) p-4 md:p-8 space-y-8 max-w-7xl mx-auto">
+    <div className="min-h-dvh bg-(--bg-canvas) p-4 md:p-8 space-y-8 max-w-7xl mx-auto">
       <Helmet>
         <title>Executive Admin Dashboard | Maatriva</title>
         <meta name="robots" content="noindex, nofollow" />

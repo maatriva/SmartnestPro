@@ -1,14 +1,21 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-export default function SurveyProgress({ progress }) {
+export default function SurveyProgress({ progress, page = 0, totalPages = 4 }) {
   return (
-    <div className="fixed top-0 left-0 w-full h-2 bg-white/30 backdrop-blur-sm z-50">
-      <motion.div 
-        initial={{ width: 0 }}
-        animate={{ width: `${progress}%` }}
-        className="h-full bg-gradient-to-r from-(--primary) to-(--primary-light) shadow-[0_0_15px_rgba(74,111,165,0.4)]"
-      />
+    <div className="w-full mb-6">
+      <div className="flex items-center justify-between text-xs font-semibold text-(--text-secondary) mb-2">
+        <span>Section {page + 1} of {totalPages}</span>
+        <span>{Math.round(progress)}% Complete</span>
+      </div>
+      <div className="w-full h-2 rounded-full bg-(--border-card) overflow-hidden">
+        <motion.div 
+          initial={{ width: 0 }}
+          animate={{ width: `${progress}%` }}
+          transition={{ duration: 0.3 }}
+          className="h-full bg-(--brand-accent) rounded-full"
+        />
+      </div>
     </div>
   );
 }

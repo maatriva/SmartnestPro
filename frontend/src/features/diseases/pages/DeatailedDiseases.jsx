@@ -33,10 +33,10 @@ export default function DetailedDiseases() {
   return (
     <main
       className="
-        min-h-screen
-        bg-(--bg)
-        text-(--text)
-        pt-32
+        min-h-dvh
+        bg-(--bg-canvas)
+        text-(--text-primary)
+        pt-28
         pb-20
       "
     >

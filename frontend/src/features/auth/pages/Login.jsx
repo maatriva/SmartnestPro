@@ -24,38 +24,35 @@ export default function Login() {
   } = useLogin();
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4 relative overflow-hidden">
+    <div className="min-h-dvh flex items-center justify-center px-4 py-12 relative overflow-hidden bg-(--bg-canvas)">
       <Helmet>
         <title>Login | Maatriva</title>
         <meta name="description" content="Access your Maatriva dashboard and check your smart baby cradle reports." />
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
-      <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
-
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/20 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
-
       <motion.div
         initial={{
           opacity: 0,
-          scale: 0.95,
+          scale: 0.98,
         }}
         animate={{
           opacity: 1,
           scale: 1,
         }}
         transition={{
-          duration: 0.6,
+          duration: 0.3,
+          ease: "easeOut",
         }}
-        className="w-full max-w-md clay-card p-8 relative z-10"
+        className="w-full max-w-md clay-card-light p-8 relative z-10"
       >
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold">
+          <h2 className="text-3xl font-bold font-display text-(--text-primary)">
             Welcome Back
           </h2>
 
-          <p className="text-(--text-light)">
-            Access your dashboard and reports.
+          <p className="text-(--text-secondary) mt-1 text-sm">
+            Access your dashboard and baby health reports.
           </p>
         </div>
 
@@ -71,26 +68,28 @@ export default function Login() {
         />
 
         <div className="mt-6 relative flex items-center justify-center">
-          <div className="w-full h-px bg-gray-200" />
+          <div className="w-full h-px bg-(--text-primary)/10" />
 
-          <span className="absolute bg-white px-4 text-xs text-gray-400 uppercase">
-            Or Continue With
+          <span className="absolute bg-(--surface) px-4 text-xs text-(--text-secondary) uppercase tracking-wider">
+            Or continue with
           </span>
         </div>
 
-        <GoogleLoginButton
-          onSuccess={handleGoogleSuccess}
-          onError={() =>
-            setError("Google Login Failed")
-          }
-        />
+        <div className="mt-4">
+          <GoogleLoginButton
+            onSuccess={handleGoogleSuccess}
+            onError={() =>
+              setError("Google Login Failed")
+            }
+          />
+        </div>
 
-        <div className="mt-8 text-center">
+        <div className="mt-8 text-center text-sm text-(--text-secondary)">
           <p>
             Don't have an account?{" "}
             <Link
               to="/signup"
-              className="text-primary font-semibold hover:underline"
+              className="text-(--brand-accent) font-semibold hover:underline"
             >
               Create One
             </Link>

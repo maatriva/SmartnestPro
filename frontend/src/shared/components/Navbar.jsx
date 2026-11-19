@@ -53,23 +53,23 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Navigation Links */}
-        <ul className="hidden lg:flex items-center gap-7 font-bold text-sm">
+        <ul className="hidden lg:flex items-center gap-7 font-semibold text-sm">
           {NAV_LINKS.map((link, i) => (
             <li key={i} className="nav-item">
               {link.path.startsWith("/#") ? (
                 <a
                   href={link.path}
-                  className="nav-link inline-block text-(--text) hover:text-(--primary) transition duration-200"
+                  className="nav-link inline-block text-(--text-primary) hover:text-(--brand-accent) transition duration-150"
                 >
                   {link.name}
                 </a>
               ) : (
                 <Link
                   to={link.path}
-                  className={`nav-link inline-block transition duration-200 ${
+                  className={`nav-link inline-block transition duration-150 ${
                     location.pathname === link.path
-                      ? "text-(--primary) font-black"
-                      : "text-(--text) hover:text-(--primary)"
+                      ? "text-(--brand-accent) font-bold"
+                      : "text-(--text-primary) hover:text-(--brand-accent)"
                   }`}
                 >
                   {link.name}
@@ -82,9 +82,9 @@ const Navbar = () => {
             <li className="nav-item">
               <Link
                 to="/admin"
-                className={`nav-link inline-block text-(--primary) font-black hover:text-(--text-dark) transition duration-200 ${
+                className={`nav-link inline-block text-(--brand-accent) font-bold hover:text-(--text-primary) transition duration-150 ${
                   location.pathname === "/admin"
-                    ? "bg-(--primary) px-3 py-1 rounded-full text-white"
+                    ? "bg-(--brand-accent) px-3 py-1 rounded-full text-white"
                     : ""
                 }`}
               >
@@ -102,15 +102,15 @@ const Navbar = () => {
             download="maatriva-app.apk"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 rounded-full clay-badge text-(--primary) font-bold text-xs flex items-center gap-1.5 hover:scale-105 active:scale-95 transition-all shadow-sm"
+            className="px-3.5 py-1.5 rounded-full clay-badge text-(--brand-accent) font-semibold text-xs flex items-center gap-1.5 hover:scale-102 active:scale-95 transition-transform shadow-xs"
           >
-            <Download size={14} />
+            <Download size={13} />
             <span>Download APK</span>
           </a>
 
           {user ? (
             <div className="flex items-center gap-3">
-              <span className="text-(--text-dark) text-sm font-semibold">
+              <span className="text-(--text-primary) text-sm font-semibold">
                 Hi, {user.name.split(" ")[0]}
               </span>
               <button
@@ -123,7 +123,7 @@ const Navbar = () => {
           ) : (
             <Link
               to="/survey"
-              className="px-5 py-2.5 clay-btn clay-btn-primary text-xs sm:text-sm font-bold shadow-md hover:shadow-lg"
+              className="px-5 py-2 clay-btn clay-btn-primary text-xs sm:text-sm font-semibold shadow-sm hover:shadow-md"
             >
               Take Survey
             </Link>

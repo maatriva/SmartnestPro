@@ -17,45 +17,39 @@ export default function AboutGenesis() {
   }, []);
 
   return (
-    <section className="py-20 bg-(--bg) px-5 sm:px-8 lg:px-12">
-      <div className="mx-auto max-w-7xl clay-card p-8 sm:p-12 lg:p-16 grid items-center gap-14 lg:grid-cols-[1fr_1.05fr]">
+    <section className="py-16 sm:py-20 bg-(--bg-canvas) px-4 sm:px-8 lg:px-12">
+      <div className="mx-auto max-w-7xl clay-card-light bg-(--surface) p-6 sm:p-10 lg:p-14 rounded-2xl border border-(--border-card) shadow-sm grid items-center gap-10 lg:gap-14 lg:grid-cols-[1fr_1.05fr]">
         <motion.div
-          initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
+          initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           whileInView={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
           viewport={{ once: true, margin: isMobile ? "0px" : "-100px" }}
-          transition={isMobile ? { duration: 0 } : { duration: 0.7 }}
+          transition={isMobile ? { duration: 0 } : { duration: 0.4 }}
         >
-          <div className="inline-block px-3 py-1.5 clay-badge text-[10px] font-black uppercase tracking-[0.2em] mb-4">
-            The Genesis
-          </div>
-          <h2 className="mt-5 text-3xl font-black leading-tight text-(--text-dark) sm:text-4xl">
-            Born from a Parent's Love
+          <h2 className="text-3xl font-bold leading-tight text-(--text-primary) sm:text-4xl font-display">
+            Born from a Parent's Need
           </h2>
-          <p className="mt-7 text-base leading-8 text-(--text)">
-            Maatriva started from a fundamental parent's need for better
-            rest and baby safety. Our founders, navigating the exhausted fog
-            of early parenthood, realized that sleep technology had not kept
-            pace with our understanding of infant wellness.
+          <p className="mt-5 text-base leading-relaxed text-(--text-secondary) font-normal">
+            Maatriva started from a simple need: better rest for parents and continuous, gentle safety for newborn infants. Navigating the exhaustion of the early postpartum months, our team set out to engineer non-contact monitoring that avoids uncomfortable wearable wires.
           </p>
-          <p className="mt-5 text-base leading-8 text-(--text)">
-            Driven by curiosity, creativity, and a vision for smarter parenting, we created Maatriva to explore how technology can make baby care safer, simpler, and more connected. Our goal is to build innovative solutions that support families through every step of their parenting journey.
+          <p className="mt-4 text-base leading-relaxed text-(--text-secondary) font-normal">
+            Supported by robotics and medical researchers at IHFC IIT Delhi and IIT Mandi Catalyst, we focus on safe materials, calibrated soothing, and clear vitals logs you can share with your pediatrician.
           </p>
-          <div className="mt-8 flex items-center gap-4">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full clay-badge text-(--text-dark)">
-              <Heart size={20} />
+          <div className="mt-7 flex items-center gap-3.5">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-(--bg-canvas) text-(--brand-accent) border border-(--border-card)">
+              <Heart size={18} />
             </div>
-            <p className="text-sm italic text-(--text-dark)">
-              "Nurturing is our nature, innovation is our instrument."
+            <p className="text-sm font-medium text-(--text-primary)">
+              Built with biomedical engineers and tested with parents.
             </p>
           </div>
         </motion.div>
 
         <motion.div
-          initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
+          initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           whileInView={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
           viewport={{ once: true, margin: isMobile ? "0px" : "-100px" }}
-          transition={isMobile ? { duration: 0 } : { duration: 0.7, delay: 0.1 }}
-          className="overflow-hidden clay-card w-full p-2"
+          transition={isMobile ? { duration: 0 } : { duration: 0.4, delay: 0.1 }}
+          className="overflow-hidden rounded-xl border border-(--border-card) w-full p-2 bg-(--bg-canvas)"
         >
         <img
           src={withoutBabyImage}

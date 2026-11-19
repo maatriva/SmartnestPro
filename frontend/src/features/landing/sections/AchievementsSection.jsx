@@ -159,7 +159,7 @@ export default function AchievementsSection() {
                       height={item.height}
                       loading="lazy"
                       decoding="async"
-                      className="max-h-full max-w-full object-contain filter contrast-105 group-hover:scale-[1.01] transition-transform duration-200"
+                      className="max-h-full max-w-full object-contain filter contrast-105"
                     />
                   </picture>
                 </div>

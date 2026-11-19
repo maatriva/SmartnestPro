@@ -17,23 +17,24 @@ export default function DiseaseCard({
           onSelect();
         }
       }}
-      className="clay-card p-6 cursor-pointer group focus:outline-none focus:ring-2 focus:ring-(--primary-light)/50"
-      whileHover={{ y: -4 }}
+      className="clay-card-light bg-(--surface) p-5 sm:p-6 rounded-2xl border border-(--border-card) shadow-sm hover:shadow-md transition-[transform,box-shadow] duration-200 cursor-pointer group"
+      whileHover={{ y: -2 }}
       whileTap={{ scale: 0.98 }}
     >
-      <div className="flex items-start gap-4">
+      <div className="flex items-start gap-3.5">
         <div
           className="
             w-10
             h-10
-            clay-badge
-            text-(--primary)
+            rounded-xl
+            bg-(--bg-canvas)
+            border
+            border-(--border-card)
+            text-(--brand-accent)
             flex
             items-center
             justify-center
             shrink-0
-            group-hover:scale-110
-            transition-transform
           "
         >
           {icon}
@@ -43,11 +44,12 @@ export default function DiseaseCard({
           <h3
             className="
               font-bold
-              text-(--text-dark)
-              leading-tight
-              group-hover:text-(--primary)
+              text-(--text-primary)
+              leading-snug
+              group-hover:text-(--brand-accent)
               transition-colors
               line-clamp-2
+              font-display
             "
           >
             {name}
@@ -56,14 +58,12 @@ export default function DiseaseCard({
           <p
             className="
               text-xs
-              text-(--text-light)
-              mt-2
-              font-bold
-              tracking-wide
-              uppercase
+              text-(--brand-accent)
+              mt-1.5
+              font-semibold
             "
           >
-            CLICK FOR DETAILS
+            View clinical details →
           </p>
         </div>
       </div>

@@ -220,32 +220,30 @@ export default function HealthFocusSection() {
             <span className="font-bold text-(--text-dark)">
               Medical Awareness Sources & Global Guidelines:
             </span>
-            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 divide-x divide-(--text-primary)/15">
               <a
                 href="https://www.who.int/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-(--primary) transition-colors inline-flex items-center gap-1 font-bold"
+                className="hover:text-(--brand-accent) transition-colors inline-flex items-center gap-1 font-semibold text-(--text-primary)"
               >
                 <span>World Health Organization (WHO)</span>
                 <ExternalLink size={12} />
               </a>
-              <span className="text-(--border)" aria-hidden="true">•</span>
               <a
                 href="https://www.aap.org/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-(--primary) transition-colors inline-flex items-center gap-1 font-bold"
+                className="pl-4 sm:pl-6 hover:text-(--brand-accent) transition-colors inline-flex items-center gap-1 font-semibold text-(--text-primary)"
               >
                 <span>American Academy of Pediatrics (AAP)</span>
                 <ExternalLink size={12} />
               </a>
-              <span className="text-(--border)" aria-hidden="true">•</span>
               <a
                 href="https://nhm.gov.in/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-(--primary) transition-colors inline-flex items-center gap-1 font-bold"
+                className="pl-4 sm:pl-6 hover:text-(--brand-accent) transition-colors inline-flex items-center gap-1 font-semibold text-(--text-primary)"
               >
                 <span>National Health Mission India (NHM)</span>
                 <ExternalLink size={12} />

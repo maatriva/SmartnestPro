@@ -14,10 +14,9 @@ export default function StepCard({ step, index, totalSteps = 3 }) {
     >
       {/* Constellation Star Node atop each card */}
       <div className="absolute -top-1 left-8 sm:left-10 z-20 flex items-center justify-center">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#F0C675] to-[#FFF6EE] border-2 border-white shadow-[0_0_15px_rgba(240,198,117,0.7),inset_2px_2px_4px_white] flex items-center justify-center text-[#261A24] font-black text-sm group-hover:scale-125 transition-transform duration-300">
-          <Sparkles size={16} className="text-[#261A24]" />
+        <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-(--brand-gold) to-(--bg-canvas) border-2 border-white shadow-sm flex items-center justify-center text-(--text-primary) font-black text-sm">
+          <Sparkles size={16} className="text-(--text-primary)" />
         </div>
-        <div className="absolute w-14 h-14 rounded-full border border-(--accent)/40 animate-ping pointer-events-none" />
       </div>
 
       <div className="hiw-card h-full clay-card-light bg-(--surface) p-6 sm:p-7 rounded-2xl flex flex-col justify-between relative overflow-hidden transition-[transform,box-shadow] duration-200 hover:-translate-y-1 border border-(--border-card) shadow-sm hover:shadow-md">

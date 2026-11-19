@@ -24,37 +24,35 @@ export default function Signup() {
   } = useSignup();
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4 relative overflow-hidden">
+    <div className="min-h-dvh flex items-center justify-center px-4 py-12 relative overflow-hidden bg-(--bg-canvas)">
       <Helmet>
         <title>Sign Up | Maatriva</title>
         <meta name="description" content="Create a Maatriva account to start monitoring your baby's health." />
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
-      <div className="absolute top-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-secondary/20 rounded-full blur-3xl" />
-
       <motion.div
         initial={{
           opacity: 0,
-          y: 20,
+          y: 12,
         }}
         animate={{
           opacity: 1,
           y: 0,
         }}
         transition={{
-          duration: 0.6,
+          duration: 0.3,
+          ease: "easeOut",
         }}
-        className="w-full max-w-md clay-card p-8 relative z-10"
+        className="w-full max-w-md clay-card-light p-8 relative z-10"
       >
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold">
+          <h2 className="text-3xl font-bold font-display text-(--text-primary)">
             Create Account
           </h2>
 
-          <p className="text-(--text-light)">
-            Join Maatriva and start monitoring.
+          <p className="text-(--text-secondary) mt-1 text-sm">
+            Join Maatriva to start monitoring your infant safely.
           </p>
         </div>
 
@@ -70,28 +68,30 @@ export default function Signup() {
         />
 
         <div className="mt-6 relative flex items-center justify-center">
-          <div className="w-full h-px bg-gray-200" />
+          <div className="w-full h-px bg-(--text-primary)/10" />
 
-          <span className="absolute bg-white px-4 text-xs text-gray-400 uppercase">
-            Or Continue With
+          <span className="absolute bg-(--surface) px-4 text-xs text-(--text-secondary) uppercase tracking-wider">
+            Or continue with
           </span>
         </div>
 
-        <GoogleLoginButton
-          onSuccess={handleGoogleSuccess}
-          onError={() =>
-            setError(
-              "Google Signup Failed"
-            )
-          }
-        />
+        <div className="mt-4">
+          <GoogleLoginButton
+            onSuccess={handleGoogleSuccess}
+            onError={() =>
+              setError(
+                "Google Signup Failed"
+              )
+            }
+          />
+        </div>
 
-        <div className="mt-8 text-center">
+        <div className="mt-8 text-center text-sm text-(--text-secondary)">
           <p>
             Already have an account?{" "}
             <Link
               to="/login"
-              className="text-primary font-semibold hover:underline"
+              className="text-(--brand-accent) font-semibold hover:underline"
             >
               Log In
             </Link>

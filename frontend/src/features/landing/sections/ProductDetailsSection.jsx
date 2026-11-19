@@ -141,7 +141,7 @@ export default function ProductDetailsSection() {
                   decoding="async"
                   width="600"
                   height="450"
-                  className="max-h-60 sm:max-h-72 w-auto object-contain drop-shadow-sm group-hover:scale-[1.01] transition-transform duration-200"
+                  className="max-h-60 sm:max-h-72 w-auto object-contain drop-shadow-sm"
                 />
               </div>
 

@@ -94,7 +94,7 @@ export default function Survey() {
   const sectionInfo = getSectionInfo(page);
 
   return (
-    <div className="min-h-screen bg-(--bg) px-4 pt-32 pb-12 md:pt-36 md:pb-20 font-sans text-(--text-dark)">
+    <div className="min-h-dvh bg-(--bg-canvas) px-4 pt-28 pb-12 md:pt-32 md:pb-20 font-sans text-(--text-primary)">
       <Helmet>
         <title>Baby Health Assessment | Maatriva</title>
         <meta
@@ -103,42 +103,11 @@ export default function Survey() {
         />
         <meta name="keywords" content="baby health assessment, pediatric survey, smart baby care survey, infant wellness screening, Maatriva" />
         <link rel="canonical" href="https://maatriva.co.in/survey" />
-        
-        {/* Open Graph Tags */}
-        <meta property="og:title" content="Baby Health Assessment | Maatriva" />
-        <meta
-          property="og:description"
-          content="Complete the Maatriva baby health assessment survey. Help our pediatric AI analyze your infant's sleeping patterns and soothing requirements."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://maatriva.co.in/survey" />
-        <meta property="og:image" content="https://maatriva.co.in/BasicCradle.jpeg" />
-        
-        {/* Twitter Card Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Baby Health Assessment | Maatriva" />
-        <meta name="twitter:description" content="Complete the Maatriva baby health assessment survey. Help our pediatric AI analyze your infant's sleeping patterns and soothing requirements." />
-        <meta name="twitter:image" content="https://maatriva.co.in/BasicCradle.jpeg" />
-
-        {/* Structured Data */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": "Baby Health Assessment Survey - Maatriva",
-            "description": "Pediatric wellness assessment and AI soothing analysis for infants.",
-            "publisher": {
-              "@type": "Organization",
-              "name": "Maatriva",
-              "logo": "https://maatriva.co.in/android-chrome-512x512.png"
-            }
-          })}
-        </script>
       </Helmet>
-      <div className="max-w-4xl mx-auto relative">
+      <div className="max-w-3xl mx-auto relative">
         
-        {/* Progress Header */}
-        <SurveyProgress progress={progress} />
+        {/* Progress Header with clear completion states */}
+        <SurveyProgress progress={progress} page={page} totalPages={totalPages} />
 
         {/* Survey Branding Header */}
         <SurveyHeader showKarmaNote={page === 0} />
@@ -147,35 +116,35 @@ export default function Survey() {
           <motion.div
             key={page}
             custom={direction}
-            initial={{ opacity: 0, x: direction * 50 }}
+            initial={{ opacity: 0, x: direction * 40 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -direction * 50 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="space-y-8"
+            exit={{ opacity: 0, x: -direction * 40 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="space-y-6"
           >
-            <div className="clay-card p-5 sm:p-8 md:p-12">
+            <div className="clay-card-light bg-(--surface) p-5 sm:p-8 md:p-9 rounded-2xl border border-(--border-card) shadow-sm">
               
-              <div className="flex justify-between items-center mb-10">
+              <div className="flex justify-between items-center mb-8 pb-5 border-b border-(--border-card)">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 clay-btn clay-btn-secondary flex items-center justify-center font-black text-xl">
+                  <div className="w-10 h-10 rounded-xl bg-(--bg-canvas) border border-(--border-card) flex items-center justify-center font-bold text-base text-(--brand-accent)">
                     {page + 1}
                   </div>
                   <div>
-                    <h2 className="text-xl font-bold text-(--text-dark)">
+                    <h2 className="text-lg sm:text-xl font-bold text-(--text-primary) font-display">
                       {sectionInfo.title}
                     </h2>
-                    <p className="text-sm text-(--text-light)">
+                    <p className="text-xs sm:text-sm text-(--text-secondary) font-normal">
                       {sectionInfo.subtitle}
                     </p>
                   </div>
                 </div>
                 <div className="hidden sm:block text-right">
-                  <span className="text-2xl font-black text-(--primary)">{Math.round(progress)}%</span>
-                  <p className="text-xs uppercase tracking-widest font-bold text-(--text-light)">Complete</p>
+                  <span className="text-xl font-bold text-(--brand-accent)">{Math.round(progress)}%</span>
+                  <p className="text-xs font-semibold text-(--text-secondary)">Complete</p>
                 </div>
               </div>
 
-              <div className="grid gap-10">
+              <div className="grid gap-8">
                 {/* Smart Cradle Introduction Card between Q4 and Q5 (Page 1) */}
                 {page === 1 && <SmartCradleIntroCard />}
 
