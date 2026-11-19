@@ -31,23 +31,23 @@ export default function AppDownloadSection() {
   const appFeatures = [
     {
       icon: <Activity className="text-(--primary)" size={22} />,
-      title: "Real-Time Vital Monitoring",
-      description: "Continuous contactless tracking of breathing rates, heart rate, and temperature with clinical-grade safety thresholds."
+      title: "Live vital readings",
+      description: "Non-contact tracking of breathing rate, heart rate, and temperature while your baby rests."
     },
     {
       icon: <Volume2 className="text-(--primary)" size={22} />,
-      title: "AI Cry Translator",
-      description: "Advanced acoustic AI translates cries into clear, actionable states: Hunger, Fatigue, Colic, or Diaper discomfort."
+      title: "Cry alerts",
+      description: "Sound sensors detect crying patterns and send instant alerts to your phone."
     },
     {
       icon: <Zap className="text-(--primary)" size={22} />,
-      title: "Automated Soothing Control",
-      description: "Trigger adaptive swaying rhythms, gentle womb acoustics, and thermal presets remotely with one tap."
+      title: "Cradle controls",
+      description: "Start or stop rocking, adjust speed, and play lullabies directly from the app."
     },
     {
       icon: <Moon className="text-(--primary)" size={22} />,
-      title: "Sleep Cycle Analytics",
-      description: "Exportable nightly sleep logs and movement trends ready to share directly with your family pediatrician."
+      title: "Sleep logs",
+      description: "Daily and weekly sleep summaries ready to review or export for your pediatrician."
     }
   ];
 
@@ -55,28 +55,13 @@ export default function AppDownloadSection() {
     <section
       id="app"
       ref={containerRef}
-      className="clay-section relative clay-even-section text-(--text)"
+      className="clay-section relative text-(--text) bg-[#FFF6EE] pt-14 pb-20 sm:pt-20 sm:pb-28 overflow-hidden z-10"
       aria-label="Maatriva Mobile Companion App"
     >
-      {/* Background soft celestial glows */}
-      <div className="absolute top-1/2 left-1/3 -translate-y-1/2 w-[550px] h-[550px] bg-(--rose-clay) opacity-10 blur-[130px] rounded-full pointer-events-none" />
-
       <div className="max-w-7xl mx-auto clay-container relative z-10">
         
-        {/* Section Header */}
-        <div className="clay-section-header">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full clay-badge border border-(--primary)/20 mb-3"
-          >
-            <Sparkles size={16} className="text-(--primary)" />
-            <span className="text-xs sm:text-sm font-bold text-(--text-dark)">
-              Maatriva Mobile Companion
-            </span>
-          </motion.div>
-
+        {/* Section Header: Plain, Direct Language, No Eyebrow Pills */}
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -84,8 +69,7 @@ export default function AppDownloadSection() {
             transition={{ delay: 0.1 }}
             className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) tracking-tight leading-tight mb-3 font-display text-center [text-wrap:balance]"
           >
-            Your Baby's Care & Vitals,{" "}
-            <span className="text-(--primary)">Right in Your Pocket</span>
+            The Maatriva companion app
           </motion.h2>
 
           <motion.p
@@ -95,7 +79,7 @@ export default function AppDownloadSection() {
             transition={{ delay: 0.2 }}
             className="text-base sm:text-lg md:text-xl font-medium text-(--text) leading-relaxed max-w-2xl mx-auto text-center [text-wrap:balance]"
           >
-            Stay seamlessly connected to your smart cradle from anywhere. Receive instant alerts, review health trends, and soothe baby with peace of mind.
+            Check live video, track vitals, and adjust rocking speeds from your phone.
           </motion.p>
         </div>
 
@@ -156,7 +140,7 @@ export default function AppDownloadSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 * index }}
-                  className="clay-card p-6 rounded-3xl flex flex-col justify-between hover:scale-[1.02] transition-transform duration-200"
+                  className="clay-card-blush bg-[#FFF0E6] p-6 rounded-3xl flex flex-col justify-between hover:scale-[1.02] transition-transform duration-200 border-2 border-white/90"
                 >
                   <div>
                     <div className="p-3 rounded-2xl clay-badge w-fit mb-3.5 text-(--primary) shadow-xs">

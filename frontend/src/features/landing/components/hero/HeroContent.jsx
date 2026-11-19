@@ -28,29 +28,6 @@ export default function HeroContent({
 
   return (
     <div className="relative z-20 clay-hero-panel bg-white/40 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none p-6 sm:p-8 lg:p-0 rounded-3xl lg:rounded-none border border-white/60 lg:border-none shadow-xl lg:shadow-none">
-      {/* Celestial Pill Badge */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="
-          inline-flex
-          items-center
-          gap-2
-          px-4
-          py-2
-          rounded-full
-          clay-badge
-          mb-6
-          shadow-sm
-        "
-      >
-        <Sparkles size={16} className="text-(--primary) animate-spin-slow" />
-        <span className="text-xs sm:text-sm font-bold text-(--text-dark)">
-          {badge || "AI Powered Baby Care"}
-        </span>
-      </motion.div>
-
       {/* Main Headline */}
       <h1
         ref={headingRef}
@@ -105,7 +82,7 @@ export default function HeroContent({
           onClick={triggerStarBurst}
           className="clay-btn clay-btn-primary px-9 py-4 text-base sm:text-lg font-bold inline-flex items-center gap-2.5 justify-center shadow-lg hover:shadow-xl active:scale-95 transition-transform"
         >
-          <span>{buttonText || "Experience Maatriva"}</span>
+          <span>{buttonText || "Take Parent Survey"}</span>
           <ArrowRight size={18} />
         </Link>
       </motion.div>

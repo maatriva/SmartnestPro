@@ -13,6 +13,11 @@ import {
   Zap,
   Smile,
   Sparkles,
+  FileText,
+  Clock,
+  CheckCircle2,
+  Lock,
+  Building2,
 } from "lucide-react";
 
 export default function AnimatedHealthIcon({ iconType, className = "w-7 h-7" }) {
@@ -137,6 +142,61 @@ export default function AnimatedHealthIcon({ iconType, className = "w-7 h-7" }) 
           className="flex items-center justify-center text-(--primary)"
         >
           <Smile className={`${className} fill-(--primary)/20`} strokeWidth={2.2} />
+        </motion.div>
+      );
+
+    case "reports":
+      return (
+        <motion.div
+          animate={shouldReduceMotion ? {} : { y: [0, -2, 0] }}
+          transition={{ duration: 3.0, repeat: Infinity, ease: "easeInOut" }}
+          className="flex items-center justify-center text-(--primary)"
+        >
+          <FileText className={className} strokeWidth={2.2} />
+        </motion.div>
+      );
+
+    case "history":
+      return (
+        <motion.div
+          animate={shouldReduceMotion ? {} : { rotate: [0, 360] }}
+          transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
+          className="flex items-center justify-center text-(--primary)"
+        >
+          <Clock className={className} strokeWidth={2.2} />
+        </motion.div>
+      );
+
+    case "consent":
+      return (
+        <motion.div
+          animate={shouldReduceMotion ? {} : { scale: [1, 1.1, 1] }}
+          transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
+          className="flex items-center justify-center text-(--primary)"
+        >
+          <CheckCircle2 className={`${className} fill-(--primary)/20`} strokeWidth={2.2} />
+        </motion.div>
+      );
+
+    case "sharing":
+      return (
+        <motion.div
+          animate={shouldReduceMotion ? {} : { scale: [1, 1.08, 1] }}
+          transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
+          className="flex items-center justify-center text-(--primary)"
+        >
+          <Lock className={className} strokeWidth={2.2} />
+        </motion.div>
+      );
+
+    case "hospital":
+      return (
+        <motion.div
+          animate={shouldReduceMotion ? {} : { y: [0, -2, 0] }}
+          transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut" }}
+          className="flex items-center justify-center text-(--primary)"
+        >
+          <Building2 className={className} strokeWidth={2.2} />
         </motion.div>
       );
 

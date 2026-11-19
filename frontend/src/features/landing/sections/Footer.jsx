@@ -7,12 +7,11 @@ import useContactForm from "../hooks/useContactForm";
 import { SOCIAL_LINKS, FOOTER_LINKS } from "../data/footerData";
 
 const RECOGNIZED_PARTNERS = [
-  { name: "F6S AI #24", href: "#achievements" },
-  { name: "IHFC — IIT Delhi", href: "#achievements" },
-  { name: "IIT Delhi", href: "#achievements" },
+  { name: "IHFC", href: "#achievements" },
   { name: "IIT Mandi Catalyst", href: "#achievements" },
-  { name: "IIT Mandi", href: "#achievements" },
   { name: "Wadhwani Foundation", href: "#achievements" },
+  { name: "F6S AI #17", href: "#achievements" },
+  { name: "F6S AI #24", href: "#achievements" },
 ];
 
 export default function Footer() {
@@ -56,11 +55,11 @@ export default function Footer() {
     <>
       <footer
         id="footer"
-        className="relative bg-gradient-to-b from-[#FFF2E6] via-[#F8E7D8] to-[#F3DDD0] text-(--text-dark) overflow-hidden z-20 border-t border-(--border)/40"
+        className="relative bg-gradient-to-b from-[#FFF6EE] via-[#F8E7D8] to-[#F3DDD0] text-(--text-dark) overflow-hidden z-20 border-t border-(--border)/40"
       >
-        {/* Wavy Top Edge Divider */}
+        {/* Wavy Top Edge Divider flowing from section above */}
         <div className="absolute top-0 left-0 right-0 wavy-divider -translate-y-[98%] pointer-events-none z-10">
-          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="fill-[#FFF2E6] w-full h-12">
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="fill-[#FBE4DB] w-full h-8 sm:h-12">
             <path d="M0,0 C200,80 400,-30 600,45 C800,120 1000,10 1200,60 L1200,120 L0,120 Z" />
           </svg>
         </div>
@@ -83,7 +82,7 @@ export default function Footer() {
         </div>
 
         {/* Main Footer Links Container: Symmetric, Equal-Width Aligned Columns */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-4 pb-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-8 sm:pt-10 pb-12">
           {/* Symmetrical 4-Column Grid on Desktop, 2-Column on Tablet, Stacked on Mobile */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 pb-12 border-b border-(--border)/30 items-start">
             
@@ -98,7 +97,7 @@ export default function Footer() {
                 </span>
               </div>
               <p className="text-sm sm:text-base font-medium text-(--text) leading-relaxed">
-                Empowering parents with gentle, AI-guided contactless infant monitoring and soothing technology. Grounded in pediatric care and maternal wellness.
+                Non-contact infant vitals monitoring, automatic soothing motion, and secure parental sharing. Designed for family peace of mind.
               </p>
               
               {/* Social Icons with Clay Badges */}
@@ -121,22 +120,22 @@ export default function Footer() {
             {/* Column 2: Solutions & Technology */}
             <div className="space-y-4">
               <h4 className="text-xs font-black uppercase tracking-[0.2em] text-(--primary)">
-                Technology
+                Features
               </h4>
               <ul className="space-y-2.5">
                 <li>
-                  <a href="/#features" className="text-sm sm:text-base font-semibold text-(--text) hover:text-(--primary) transition-colors">
+                  <a href="/#product-details" className="text-sm sm:text-base font-semibold text-(--text) hover:text-(--primary) transition-colors">
                     Smart Motion Soothing
                   </a>
                 </li>
                 <li>
-                  <a href="/#diseases" className="text-sm sm:text-base font-semibold text-(--text) hover:text-(--primary) transition-colors">
+                  <a href="/#health-focus" className="text-sm sm:text-base font-semibold text-(--text) hover:text-(--primary) transition-colors">
                     Vital Health Monitoring
                   </a>
                 </li>
                 <li>
                   <a href="/#how-it-works" className="text-sm sm:text-base font-semibold text-(--text) hover:text-(--primary) transition-colors">
-                    AI Cry Acoustic Engine
+                    Audio & Cry Detection
                   </a>
                 </li>
                 <li>
@@ -145,8 +144,8 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="/#products" className="text-sm sm:text-base font-semibold text-(--text) hover:text-(--primary) transition-colors">
-                    Cradle Models & Pricing
+                  <a href="/#product-details" className="text-sm sm:text-base font-semibold text-(--text) hover:text-(--primary) transition-colors">
+                    Cradle Specifications
                   </a>
                 </li>
               </ul>
@@ -179,7 +178,7 @@ export default function Footer() {
                 ))}
                 <li>
                   <a href="/#achievements" className="text-sm sm:text-base font-semibold text-(--text) hover:text-(--primary) transition-colors">
-                    Achievements & Partners
+                    Recognitions & Partners
                   </a>
                 </li>
               </ul>
@@ -191,7 +190,7 @@ export default function Footer() {
                 Inquiries
               </h4>
               <p className="text-sm font-medium text-(--text) leading-relaxed">
-                Have questions about our smart cradle, pre-orders, or research collaborations?
+                Have questions about our smart cradle, pre-orders, or doctor and clinic partnerships?
               </p>
               <button
                 onClick={() => setIsModalOpen(true)}
@@ -224,7 +223,7 @@ export default function Footer() {
 
           {/* Medical Disclaimer Banner */}
           <div className="py-5 border-b border-(--border)/30 text-xs sm:text-sm text-(--text) leading-relaxed text-center sm:text-left">
-            <span className="font-bold text-(--primary)">Pediatric Safety Note:</span> Maatriva is designed as an additional layer of non-contact infant monitoring, cry translation, and sleep assistance. It does not replace medical advice, physician diagnosis, or clinical healthcare.
+            <span className="font-bold text-(--primary)">Medical Note:</span> Maatriva is designed for home monitoring, soothing motion, and parental reassurance. It does not replace medical advice, physician diagnosis, or clinical healthcare.
           </div>
 
           {/* Bottom Copyright Row */}

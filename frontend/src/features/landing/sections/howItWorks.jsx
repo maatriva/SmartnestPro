@@ -23,7 +23,7 @@ export default function HowItWorks() {
     <section
       id="how-it-works"
       ref={sectionRef}
-      className="clay-section clay-even-section text-(--text)"
+      className="clay-section relative text-(--text) bg-[#FBE4DB] pt-14 pb-20 sm:pt-20 sm:pb-28 overflow-hidden z-10"
       aria-label="How Maatriva Smart Cradle Works"
     >
       {/* Background Soft Celestial Blobs */}

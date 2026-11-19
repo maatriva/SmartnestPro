@@ -5,7 +5,7 @@ import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment";
 
-const MODEL_PATH = "/3Dmodel-opt.glb?v=5.0";
+const MODEL_PATH = "/3Dmodel-opt.glb";
 
 const sanitizeColor = (color, fallback = "#D9825F") => {
   if (!color || typeof color !== "string") return fallback;
@@ -165,114 +165,114 @@ const ModelCursor = ({
     const sEyeColor = sanitizeColor(eyeColor, "#3A2B2B");
     const sDetailColor = sanitizeColor(detailColor, "#3A2B2B");
 
-    const dracoLoader = new DRACOLoader();
-    dracoLoader.setDecoderPath("/draco/gltf/");
-    dracoLoader.preload();
+    // Apply Matte, Tactile Clay Materials
+    const applyClayMaterials = (sceneObj) => {
+      sceneObj.traverse((child) => {
+        if (child.isMesh) {
+          let meshMats = child.material;
+          if (!meshMats) {
+            meshMats = new THREE.MeshStandardMaterial();
+            child.material = meshMats;
+          }
 
-    const loader = new GLTFLoader();
-    loader.setDRACOLoader(dracoLoader);
-    loader.load(
-      MODEL_PATH,
-      (gltf) => {
-        const box = new THREE.Box3().setFromObject(gltf.scene);
-        const center = box.getCenter(new THREE.Vector3());
-        const size = box.getSize(new THREE.Vector3());
+          const materials = Array.isArray(meshMats) ? meshMats : [meshMats];
 
-        gltf.scene.position.x = -center.x;
-        gltf.scene.position.y = -center.y;
-        gltf.scene.position.z = -center.z;
+          const updatedMaterials = materials.map((origMat) => {
+            const mat = origMat ? origMat.clone() : new THREE.MeshStandardMaterial();
+            const meshName = (child.name || "").toLowerCase();
+            const matName = (mat.name || "").toLowerCase();
 
-        // Apply Matte, Tactile Clay Materials
-        gltf.scene.traverse((child) => {
-          if (child.isMesh) {
-            let meshMats = child.material;
-            if (!meshMats) {
-              meshMats = new THREE.MeshStandardMaterial();
-              child.material = meshMats;
+            if (meshName.includes("eye") || matName.includes("eye")) {
+              mat.color.set(sEyeColor);
+              mat.roughness = 0.2;
+              mat.metalness = 0.08;
+            } else if (meshName.includes("tusk") || meshName.includes("nail") || matName.includes("ivory")) {
+              mat.color.set(sTuskColor);
+              mat.roughness = 0.45;
+              mat.metalness = 0.12;
+            } else if (meshName.startsWith("rod_") || meshName.includes("rod")) {
+              mat.color.set(sRodColor);
+              mat.roughness = 0.65;
+              mat.metalness = 0.08;
+            } else if (
+              meshName.includes("hinge") ||
+              meshName.includes("pin") ||
+              matName.includes("pin") ||
+              meshName === "tail_2"
+            ) {
+              mat.color.set(sMetalColor);
+              mat.roughness = 0.4;
+              mat.metalness = 0.2;
+            } else if (meshName.includes("mattress") || matName.includes("mattress")) {
+              mat.color.set(sMattressColor);
+              mat.roughness = 0.88;
+              mat.metalness = 0.0;
+            } else if (
+              meshName.includes("bassinet") ||
+              meshName.includes("frame") ||
+              meshName === "screen_carrier" ||
+              meshName === "tail_3" ||
+              matName.includes("warmwhite")
+            ) {
+              mat.color.set(sFrameColor);
+              mat.roughness = 0.72;
+              mat.metalness = 0.05;
+            } else if (meshName.includes("display") || meshName.includes("screen")) {
+              mat.color.set(sDetailColor);
+              mat.roughness = 0.15;
+              mat.metalness = 0.15;
+            } else {
+              mat.color.set(sModelColor);
+              mat.roughness = 0.82;
+              mat.metalness = 0.03;
             }
 
-            const materials = Array.isArray(meshMats) ? meshMats : [meshMats];
+            mat.side = THREE.DoubleSide;
+            mat.needsUpdate = true;
+            return mat;
+          });
 
-            const updatedMaterials = materials.map((origMat) => {
-              const mat = origMat ? origMat.clone() : new THREE.MeshStandardMaterial();
-              const meshName = (child.name || "").toLowerCase();
-              const matName = (mat.name || "").toLowerCase();
-
-              if (meshName.includes("eye") || matName.includes("eye")) {
-                // Button eye: cocoa onyx
-                mat.color.set(sEyeColor);
-                mat.roughness = 0.2;
-                mat.metalness = 0.08;
-              } else if (meshName.includes("tusk") || meshName.includes("nail") || matName.includes("ivory")) {
-                // Tusks: Honey gold ceramic clay
-                mat.color.set(sTuskColor);
-                mat.roughness = 0.45;
-                mat.metalness = 0.12;
-              } else if (meshName.startsWith("rod_") || meshName.includes("rod")) {
-                // Supporting rods: Rose clay matte
-                mat.color.set(sRodColor);
-                mat.roughness = 0.65;
-                mat.metalness = 0.08;
-              } else if (
-                meshName.includes("hinge") ||
-                meshName.includes("pin") ||
-                matName.includes("pin") ||
-                meshName === "tail_2"
-              ) {
-                // Hardware pins: Honey gold accent
-                mat.color.set(sMetalColor);
-                mat.roughness = 0.4;
-                mat.metalness = 0.2;
-              } else if (meshName.includes("mattress") || matName.includes("mattress")) {
-                // Mattress: Soft sage calming clay
-                mat.color.set(sMattressColor);
-                mat.roughness = 0.88;
-                mat.metalness = 0.0;
-              } else if (
-                meshName.includes("bassinet") ||
-                meshName.includes("frame") ||
-                meshName === "screen_carrier" ||
-                meshName === "tail_3" ||
-                matName.includes("warmwhite")
-              ) {
-                // Frame: Rose clay
-                mat.color.set(sFrameColor);
-                mat.roughness = 0.72;
-                mat.metalness = 0.05;
-              } else if (meshName.includes("display") || meshName.includes("screen")) {
-                // Screen: Cocoa OLED
-                mat.color.set(sDetailColor);
-                mat.roughness = 0.15;
-                mat.metalness = 0.15;
-              } else {
-                // Main Elephant Body: Terracotta matte clay
-                mat.color.set(sModelColor);
-                mat.roughness = 0.82; // Matte clay texture
-                mat.metalness = 0.03;
-              }
-
-              mat.side = THREE.DoubleSide;
-              mat.needsUpdate = true;
-              return mat;
-            });
-
-            child.material = Array.isArray(meshMats) ? updatedMaterials : updatedMaterials[0];
-          }
-        });
-
-        const pivot = new THREE.Group();
-        pivot.add(gltf.scene);
-
-        const maxDim = Math.max(size.x, size.y, size.z);
-        pivot.scale.setScalar(targetSize / maxDim);
-
-        scene.add(pivot);
-        model = pivot;
-        setLoading(false);
-        if (typeof onLoaded === "function") {
-          onLoaded();
+          child.material = Array.isArray(meshMats) ? updatedMaterials : updatedMaterials[0];
         }
-      },
+      });
+    };
+
+    const handleModelSuccess = (gltf) => {
+      const box = new THREE.Box3().setFromObject(gltf.scene);
+      const center = box.getCenter(new THREE.Vector3());
+      const size = box.getSize(new THREE.Vector3());
+
+      gltf.scene.position.x = -center.x;
+      gltf.scene.position.y = -center.y;
+      gltf.scene.position.z = -center.z;
+
+      applyClayMaterials(gltf.scene);
+
+      const pivot = new THREE.Group();
+      pivot.add(gltf.scene);
+
+      const maxDim = Math.max(size.x, size.y, size.z);
+      pivot.scale.setScalar(targetSize / maxDim);
+
+      scene.add(pivot);
+      model = pivot;
+      setLoading(false);
+      if (typeof onLoaded === "function") {
+        onLoaded();
+      }
+    };
+
+    // 1. Try primary Draco compressed model with local decoder
+    const localDracoLoader = new DRACOLoader();
+    localDracoLoader.setDecoderPath("/draco/gltf/");
+    localDracoLoader.setDecoderConfig({ type: "wasm" });
+
+    const primaryLoader = new GLTFLoader();
+    primaryLoader.setDRACOLoader(localDracoLoader);
+
+    primaryLoader.load(
+      MODEL_PATH,
+      handleModelSuccess,
       (xhr) => {
         if (xhr.total > 0) {
           const percent = Math.round((xhr.loaded / xhr.total) * 100);
@@ -280,32 +280,42 @@ const ModelCursor = ({
         }
       },
       (error) => {
-        console.warn("Draco model load attempt failed, falling back to standard GLB...", error);
-        const standardLoader = new GLTFLoader();
-        standardLoader.load(
-          "/3Dmodel.glb",
-          (fallbackGltf) => {
-            const box = new THREE.Box3().setFromObject(fallbackGltf.scene);
-            const center = box.getCenter(new THREE.Vector3());
-            const size = box.getSize(new THREE.Vector3());
-            fallbackGltf.scene.position.x = -center.x;
-            fallbackGltf.scene.position.y = -center.y;
-            fallbackGltf.scene.position.z = -center.z;
-            const pivot = new THREE.Group();
-            pivot.add(fallbackGltf.scene);
-            const maxDim = Math.max(size.x, size.y, size.z);
-            pivot.scale.setScalar(targetSize / maxDim);
-            scene.add(pivot);
-            model = pivot;
-            setLoading(false);
-            if (typeof onLoaded === "function") onLoaded();
-          },
-          undefined,
-          (err2) => {
-            console.error("All 3D model loaders failed:", err2);
-            setLoading(false);
-          }
-        );
+        console.warn("Local Draco decode failed, trying Google CDN decoder...", error);
+        // 2. Try Google CDN Draco decoder
+        try {
+          const cdnDracoLoader = new DRACOLoader();
+          cdnDracoLoader.setDecoderPath("https://www.gstatic.com/draco/versioned/decoders/1.5.7/");
+          const cdnLoader = new GLTFLoader();
+          cdnLoader.setDRACOLoader(cdnDracoLoader);
+
+          cdnLoader.load(
+            MODEL_PATH,
+            handleModelSuccess,
+            undefined,
+            (cdnError) => {
+              console.warn("CDN Draco decode failed, falling back to uncompressed GLB...", cdnError);
+              // 3. Fallback to uncompressed GLB
+              const standardLoader = new GLTFLoader();
+              standardLoader.load(
+                "/3Dmodel.glb",
+                handleModelSuccess,
+                undefined,
+                (finalErr) => {
+                  console.error("All 3D model loaders failed:", finalErr);
+                  setLoading(false);
+                }
+              );
+            }
+          );
+        } catch (e) {
+          const standardLoader = new GLTFLoader();
+          standardLoader.load(
+            "/3Dmodel.glb",
+            handleModelSuccess,
+            undefined,
+            () => setLoading(false)
+          );
+        }
       }
     );
 

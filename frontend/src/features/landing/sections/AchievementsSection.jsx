@@ -4,17 +4,6 @@ import { Sparkles, Moon, Award, ShieldCheck } from "lucide-react";
 
 export const ACHIEVEMENTS = [
   {
-    id: "f6s-top-company",
-    name: "F6S Global Ranking",
-    role: "Global Top Company · Oct '26",
-    badge: "#24 in Artificial Intelligence",
-    png: "/achievements/f6s-top-company.png",
-    webp: "/achievements/f6s-top-company.webp",
-    width: 1024,
-    height: 179,
-    alt: "F6S #24 Top Company in Artificial Intelligence recognition wreath badge",
-  },
-  {
     id: "ihfc-iit-delhi",
     name: "IHFC — IIT Delhi",
     role: "Technology Innovation Hub",
@@ -24,17 +13,6 @@ export const ACHIEVEMENTS = [
     width: 892,
     height: 407,
     alt: "IHFC Technology Innovation Hub at IIT Delhi logo",
-  },
-  {
-    id: "iit-delhi",
-    name: "IIT Delhi",
-    role: "Indian Institute of Technology",
-    badge: "Incubation Partner",
-    png: "/achievements/iit-delhi.png",
-    webp: "/achievements/iit-delhi.webp",
-    width: 480,
-    height: 480,
-    alt: "Indian Institute of Technology Delhi official logo",
   },
   {
     id: "iit-mandi-catalyst",
@@ -48,17 +26,6 @@ export const ACHIEVEMENTS = [
     alt: "IIT Mandi Catalyst Technology Business Incubator logo",
   },
   {
-    id: "iit-mandi",
-    name: "IIT Mandi",
-    role: "Indian Institute of Technology",
-    badge: "Innovation Ecosystem",
-    png: "/achievements/iit-mandi.png",
-    webp: "/achievements/iit-mandi.webp",
-    width: 251,
-    height: 201,
-    alt: "Indian Institute of Technology Mandi logo",
-  },
-  {
     id: "wadhwani-foundation",
     name: "Wadhwani Foundation",
     role: "Global Entrepreneurship",
@@ -68,6 +35,28 @@ export const ACHIEVEMENTS = [
     width: 225,
     height: 225,
     alt: "Wadhwani Foundation official logo",
+  },
+  {
+    id: "f6s-top-company-17",
+    name: "F6S Global Ranking",
+    role: "Global Top Company · June '26",
+    badge: "#17 in Artificial Intelligence",
+    png: "/achievements/f6s-top-company-17.png",
+    webp: "/achievements/f6s-top-company-17.webp",
+    width: 1024,
+    height: 175,
+    alt: "F6S #17 Top Company in Artificial Intelligence recognition wreath badge",
+  },
+  {
+    id: "f6s-top-company-24",
+    name: "F6S Global Ranking",
+    role: "Global Top Company · Oct '26",
+    badge: "#24 in Artificial Intelligence",
+    png: "/achievements/f6s-top-company.png",
+    webp: "/achievements/f6s-top-company.webp",
+    width: 1024,
+    height: 179,
+    alt: "F6S #24 Top Company in Artificial Intelligence recognition wreath badge",
   },
 ];
 
@@ -89,7 +78,7 @@ export default function AchievementsSection() {
   return (
     <section
       id="achievements"
-      className="relative night-sky-section pt-16 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden z-10"
+      className="clay-section relative text-(--text) bg-[#FBE4DB] pt-14 pb-20 sm:pt-20 sm:pb-28 overflow-hidden z-10"
       aria-label="Our Achievements and Recognitions"
     >
       {/* Background Twinkling Night Stars */}
@@ -116,38 +105,26 @@ export default function AchievementsSection() {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10 w-full">
-        {/* Section Header: Consistent 8px Vertical Rhythm */}
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-14">
-          <motion.div
-            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full clay-badge-dark text-xs sm:text-sm font-bold mb-3"
-          >
-            <Moon size={14} className="text-(--primary) fill-(--primary)/20" />
-            <span>Recognition & Milestones</span>
-            <Sparkles size={14} className="text-(--primary)" />
-          </motion.div>
-
+        {/* Section Header: Plain, direct copy without eyebrow pills */}
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
           <motion.h2
             initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.55, delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) leading-tight font-display tracking-tight"
+            transition={{ duration: 0.55 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) leading-tight font-display tracking-tight text-center [text-wrap:balance]"
           >
-            Our <span className="text-(--primary)">Achievements</span>
+            Recognitions and partners
           </motion.h2>
 
           <motion.p
             initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.55, delay: 0.2 }}
-            className="mt-3 text-base sm:text-lg text-(--text) font-medium max-w-xl mx-auto leading-relaxed"
+            transition={{ duration: 0.55, delay: 0.1 }}
+            className="mt-3 text-base sm:text-lg text-(--text) font-medium max-w-xl mx-auto leading-relaxed text-center [text-wrap:balance]"
           >
-            Proudly recognized globally and incubated, mentored, and supported by India’s premier technical institutions and innovation foundations.
+            Supported by technical institutions, incubators, and startup rankings.
           </motion.p>
         </div>
 

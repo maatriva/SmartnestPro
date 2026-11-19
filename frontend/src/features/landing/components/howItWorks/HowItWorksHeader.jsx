@@ -10,22 +10,14 @@ export default function HowItWorksHeader() {
         margin: "-100px",
       }}
       transition={{ duration: 0.6 }}
-      className="clay-section-header"
+      className="text-center max-w-2xl mx-auto mb-10 sm:mb-12"
     >
-      <div className="inline-block px-4 py-1.5 clay-badge text-xs sm:text-sm font-bold mb-3">
-        How It Works
-      </div>
-
       <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) leading-tight mb-3 [text-wrap:balance]">
-        Get started in{" "}
-        <span className="text-(--primary)">
-          3 simple steps
-        </span>
+        How it works
       </h2>
 
       <p className="text-base sm:text-lg text-(--text) font-medium max-w-2xl mx-auto leading-relaxed [text-wrap:balance]">
-        From unboxing to sweet dreams, we've made it incredibly easy to set up
-        and nurture your newborn.
+        Set up in three steps to start monitoring and soothing your baby.
       </p>
     </motion.div>
   );

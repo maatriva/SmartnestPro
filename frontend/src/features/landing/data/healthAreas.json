@@ -274,6 +274,107 @@
       ]
     }
   ],
+  "hospitals": [
+    {
+      "id": "hospital-period-reports",
+      "enabled": true,
+      "needsMedicalReview": false,
+      "iconType": "reports",
+      "title": "Baby vitals reports for selected periods",
+      "shortDescription": "Generate structured vitals reports for custom dates to share with your pediatrician or hospital team.",
+      "whatItIs": "Parents can select a specific date range—such as the past 24 hours, the last week, or between check-up visits—and generate a clean vitals summary.",
+      "whyItMatters": "During clinic visits, doctors need concise objective trends rather than vague recollections of when a baby had a fever or restless sleep.",
+      "warningSigns": [
+        "Unexplained spikes in body temperature over several nights",
+        "Sustained changes in resting respiratory rate",
+        "Repeated night wakings with unusual crying patterns"
+      ],
+      "howMaatrivaHelps": "How Maatriva supports: Summarizes measured readings into clear graphs and numerical summaries for doctor consultations. Note: Maatriva does not replace medical advice, diagnosis, or treatment.",
+      "emergencyAction": "If your baby shows acute signs of illness or respiratory distress, seek emergency medical care immediately.",
+      "sources": [
+        { "name": "Indian Academy of Pediatrics (IAP)", "url": "https://iapindia.org/" },
+        { "name": "World Health Organization (WHO)", "url": "https://www.who.int/" }
+      ]
+    },
+    {
+      "id": "hospital-vitals-history",
+      "enabled": true,
+      "needsMedicalReview": false,
+      "iconType": "history",
+      "title": "Vitals history and trends",
+      "shortDescription": "Recorded logs of breathing rate, heart rate, skin temperature, and sleep cycles measured by the cradle.",
+      "whatItIs": "The cradle logs non-contact measurements taken while your baby rests: breathing rate, heart rate, skin temperature, and sleep continuity.",
+      "whyItMatters": "Having an accurate timeline helps pediatricians identify whether symptoms developed suddenly or have been progressing over days.",
+      "warningSigns": [
+        "Abnormal elevation in body temperature",
+        "Marked deviation from baby's personal resting breathing baseline",
+        "Severe disruption in normal sleep cycle continuity"
+      ],
+      "howMaatrivaHelps": "How Maatriva supports: Provides an objective timeline of cradle-recorded readings for medical review. Note: Maatriva does not replace medical advice, diagnosis, or treatment.",
+      "emergencyAction": "For high fevers or lethargy in newborns under 3 months, contact your pediatrician or emergency hospital immediately.",
+      "sources": [
+        { "name": "American Academy of Pediatrics (AAP)", "url": "https://www.aap.org/" }
+      ]
+    },
+    {
+      "id": "hospital-parent-consent",
+      "enabled": true,
+      "needsMedicalReview": false,
+      "iconType": "consent",
+      "title": "Reports shared by parents with consent",
+      "shortDescription": "Reports are generated and shared only when the parent explicitly chooses to export or send them.",
+      "whatItIs": "No health or sensor data is shared with any doctor, hospital, or clinic without explicit parent authorization.",
+      "whyItMatters": "Health privacy is a fundamental right. Families must remain in full control of who sees their child's health records.",
+      "warningSigns": [
+        "Unauthorized sharing requests from unverified third parties",
+        "Sharing data without clear patient-caregiver consent"
+      ],
+      "howMaatrivaHelps": "How Maatriva supports: Enforces one-way, parent-initiated report exports. You decide if and when to share. Note: Maatriva does not replace medical advice, diagnosis, or treatment.",
+      "emergencyAction": "Always communicate directly with your verified healthcare provider regarding critical health decisions.",
+      "sources": [
+        { "name": "Digital Health Privacy Standards", "url": "https://abdm.gov.in/" }
+      ]
+    },
+    {
+      "id": "hospital-secure-control",
+      "enabled": true,
+      "needsMedicalReview": false,
+      "iconType": "sharing",
+      "title": "Secure sharing controlled by the parent",
+      "shortDescription": "End-to-end encrypted sharing links with configurable expiration times and direct revocation.",
+      "whatItIs": "When you share a report with a hospital or pediatrician, access is protected by encrypted channels and can be set to expire automatically.",
+      "whyItMatters": "Temporary clinical consultations should not leave permanent open data links after care is completed.",
+      "warningSigns": [
+        "Unencrypted health data sent over unsecured channels",
+        "Permanent links that cannot be revoked by parents"
+      ],
+      "howMaatrivaHelps": "How Maatriva supports: Provides parent-managed permissions, time-limited doctor links, and instant access revocation. Note: Maatriva does not replace medical advice, diagnosis, or treatment.",
+      "emergencyAction": "Keep emergency contacts accessible at all times for urgent medical consultations.",
+      "sources": [
+        { "name": "National Health Authority (NHA)", "url": "https://nha.gov.in/" }
+      ]
+    },
+    {
+      "id": "hospital-partner-connect",
+      "enabled": true,
+      "needsMedicalReview": false,
+      "iconType": "hospital",
+      "title": "Connect with partner doctors and hospitals",
+      "shortDescription": "Directly share structured cradle reports with partner clinics and pediatric teams during consultations.",
+      "whatItIs": "Enables parents to connect with our network of partner pediatricians and hospitals, and invites healthcare institutions to partner with Maatriva.",
+      "whyItMatters": "Streamlined data sharing helps doctors get straight to the facts during consultations without manual paperwork.",
+      "warningSigns": [
+        "Incomplete symptom records during pediatric visits",
+        "Delayed follow-ups after hospital discharge"
+      ],
+      "howMaatrivaHelps": "How Maatriva supports: Formats cradle data into standard medical summary formats. Hospitals and clinics can join our partnership program. Note: Maatriva does not replace medical advice, diagnosis, or treatment.",
+      "emergencyAction": "In acute medical emergencies, visit your nearest emergency room or dial emergency services immediately.",
+      "sources": [
+        { "name": "Indian Academy of Pediatrics (IAP)", "url": "https://iapindia.org/" }
+      ],
+      "hasPartnerButton": true
+    }
+  ],
   "disclaimer": "This information is for awareness only and is not medical advice. Maatriva does not replace a doctor. In an emergency, call your local emergency number or go to the nearest hospital.",
   "motherReassurance": "Most mothers recover well. Knowing the warning signs helps you act early.",
   "reviewInfo": {

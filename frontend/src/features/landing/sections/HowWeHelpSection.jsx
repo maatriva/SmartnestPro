@@ -63,51 +63,34 @@ export default function HowWeHelpSection() {
     "new-mothers": Heart,
     "working-mothers": Briefcase,
     "families-caregivers": Users,
-    "hospitals-clinics": Building2,
+    "doctors-hospitals": Building2,
   };
 
   return (
     <section
       id="how-we-help"
-      className="clay-section relative text-(--text) bg-gradient-to-b from-[#FFF6EE] via-[#FFFDFB] to-[#FFF6EE] pt-14 pb-20 sm:pt-20 sm:pb-28 overflow-hidden z-10"
-      aria-label="How We Help Real Families and Healthcare Teams"
+      className="clay-section relative text-(--text) bg-[#FBE4DB] pt-14 pb-20 sm:pt-20 sm:pb-28 overflow-hidden z-10"
+      aria-label="Who Maatriva Helps"
     >
-      {/* Background Soft Celestial Warmth Blobs */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-        <div className="absolute top-1/3 -right-24 w-96 h-96 bg-[#F0C675] opacity-10 blur-[130px] rounded-full" />
-        <div className="absolute bottom-1/3 -left-20 w-96 h-96 bg-[#D9825F] opacity-10 blur-[130px] rounded-full" />
-      </div>
-
       <div className="max-w-7xl mx-auto clay-container relative z-10">
         
-        {/* Section Header */}
-        <div className="clay-section-header">
-          <motion.div
-            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full clay-badge text-xs sm:text-sm font-bold mb-3 border border-(--primary)/20"
-          >
-            <Sparkles size={14} className="text-(--primary)" />
-            <span>Care in Real Life</span>
-          </motion.div>
-
+        {/* Section Header: Direct, Plain Language, No Eyebrow Pills */}
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
           <motion.h2
             initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.55, delay: 0.1 }}
+            transition={{ duration: 0.55 }}
             className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) leading-tight font-display tracking-tight text-center [text-wrap:balance]"
           >
-            Support for every part of the <span className="text-(--primary)">journey.</span>
+            {howWeHelpData.title}
           </motion.h2>
 
           <motion.p
             initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.55, delay: 0.2 }}
+            transition={{ duration: 0.55, delay: 0.1 }}
             className="mt-3 text-base sm:text-lg md:text-xl text-(--text) font-medium max-w-2xl mx-auto leading-relaxed text-center [text-wrap:balance]"
           >
             {howWeHelpData.subtitle}
@@ -167,7 +150,7 @@ export default function HowWeHelpSection() {
             animate={{ opacity: 1, x: 0 }}
             exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: -20 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="clay-card p-6 sm:p-10 lg:p-12 rounded-[36px] border-2 border-white shadow-xl"
+            className="clay-card bg-white/95 p-6 sm:p-10 lg:p-12 rounded-[36px] border-2 border-white shadow-xl"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
               
@@ -175,11 +158,7 @@ export default function HowWeHelpSection() {
               <div className="lg:col-span-7 space-y-6 sm:space-y-7">
                 
                 <div>
-                  <span className="text-xs font-extrabold uppercase tracking-wider text-(--primary) bg-(--bg-secondary) px-3.5 py-1 rounded-full border border-(--primary)/15">
-                    {currentAudience.tabLabel} Care Continuum
-                  </span>
-                  
-                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-(--text-dark) mt-3 leading-tight font-display tracking-tight [text-wrap:balance]">
+                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-(--text-dark) leading-tight font-display tracking-tight [text-wrap:balance]">
                     {currentAudience.headline}
                   </h3>
 
@@ -313,7 +292,7 @@ export default function HowWeHelpSection() {
               href="/survey"
               className="px-6 sm:px-7 py-3 rounded-full clay-btn clay-btn-primary text-sm font-bold text-white shadow-md cursor-pointer"
             >
-              Get Maatriva
+              Take Parent Survey
             </a>
           </div>
         </div>

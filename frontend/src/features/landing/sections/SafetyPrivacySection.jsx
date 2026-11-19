@@ -23,24 +23,13 @@ export default function SafetyPrivacySection() {
   return (
     <section
       id="safety-privacy"
-      className="clay-section relative text-(--text) bg-gradient-to-b from-[#FFF6EE] via-[#FFFDF9] to-[#FFF6EE] pt-14 pb-20 sm:pt-20 sm:pb-28 overflow-hidden z-10"
-      aria-label="Safety and Privacy Guarantees"
+      className="clay-section relative text-(--text) bg-[#FFF6EE] pt-14 pb-20 sm:pt-20 sm:pb-28 overflow-hidden z-10"
+      aria-label="Safety and Privacy"
     >
       <div className="max-w-7xl mx-auto clay-container relative z-10">
         
-        {/* Section Header */}
-        <div className="clay-section-header">
-          <motion.div
-            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full clay-badge text-xs sm:text-sm font-bold mb-3 border border-(--primary)/20"
-          >
-            <Shield size={15} className="text-(--primary)" />
-            <span>Privacy & Device Integrity</span>
-            <Sparkles size={14} className="text-(--accent)" />
-          </motion.div>
-
+        {/* Section Header: Direct, Plain Language, No Eyebrow Pills */}
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
           <motion.h2
             initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -48,7 +37,7 @@ export default function SafetyPrivacySection() {
             transition={{ delay: 0.1 }}
             className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) leading-tight font-display tracking-tight text-center [text-wrap:balance]"
           >
-            Safety and <span className="text-(--primary)">Privacy First.</span>
+            Safety and privacy
           </motion.h2>
 
           <motion.p
@@ -58,7 +47,7 @@ export default function SafetyPrivacySection() {
             transition={{ delay: 0.2 }}
             className="mt-3 text-base sm:text-lg md:text-xl text-(--text) font-medium max-w-2xl mx-auto leading-relaxed text-center [text-wrap:balance]"
           >
-            {safetyData.subtitle}
+            Your baby's data stays secure, private, and under your control.
           </motion.p>
         </div>
 
@@ -76,9 +65,9 @@ export default function SafetyPrivacySection() {
                 transition={{ delay: index * 0.1 + 0.1 }}
                 className="h-full flex flex-col"
               >
-                <div className="clay-card p-7 sm:p-8 rounded-3xl flex flex-col justify-between h-full border-2 border-white/90 shadow-sm hover:shadow-md transition-shadow">
+                <div className="clay-card-blush bg-[#FFF0E6] p-7 sm:p-8 rounded-3xl flex flex-col justify-between h-full border-2 border-white/90 shadow-sm hover:shadow-md transition-shadow">
                   <div>
-                    <div className="w-14 h-14 rounded-2xl clay-badge text-(--primary) flex items-center justify-center mb-5 shadow-xs border border-white">
+                    <div className="w-14 h-14 rounded-2xl bg-white text-(--primary) flex items-center justify-center mb-5 shadow-xs border border-white">
                       <Icon size={24} strokeWidth={2.2} />
                     </div>
 

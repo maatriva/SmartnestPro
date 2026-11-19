@@ -4,9 +4,11 @@ import { Suspense, lazy } from "react";
 import Hero from "../sections/Hero";
 import TrustStrip from "../components/hero/TrustStrip";
 import StickyMobileCTA from "../components/hero/StickyMobileCTA";
+import WavyDivider from "../components/WavyDivider";
 
 const ProblemSection = lazy(() => import("../sections/ProblemSection"));
 const HowItWorks = lazy(() => import("../sections/howItWorks"));
+const ProductDetailsSection = lazy(() => import("../sections/ProductDetailsSection"));
 const HealthFocusSection = lazy(() => import("../sections/HealthFocusSection"));
 const AppDownloadSection = lazy(() => import("../sections/AppDownloadSection"));
 const HowWeHelpSection = lazy(() => import("../sections/HowWeHelpSection"));
@@ -19,19 +21,19 @@ export default function Home() {
   return (
     <div className="relative bg-(--bg) text-(--text) fade-in overflow-hidden">
       <Helmet>
-        <title>Maatriva | Celestial Clay Smart Baby Care Powered by AI</title>
+        <title>Maatriva | Smart Baby Cradle with Non-Contact Monitoring</title>
         <meta
           name="description"
-          content="Experience Maatriva, the world's first AI-powered smart baby cradle. Features automated gentle soothing, cry translation, and contactless infant health monitoring in our Celestial Clay sanctuary."
+          content="Maatriva is an AI-powered smart baby cradle featuring automated gentle soothing, cry translation, and contactless infant health monitoring."
         />
-        <meta name="keywords" content="smart cradle, infant monitoring, AI baby care, healthcare technology, newborn monitoring, baby safety, parent assistance, celestial clay baby care" />
+        <meta name="keywords" content="smart cradle, infant monitoring, AI baby care, healthcare technology, newborn monitoring, baby safety, parent assistance" />
         <link rel="canonical" href="https://maatriva.co.in/" />
         
         {/* Open Graph Tags */}
         <meta property="og:title" content="Maatriva | Smart Baby Care Powered by AI" />
         <meta
           property="og:description"
-          content="Experience Maatriva, the world's first AI-powered smart baby cradle. Features automated gentle soothing, cry translation, and newborn health monitoring."
+          content="Maatriva is an AI-powered smart baby cradle featuring automated gentle soothing, cry translation, and newborn health monitoring."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://maatriva.co.in/" />
@@ -40,7 +42,7 @@ export default function Home() {
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Maatriva | Smart Baby Care Powered by AI" />
-        <meta name="twitter:description" content="Experience Maatriva, the world's first AI-powered smart baby cradle. Features automated gentle soothing, cry translation, and newborn health monitoring." />
+        <meta name="twitter:description" content="Maatriva is an AI-powered smart baby cradle featuring automated gentle soothing, cry translation, and newborn health monitoring." />
         <meta name="twitter:image" content="https://maatriva.co.in/AIPro.jpeg" />
 
         {/* Structured Data */}
@@ -100,31 +102,43 @@ export default function Home() {
       <TrustStrip />
 
       <Suspense fallback={<div className="h-48" />}>
-        {/* 3. The Problem: Short, empathetic challenges parents face */}
+        {/* Section 1: The Problem (Cream #FFF6EE) */}
         <ProblemSection />
+        <WavyDivider fromColor="#FFF6EE" toColor="#FBE4DB" />
 
-        {/* 4. How It Works: 3 Steps (Pair, Continuous AI Vigil, Real-Time Alerts) */}
+        {/* Section 2: How It Works (Blush #FBE4DB) */}
         <HowItWorks />
+        <WavyDivider fromColor="#FBE4DB" toColor="#FFF6EE" inverted />
 
-        {/* 5. Health Focus: What we watch over (Baby & Postpartum Mother with Know More Modals) */}
+        {/* Section 3: Product Details Bento (Cream #FFF6EE) */}
+        <ProductDetailsSection />
+        <WavyDivider fromColor="#FFF6EE" toColor="#FBE4DB" />
+
+        {/* Section 4: Health Focus (Blush #FBE4DB) */}
         <HealthFocusSection />
+        <WavyDivider fromColor="#FBE4DB" toColor="#FFF6EE" inverted />
 
-        {/* 6. App Showcase: Real App Screens & Mobile Companion Features */}
+        {/* Section 5: App Showcase (Cream #FFF6EE) */}
         <AppDownloadSection />
+        <WavyDivider fromColor="#FFF6EE" toColor="#FBE4DB" />
 
-        {/* 7. How We Help: Support for real journeys across 4 user profiles */}
+        {/* Section 6: Who Maatriva Helps (Blush #FBE4DB) */}
         <HowWeHelpSection />
+        <WavyDivider fromColor="#FBE4DB" toColor="#FFF6EE" inverted />
 
-        {/* 8. Safety & Privacy: Encrypted streams, parent access, expiring passes, data ownership */}
+        {/* Section 7: Safety & Privacy (Cream #FFF6EE) */}
         <SafetyPrivacySection />
+        <WavyDivider fromColor="#FFF6EE" toColor="#FBE4DB" />
 
-        {/* 9. Achievements: Full authentic institutional partner grid */}
+        {/* Section 8: Recognitions & Partners (Blush #FBE4DB) */}
         <AchievementsSection />
+        <WavyDivider fromColor="#FBE4DB" toColor="#FFF6EE" inverted />
 
-        {/* 10. FAQ: High-clarity Clay Accordion */}
+        {/* Section 9: FAQ (Cream #FFF6EE) */}
         <FAQSection />
+        <WavyDivider fromColor="#FFF6EE" toColor="#FBE4DB" />
 
-        {/* 11. Final CTA: Night-sky Warm Clay Section with Inquiry Form */}
+        {/* Section 10: Final CTA & Contact Form (Soft Blush #FBE4DB) */}
         <ContactNightSkySection />
       </Suspense>
 

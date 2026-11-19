@@ -7,16 +7,17 @@ export default function TrendingSideNav() {
 
   const items = useMemo(
     () => [
-      { id: "home", label: "Hero Sanctuary" },
+      { id: "home", label: "Home" },
       { id: "the-problem", label: "The Problem" },
       { id: "how-it-works", label: "How It Works" },
+      { id: "product-details", label: "Cradle Features" },
       { id: "health-focus", label: "Health Focus" },
       { id: "app", label: "Mobile App" },
-      { id: "how-we-help", label: "How We Help" },
+      { id: "how-we-help", label: "Who We Help" },
       { id: "safety-privacy", label: "Safety & Privacy" },
-      { id: "achievements", label: "Achievements" },
+      { id: "achievements", label: "Recognitions" },
       { id: "faq", label: "FAQ" },
-      { id: "contact", label: "Contact & Inquiries" },
+      { id: "contact", label: "Contact" },
     ],
     [],
   );

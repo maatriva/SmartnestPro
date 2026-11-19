@@ -38,25 +38,16 @@ export default function FAQSection() {
   };
 
   return (
-    <section id="faq" className="clay-section relative bg-(--bg-secondary)">
-      {/* Background Soft Glows */}
-      <div className="absolute top-1/3 -left-24 w-80 h-80 bg-(--honey-gold) opacity-15 blur-[100px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-10 right-0 w-96 h-96 bg-(--rose-clay) opacity-20 blur-[120px] rounded-full pointer-events-none" />
-
+    <section id="faq" className="clay-section relative bg-[#FFF6EE] pt-14 pb-20 sm:pt-20 sm:pb-28 overflow-hidden z-10">
       <div className="max-w-4xl mx-auto clay-container relative z-10">
         
-        {/* Section Header */}
-        <div className="clay-section-header">
-          <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full clay-badge text-xs sm:text-sm font-bold mb-3">
-            <HelpCircle size={15} className="text-(--primary)" />
-            <span>Parent Inquiries</span>
-          </div>
+        {/* Section Header: Direct, Plain Language, No Eyebrow Pills */}
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) leading-tight mb-3 text-center [text-wrap:balance]">
-            Frequently Asked{" "}
-            <span className="text-(--primary)">Questions</span>
+            Frequently asked questions
           </h2>
           <p className="text-base sm:text-lg text-(--text) font-medium max-w-2xl mx-auto leading-relaxed text-center [text-wrap:balance]">
-            Clear, honest answers to help you make informed decisions for your newborn.
+            Direct answers about safety, sensors, and cradle features.
           </p>
         </div>
 
@@ -72,7 +63,7 @@ export default function FAQSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.06 }}
-                className="clay-card overflow-hidden transition-transform duration-300"
+                className="clay-card-blush bg-[#FFF0E6] border-2 border-white/90 rounded-3xl overflow-hidden transition-transform duration-300 shadow-sm"
               >
                 <button
                   onClick={() => toggleFAQ(index)}

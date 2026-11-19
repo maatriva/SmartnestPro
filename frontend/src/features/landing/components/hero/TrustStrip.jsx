@@ -2,42 +2,41 @@ import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 
-const TRUST_LOGOS = [
+export const TRUST_LOGOS = [
   {
-    name: "F6S #24 Top Company in AI",
-    png: "/achievements/f6s-top-company.png",
-    webp: "/achievements/f6s-top-company.webp",
-    className: "h-7 sm:h-9 max-w-[140px]",
-  },
-  {
+    id: "ihfc-iit-delhi",
     name: "IHFC — IIT Delhi",
     png: "/achievements/ihfc-iit-delhi.png",
     webp: "/achievements/ihfc-iit-delhi.webp",
-    className: "h-7 sm:h-9 max-w-[110px]",
+    className: "h-7 sm:h-8 max-w-[110px] w-auto",
   },
   {
-    name: "IIT Delhi",
-    png: "/achievements/iit-delhi.png",
-    webp: "/achievements/iit-delhi.webp",
-    className: "h-7 sm:h-9 max-w-[90px]",
-  },
-  {
+    id: "iit-mandi-catalyst",
     name: "IIT Mandi Catalyst",
     png: "/achievements/iit-mandi-catalyst.png",
     webp: "/achievements/iit-mandi-catalyst.webp",
-    className: "h-7 sm:h-9 max-w-[95px]",
+    className: "h-7 sm:h-8 max-w-[100px] w-auto",
   },
   {
-    name: "IIT Mandi",
-    png: "/achievements/iit-mandi.png",
-    webp: "/achievements/iit-mandi.webp",
-    className: "h-7 sm:h-9 max-w-[90px]",
-  },
-  {
+    id: "wadhwani-foundation",
     name: "Wadhwani Foundation",
     png: "/achievements/wadhwani-foundation.png",
     webp: "/achievements/wadhwani-foundation.webp",
-    className: "h-7 sm:h-9 max-w-[95px]",
+    className: "h-7 sm:h-8 max-w-[95px] w-auto",
+  },
+  {
+    id: "f6s-top-company-17",
+    name: "F6S #17 Top Company in AI (June '26)",
+    png: "/achievements/f6s-top-company-17.png",
+    webp: "/achievements/f6s-top-company-17.webp",
+    className: "h-7 sm:h-8 max-w-[135px] w-auto",
+  },
+  {
+    id: "f6s-top-company-24",
+    name: "F6S #24 Top Company in AI (Oct '26)",
+    png: "/achievements/f6s-top-company.png",
+    webp: "/achievements/f6s-top-company.webp",
+    className: "h-7 sm:h-8 max-w-[135px] w-auto",
   },
 ];
 
@@ -61,8 +60,8 @@ export default function TrustStrip() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="block clay-card p-3.5 sm:p-4 rounded-2xl sm:rounded-full border border-white/95 shadow-md hover:shadow-lg transition-all group cursor-pointer"
-        aria-label="View our incubators, institutional partners, and global recognitions"
+        className="block clay-card p-3 sm:p-4 rounded-2xl sm:rounded-full border border-white/95 shadow-md hover:shadow-lg transition-all group cursor-pointer"
+        aria-label="View our incubators and recognitions"
       >
         <div className="flex flex-col lg:flex-row items-center justify-between gap-3 sm:gap-6">
           {/* Label */}
@@ -71,12 +70,12 @@ export default function TrustStrip() {
             <span>Incubated, backed & recognized by:</span>
           </div>
 
-          {/* Logo Strip */}
-          <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-8 flex-1">
-            {TRUST_LOGOS.map((logo, idx) => (
+          {/* Logo Strip: Horizontally scrollable on small mobile with no scrollbar, neatly centered flex on sm+ */}
+          <div className="w-full lg:w-auto flex items-center justify-start sm:justify-center gap-6 sm:gap-8 overflow-x-auto no-scrollbar py-1 px-1">
+            {TRUST_LOGOS.map((logo) => (
               <div
-                key={idx}
-                className="flex items-center justify-center grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition-all duration-200"
+                key={logo.id}
+                className="flex items-center justify-center shrink-0 grayscale hover:grayscale-0 opacity-85 hover:opacity-100 transition-all duration-200"
                 title={logo.name}
               >
                 <picture>

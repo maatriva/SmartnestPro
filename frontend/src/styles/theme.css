@@ -174,18 +174,66 @@
   pointer-events: none;
 }
 
-/* 🌅 Warm Sunset Honey & Peach Clay Sanctuary */
+/* 🌅 Warm Celestial Clay Sunset Section */
 .night-sky-section {
-  background: linear-gradient(
-    180deg,
-    #FFF6EE 0%,
-    #FEEDDE 30%,
-    #FCE2D2 65%,
-    #F8D7C4 100%
-  ) !important;
+  background: linear-gradient(180deg, #FFF6EE 0%, #FEEDDE 30%, #FCE2D2 65%, #F8D7C4 100%) !important;
   color: var(--text-dark) !important;
   position: relative;
   overflow: clip;
+}
+
+.night-sky-section h2,
+.night-sky-section h3,
+.night-sky-section h4 {
+  color: var(--text-dark) !important;
+}
+
+.night-sky-section p {
+  color: var(--text) !important;
+  line-height: 1.6 !important;
+}
+
+/* 🎴 Blush-tinted clay card for Cream sections */
+.clay-card-blush {
+  background: linear-gradient(135deg, #FFF4EC 0%, #FEE8DE 100%) !important;
+  border: 2px solid rgba(255, 255, 255, 0.95) !important;
+  border-radius: 32px !important;
+  box-shadow: 
+    inset 4px 4px 8px rgba(255, 255, 255, 0.95),
+    inset -4px -4px 10px rgba(217, 130, 95, 0.14),
+    0 12px 28px rgba(58, 43, 43, 0.08) !important;
+}
+
+/* 🎴 White/Cream clay card for Blush sections */
+.clay-card-cream {
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFFDFB 100%) !important;
+  border: 2px solid rgba(255, 255, 255, 0.95) !important;
+  border-radius: 32px !important;
+  box-shadow: 
+    inset 4px 4px 8px rgba(255, 255, 255, 0.95),
+    inset -4px -4px 10px rgba(217, 130, 95, 0.12),
+    0 12px 28px rgba(58, 43, 43, 0.07) !important;
+}
+
+/* 🎴 Dark Night Clay Card */
+.clay-card-dark {
+  background: linear-gradient(135deg, rgba(58, 38, 55, 0.94) 0%, rgba(42, 27, 40, 0.96) 100%) !important;
+  border: 2px solid rgba(242, 184, 168, 0.3) !important;
+  border-radius: 32px !important;
+  box-shadow: 
+    inset 4px 4px 10px rgba(255, 255, 255, 0.12),
+    inset -4px -4px 10px rgba(0, 0, 0, 0.4),
+    0 16px 36px rgba(0, 0, 0, 0.3) !important;
+  color: #FFF6EE !important;
+}
+
+.clay-card-dark:hover {
+  transform: translateY(-4px) scale(1.01) !important;
+  border-color: rgba(240, 198, 117, 0.6) !important;
+  box-shadow: 
+    inset 4px 4px 10px rgba(255, 255, 255, 0.18),
+    inset -4px -4px 10px rgba(0, 0, 0, 0.5),
+    0 20px 40px rgba(0, 0, 0, 0.35) !important;
 }
 
 /* 📏 Universal Spacing System & Responsive Containers */
@@ -437,6 +485,12 @@
     inset -3px -3px 6px rgba(255, 255, 255, 0.95),
     0 2px 8px rgba(58, 43, 43, 0.03) !important;
   transition: all 0.3s ease !important;
+}
+
+.clay-input::placeholder {
+  color: #8C7A87 !important;
+  font-weight: 500 !important;
+  opacity: 0.8 !important;
 }
 
 .clay-input:focus {

@@ -1,13 +1,11 @@
 export const HERO_DATA = {
-  badge: "AI-Powered Infant Wellness",
-
   title: {
-    first: "The Smart Cradle for",
-    second: "Peaceful Infant Sleep",
+    first: "The smart cradle for",
+    second: "peaceful infant sleep",
   },
 
   description:
-    "Contactless vital monitoring, automated soothing rhythms, and real-time peace of mind for new parents—with zero wearable wires.",
+    "Contactless vitals tracking, automatic soothing when your baby stirs, and instant alerts on your phone without wearable wires.",
 
-  buttonText: "Experience Maatriva",
+  buttonText: "Take Parent Survey",
 };

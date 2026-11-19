@@ -1,109 +1,109 @@
 {
-  "title": "Support for every part of the journey.",
-  "subtitle": "Care that fits real families, from the first night to the first year.",
+  "title": "Who Maatriva helps",
+  "subtitle": "Care options for new mothers, working parents, families, and doctors.",
   "disclaimer": "Maatriva supports parents and care teams. It does not replace medical advice, diagnosis, or treatment.",
   "audiences": [
     {
       "id": "new-mothers",
       "tabLabel": "New Mothers",
-      "headline": "Rest, with peace of mind.",
-      "description": "The early postpartum weeks are deeply demanding. Maatriva's gentle automated soothing and quiet vigilance let you rest between feeds, knowing you will be alerted the moment your newborn needs your touch.",
+      "headline": "Rest while your baby is cared for.",
+      "description": "The first weeks with a newborn are physically demanding. The cradle rocks automatically when your baby stirs and alerts your phone if readings change, so you can sleep between feeds.",
       "needsMedicalReview": true,
       "screenType": "sleep-lullaby",
       "benefits": [
         {
           "icon": "moon",
-          "title": "Automated Sleep Soothing",
-          "text": "Motorized cradle automatically triggers gentle, pediatric-approved sway rhythms when restless stirring begins."
+          "title": "Automatic Rocking",
+          "text": "The cradle sways gently when your baby starts stirring to help them fall back asleep."
         },
         {
           "icon": "sound",
-          "title": "Voice Vault & Lullabies",
-          "text": "Plays comforting womb sounds, white noise, and custom family recordings to settle baby naturally."
+          "title": "Lullabies and Parent Voice",
+          "text": "Plays recorded voice notes, white noise, and soothing sounds through the speaker."
         },
         {
           "icon": "eye",
-          "title": "Crystal Night-Vision View",
-          "text": "Infrared camera lets you check on your resting infant without turning on harsh nursery lights."
+          "title": "Night-Vision Camera",
+          "text": "Check on your baby in the dark without turning on room lights or walking over."
         }
       ],
       "postpartumHelpBox": {
-        "title": "Postpartum Wellbeing & Emotional Health Support",
-        "message": "Feeling very sad, anxious, or hopeless after birth? You are not alone, and help works. Please talk to your doctor.",
+        "title": "Postpartum Wellbeing Support",
+        "message": "Feeling very sad, anxious, or overwhelmed after birth? You are not alone. Please speak with your doctor or healthcare provider.",
         "emergencyNote": "If you have thoughts of harming yourself or your baby, please seek immediate medical care.",
         "healthFocusAnchor": "health-focus"
       },
       "realLifeMoment": {
         "time": "3:15 AM",
-        "vignette": "The cradle sways gently at a whisper pace while mom rests peacefully.",
-        "caption": "Nighttime Vigil: Gentle sway helps baby resettle after a feed without waking the entire household."
+        "vignette": "The cradle sways gently while mom rests between feeds.",
+        "caption": "Nighttime support: Gentle rocking helps baby settle back to sleep after feeding."
       }
     },
     {
       "id": "working-mothers",
       "tabLabel": "Working Mothers",
-      "headline": "Close, even when you are away.",
-      "description": "Returning to work or stepping out shouldn't mean losing connection. Enjoy encrypted HD streaming, real-time status notifications, and safe caregiver coordination so you can focus with a calm heart.",
+      "headline": "Stay connected while you are away.",
+      "description": "Check in on your baby from work through live video, receive notifications when they wake or cry, and manage caregiver permissions from your phone.",
       "needsMedicalReview": true,
       "screenType": "live-camera",
       "benefits": [
         {
           "icon": "camera",
-          "title": "Remote Live Streaming",
-          "text": "Encrypted HD video and two-way audio let you peek in and whisper hello from your office desk or commute."
+          "title": "Live Video Streaming",
+          "text": "View a live 1080p video feed and talk through two-way audio from your phone."
         },
         {
           "icon": "bell",
-          "title": "Contextual Event Alerts",
-          "text": "Receive clear notifications when baby falls asleep, wakes up, or begins a cry sequence."
+          "title": "Status Notifications",
+          "text": "Get alerts when your baby falls asleep, wakes up, or starts crying."
         },
         {
           "icon": "shield",
-          "title": "Master Parent Permission Control",
-          "text": "You remain in total control of who can view the stream, with single-tap instant access revocation."
+          "title": "Access Management",
+          "text": "Choose who can view the cradle video and revoke access at any time."
         }
       ],
       "realLifeMoment": {
         "time": "2:30 PM",
-        "vignette": "A quick glance between meetings reveals baby sleeping deeply.",
-        "caption": "Daytime Continuity: Check vital trends and room temperature during lunch breaks with zero guesswork."
+        "vignette": "A quick check on your phone shows baby sleeping peacefully.",
+        "caption": "Daytime check: View live video and room temperature while away from home."
       }
     },
     {
       "id": "families-caregivers",
       "tabLabel": "Families & Caregivers",
-      "headline": "Everyone on the same page.",
-      "description": "Caregiving takes a village. Seamlessly invite grandparents, trusted nannies, or family members with role-limited QR passes, scheduled access windows, and clear visual instructions.",
+      "headline": "Coordinate care with trusted family members.",
+      "description": "Invite grandparents, partners, or babysitters with time-limited QR codes so everyone knows baby's routine without conflicting instructions.",
       "needsMedicalReview": true,
       "screenType": "caregiver-qr",
       "benefits": [
         {
           "icon": "users",
-          "title": "Caregiver Invitation Wizard",
-          "text": "Easily onboard helpers via simple QR code scans—no complex account setups or technical hurdles."
+          "title": "QR Code Invites",
+          "text": "Add family helpers by scanning a QR code from the Maatriva app."
         },
         {
           "icon": "lock",
-          "title": "Role-Limited Permissions",
-          "text": "Decide exactly what each helper sees: audio-only, soothing remote controls, or view-only mode."
+          "title": "Controlled Permissions",
+          "text": "Choose whether helpers can view video, listen to audio, or adjust rocking speeds."
         },
         {
           "icon": "clock",
-          "title": "Expiring Access with Live Countdown",
-          "text": "Set temporary passes that expire automatically when the babysitter's scheduled shift concludes."
+          "title": "Time-Limited Passes",
+          "text": "Set temporary passes for babysitters that expire automatically when their shift ends."
         }
       ],
       "realLifeMoment": {
         "time": "5:45 PM",
-        "vignette": "Grandparents verify comfortable nursery warmth before bedtime.",
-        "caption": "Shared Teamwork: Extended family stays involved and reassured without disturbing parental routines."
+        "vignette": "Grandparents check nursery temperature before putting baby down.",
+        "caption": "Family coordination: Grandparents stay involved using simple app controls."
       }
     },
     {
-      "id": "hospitals-clinics",
-      "tabLabel": "Hospitals, Clinics & Pediatricians",
-      "headline": "Clear baby data for better consultations.",
-      "description": "Bridge home nursery observations with professional clinical consultations. Maatriva logs physiological trends into clean, organized charts that parents can share with pediatric teams.",
+      "id": "doctors-hospitals",
+      "tabLabel": "Doctors & Hospitals",
+      "headline": "Share baby reports with your doctor.",
+      "description": "Share recorded vitals and reports directly with your pediatrician or hospital team for regular checkups.",
       "needsMedicalReview": true,
       "screenType": "pdf-export",
       "partnerCallout": "For clinics and hospitals: partner with us",
@@ -111,25 +111,30 @@
       "consultationNotice": "Supports consultation discussions; does not replace physician evaluation or clinical diagnosis.",
       "benefits": [
         {
-          "icon": "file-text",
-          "title": "Continuous Vitals History",
-          "text": "Track longitudinal respiratory rates, temperature stability, and sleep continuity over weeks."
-        },
-        {
-          "icon": "download",
-          "title": "Structured PDF Export",
-          "text": "Generate concise clinical summary reports formatted for quick pediatric intake during routine checkups."
-        },
-        {
           "icon": "stethoscope",
-          "title": "Objective Consultation Context",
-          "text": "Eliminate parental recall stress during 15-minute clinical checkups with clear 14-day trend charts."
+          "title": "Connect with Doctors",
+          "text": "Connect with our partner doctors or hospitals."
+        },
+        {
+          "icon": "clock",
+          "title": "Select Time Periods",
+          "text": "Share your baby's reports for a time period you select."
+        },
+        {
+          "icon": "file-text",
+          "title": "Vitals History",
+          "text": "Share the baby's vitals, including the readings recorded in that period."
+        },
+        {
+          "icon": "shield",
+          "title": "Parent Controlled",
+          "text": "You decide what to share and with whom."
         }
       ],
       "realLifeMoment": {
         "time": "10:15 AM",
-        "vignette": "Doctor and parents review overnight respiratory rhythm curves before clinical guidance.",
-        "caption": "Informed Discussions: Objective data empowers doctors and parents to communicate with clarity."
+        "vignette": "Doctor and parents review past week vitals chart during a routine checkup.",
+        "caption": "Doctor consultation: Share recorded vitals trends during your pediatrician visit."
       }
     }
   ]

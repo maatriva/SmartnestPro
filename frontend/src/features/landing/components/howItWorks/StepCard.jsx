@@ -20,7 +20,7 @@ export default function StepCard({ step, index, totalSteps = 3 }) {
         <div className="absolute w-14 h-14 rounded-full border border-(--accent)/40 animate-ping pointer-events-none" />
       </div>
 
-      <div className="hiw-card h-full clay-card p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden transition-all duration-300 hover:-translate-y-2">
+      <div className="hiw-card h-full clay-card bg-white/95 p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden transition-all duration-300 hover:-translate-y-2">
         <div>
           {/* Step Number in Clay Pill */}
           <div className="flex items-center justify-between mb-5">

@@ -53,7 +53,7 @@ export default function StickyMobileCTA() {
               to="/survey"
               className="px-5 py-2.5 rounded-full clay-btn clay-btn-primary text-xs font-extrabold text-white flex items-center gap-1.5 shrink-0 shadow-md active:scale-95 transition-transform"
             >
-              <span>Get Maatriva</span>
+              <span>Take Survey</span>
               <ArrowRight size={13} />
             </Link>
           </div>
