@@ -112,7 +112,7 @@ export default function ContactNightSkySection() {
                     Your Name
                   </label>
                   <div className="relative">
-                    <User size={17} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-(--text-secondary) pointer-events-none" />
+                    <User size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-(--text-secondary) pointer-events-none" />
                     <input
                       id="contact-name"
                       type="text"
@@ -121,7 +121,7 @@ export default function ContactNightSkySection() {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="Enter your name"
-                      className="w-full pl-10 pr-4 py-2.5 clay-input text-sm font-medium"
+                      className="w-full !pl-11 pr-4 py-2.5 clay-input text-sm font-medium"
                     />
                   </div>
                 </div>
@@ -132,7 +132,7 @@ export default function ContactNightSkySection() {
                     Email Address
                   </label>
                   <div className="relative">
-                    <Mail size={17} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-(--text-secondary) pointer-events-none" />
+                    <Mail size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-(--text-secondary) pointer-events-none" />
                     <input
                       id="contact-email"
                       type="email"
@@ -141,7 +141,7 @@ export default function ContactNightSkySection() {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="Enter your email"
-                      className="w-full pl-10 pr-4 py-2.5 clay-input text-sm font-medium"
+                      className="w-full !pl-11 pr-4 py-2.5 clay-input text-sm font-medium"
                     />
                   </div>
                 </div>
@@ -152,7 +152,7 @@ export default function ContactNightSkySection() {
                     Organization / Role (Optional)
                   </label>
                   <div className="relative">
-                    <Building size={17} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-(--text-secondary) pointer-events-none" />
+                    <Building size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-(--text-secondary) pointer-events-none" />
                     <input
                       id="contact-org"
                       type="text"
@@ -160,7 +160,7 @@ export default function ContactNightSkySection() {
                       value={formData.organization}
                       onChange={handleChange}
                       placeholder="Hospital, clinic, or parent (optional)"
-                      className="w-full pl-10 pr-4 py-2.5 clay-input text-sm font-medium"
+                      className="w-full !pl-11 pr-4 py-2.5 clay-input text-sm font-medium"
                     />
                   </div>
                 </div>
