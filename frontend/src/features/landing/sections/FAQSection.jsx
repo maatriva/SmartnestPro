@@ -38,7 +38,7 @@ export default function FAQSection() {
   };
 
   return (
-    <section id="faq" className="clay-section relative bg-(--bg-canvas) pt-14 pb-20 sm:pt-20 sm:pb-24 overflow-hidden z-10">
+    <section id="faq" className="clay-section relative bg-(--bg-alt) pt-14 pb-20 sm:pt-20 sm:pb-24 overflow-hidden z-10">
       <div className="max-w-3xl mx-auto clay-container relative z-10">
         
         {/* Section Header: Direct, Plain Language */}

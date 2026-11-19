@@ -109,68 +109,90 @@ export default function PreOrderForm({ selectedPlan, onClose }) {
         }
       `}</style>
       
-      <div ref={modalRef} className="clay-card p-8 w-full max-w-md space-y-6 animate-minimize bg-white">
-
+      <div ref={modalRef} className="clay-card-light bg-(--surface) p-6 sm:p-8 w-full max-w-md space-y-5 animate-minimize rounded-2xl border border-(--border-card) shadow-xl">
         <div className="text-center">
-          <h2 id="preorder-modal-title" className="text-2xl font-bold text-[var(--text-dark)]">
-            {isEnterprise ? "Enterprise Inquiry" : "Pre-Order"}
+          <h2 id="preorder-modal-title" className="text-2xl font-bold font-display text-(--text-primary)">
+            {isEnterprise ? "Institutional Inquiry" : "Pre-Order Cradle"}
           </h2>
           {selectedPlan && (
-            <p className="text-[var(--primary)] font-medium mt-1">
-              {selectedPlan.name}
+            <p className="text-(--brand-accent) font-semibold text-sm mt-1">
+              {selectedPlan.name} • {selectedPlan.price}
             </p>
           )}
         </div>
 
-        <div className="space-y-4">
-          <input
-            ref={initialFocusRef}
-            placeholder="Full Name"
-            aria-label="Full Name"
-            onChange={handleChange("name")}
-            className="w-full clay-input p-3"
-            value={form.name}
-          />
+        <div className="space-y-3.5">
+          <div>
+            <label htmlFor="preorder-name" className="block text-xs font-semibold text-(--text-primary) mb-1">
+              Full Name
+            </label>
+            <input
+              id="preorder-name"
+              ref={initialFocusRef}
+              placeholder="Your full name"
+              onChange={handleChange("name")}
+              className="w-full clay-input p-2.5 text-sm"
+              value={form.name}
+            />
+          </div>
 
-          <input
-            type="email"
-            placeholder="Email"
-            aria-label="Email Address"
-            onChange={handleChange("email")}
-            className="w-full clay-input p-3"
-            value={form.email}
-          />
+          <div>
+            <label htmlFor="preorder-email" className="block text-xs font-semibold text-(--text-primary) mb-1">
+              Email Address
+            </label>
+            <input
+              id="preorder-email"
+              type="email"
+              placeholder="name@example.com"
+              onChange={handleChange("email")}
+              className="w-full clay-input p-2.5 text-sm"
+              value={form.email}
+            />
+          </div>
 
-          <input
-            placeholder="Phone Number"
-            aria-label="Phone Number"
-            onChange={handleChange("phone")}
-            className="w-full clay-input p-3"
-            value={form.phone}
-          />
+          <div>
+            <label htmlFor="preorder-phone" className="block text-xs font-semibold text-(--text-primary) mb-1">
+              Phone Number
+            </label>
+            <input
+              id="preorder-phone"
+              type="tel"
+              placeholder="+91 98765 43210"
+              onChange={handleChange("phone")}
+              className="w-full clay-input p-2.5 text-sm"
+              value={form.phone}
+            />
+          </div>
 
-          <textarea
-            placeholder="Delivery Address"
-            aria-label="Delivery Address"
-            onChange={handleChange("address")}
-            rows="3"
-            className="w-full clay-input p-3 resize-none"
-            value={form.address}
-          />
+          <div>
+            <label htmlFor="preorder-address" className="block text-xs font-semibold text-(--text-primary) mb-1">
+              Delivery / Hospital Address
+            </label>
+            <textarea
+              id="preorder-address"
+              placeholder="City, State, Pin Code"
+              onChange={handleChange("address")}
+              rows="3"
+              className="w-full clay-input p-2.5 text-sm resize-none"
+              value={form.address}
+            />
+          </div>
         </div>
 
-        <div className="space-y-3 pt-2">
+        <div className="space-y-2.5 pt-2">
           <button
+            type="button"
             onClick={handleSubmit}
             disabled={loading}
-            className="w-full clay-btn clay-btn-primary py-3.5"
+            className="w-full clay-btn clay-btn-primary py-3 text-sm font-bold rounded-xl"
           >
             {loading ? "Submitting..." : isEnterprise ? "Submit Inquiry" : "Confirm Pre-Order"}
           </button>
 
           <button
+            type="button"
             onClick={onClose}
-            className="w-full clay-btn clay-btn-secondary py-2"
+            className="w-full clay-btn clay-btn-secondary py-2 text-sm font-semibold rounded-xl"
           >
             Cancel
           </button>

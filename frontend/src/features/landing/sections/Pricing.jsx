@@ -12,16 +12,15 @@ export default function Pricing() {
 
   return (
     <section
-      id="products"
+      id="pricing"
       ref={sectionRef}
-      className="clay-section clay-even-section text-(--text) relative"
+      className="clay-section relative bg-(--bg-canvas) scroll-mt-24 sm:scroll-mt-28 pt-14 pb-20 sm:pt-20 sm:pb-24 overflow-hidden z-10"
     >
-      <span id="pricing" className="absolute -top-24 pointer-events-none" aria-hidden="true" />
-      <div className="max-w-7xl mx-auto clay-container">
+      <div className="max-w-7xl mx-auto clay-container px-4 sm:px-6 lg:px-8 relative z-10">
         <PricingHeader />
 
         {/* Primary Cradle Models Comparison (3 columns on Desktop, symmetric 2 on Tablet with last centered, stacked on Mobile) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch relative z-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch relative z-10 mt-8">
           {Object.values(CRADLE_MODELS).map((model, idx) => (
             <div
               key={model.name}
@@ -32,7 +31,7 @@ export default function Pricing() {
               <PricingCard
                 plan={{
                   name: model.name,
-                  price: `₹${model.price}`,
+                  price: model.price,
                   description: model.description,
                   features: model.features,
                   img: model.img,
@@ -47,13 +46,13 @@ export default function Pricing() {
         </div>
 
         {/* Secondary Enterprise Plan */}
-        <div className="mt-20 border-t border-slate-200/20 pt-16 relative z-20">
-          <div className="text-center mb-10">
-            <h3 className="text-2xl font-bold text-(--text-dark)">
-              Commercial & Hospital Plans
+        <div className="mt-16 sm:mt-20 border-t border-(--text-primary)/10 pt-12 sm:pt-14 relative z-10">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold font-display text-(--text-primary)">
+              Hospital & Institutional Deployments
             </h3>
-            <p className="text-(--text-light) text-sm mt-2">
-              Tailored smart cradle deployments for healthcare and bulk nurseries
+            <p className="text-(--text-secondary) text-sm sm:text-base mt-1 max-w-xl mx-auto">
+              Custom fleet management, telemetry dashboards, and multi-bed nursery monitoring for clinics and hospitals.
             </p>
           </div>
           

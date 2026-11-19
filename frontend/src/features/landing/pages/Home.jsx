@@ -14,6 +14,7 @@ const AppDownloadSection = lazy(() => import("../sections/AppDownloadSection"));
 const HowWeHelpSection = lazy(() => import("../sections/HowWeHelpSection"));
 const SafetyPrivacySection = lazy(() => import("../sections/SafetyPrivacySection"));
 const AchievementsSection = lazy(() => import("../sections/AchievementsSection"));
+const Pricing = lazy(() => import("../sections/Pricing"));
 const FAQSection = lazy(() => import("../sections/FAQSection"));
 const ContactNightSkySection = lazy(() => import("../sections/ContactNightSkySection"));
 
@@ -134,11 +135,15 @@ export default function Home() {
         <AchievementsSection />
         <WavyDivider fromColor="#FBE4DB" toColor="#FFF6EE" inverted />
 
-        {/* Section 9: FAQ (Cream #FFF6EE) */}
-        <FAQSection />
+        {/* Section 9: Cradle Models & Pricing (Cream #FFF6EE) */}
+        <Pricing />
         <WavyDivider fromColor="#FFF6EE" toColor="#FBE4DB" />
 
-        {/* Section 10: Final CTA & Contact Form (Soft Blush #FBE4DB) */}
+        {/* Section 10: FAQ (Blush #FBE4DB) */}
+        <FAQSection />
+        <WavyDivider fromColor="#FBE4DB" toColor="#FFF6EE" inverted />
+
+        {/* Section 11: Final CTA & Contact Form (Soft Blush #FBE4DB) */}
         <ContactNightSkySection />
       </Suspense>
 
