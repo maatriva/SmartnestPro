@@ -32,8 +32,8 @@ export default function ContactNightSkySection() {
   };
 
   return (
-    <section id="contact" className="clay-section relative text-(--text-dark) bg-[#FBE4DB] overflow-hidden z-10">
-      {/* Background Soft Celestial Warmth */}
+    <section id="contact" className="clay-section relative text-(--text-primary) bg-(--bg-alt) overflow-hidden z-10 pt-14 pb-20 sm:pt-20 sm:pb-24">
+      {/* Background Soft Celestial Stars */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         {nightStars.map((star) => (
           <span
@@ -50,10 +50,6 @@ export default function ContactNightSkySection() {
             }}
           />
         ))}
-
-        {/* Warm Golden & Rose Aura Orbs */}
-        <div className="absolute top-1/4 -right-20 w-[450px] h-[450px] bg-[#F2B8A8] opacity-35 blur-[120px] rounded-full pointer-events-none" />
-        <div className="absolute bottom-10 -left-20 w-[400px] h-[400px] bg-[#F0C675] opacity-25 blur-[130px] rounded-full pointer-events-none" />
       </div>
 
       <div className="max-w-7xl mx-auto clay-container relative z-10">
@@ -61,62 +57,62 @@ export default function ContactNightSkySection() {
           
           {/* Left Column: Direct Contacts */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.4 }}
             className="lg:col-span-5 space-y-6"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) leading-tight font-display [text-wrap:balance]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-(--text-primary) leading-tight font-display [text-wrap:balance]">
               Contact our team
             </h2>
 
-            <p className="text-base sm:text-lg text-(--text) leading-relaxed font-medium [text-wrap:pretty]">
+            <p className="text-base sm:text-lg text-(--text-secondary) leading-relaxed font-normal [text-wrap:pretty]">
               Have questions about the cradle, pre-orders, or partnerships? Send us a message and our team will get back to you directly.
             </p>
 
-            {/* Direct Contacts in Soft Clay Pill */}
+            {/* Direct Contacts in Light Clay Card */}
             <div className="space-y-3 pt-2">
-              <div className="flex items-center gap-3 text-sm sm:text-base text-(--text-dark) font-bold bg-white/85 p-3.5 rounded-2xl border border-white shadow-xs backdrop-blur-sm">
-                <div className="w-10 h-10 rounded-full bg-(--primary) text-white flex items-center justify-center shrink-0 shadow-xs">
-                  <Mail size={18} />
+              <div className="flex items-center gap-3 text-sm sm:text-base text-(--text-primary) font-semibold bg-(--surface) p-4 rounded-xl border border-(--border-card) shadow-sm">
+                <div className="w-9 h-9 rounded-full bg-(--brand-accent) text-white flex items-center justify-center shrink-0">
+                  <Mail size={17} />
                 </div>
                 <span>contact@maatriva.co.in</span>
               </div>
 
-              <div className="flex items-center gap-3 text-sm sm:text-base text-(--text-dark) font-bold bg-white/85 p-3.5 rounded-2xl border border-white shadow-xs backdrop-blur-sm">
-                <div className="w-10 h-10 rounded-full bg-(--primary) text-white flex items-center justify-center shrink-0 shadow-xs">
-                  <Heart size={18} />
+              <div className="flex items-center gap-3 text-sm sm:text-base text-(--text-primary) font-semibold bg-(--surface) p-4 rounded-xl border border-(--border-card) shadow-sm">
+                <div className="w-9 h-9 rounded-full bg-(--brand-accent) text-white flex items-center justify-center shrink-0">
+                  <Heart size={17} />
                 </div>
                 <span>Supported by IHFC, IIT Mandi Catalyst & Wadhwani Foundation</span>
               </div>
             </div>
           </motion.div>
 
-          {/* Right Column: Soft Clay Form */}
+          {/* Right Column: Clean Form */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.15 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
             className="lg:col-span-7"
           >
-            <div className="bg-white/95 rounded-[32px] p-8 sm:p-10 relative shadow-2xl border-2 border-white/90">
-              <h3 className="text-2xl sm:text-3xl font-bold text-[#261A24] mb-2 font-display [text-wrap:balance]">
+            <div className="bg-(--surface) rounded-2xl p-6 sm:p-9 relative shadow-sm border border-(--border-card)">
+              <h3 className="text-2xl font-bold text-(--text-primary) mb-1.5 font-display [text-wrap:balance]">
                 Send a message
               </h3>
-              <p className="text-sm sm:text-base text-[#4A3B47] mb-6 font-medium [text-wrap:pretty]">
+              <p className="text-sm sm:text-base text-(--text-secondary) mb-6 font-normal [text-wrap:pretty]">
                 Whether you are a parent, hospital, or doctor, we would love to connect.
               </p>
 
               <form onSubmit={handleFormSubmit} className="space-y-4">
                 {/* Name */}
                 <div>
-                  <label htmlFor="contact-name" className="block text-xs font-bold uppercase tracking-wider text-[#261A24] mb-1.5">
+                  <label htmlFor="contact-name" className="block text-xs sm:text-sm font-semibold text-(--text-primary) mb-1.5">
                     Your Name
                   </label>
                   <div className="relative">
-                    <User size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-(--cocoa)/60 pointer-events-none" />
+                    <User size={17} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-(--text-secondary) pointer-events-none" />
                     <input
                       id="contact-name"
                       type="text"
@@ -125,18 +121,18 @@ export default function ContactNightSkySection() {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="Enter your name"
-                      className="w-full pl-11 pr-4 py-3.5 clay-input text-sm sm:text-base font-medium placeholder:text-[#8C7A87] placeholder:font-normal transition-all focus:ring-4 focus:ring-(--primary)/20 focus:border-(--primary)"
+                      className="w-full pl-10 pr-4 py-2.5 clay-input text-sm font-medium"
                     />
                   </div>
                 </div>
 
                 {/* Email */}
                 <div>
-                  <label htmlFor="contact-email" className="block text-xs font-bold uppercase tracking-wider text-[#261A24] mb-1.5">
+                  <label htmlFor="contact-email" className="block text-xs sm:text-sm font-semibold text-(--text-primary) mb-1.5">
                     Email Address
                   </label>
                   <div className="relative">
-                    <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-(--cocoa)/60 pointer-events-none" />
+                    <Mail size={17} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-(--text-secondary) pointer-events-none" />
                     <input
                       id="contact-email"
                       type="email"
@@ -145,18 +141,18 @@ export default function ContactNightSkySection() {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="Enter your email"
-                      className="w-full pl-11 pr-4 py-3.5 clay-input text-sm sm:text-base font-medium placeholder:text-[#8C7A87] placeholder:font-normal transition-all focus:ring-4 focus:ring-(--primary)/20 focus:border-(--primary)"
+                      className="w-full pl-10 pr-4 py-2.5 clay-input text-sm font-medium"
                     />
                   </div>
                 </div>
 
                 {/* Organization / Role */}
                 <div>
-                  <label htmlFor="contact-org" className="block text-xs font-bold uppercase tracking-wider text-[#261A24] mb-1.5">
+                  <label htmlFor="contact-org" className="block text-xs sm:text-sm font-semibold text-(--text-primary) mb-1.5">
                     Organization / Role (Optional)
                   </label>
                   <div className="relative">
-                    <Building size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-(--cocoa)/60 pointer-events-none" />
+                    <Building size={17} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-(--text-secondary) pointer-events-none" />
                     <input
                       id="contact-org"
                       type="text"
@@ -164,14 +160,14 @@ export default function ContactNightSkySection() {
                       value={formData.organization}
                       onChange={handleChange}
                       placeholder="Hospital, clinic, or parent (optional)"
-                      className="w-full pl-11 pr-4 py-3.5 clay-input text-sm sm:text-base font-medium placeholder:text-[#8C7A87] placeholder:font-normal transition-all focus:ring-4 focus:ring-(--primary)/20 focus:border-(--primary)"
+                      className="w-full pl-10 pr-4 py-2.5 clay-input text-sm font-medium"
                     />
                   </div>
                 </div>
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="contact-msg" className="block text-xs font-bold uppercase tracking-wider text-[#261A24] mb-1.5">
+                  <label htmlFor="contact-msg" className="block text-xs sm:text-sm font-semibold text-(--text-primary) mb-1.5">
                     Your Message
                   </label>
                   <div className="relative">
@@ -183,7 +179,7 @@ export default function ContactNightSkySection() {
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="How can our team help you?"
-                      className="w-full p-4 clay-input text-sm sm:text-base font-medium resize-none placeholder:text-[#8C7A87] placeholder:font-normal transition-all focus:ring-4 focus:ring-(--primary)/20 focus:border-(--primary)"
+                      className="w-full p-3.5 clay-input text-sm font-medium resize-none"
                     />
                   </div>
                 </div>
@@ -191,28 +187,28 @@ export default function ContactNightSkySection() {
                 {/* Status Messages */}
                 {status.message && (
                   <div
-                    className={`p-3.5 rounded-2xl text-xs sm:text-sm font-bold ${
+                    className={`p-3.5 rounded-xl text-xs sm:text-sm font-semibold ${
                       status.type === "success"
-                        ? "bg-amber-50/90 text-(--primary) border border-(--primary)/30"
-                        : "bg-rose-50/90 text-(--primary) border border-(--primary)/30"
+                        ? "bg-amber-50 text-(--brand-accent) border border-(--brand-accent)/30"
+                        : "bg-rose-50 text-rose-700 border border-rose-300"
                     }`}
                   >
                     {status.message}
                   </div>
                 )}
 
-                {/* Big Friendly Puffy Submit Button with Squish & Spring */}
+                {/* Primary Button */}
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-4 px-8 mt-2 clay-btn clay-btn-primary text-base font-bold flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl active:scale-95 cursor-pointer transition-transform"
+                  className="w-full py-3.5 px-6 mt-2 clay-btn clay-btn-primary text-base font-semibold flex items-center justify-center gap-2 shadow-md hover:shadow-lg active:scale-98 cursor-pointer transition-transform"
                 >
                   {loading ? (
                     <span className="inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                   ) : (
                     <>
-                      <span>Send Gentle Message</span>
-                      <Send size={18} />
+                      <span>Send Message</span>
+                      <Send size={16} />
                     </>
                   )}
                 </button>

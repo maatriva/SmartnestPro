@@ -78,7 +78,7 @@ export default function AchievementsSection() {
   return (
     <section
       id="achievements"
-      className="clay-section relative text-(--text) bg-[#FBE4DB] pt-14 pb-20 sm:pt-20 sm:pb-28 overflow-hidden z-10"
+      className="clay-section relative text-(--text-primary) bg-(--bg-alt) pt-14 pb-20 sm:pt-20 sm:pb-24 overflow-hidden z-10"
       aria-label="Our Achievements and Recognitions"
     >
       {/* Background Twinkling Night Stars */}
@@ -98,61 +98,57 @@ export default function AchievementsSection() {
             }}
           />
         ))}
-
-        {/* Soft Golden & Plum Aura Orbs */}
-        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[420px] h-[420px] bg-[#F0C675] opacity-10 blur-[120px] rounded-full pointer-events-none" />
-        <div className="absolute bottom-4 right-1/4 w-[380px] h-[380px] bg-[#D9825F] opacity-15 blur-[120px] rounded-full pointer-events-none" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10 w-full">
-        {/* Section Header: Plain, direct copy without eyebrow pills */}
+        {/* Section Header: Plain, direct copy */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
           <motion.h2
-            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
+            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.55 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) leading-tight font-display tracking-tight text-center [text-wrap:balance]"
+            transition={{ duration: 0.35 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-(--text-primary) leading-tight font-display tracking-tight text-center [text-wrap:balance]"
           >
             Recognitions and partners
           </motion.h2>
 
           <motion.p
-            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
+            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.55, delay: 0.1 }}
-            className="mt-3 text-base sm:text-lg text-(--text) font-medium max-w-xl mx-auto leading-relaxed text-center [text-wrap:balance]"
+            transition={{ duration: 0.35, delay: 0.1 }}
+            className="mt-3 text-base sm:text-lg text-(--text-secondary) font-normal max-w-xl mx-auto leading-relaxed text-center [text-wrap:pretty]"
           >
             Supported by technical institutions, incubators, and startup rankings.
           </motion.p>
         </div>
 
-        {/* Symmetric Responsive Grid: 3 across desktop (2 rows of 3), 2 across tablet (3 rows of 2), 1 on mobile */}
-        <div className="flex flex-wrap justify-center gap-6 sm:gap-8 items-stretch">
+        {/* Responsive Grid */}
+        <div className="flex flex-wrap justify-center gap-6 items-stretch">
           {ACHIEVEMENTS.map((item, index) => (
             <motion.div
               key={item.id}
-              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 24 }}
+              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-30px" }}
               transition={{
-                duration: 0.5,
-                delay: shouldReduceMotion ? 0 : index * 0.08,
-                ease: [0.16, 1, 0.3, 1],
+                duration: 0.35,
+                delay: shouldReduceMotion ? 0 : index * 0.06,
+                ease: "easeOut",
               }}
-              whileHover={shouldReduceMotion ? {} : { y: -6, scale: 1.02 }}
-              className="w-full sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] flex flex-col"
+              whileHover={shouldReduceMotion ? {} : { y: -2 }}
+              className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col"
             >
-              <div className="clay-achievement-card h-52 sm:h-56 w-full p-5 sm:p-6 flex flex-col items-center justify-between text-center select-none cursor-default group relative overflow-hidden">
+              <div className="clay-achievement-card h-52 sm:h-56 w-full p-5 sm:p-6 flex flex-col items-center justify-between text-center select-none cursor-default group relative overflow-hidden bg-(--surface) border border-(--border-card) rounded-2xl shadow-sm hover:shadow-md transition-[transform,box-shadow] duration-200">
                 {/* Institutional Badge Pill */}
                 <div className="w-full flex justify-center">
-                  <span className="text-[11px] font-extrabold uppercase tracking-wider text-(--primary) bg-(--bg-secondary) px-3 py-1 rounded-full shadow-xs border border-(--primary)/15">
+                  <span className="text-xs font-semibold text-(--brand-accent) bg-(--bg-canvas) px-2.5 py-0.5 rounded-full border border-(--border-card)">
                     {item.badge}
                   </span>
                 </div>
 
-                {/* Centered Logo with picture webp/png fallback, consistent padding & object-fit: contain */}
+                {/* Centered Logo */}
                 <div className="w-full h-24 sm:h-28 flex items-center justify-center px-2 py-1">
                   <picture className="w-full h-full flex items-center justify-center">
                     <source srcSet={item.webp} type="image/webp" />
@@ -163,17 +159,17 @@ export default function AchievementsSection() {
                       height={item.height}
                       loading="lazy"
                       decoding="async"
-                      className="max-h-full max-w-full object-contain filter contrast-105 group-hover:scale-105 transition-transform duration-300"
+                      className="max-h-full max-w-full object-contain filter contrast-105 group-hover:scale-[1.01] transition-transform duration-200"
                     />
                   </picture>
                 </div>
 
                 {/* Partner Name & Subtitle Baseline */}
-                <div className="w-full pt-1 border-t border-(--terracotta)/10">
-                  <h3 className="text-sm sm:text-base font-bold text-(--text-dark) tracking-tight truncate">
+                <div className="w-full pt-2 border-t border-(--border-card)">
+                  <h3 className="text-sm sm:text-base font-bold text-(--text-primary) tracking-tight truncate">
                     {item.name}
                   </h3>
-                  <p className="text-[11px] sm:text-xs text-(--text-light) font-semibold truncate">
+                  <p className="text-xs text-(--text-secondary) font-normal truncate mt-0.5">
                     {item.role}
                   </p>
                 </div>

@@ -45,12 +45,7 @@ export default function HealthCard({ item, index, onOpenDetail, cardBgClass = ""
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         onClick={() => onOpenDetail(item)}
-        style={{
-          transform: "perspective(1000px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg))",
-          transition: "transform 0.25s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.25s ease",
-          willChange: "transform",
-        }}
-        className={`relative clay-card ${cardBgClass} p-6 sm:p-8 flex flex-col justify-between h-full select-none overflow-hidden group cursor-pointer hover:shadow-2xl transition-all duration-300 border-2 border-white/90`}
+        className="relative clay-card-light bg-(--surface) p-6 sm:p-7 flex flex-col justify-between h-full select-none overflow-hidden group cursor-pointer hover:shadow-md transition-[transform,box-shadow] duration-200 border border-(--border-card) rounded-2xl"
         tabIndex={0}
         role="button"
         aria-haspopup="dialog"
@@ -62,51 +57,42 @@ export default function HealthCard({ item, index, onOpenDetail, cardBgClass = ""
           }
         }}
       >
-        {/* Soft Radial Ambient Clay Glow */}
-        <div
-          className="absolute inset-0 pointer-events-none rounded-[32px] transition-opacity duration-300 z-0"
-          style={{
-            opacity: "var(--glow-opacity, 0)",
-            background: "radial-gradient(320px circle at var(--glow-x, 50%) var(--glow-y, 50%), rgba(217, 130, 95, 0.18), transparent 60%)",
-          }}
-        />
-
         <div className="relative z-10 flex-1 flex flex-col">
           {/* Top Row: Icon Badge */}
-          <div className="flex items-center justify-between mb-5">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl clay-badge flex items-center justify-center text-(--primary) group-hover:scale-105 transition-transform duration-300 shadow-sm border border-white/70">
-              <AnimatedHealthIcon iconType={item.iconType} className="w-7 h-7 sm:w-8 sm:h-8" />
+          <div className="flex items-center justify-between mb-4">
+            <div className="w-12 h-12 rounded-xl bg-(--bg-canvas) flex items-center justify-center text-(--brand-accent) border border-(--border-card)">
+              <AnimatedHealthIcon iconType={item.iconType} className="w-6 h-6" />
             </div>
 
             {item.hasPartnerButton ? (
               <a
                 href="#contact"
                 onClick={(e) => e.stopPropagation()}
-                className="text-xs font-bold text-white bg-(--primary) px-3 py-1.5 rounded-full hover:bg-(--primary-dark) transition-colors shadow-xs"
+                className="text-xs font-semibold text-white bg-(--brand-accent) px-3 py-1.5 rounded-full hover:bg-(--brand-accent-hover) transition-colors shadow-xs"
               >
                 Partner with us
               </a>
             ) : (
-              <span className="text-[11px] font-bold text-(--primary) bg-(--bg-secondary)/70 px-3 py-1 rounded-full border border-(--primary)/15">
-                Vitals log
+              <span className="text-[11px] font-medium text-(--brand-accent) bg-(--bg-canvas) px-2.5 py-0.5 rounded-full border border-(--border-card)">
+                Vitals record
               </span>
             )}
           </div>
 
           {/* Title */}
-          <h3 className="text-xl sm:text-2xl font-black text-(--text-dark) mb-2.5 tracking-tight font-display min-h-[3.25rem] sm:min-h-[3.75rem] flex items-center [text-wrap:balance]">
+          <h3 className="text-xl font-bold text-(--text-primary) mb-2 tracking-tight font-display flex items-center [text-wrap:balance]">
             {item.title}
           </h3>
 
           {/* Short Description */}
-          <p className="text-base text-(--text) leading-relaxed font-medium flex-1 [text-wrap:pretty]">
+          <p className="text-sm sm:text-base text-(--text-secondary) leading-relaxed font-normal flex-1 [text-wrap:pretty]">
             {item.shortDescription}
           </p>
         </div>
 
         {/* Bottom Action Area: Know More Button */}
-        <div className="mt-6 pt-4 border-t border-(--border)/30 flex items-center justify-between relative z-10">
-          <span className="text-xs sm:text-sm font-semibold text-(--text)">
+        <div className="mt-5 pt-3.5 border-t border-(--border-card) flex items-center justify-between relative z-10">
+          <span className="text-xs text-(--text-secondary) font-medium">
             Clinical awareness
           </span>
 
@@ -116,11 +102,11 @@ export default function HealthCard({ item, index, onOpenDetail, cardBgClass = ""
               e.stopPropagation();
               onOpenDetail(item);
             }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full clay-btn clay-btn-secondary text-xs sm:text-sm font-bold text-(--text-dark) group-hover:bg-(--primary) group-hover:text-white transition-all shadow-sm active:scale-95 cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full clay-btn clay-btn-secondary text-xs font-semibold text-(--text-primary) hover:text-(--brand-accent) transition-colors cursor-pointer"
             aria-label={`Read full details for ${item.title}`}
           >
             <span>Know more</span>
-            <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+            <ArrowRight size={13} />
           </button>
         </div>
       </div>

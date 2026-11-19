@@ -69,38 +69,38 @@ export default function HowWeHelpSection() {
   return (
     <section
       id="how-we-help"
-      className="clay-section relative text-(--text) bg-[#FBE4DB] pt-14 pb-20 sm:pt-20 sm:pb-28 overflow-hidden z-10"
+      className="clay-section relative text-(--text-primary) bg-(--bg-alt) pt-14 pb-20 sm:pt-20 sm:pb-24 overflow-hidden z-10"
       aria-label="Who Maatriva Helps"
     >
       <div className="max-w-7xl mx-auto clay-container relative z-10">
         
-        {/* Section Header: Direct, Plain Language, No Eyebrow Pills */}
+        {/* Section Header: Direct, Plain Language */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
           <motion.h2
-            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
+            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.55 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) leading-tight font-display tracking-tight text-center [text-wrap:balance]"
+            transition={{ duration: 0.35 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-(--text-primary) leading-tight font-display tracking-tight text-center [text-wrap:balance]"
           >
             {howWeHelpData.title}
           </motion.h2>
 
           <motion.p
-            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
+            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.55, delay: 0.1 }}
-            className="mt-3 text-base sm:text-lg md:text-xl text-(--text) font-medium max-w-2xl mx-auto leading-relaxed text-center [text-wrap:balance]"
+            transition={{ duration: 0.35, delay: 0.1 }}
+            className="mt-3 text-base sm:text-lg text-(--text-secondary) font-normal max-w-2xl mx-auto leading-relaxed text-center [text-wrap:pretty]"
           >
             {howWeHelpData.subtitle}
           </motion.p>
         </div>
 
-        {/* Audience Selector: Sticky on desktop, Horizontally scrollable row on mobile */}
-        <div className="flex justify-start sm:justify-center mb-10 sm:mb-14 overflow-x-auto pb-3 pt-1 px-2 no-scrollbar">
+        {/* Audience Selector: Tabbed row */}
+        <div className="flex justify-start sm:justify-center mb-10 sm:mb-12 overflow-x-auto pb-2 pt-1 px-2 no-scrollbar">
           <div
-            className="inline-flex p-1.5 sm:p-2 rounded-full clay-card-static border-2 border-white shadow-md relative shrink-0 gap-1 sm:gap-2"
+            className="inline-flex p-1.5 rounded-full bg-(--surface) border border-(--border-card) shadow-sm relative shrink-0 gap-1 sm:gap-1.5"
             role="tablist"
             aria-label="Select audience group"
           >
@@ -117,19 +117,19 @@ export default function HowWeHelpSection() {
                   aria-selected={isSelected}
                   aria-controls={`panel-${aud.id}`}
                   onClick={() => setSelectedAudienceId(aud.id)}
-                  className={`relative z-10 px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold transition-colors duration-200 cursor-pointer flex items-center gap-2 whitespace-nowrap select-none ${
+                  className={`relative z-10 px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-colors duration-150 cursor-pointer flex items-center gap-2 whitespace-nowrap select-none ${
                     isSelected
                       ? "text-white"
-                      : "text-(--text-dark) hover:text-(--primary)"
+                      : "text-(--text-primary) hover:text-(--brand-accent)"
                   }`}
                 >
-                  <AudIcon size={16} />
+                  <AudIcon size={15} />
                   <span>{aud.tabLabel}</span>
 
                   {isSelected && (
                     <motion.div
                       layoutId="active-audience-pill"
-                      className="absolute inset-0 bg-gradient-to-r from-(--primary) to-[#E28D6A] rounded-full -z-10 shadow-md shadow-(--primary)/25"
+                      className="absolute inset-0 bg-(--brand-accent) rounded-full -z-10 shadow-sm"
                       transition={{ type: "spring", stiffness: 350, damping: 30 }}
                     />
                   )}
@@ -139,59 +139,56 @@ export default function HowWeHelpSection() {
           </div>
         </div>
 
-        {/* Split Panel with Shared-Axis Smooth Slide & Fade Transition */}
+        {/* Split Panel: Asymmetric feature split (No card inside a card) */}
         <AnimatePresence mode="wait">
           <motion.div
             key={currentAudience.id}
             id={`panel-${currentAudience.id}`}
             role="tabpanel"
             aria-labelledby={`tab-${currentAudience.id}`}
-            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: 20 }}
+            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: 15 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: -20 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="clay-card bg-white/95 p-6 sm:p-10 lg:p-12 rounded-[36px] border-2 border-white shadow-xl"
+            exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: -15 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="clay-card-light bg-(--surface) p-6 sm:p-8 lg:p-10 rounded-2xl border border-(--border-card) shadow-sm"
           >
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               
-              {/* Left Side: Headline, Empathetic Paragraph, Benefit List, & Help Box */}
-              <div className="lg:col-span-7 space-y-6 sm:space-y-7">
+              {/* Left Side: Headline, Description, Divider-separated Benefits */}
+              <div className="lg:col-span-7 space-y-6">
                 
                 <div>
-                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-(--text-dark) leading-tight font-display tracking-tight [text-wrap:balance]">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-(--text-primary) leading-tight font-display tracking-tight [text-wrap:balance]">
                     {currentAudience.headline}
                   </h3>
 
-                  <p className="mt-3 text-base sm:text-lg text-(--text) font-medium leading-relaxed [text-wrap:pretty]">
+                  <p className="mt-3 text-base text-(--text-secondary) font-normal leading-relaxed [text-wrap:pretty]">
                     {currentAudience.description}
                   </p>
                 </div>
 
-                {/* 3-Item Benefit List with Animated Clay Icons */}
-                <div className="space-y-4 pt-1">
+                {/* Benefits List (Clean dividers, no nested cards) */}
+                <div className="space-y-1 divide-y divide-(--border-card) pt-1">
                   {currentAudience.benefits.map((benefit, bIdx) => {
                     const BIcon = iconMap[benefit.icon] || Sparkles;
 
                     return (
-                      <motion.div
+                      <div
                         key={bIdx}
-                        initial={shouldReduceMotion ? {} : { opacity: 0, y: 12 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 * bIdx + 0.1, duration: 0.4 }}
-                        className="p-4 rounded-2xl bg-white/75 border border-white shadow-2xs flex items-start gap-4 hover:shadow-xs transition-shadow"
+                        className="py-3.5 first:pt-0 last:pb-0 flex items-start gap-3.5"
                       >
-                        <div className="w-10 h-10 rounded-xl clay-badge text-(--primary) flex items-center justify-center shrink-0 shadow-xs border border-white">
-                          <BIcon size={18} />
+                        <div className="w-9 h-9 rounded-xl bg-(--bg-canvas) text-(--brand-accent) flex items-center justify-center shrink-0 border border-(--border-card)">
+                          <BIcon size={17} />
                         </div>
                         <div className="flex-1">
-                          <h4 className="text-sm sm:text-base font-bold text-(--text-dark)">
+                          <h4 className="text-sm sm:text-base font-semibold text-(--text-primary)">
                             {benefit.title}
                           </h4>
-                          <p className="text-xs sm:text-sm text-(--text-light) font-medium mt-0.5 leading-relaxed">
+                          <p className="text-xs sm:text-sm text-(--text-secondary) font-normal mt-0.5 leading-relaxed">
                             {benefit.text}
                           </p>
                         </div>
-                      </motion.div>
+                      </div>
                     );
                   })}
                 </div>
@@ -271,26 +268,26 @@ export default function HowWeHelpSection() {
         </AnimatePresence>
 
         {/* Section Call to Action Strip */}
-        <div className="mt-12 sm:mt-16 p-6 sm:p-8 rounded-[32px] clay-card-secondary border-2 border-white shadow-md flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+        <div className="mt-10 sm:mt-12 p-6 sm:p-7 rounded-2xl clay-card-light bg-(--surface) border border-(--border-card) shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
           <div>
-            <h4 className="text-xl sm:text-2xl font-black text-(--text-dark) font-display">
-              Ready to bring gentle vigilance to your nursery?
+            <h4 className="text-xl font-bold text-(--text-primary) font-display">
+              Ready to learn more about Maatriva?
             </h4>
-            <p className="text-sm sm:text-base text-(--text) font-medium mt-1">
-              Whether you are an expectant family or a healthcare pilot team, we are here for you.
+            <p className="text-sm text-(--text-secondary) font-normal mt-1">
+              Whether you are an expectant family or a healthcare team, we are here to assist.
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-3.5 shrink-0">
+          <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
             <a
               href="#contact"
-              className="px-6 sm:px-7 py-3 rounded-full clay-btn clay-btn-secondary text-sm font-bold text-(--text-dark) hover:text-(--primary) shadow-sm cursor-pointer"
+              className="px-5 py-2.5 rounded-full clay-btn clay-btn-secondary text-xs sm:text-sm font-semibold text-(--text-primary) cursor-pointer"
             >
               Talk to our team
             </a>
             <a
               href="/survey"
-              className="px-6 sm:px-7 py-3 rounded-full clay-btn clay-btn-primary text-sm font-bold text-white shadow-md cursor-pointer"
+              className="px-5 py-2.5 rounded-full clay-btn clay-btn-primary text-xs sm:text-sm font-semibold text-white shadow-sm cursor-pointer"
             >
               Take Parent Survey
             </a>
@@ -298,8 +295,8 @@ export default function HowWeHelpSection() {
         </div>
 
         {/* Section Footer Disclaimer */}
-        <div className="mt-8 text-center">
-          <p className="text-xs text-(--text-light) font-semibold max-w-2xl mx-auto leading-relaxed">
+        <div className="mt-6 text-center">
+          <p className="text-xs text-(--text-secondary) font-normal max-w-2xl mx-auto leading-relaxed">
             <strong>Notice:</strong> {howWeHelpData.disclaimer}
           </p>
         </div>

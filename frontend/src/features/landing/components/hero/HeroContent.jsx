@@ -27,7 +27,7 @@ export default function HeroContent({
   };
 
   return (
-    <div className="relative z-20 clay-hero-panel bg-white/40 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none p-6 sm:p-8 lg:p-0 rounded-3xl lg:rounded-none border border-white/60 lg:border-none shadow-xl lg:shadow-none">
+    <div className="relative z-20 max-w-xl">
       {/* Main Headline */}
       <h1
         ref={headingRef}
@@ -36,16 +36,16 @@ export default function HeroContent({
           sm:text-5xl
           md:text-6xl
           lg:text-7xl
-          font-black
+          font-bold
           leading-[1.12]
-          text-(--text-dark)
+          text-(--text-primary)
           tracking-tight
           [text-wrap:balance]
         "
       >
         {title.first}
         <br className="hidden sm:inline" />{" "}
-        <span className="text-(--primary) drop-shadow-sm">
+        <span className="text-(--brand-accent)">
           {title.second}
         </span>
       </h1>
@@ -54,7 +54,7 @@ export default function HeroContent({
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.6 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
         className="
           mt-6
           text-base
@@ -62,8 +62,8 @@ export default function HeroContent({
           md:text-xl
           leading-relaxed
           max-w-xl
-          text-(--text)
-          font-medium
+          text-(--text-secondary)
+          font-normal
           [text-wrap:pretty]
         "
       >
@@ -72,15 +72,15 @@ export default function HeroContent({
 
       {/* ONE Primary CTA Button */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.6 }}
+        transition={{ delay: 0.35, duration: 0.45 }}
         className="mt-8"
       >
         <Link
           to="/survey"
           onClick={triggerStarBurst}
-          className="clay-btn clay-btn-primary px-9 py-4 text-base sm:text-lg font-bold inline-flex items-center gap-2.5 justify-center shadow-lg hover:shadow-xl active:scale-95 transition-transform"
+          className="clay-btn clay-btn-primary px-8 py-3.5 text-base sm:text-lg font-semibold inline-flex items-center gap-2.5 justify-center shadow-lg hover:shadow-xl active:scale-95 transition-transform"
         >
           <span>{buttonText || "Take Parent Survey"}</span>
           <ArrowRight size={18} />
@@ -91,17 +91,17 @@ export default function HeroContent({
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.7, duration: 0.6 }}
-        className="mt-10 flex flex-wrap items-center gap-6 pt-6 border-t border-(--border)/40 text-sm sm:text-base text-(--text-dark) font-bold"
+        transition={{ delay: 0.5, duration: 0.5 }}
+        className="mt-10 flex flex-wrap items-center gap-6 pt-6 border-t border-(--border)/40 text-sm sm:text-base text-(--text-primary) font-medium"
       >
         <div className="flex items-center gap-2">
-          <div className="w-5 h-5 rounded-full bg-(--primary-soft) text-(--primary) flex items-center justify-center">
+          <div className="w-5 h-5 rounded-full bg-(--primary-soft) text-(--brand-accent) flex items-center justify-center">
             <ShieldCheck size={14} />
           </div>
           <span>Pediatric-safe Non-contact AI</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-5 h-5 rounded-full bg-(--primary-soft) text-(--primary) flex items-center justify-center">
+          <div className="w-5 h-5 rounded-full bg-(--primary-soft) text-(--brand-accent) flex items-center justify-center">
             <Heart size={14} />
           </div>
           <span>Supported by IIT Mandi Catalyst & IHFC IIT Delhi</span>

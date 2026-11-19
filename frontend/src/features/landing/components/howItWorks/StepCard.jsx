@@ -20,34 +20,34 @@ export default function StepCard({ step, index, totalSteps = 3 }) {
         <div className="absolute w-14 h-14 rounded-full border border-(--accent)/40 animate-ping pointer-events-none" />
       </div>
 
-      <div className="hiw-card h-full clay-card bg-white/95 p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden transition-all duration-300 hover:-translate-y-2">
+      <div className="hiw-card h-full clay-card-light bg-(--surface) p-6 sm:p-7 rounded-2xl flex flex-col justify-between relative overflow-hidden transition-[transform,box-shadow] duration-200 hover:-translate-y-1 border border-(--border-card) shadow-sm hover:shadow-md">
         <div>
           {/* Step Number in Clay Pill */}
-          <div className="flex items-center justify-between mb-5">
-            <div className="inline-flex p-3.5 clay-badge text-(--primary) group-hover:scale-110 transition-transform shadow-xs">
-              <Icon className="w-7 h-7" strokeWidth={2.2} />
+          <div className="flex items-center justify-between mb-4">
+            <div className="inline-flex p-3 rounded-xl bg-(--bg-canvas) text-(--brand-accent) border border-(--border-card)">
+              <Icon className="w-6 h-6" strokeWidth={2} />
             </div>
-            <span className="text-3xl font-black text-(--primary) font-display tracking-tight opacity-40">
+            <span className="text-2xl font-bold text-(--brand-accent) font-display opacity-40">
               {step.number}
             </span>
           </div>
 
-          <h3 className="text-xl sm:text-2xl font-bold text-(--text-dark) mb-3 tracking-tight font-display min-h-[3.25rem] flex items-center [text-wrap:balance]">
+          <h3 className="text-xl font-bold text-(--text-primary) mb-2.5 tracking-tight font-display flex items-center [text-wrap:balance]">
             {step.title}
           </h3>
 
-          <p className="text-(--text) leading-relaxed text-base sm:text-lg font-medium [text-wrap:pretty]">
+          <p className="text-(--text-secondary) leading-relaxed text-sm sm:text-base font-normal [text-wrap:pretty]">
             {step.description}
           </p>
         </div>
 
-        {/* Constellation subtle footnote */}
-        <div className="mt-6 pt-3.5 border-t border-(--border)/30 flex items-center justify-between text-xs sm:text-sm text-(--text-dark) font-bold">
+        {/* Footnote */}
+        <div className="mt-6 pt-3.5 border-t border-(--border-card) flex items-center justify-between text-xs text-(--text-secondary) font-semibold">
           <div className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-(--accent)" />
+            <span className="w-2 h-2 rounded-full bg-(--brand-gold)" />
             <span>Step {index + 1} of {totalSteps}</span>
           </div>
-          <span className="text-(--primary) font-semibold">{step.tag}</span>
+          <span className="text-(--brand-accent) font-semibold">{step.tag}</span>
         </div>
       </div>
     </motion.div>

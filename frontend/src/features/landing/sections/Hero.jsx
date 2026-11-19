@@ -24,7 +24,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen overflow-hidden clay-hero pt-28 pb-16 lg:pt-32 lg:pb-24 flex items-center"
+      className="relative min-h-dvh overflow-hidden clay-hero pt-28 pb-16 lg:pt-32 lg:pb-24 flex items-center"
     >
       {/* Subtle Twinkling Stars in Dawn Sky */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
@@ -43,14 +43,10 @@ export default function Hero() {
             }}
           />
         ))}
-
-        {/* Soft Ambient Warm Celestial Glow */}
-        <div className="absolute top-1/4 -left-20 w-80 h-80 bg-(--primary) opacity-10 blur-[120px] rounded-full pointer-events-none" />
-        <div className="absolute top-10 right-10 w-96 h-96 bg-[#F0C675] opacity-15 blur-[120px] rounded-full pointer-events-none" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid lg:grid-cols-2 items-center min-h-[calc(100vh-140px)] gap-10 lg:gap-14">
+        <div className="grid lg:grid-cols-2 items-center min-h-[calc(100dvh-140px)] gap-10 lg:gap-14">
           <HeroContent
             headingRef={headingRef}
             badge={HERO_DATA.badge}

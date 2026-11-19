@@ -59,14 +59,13 @@ export default function TrustStrip() {
         initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="block clay-card p-3 sm:p-4 rounded-2xl sm:rounded-full border border-white/95 shadow-md hover:shadow-lg transition-all group cursor-pointer"
+        transition={{ duration: 0.4 }}
+        className="block clay-card-light p-3 sm:p-4 rounded-2xl sm:rounded-full border border-(--border-card) bg-(--surface) shadow-sm hover:shadow-md transition-[transform,box-shadow] duration-200 group cursor-pointer"
         aria-label="View our incubators and recognitions"
       >
         <div className="flex flex-col lg:flex-row items-center justify-between gap-3 sm:gap-6">
           {/* Label */}
-          <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-(--text-dark) shrink-0 whitespace-nowrap">
-            <Sparkles size={14} className="text-(--primary)" />
+          <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-(--text-primary) shrink-0 whitespace-nowrap">
             <span>Incubated, backed & recognized by:</span>
           </div>
 
@@ -75,7 +74,7 @@ export default function TrustStrip() {
             {TRUST_LOGOS.map((logo) => (
               <div
                 key={logo.id}
-                className="flex items-center justify-center shrink-0 grayscale hover:grayscale-0 opacity-85 hover:opacity-100 transition-all duration-200"
+                className="flex items-center justify-center shrink-0 grayscale hover:grayscale-0 opacity-85 hover:opacity-100 transition-[filter,opacity] duration-200"
                 title={logo.name}
               >
                 <picture>
@@ -93,7 +92,7 @@ export default function TrustStrip() {
           </div>
 
           {/* Action indicator */}
-          <div className="hidden sm:inline-flex items-center gap-1 text-xs font-bold text-(--primary) group-hover:translate-x-1 transition-transform shrink-0">
+          <div className="hidden sm:inline-flex items-center gap-1 text-xs font-semibold text-(--brand-accent) group-hover:translate-x-1 transition-transform shrink-0">
             <span>View details</span>
             <ArrowRight size={13} />
           </div>

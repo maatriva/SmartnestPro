@@ -38,56 +38,54 @@ export default function FAQSection() {
   };
 
   return (
-    <section id="faq" className="clay-section relative bg-[#FFF6EE] pt-14 pb-20 sm:pt-20 sm:pb-28 overflow-hidden z-10">
-      <div className="max-w-4xl mx-auto clay-container relative z-10">
+    <section id="faq" className="clay-section relative bg-(--bg-canvas) pt-14 pb-20 sm:pt-20 sm:pb-24 overflow-hidden z-10">
+      <div className="max-w-3xl mx-auto clay-container relative z-10">
         
-        {/* Section Header: Direct, Plain Language, No Eyebrow Pills */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) leading-tight mb-3 text-center [text-wrap:balance]">
+        {/* Section Header: Direct, Plain Language */}
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-(--text-primary) leading-tight mb-3 text-center [text-wrap:balance] font-display">
             Frequently asked questions
           </h2>
-          <p className="text-base sm:text-lg text-(--text) font-medium max-w-2xl mx-auto leading-relaxed text-center [text-wrap:balance]">
+          <p className="text-base sm:text-lg text-(--text-secondary) font-normal max-w-2xl mx-auto leading-relaxed text-center [text-wrap:pretty]">
             Direct answers about safety, sensors, and cradle features.
           </p>
         </div>
 
-        {/* Accordion List with Clay Plus/Minus Morph */}
-        <div className="space-y-4">
+        {/* Accordion List */}
+        <div className="space-y-3.5">
           {FAQ_ITEMS.map((item, index) => {
             const isOpen = openIndex === index;
 
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.06 }}
-                className="clay-card-blush bg-[#FFF0E6] border-2 border-white/90 rounded-3xl overflow-hidden transition-transform duration-300 shadow-sm"
+                transition={{ duration: 0.35, delay: index * 0.05 }}
+                className="clay-card-light bg-(--surface) border border-(--border-card) rounded-2xl overflow-hidden transition-[transform,box-shadow] duration-200 shadow-sm"
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
+                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-lg sm:text-xl font-bold text-(--text-dark) tracking-tight [text-wrap:balance]">
+                  <span className="text-base sm:text-lg font-bold text-(--text-primary) tracking-tight [text-wrap:balance] font-display">
                     {item.question}
                   </span>
 
-                  {/* Morphing Clay Plus/Minus Button */}
+                  {/* Morphing Plus/Minus Button */}
                   <div
-                    className={`w-10 h-10 rounded-full clay-badge flex items-center justify-center shrink-0 transition-all duration-300 ${
+                    className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors duration-200 border border-(--border-card) ${
                       isOpen
-                        ? "bg-(--primary) text-white rotate-180"
-                        : "text-(--primary) hover:scale-105"
+                        ? "bg-(--brand-accent) text-white"
+                        : "bg-(--bg-canvas) text-(--brand-accent)"
                     }`}
                   >
-                    <div className="relative w-4 h-4 flex items-center justify-center">
-                      {/* Horizontal bar */}
-                      <span className="absolute w-4 h-0.5 bg-current rounded-full transition-transform duration-300" />
-                      {/* Vertical bar morphs into minus by rotating 90deg */}
+                    <div className="relative w-3.5 h-3.5 flex items-center justify-center">
+                      <span className="absolute w-3.5 h-0.5 bg-current rounded-full" />
                       <span
-                        className={`absolute w-4 h-0.5 bg-current rounded-full transition-transform duration-300 ${
+                        className={`absolute w-3.5 h-0.5 bg-current rounded-full transition-transform duration-200 ${
                           isOpen ? "rotate-0 opacity-0" : "rotate-90 opacity-100"
                         }`}
                       />
@@ -95,14 +93,14 @@ export default function FAQSection() {
                   </div>
                 </button>
 
-                {/* Smooth 60fps Grid Expansion */}
+                {/* Smooth Expansion */}
                 <div
-                  className={`grid transition-[grid-template-rows,opacity] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                  className={`grid transition-[grid-template-rows,opacity] duration-200 ease-out ${
                     isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <div className="px-6 pb-6 sm:px-7 sm:pb-7 text-sm sm:text-base text-(--text) leading-relaxed border-t border-(--border)/30 pt-4 font-medium">
+                    <div className="px-5 pb-5 sm:px-6 sm:pb-6 text-sm sm:text-base text-(--text-secondary) leading-relaxed border-t border-(--border-card) pt-3.5 font-normal [text-wrap:pretty]">
                       {item.answer}
                     </div>
                   </div>

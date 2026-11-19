@@ -23,16 +23,13 @@ export default function HowItWorks() {
     <section
       id="how-it-works"
       ref={sectionRef}
-      className="clay-section relative text-(--text) bg-[#FBE4DB] pt-14 pb-20 sm:pt-20 sm:pb-28 overflow-hidden z-10"
+      className="clay-section relative text-(--text-primary) bg-(--bg-alt) pt-14 pb-20 sm:pt-20 sm:pb-24 overflow-hidden z-10"
       aria-label="How Maatriva Smart Cradle Works"
     >
-      {/* Background Soft Celestial Blobs */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-(--rose-clay) opacity-10 blur-[130px] rounded-full pointer-events-none" />
-
       <div className="max-w-7xl mx-auto clay-container relative z-10">
         <HowItWorksHeader />
 
-        <div className="relative mt-14">
+        <div className="relative mt-12">
           {/* Constellation SVG Line connecting the 3 steps on Desktop */}
           <div className="hidden md:block absolute top-[28px] left-[10%] right-[10%] h-[40px] z-0 pointer-events-none">
             <svg

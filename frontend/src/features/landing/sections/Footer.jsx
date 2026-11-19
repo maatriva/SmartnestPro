@@ -119,32 +119,32 @@ export default function Footer() {
 
             {/* Column 2: Solutions & Technology */}
             <div className="space-y-4">
-              <h4 className="text-xs font-black uppercase tracking-[0.2em] text-(--primary)">
+              <h4 className="text-sm font-bold text-(--brand-accent)">
                 Features
               </h4>
               <ul className="space-y-2.5">
                 <li>
-                  <a href="/#product-details" className="text-sm sm:text-base font-semibold text-(--text) hover:text-(--primary) transition-colors">
+                  <a href="/#product-details" className="text-sm sm:text-base font-medium text-(--text-secondary) hover:text-(--brand-accent) transition-colors">
                     Smart Motion Soothing
                   </a>
                 </li>
                 <li>
-                  <a href="/#health-focus" className="text-sm sm:text-base font-semibold text-(--text) hover:text-(--primary) transition-colors">
+                  <a href="/#health-focus" className="text-sm sm:text-base font-medium text-(--text-secondary) hover:text-(--brand-accent) transition-colors">
                     Vital Health Monitoring
                   </a>
                 </li>
                 <li>
-                  <a href="/#how-it-works" className="text-sm sm:text-base font-semibold text-(--text) hover:text-(--primary) transition-colors">
+                  <a href="/#how-it-works" className="text-sm sm:text-base font-medium text-(--text-secondary) hover:text-(--brand-accent) transition-colors">
                     Audio & Cry Detection
                   </a>
                 </li>
                 <li>
-                  <a href="/#app" className="text-sm sm:text-base font-semibold text-(--text) hover:text-(--primary) transition-colors">
+                  <a href="/#app" className="text-sm sm:text-base font-medium text-(--text-secondary) hover:text-(--brand-accent) transition-colors">
                     Caregiver Mobile App
                   </a>
                 </li>
                 <li>
-                  <a href="/#product-details" className="text-sm sm:text-base font-semibold text-(--text) hover:text-(--primary) transition-colors">
+                  <a href="/#product-details" className="text-sm sm:text-base font-medium text-(--text-secondary) hover:text-(--brand-accent) transition-colors">
                     Cradle Specifications
                   </a>
                 </li>
@@ -153,7 +153,7 @@ export default function Footer() {
 
             {/* Column 3: Company & Ecosystem */}
             <div className="space-y-4">
-              <h4 className="text-xs font-black uppercase tracking-[0.2em] text-(--primary)">
+              <h4 className="text-sm font-bold text-(--brand-accent)">
                 Company
               </h4>
               <ul className="space-y-2.5">
@@ -162,14 +162,14 @@ export default function Footer() {
                     {link.path.startsWith("/#") ? (
                       <a
                         href={link.path}
-                        className="text-sm sm:text-base font-semibold text-(--text) hover:text-(--primary) transition-colors"
+                        className="text-sm sm:text-base font-medium text-(--text-secondary) hover:text-(--brand-accent) transition-colors"
                       >
                         {link.label}
                       </a>
                     ) : (
                       <Link
                         to={link.path}
-                        className="text-sm sm:text-base font-semibold text-(--text) hover:text-(--primary) transition-colors"
+                        className="text-sm sm:text-base font-medium text-(--text-secondary) hover:text-(--brand-accent) transition-colors"
                       >
                         {link.label}
                       </Link>
@@ -177,7 +177,7 @@ export default function Footer() {
                   </li>
                 ))}
                 <li>
-                  <a href="/#achievements" className="text-sm sm:text-base font-semibold text-(--text) hover:text-(--primary) transition-colors">
+                  <a href="/#achievements" className="text-sm sm:text-base font-medium text-(--text-secondary) hover:text-(--brand-accent) transition-colors">
                     Recognitions & Partners
                   </a>
                 </li>
@@ -186,15 +186,15 @@ export default function Footer() {
 
             {/* Column 4: Inquiries & Support */}
             <div className="space-y-4">
-              <h4 className="text-xs font-black uppercase tracking-[0.2em] text-(--primary)">
+              <h4 className="text-sm font-bold text-(--brand-accent)">
                 Inquiries
               </h4>
-              <p className="text-sm font-medium text-(--text) leading-relaxed">
+              <p className="text-sm font-normal text-(--text-secondary) leading-relaxed">
                 Have questions about our smart cradle, pre-orders, or doctor and clinic partnerships?
               </p>
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="mt-2 w-full py-3.5 text-xs font-bold uppercase tracking-wider rounded-full clay-btn clay-btn-primary cursor-pointer text-center block shadow-lg text-white"
+                className="mt-2 w-full py-3 text-sm font-semibold rounded-full clay-btn clay-btn-primary cursor-pointer text-center block shadow-md text-white"
               >
                 Get in Touch
               </button>

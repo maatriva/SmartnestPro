@@ -72,68 +72,68 @@ export default function ProductDetailsSection() {
     <section
       id="product-details"
       ref={sectionRef}
-      className="clay-section relative text-(--text-dark) bg-[#FFF6EE] pt-14 pb-20 sm:pt-20 sm:pb-28 overflow-hidden z-10"
+      className="clay-section relative text-(--text-primary) bg-(--bg-canvas) pt-14 pb-20 sm:pt-20 sm:pb-24 overflow-hidden z-10"
       aria-label="The Maatriva Cradle and Features"
     >
       <div className="max-w-7xl mx-auto clay-container relative z-10">
         
-        {/* Section Header: Direct, Plain Language, No Eyebrow Pills */}
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        {/* Section Header: Direct, Plain Language */}
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-14">
           <motion.h2
-            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
+            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.55 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) leading-tight font-display tracking-tight text-center [text-wrap:balance]"
+            transition={{ duration: 0.35 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-(--text-primary) leading-tight font-display tracking-tight text-center [text-wrap:balance]"
           >
             The Maatriva cradle
           </motion.h2>
 
           <motion.p
-            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
+            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.55, delay: 0.1 }}
-            className="mt-3 text-base sm:text-lg md:text-xl text-(--text) font-medium max-w-xl mx-auto leading-relaxed text-center [text-wrap:balance]"
+            transition={{ duration: 0.35, delay: 0.1 }}
+            className="mt-3 text-base sm:text-lg text-(--text-secondary) font-normal max-w-xl mx-auto leading-relaxed text-center [text-wrap:pretty]"
           >
             Built for infant comfort, contactless monitoring, and parent peace of mind.
           </motion.p>
         </div>
 
-        {/* Symmetric Bento Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
+        {/* Varied Bento Layout: 6 cols centerpiece + asymmetric feature grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 items-stretch">
           
           {/* Main Cradle Centerpiece (6 cols on desktop) */}
           <motion.div
-            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 24 }}
+            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-30px" }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.4 }}
             className="md:col-span-2 lg:col-span-6 flex flex-col"
           >
-            <div className="clay-card-blush p-6 sm:p-8 rounded-[36px] border-2 border-white/95 shadow-md flex flex-col justify-between h-full relative overflow-hidden group">
+            <div className="clay-card-light p-6 sm:p-8 rounded-2xl border border-(--border-card) bg-(--surface) shadow-sm flex flex-col justify-between h-full relative overflow-hidden group">
               <div>
                 <div className="flex items-center justify-between gap-3 mb-4">
-                  <span className="text-xs font-bold uppercase tracking-wider text-(--primary) bg-white/80 px-3.5 py-1 rounded-full border border-(--primary)/20 shadow-xs">
-                    Smart Hardware
+                  <span className="text-xs font-semibold text-(--brand-accent) bg-(--bg-canvas) px-3 py-1 rounded-full border border-(--border-card)">
+                    Hardware & Sensors
                   </span>
-                  <span className="inline-flex items-center gap-1.5 text-xs font-bold text-(--text-dark)">
-                    <ShieldCheck size={15} className="text-(--primary)" />
+                  <span className="inline-flex items-center gap-1.5 text-xs font-medium text-(--text-secondary)">
+                    <ShieldCheck size={14} className="text-(--brand-accent)" />
                     <span>Zero wearables required</span>
                   </span>
                 </div>
 
-                <h3 className="text-2xl sm:text-3xl font-black text-(--text-dark) tracking-tight font-display mb-2">
+                <h3 className="text-2xl sm:text-3xl font-bold text-(--text-primary) tracking-tight font-display mb-2">
                   Integrated non-contact infant cradle
                 </h3>
 
-                <p className="text-base text-(--text) font-medium leading-relaxed mb-6">
-                  Sensors, cameras, and motors are built into the frame so your baby rests freely on clean, breathable surfaces without restrictive wires.
+                <p className="text-sm sm:text-base text-(--text-secondary) font-normal leading-relaxed mb-6">
+                  Sensors, cameras, and soothing motors are integrated directly into the cradle frame, keeping your baby free from restrictive wires or bands.
                 </p>
               </div>
 
-              {/* Cradle Product Render / Visual Image */}
-              <div className="relative rounded-2xl overflow-hidden bg-white/70 border border-white/90 p-3 sm:p-4 shadow-inner flex items-center justify-center min-h-[220px] sm:min-h-[260px]">
+              {/* Cradle Product Render / Visual Image (Clean layout, no card-in-card border nesting) */}
+              <div className="relative py-4 flex items-center justify-center min-h-[220px] sm:min-h-[260px]">
                 <img
                   src={cradleImage}
                   alt="Maatriva smart infant cradle with breathable fabric and built-in sensors"
@@ -141,47 +141,47 @@ export default function ProductDetailsSection() {
                   decoding="async"
                   width="600"
                   height="450"
-                  className="max-h-60 sm:max-h-72 w-auto object-contain drop-shadow-md group-hover:scale-[1.02] transition-transform duration-300"
+                  className="max-h-60 sm:max-h-72 w-auto object-contain drop-shadow-sm group-hover:scale-[1.01] transition-transform duration-200"
                 />
               </div>
 
-              <div className="mt-6 pt-4 border-t border-(--terracotta)/15 flex items-center justify-between text-xs font-bold text-(--text-dark)">
+              <div className="mt-4 pt-4 border-t border-(--border-card) flex items-center justify-between text-xs text-(--text-secondary) font-medium">
                 <span>Solid, stable construction</span>
-                <span className="text-(--primary)">Pediatric-safe design</span>
+                <span className="text-(--brand-accent) font-semibold">Pediatric-safe materials</span>
               </div>
             </div>
           </motion.div>
 
           {/* Feature 1 & 2 (Right side 6 cols on desktop) */}
-          <div className="md:col-span-2 lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+          <div className="md:col-span-2 lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
             {PRODUCT_FEATURES.slice(0, 2).map((feat, idx) => {
               const Icon = feat.icon;
 
               return (
                 <motion.div
                   key={feat.id}
-                  initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 24 }}
+                  initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-30px" }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  transition={{ duration: 0.35, delay: idx * 0.08 }}
                   className="flex flex-col h-full"
                 >
-                  <div className="clay-card-blush p-6 sm:p-7 rounded-[32px] border-2 border-white/95 shadow-md flex flex-col justify-between h-full group hover:shadow-lg transition-shadow">
+                  <div className="clay-card-light p-6 sm:p-7 rounded-2xl border border-(--border-card) bg-(--surface) shadow-sm flex flex-col justify-between h-full group hover:shadow-md transition-[transform,box-shadow] duration-200">
                     <div>
-                      <div className="w-12 h-12 rounded-2xl bg-white text-(--primary) flex items-center justify-center mb-5 shadow-xs border border-white/80">
-                        <Icon size={22} strokeWidth={2.2} />
+                      <div className="w-11 h-11 rounded-xl bg-(--bg-canvas) text-(--brand-accent) flex items-center justify-center mb-4 border border-(--border-card)">
+                        <Icon size={20} strokeWidth={2} />
                       </div>
 
-                      <h4 className="text-xl font-bold text-(--text-dark) mb-2.5 font-display tracking-tight min-h-[3rem] flex items-center [text-wrap:balance]">
+                      <h4 className="text-lg font-bold text-(--text-primary) mb-2 font-display tracking-tight flex items-center [text-wrap:balance]">
                         {feat.title}
                       </h4>
 
-                      <p className="text-base text-(--text) leading-relaxed font-medium">
+                      <p className="text-sm text-(--text-secondary) leading-relaxed font-normal">
                         {feat.description}
                       </p>
                     </div>
 
-                    <div className="mt-5 pt-3.5 border-t border-(--terracotta)/15 text-xs font-bold text-(--primary)">
+                    <div className="mt-4 pt-3 border-t border-(--border-card) text-xs font-semibold text-(--brand-accent)">
                       {feat.spec}
                     </div>
                   </div>
@@ -189,7 +189,7 @@ export default function ProductDetailsSection() {
               );
             })}
 
-            {/* Feature 3: Vitals Sensors spans full width of the right column for balance */}
+            {/* Feature 3: Vitals Sensors spans full width of the right column */}
             <div className="sm:col-span-2">
               {(() => {
                 const feat = PRODUCT_FEATURES[2];
@@ -197,28 +197,28 @@ export default function ProductDetailsSection() {
 
                 return (
                   <motion.div
-                    initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 24 }}
+                    initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-30px" }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
+                    transition={{ duration: 0.35, delay: 0.16 }}
                     className="flex flex-col h-full"
                   >
-                    <div className="clay-card-blush p-6 sm:p-7 rounded-[32px] border-2 border-white/95 shadow-md flex flex-col justify-between h-full group hover:shadow-lg transition-shadow">
+                    <div className="clay-card-light p-6 sm:p-7 rounded-2xl border border-(--border-card) bg-(--surface) shadow-sm flex flex-col justify-between h-full group hover:shadow-md transition-[transform,box-shadow] duration-200">
                       <div>
-                        <div className="w-12 h-12 rounded-2xl bg-white text-(--primary) flex items-center justify-center mb-5 shadow-xs border border-white/80">
-                          <Icon size={22} strokeWidth={2.2} />
+                        <div className="w-11 h-11 rounded-xl bg-(--bg-canvas) text-(--brand-accent) flex items-center justify-center mb-4 border border-(--border-card)">
+                          <Icon size={20} strokeWidth={2} />
                         </div>
 
-                        <h4 className="text-xl font-bold text-(--text-dark) mb-2.5 font-display tracking-tight [text-wrap:balance]">
+                        <h4 className="text-lg font-bold text-(--text-primary) mb-2 font-display tracking-tight [text-wrap:balance]">
                           {feat.title}
                         </h4>
 
-                        <p className="text-base text-(--text) leading-relaxed font-medium">
+                        <p className="text-sm text-(--text-secondary) leading-relaxed font-normal">
                           {feat.description}
                         </p>
                       </div>
 
-                      <div className="mt-5 pt-3.5 border-t border-(--terracotta)/15 text-xs font-bold text-(--primary)">
+                      <div className="mt-4 pt-3 border-t border-(--border-card) text-xs font-semibold text-(--brand-accent)">
                         {feat.spec}
                       </div>
                     </div>
@@ -228,35 +228,35 @@ export default function ProductDetailsSection() {
             </div>
           </div>
 
-          {/* Features 4, 5, 6, 7 (Bottom 4 cards in a symmetric 4-column row on desktop) */}
+          {/* Features 4, 5, 6, 7 (Bottom 4 cards in a 4-column row on desktop) */}
           {PRODUCT_FEATURES.slice(3).map((feat, idx) => {
             const Icon = feat.icon;
 
             return (
               <motion.div
                 key={feat.id}
-                initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 24 }}
+                initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-30px" }}
-                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                transition={{ duration: 0.35, delay: idx * 0.06 }}
                 className="md:col-span-1 lg:col-span-3 flex flex-col h-full"
               >
-                <div className="clay-card-blush p-6 sm:p-7 rounded-[32px] border-2 border-white/95 shadow-md flex flex-col justify-between h-full group hover:shadow-lg transition-shadow">
+                <div className="clay-card-light p-6 sm:p-7 rounded-2xl border border-(--border-card) bg-(--surface) shadow-sm flex flex-col justify-between h-full group hover:shadow-md transition-[transform,box-shadow] duration-200">
                   <div>
-                    <div className="w-12 h-12 rounded-2xl bg-white text-(--primary) flex items-center justify-center mb-5 shadow-xs border border-white/80">
-                      <Icon size={22} strokeWidth={2.2} />
+                    <div className="w-11 h-11 rounded-xl bg-(--bg-canvas) text-(--brand-accent) flex items-center justify-center mb-4 border border-(--border-card)">
+                      <Icon size={20} strokeWidth={2} />
                     </div>
 
-                    <h4 className="text-xl font-bold text-(--text-dark) mb-2.5 font-display tracking-tight min-h-[3rem] flex items-center [text-wrap:balance]">
+                    <h4 className="text-lg font-bold text-(--text-primary) mb-2 font-display tracking-tight flex items-center [text-wrap:balance]">
                       {feat.title}
                     </h4>
 
-                    <p className="text-base text-(--text) leading-relaxed font-medium">
+                    <p className="text-sm text-(--text-secondary) leading-relaxed font-normal">
                       {feat.description}
                     </p>
                   </div>
 
-                  <div className="mt-5 pt-3.5 border-t border-(--terracotta)/15 text-xs font-bold text-(--primary)">
+                  <div className="mt-4 pt-3 border-t border-(--border-card) text-xs font-semibold text-(--brand-accent)">
                     {feat.spec}
                   </div>
                 </div>

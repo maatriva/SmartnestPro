@@ -42,38 +42,38 @@ export default function HealthFocusSection() {
   return (
     <section
       id="health-focus"
-      className="clay-section relative text-(--text) bg-[#FBE4DB] pt-14 pb-20 sm:pt-20 sm:pb-28 overflow-hidden z-10"
+      className="clay-section relative text-(--text-primary) bg-(--bg-alt) pt-14 pb-20 sm:pt-20 sm:pb-24 overflow-hidden z-10"
       aria-label="What We Watch Over"
     >
       <div className="max-w-7xl mx-auto clay-container relative z-10">
         
-        {/* Section Header: Direct, Plain Language, No Eyebrow Pills */}
+        {/* Section Header: Direct, Plain Language */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
           <motion.h2
-            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
+            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.55 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-black text-(--text-dark) leading-tight font-display tracking-tight text-center [text-wrap:balance]"
+            transition={{ duration: 0.35 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-(--text-primary) leading-tight font-display tracking-tight text-center [text-wrap:balance]"
           >
             What we watch over
           </motion.h2>
 
           <motion.p
-            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
+            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.55, delay: 0.1 }}
-            className="mt-3 text-base sm:text-lg md:text-xl text-(--text) font-medium max-w-2xl mx-auto leading-relaxed text-center [text-wrap:balance]"
+            transition={{ duration: 0.35, delay: 0.1 }}
+            className="mt-3 text-base sm:text-lg text-(--text-secondary) font-normal max-w-2xl mx-auto leading-relaxed text-center [text-wrap:pretty]"
           >
             Tracking vitals for baby, recovery for mothers, and shared reports for doctors and hospitals.
           </motion.p>
         </div>
 
-        {/* Three-Tab Switcher in Celestial Clay Style */}
+        {/* Three-Tab Switcher */}
         <div className="flex justify-center mb-10 sm:mb-12">
           <div
-            className="inline-flex flex-wrap justify-center p-1.5 sm:p-2 rounded-3xl sm:rounded-full bg-white/90 border-2 border-white shadow-md relative gap-1"
+            className="inline-flex flex-wrap justify-center p-1.5 rounded-full bg-(--surface) border border-(--border-card) shadow-sm relative gap-1"
             role="tablist"
             aria-label="Health focus audience"
           >
@@ -85,18 +85,18 @@ export default function HealthFocusSection() {
               aria-controls="panel-baby"
               id="tab-baby"
               onClick={() => setActiveTab("baby")}
-              className={`relative z-10 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold transition-colors duration-200 cursor-pointer flex items-center gap-2 select-none ${
+              className={`relative z-10 px-5 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-colors duration-150 cursor-pointer flex items-center gap-2 select-none ${
                 activeTab === "baby"
                   ? "text-white"
-                  : "text-(--text-dark) hover:text-(--primary)"
+                  : "text-(--text-primary) hover:text-(--brand-accent)"
               }`}
             >
-              <Baby size={17} />
+              <Baby size={16} />
               <span>Baby</span>
               {activeTab === "baby" && (
                 <motion.div
                   layoutId="active-health-tab"
-                  className="absolute inset-0 bg-gradient-to-r from-(--primary) to-[#E28D6A] rounded-full -z-10 shadow-md shadow-(--primary)/25"
+                  className="absolute inset-0 bg-(--brand-accent) rounded-full -z-10 shadow-sm"
                   transition={{ type: "spring", stiffness: 350, damping: 30 }}
                 />
               )}
@@ -110,18 +110,18 @@ export default function HealthFocusSection() {
               aria-controls="panel-mother"
               id="tab-mother"
               onClick={() => setActiveTab("mother")}
-              className={`relative z-10 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold transition-colors duration-200 cursor-pointer flex items-center gap-2 select-none ${
+              className={`relative z-10 px-5 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-colors duration-150 cursor-pointer flex items-center gap-2 select-none ${
                 activeTab === "mother"
                   ? "text-white"
-                  : "text-(--text-dark) hover:text-(--primary)"
+                  : "text-(--text-primary) hover:text-(--brand-accent)"
               }`}
             >
-              <Heart size={17} />
+              <Heart size={16} />
               <span>Mother (Postpartum)</span>
               {activeTab === "mother" && (
                 <motion.div
                   layoutId="active-health-tab"
-                  className="absolute inset-0 bg-gradient-to-r from-(--primary) to-[#E28D6A] rounded-full -z-10 shadow-md shadow-(--primary)/25"
+                  className="absolute inset-0 bg-(--brand-accent) rounded-full -z-10 shadow-sm"
                   transition={{ type: "spring", stiffness: 350, damping: 30 }}
                 />
               )}
@@ -135,18 +135,18 @@ export default function HealthFocusSection() {
               aria-controls="panel-hospitals"
               id="tab-hospitals"
               onClick={() => setActiveTab("hospitals")}
-              className={`relative z-10 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold transition-colors duration-200 cursor-pointer flex items-center gap-2 select-none ${
+              className={`relative z-10 px-5 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-colors duration-150 cursor-pointer flex items-center gap-2 select-none ${
                 activeTab === "hospitals"
                   ? "text-white"
-                  : "text-(--text-dark) hover:text-(--primary)"
+                  : "text-(--text-primary) hover:text-(--brand-accent)"
               }`}
             >
-              <Building2 size={17} />
+              <Building2 size={16} />
               <span>Hospitals</span>
               {activeTab === "hospitals" && (
                 <motion.div
                   layoutId="active-health-tab"
-                  className="absolute inset-0 bg-gradient-to-r from-(--primary) to-[#E28D6A] rounded-full -z-10 shadow-md shadow-(--primary)/25"
+                  className="absolute inset-0 bg-(--brand-accent) rounded-full -z-10 shadow-sm"
                   transition={{ type: "spring", stiffness: 350, damping: 30 }}
                 />
               )}
@@ -159,19 +159,19 @@ export default function HealthFocusSection() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-8 p-5 rounded-2xl bg-white/90 border border-(--primary)/25 max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm text-center sm:text-left"
+            className="mb-8 p-5 rounded-2xl bg-(--surface) border border-(--border-card) max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm text-center sm:text-left"
           >
             <div>
-              <p className="text-sm sm:text-base text-(--text-dark) font-bold">
+              <p className="text-sm sm:text-base text-(--text-primary) font-semibold">
                 Are you a pediatrician, clinic, or hospital?
               </p>
-              <p className="text-xs sm:text-sm text-(--text) font-medium mt-0.5">
+              <p className="text-xs sm:text-sm text-(--text-secondary) font-normal mt-0.5">
                 Join our network to receive structured vitals reports directly from parents.
               </p>
             </div>
             <a
               href="#contact"
-              className="px-5 py-2.5 rounded-full clay-btn clay-btn-primary text-xs font-bold text-white whitespace-nowrap shadow-xs hover:scale-105 transition-transform"
+              className="px-5 py-2.5 rounded-full clay-btn clay-btn-primary text-xs font-semibold text-white whitespace-nowrap shadow-xs hover:scale-102 transition-transform"
             >
               Partner with us
             </a>
@@ -183,15 +183,15 @@ export default function HealthFocusSection() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-8 p-4 rounded-2xl bg-white/80 border border-(--primary)/20 max-w-xl mx-auto text-center shadow-2xs"
+            className="mb-8 p-4 rounded-2xl bg-(--surface) border border-(--border-card) max-w-xl mx-auto text-center shadow-xs"
           >
-            <p className="text-sm sm:text-base text-(--text-dark) font-bold">
+            <p className="text-sm sm:text-base text-(--text-primary) font-semibold">
               {healthData.motherReassurance}
             </p>
           </motion.div>
         )}
 
-        {/* Symmetrical Grid of Cards: 3 Columns Desktop, 2 Tablet, 1 Mobile */}
+        {/* Symmetrical Grid of Cards */}
         <div
           id={`panel-${activeTab}`}
           role="tabpanel"
@@ -204,7 +204,7 @@ export default function HealthFocusSection() {
               item={item}
               index={index}
               onOpenDetail={handleOpenDetail}
-              cardBgClass="bg-white"
+              cardBgClass="bg-(--surface)"
             />
           ))}
         </div>
