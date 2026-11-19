@@ -3,32 +3,52 @@
 :root {
   --font-size: 16px;
   
-  /* 🌙 Celestial Clay Core Palette */
+  /* 🌙 Celestial Clay Core Palette (Refined) */
+  --bg-canvas: #FFF6EE;
+  --bg-alt: #FBE4DB;
+  --surface: #FFFCF8;
+  --surface-muted: #F7EFE8;
+  --border-card: rgba(58, 47, 75, 0.08);
+
+  --text-primary: #3A2F4B;
+  --text-secondary: #574868; /* WCAG AA 4.5:1 on #FFF6EE and #FBE4DB */
+  --text-muted: #6B5B7D;
+  --text-dark: #231B30;
+
+  --brand-accent: #D9825F;
+  --brand-accent-hover: #C5714E;
+  --brand-gold: #F0C675;
+  --brand-night: #3B2A4A;
+  --brand-night-deep: #2A1D36;
+  --safe: #456A49; /* WCAG AA passing contrast */
+  --safe-bg: #EDF3EB;
+
+  /* Legacy mappings mapped to clean tokens */
   --cream: #FFF6EE;
   --terracotta: #D9825F;
   --rose-clay: #F2B8A8;
   --honey-gold: #F0C675;
-  --sage: #A8B89A;
+  --sage: #456A49;
   --plum-dusk: #3B2A4A;
   --plum-dusk-deep: #2A1D36;
-  --cocoa: #3A2B2B;
-  --cocoa-light: #5A4747;
-  --cocoa-muted: #7A6666;
+  --cocoa: #3A2F4B;
+  --cocoa-light: #574868;
+  --cocoa-muted: #6B5B7D;
 
   /* Theme mappings */
   --bg: #FFF6EE;
-  --bg-light: #FFFBF7;
-  --bg-secondary: #FAECE1;
+  --bg-light: #FFFDFB;
+  --bg-secondary: #FBE4DB;
   --bg-secondaryh: #F3DDD0;
-  --bg-glass: rgba(255, 246, 238, 0.88);
+  --bg-glass: rgba(255, 246, 238, 0.92);
   --bg-hover: #F8E5D7;
   --background: #FFF6EE;
-  --foreground: #3A2B2B;
+  --foreground: #3A2F4B;
 
-  --card: #FFF8F2;
-  --card-foreground: #3A2B2B;
-  --popover: #FFF8F2;
-  --popover-foreground: #3A2B2B;
+  --card: #FFFCF8;
+  --card-foreground: #3A2F4B;
+  --popover: #FFFCF8;
+  --popover-foreground: #3A2F4B;
 
   --primary: #D9825F;
   --primary-foreground: #FFFFFF;
@@ -37,42 +57,40 @@
   --primary-soft: rgba(217, 130, 95, 0.15);
 
   --secondary: #F2B8A8;
-  --secondary-foreground: #3A2B2B;
+  --secondary-foreground: #3A2F4B;
 
   --accent: #F0C675;
-  --accent-foreground: #3A2B2B;
+  --accent-foreground: #3A2F4B;
 
   --muted: #F3E5D8;
-  --muted-foreground: #7A6666;
-  --border: rgba(217, 130, 95, 0.2);
+  --muted-foreground: #574868;
+  --border: rgba(58, 47, 75, 0.12);
 
   --destructive: #D9534F;
   --destructive-foreground: #FFFFFF;
 
-  --text: #372834;
-  --text-dark: #261A24;
-  --text-light: #4E3B4A;
+  --text: #3A2F4B;
+  --text-light: #574868;
   --white: #FFFFFF;
 
-  --radius: 28px;
-  --radius-lg: 32px;
-  --radius-xl: 40px;
+  --radius: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
 
-  /* ✨ Soft Clay Shadows */
-  --clay-highlight: rgba(255, 255, 255, 0.95);
-  --clay-shadow-warm: rgba(217, 130, 95, 0.16);
-  --clay-shadow-ambient: rgba(58, 43, 43, 0.08);
+  /* ✨ Refined Clay Shadows */
+  --shadow-light-clay: 0 4px 20px -4px rgba(58, 47, 75, 0.10);
+  --shadow-signature-clay: 0 12px 28px rgba(58, 47, 75, 0.12);
+  --shadow: 0 4px 20px -4px rgba(58, 47, 75, 0.10);
+  --shadow-primary: 0 8px 20px rgba(217, 130, 95, 0.30);
 
-  --shadow: 0 10px 30px rgba(58, 43, 43, 0.08);
-  --shadow-primary: 0 10px 25px rgba(217, 130, 95, 0.35);
-
-  --font-family-display: 'Baloo 2', 'Fraunces', cursive, sans-serif;
-  --font-family-sans: 'Nunito', 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* 🖋️ Typography: Outfit (Display) & Plus Jakarta Sans (Body) */
+  --font-family-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* 📏 Spacing System Design Tokens (Consistent 8px scale & clamp) */
-  --section-py: clamp(64px, 8vw, 120px);
+  --section-py: clamp(56px, 6vw, 96px);
   --section-px: clamp(16px, 4vw, 32px);
-  --section-container-max: 1280px;
+  --section-container-max: 1240px;
 
   /* 8px Spacing Scale */
   --space-1: 8px;
@@ -86,10 +104,10 @@
   --space-12: 96px;
 
   /* Consistent Vertical Rhythm */
-  --section-header-mb: clamp(36px, 5vw, 56px);
+  --section-header-mb: clamp(32px, 4vw, 48px);
   --heading-gap-badge: 12px;
   --heading-gap-title: 16px;
-  --heading-gap-subtext: 24px;
+  --heading-gap-subtext: 20px;
 }
 
 @theme inline {
@@ -111,38 +129,72 @@
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
 
-  /* Specific theme colors */
+  /* Semantic Theme tokens */
+  --color-bg-canvas: #FFF6EE;
+  --color-bg-alt: #FBE4DB;
+  --color-surface: #FFFCF8;
+  --color-text-primary: #3A2F4B;
+  --color-text-secondary: #574868;
+  --color-brand-accent: #D9825F;
+  --color-brand-accent-hover: #C5714E;
+  --color-brand-gold: #F0C675;
+  --color-brand-night: #3B2A4A;
+  --color-brand-night-deep: #2A1D36;
+  --color-safe: #456A49;
   --color-cream: #FFF6EE;
   --color-terracotta: #D9825F;
   --color-rose-clay: #F2B8A8;
   --color-honey-gold: #F0C675;
-  --color-sage: #A8B89A;
+  --color-sage: #456A49;
   --color-plum-dusk: #3B2A4A;
-  --color-cocoa: #3A2B2B;
+  --color-cocoa: #3A2F4B;
 
-  --font-display: 'Baloo 2', 'Fraunces', cursive, sans-serif;
-  --font-sans: 'Nunito', 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 @layer base {
+  html, body {
+    overflow-x: clip;
+  }
+
   body {
-    background-color: var(--bg);
-    color: var(--text);
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
     font-family: var(--font-family-sans);
+    font-size: 1rem;
     line-height: 1.6;
-    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-family-display);
-    color: var(--text-dark);
+    color: var(--text-primary);
     font-weight: 700;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
     text-wrap: balance;
   }
 
   p {
     text-wrap: pretty;
+    color: var(--text-secondary);
+  }
+
+  /* 2px high-contrast :focus-visible outlines for keyboard accessibility */
+  :focus-visible {
+    outline: 2px solid var(--brand-accent) !important;
+    outline-offset: 2px !important;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [role="tab"]:focus-visible,
+  [role="button"]:focus-visible,
+  [tabindex="0"]:focus-visible {
+    outline: 2px solid var(--brand-accent) !important;
+    outline-offset: 2px !important;
   }
 }
 
@@ -193,47 +245,78 @@
   line-height: 1.6 !important;
 }
 
-/* 🎴 Blush-tinted clay card for Cream sections */
+/* 🎴 Refined Clay Cards: Two Distinct Levels (Signature & Light) */
+
+/* Level 1: Signature Clay (Hero elements, primary action containers, key product visuals) */
+.clay-card-signature {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 248, 242, 0.92) 100%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.95) !important;
+  border-radius: 24px !important;
+  box-shadow: 
+    inset 3px 3px 6px rgba(255, 255, 255, 0.95),
+    inset -3px -3px 8px rgba(217, 130, 95, 0.12),
+    0 12px 28px rgba(58, 47, 75, 0.10) !important;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out !important;
+}
+
+/* Level 2: Light Clay (Text-heavy sections, cards, modals, tabs - warm white, 1px border, soft shadow) */
+.clay-card-light,
+.clay-card,
+.clay-card-static {
+  background: var(--surface) !important;
+  border: 1px solid var(--border-card) !important;
+  border-radius: 16px !important; /* rounded-2xl */
+  box-shadow: 0 4px 20px -4px rgba(58, 47, 75, 0.08) !important;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out !important;
+}
+
+.clay-card-light:hover,
+.clay-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px -4px rgba(58, 47, 75, 0.12) !important;
+}
+
+/* 🎴 Alternating Section Clay Cards (Light Clay) */
 .clay-card-blush {
-  background: linear-gradient(135deg, #FFF4EC 0%, #FEE8DE 100%) !important;
-  border: 2px solid rgba(255, 255, 255, 0.95) !important;
-  border-radius: 32px !important;
-  box-shadow: 
-    inset 4px 4px 8px rgba(255, 255, 255, 0.95),
-    inset -4px -4px 10px rgba(217, 130, 95, 0.14),
-    0 12px 28px rgba(58, 43, 43, 0.08) !important;
+  background: #FFFFFF !important;
+  border: 1px solid rgba(217, 130, 95, 0.18) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px -4px rgba(58, 47, 75, 0.08) !important;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out !important;
 }
 
-/* 🎴 White/Cream clay card for Blush sections */
+.clay-card-blush:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px -4px rgba(58, 47, 75, 0.12) !important;
+}
+
 .clay-card-cream {
-  background: linear-gradient(135deg, #FFFFFF 0%, #FFFDFB 100%) !important;
-  border: 2px solid rgba(255, 255, 255, 0.95) !important;
-  border-radius: 32px !important;
-  box-shadow: 
-    inset 4px 4px 8px rgba(255, 255, 255, 0.95),
-    inset -4px -4px 10px rgba(217, 130, 95, 0.12),
-    0 12px 28px rgba(58, 43, 43, 0.07) !important;
+  background: var(--surface) !important;
+  border: 1px solid rgba(58, 47, 75, 0.08) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px -4px rgba(58, 47, 75, 0.08) !important;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out !important;
 }
 
-/* 🎴 Dark Night Clay Card */
+.clay-card-cream:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px -4px rgba(58, 47, 75, 0.12) !important;
+}
+
+/* 🎴 Dark Night Clay Card (CTA & Footer Cards) */
 .clay-card-dark {
-  background: linear-gradient(135deg, rgba(58, 38, 55, 0.94) 0%, rgba(42, 27, 40, 0.96) 100%) !important;
-  border: 2px solid rgba(242, 184, 168, 0.3) !important;
-  border-radius: 32px !important;
-  box-shadow: 
-    inset 4px 4px 10px rgba(255, 255, 255, 0.12),
-    inset -4px -4px 10px rgba(0, 0, 0, 0.4),
-    0 16px 36px rgba(0, 0, 0, 0.3) !important;
+  background: linear-gradient(135deg, rgba(65, 47, 77, 0.95) 0%, rgba(45, 32, 54, 0.98) 100%) !important;
+  border: 1px solid rgba(242, 184, 168, 0.25) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25) !important;
   color: #FFF6EE !important;
+  transition: transform 0.2s ease-out, border-color 0.2s ease-out, box-shadow 0.2s ease-out !important;
 }
 
 .clay-card-dark:hover {
-  transform: translateY(-4px) scale(1.01) !important;
-  border-color: rgba(240, 198, 117, 0.6) !important;
-  box-shadow: 
-    inset 4px 4px 10px rgba(255, 255, 255, 0.18),
-    inset -4px -4px 10px rgba(0, 0, 0, 0.5),
-    0 20px 40px rgba(0, 0, 0, 0.35) !important;
+  transform: translateY(-2px) !important;
+  border-color: rgba(240, 198, 117, 0.5) !important;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* 📏 Universal Spacing System & Responsive Containers */
@@ -243,7 +326,7 @@
   padding-left: var(--section-px) !important;
   padding-right: var(--section-px) !important;
   position: relative;
-  overflow: clip; /* Clean clip for background blobs & particles without horizontal scroll */
+  overflow: clip; /* Clean clip for background decorations without horizontal scroll */
 }
 
 .clay-container {
@@ -255,7 +338,7 @@
 
 .clay-section-header {
   text-align: center;
-  max-width: 48rem; /* 768px */
+  max-width: 44rem; /* ~704px: optimal reading width */
   margin-left: auto;
   margin-right: auto;
   margin-bottom: var(--section-header-mb);
@@ -266,241 +349,138 @@
 
 /* 🏆 Celestial Clay Achievement Card */
 .clay-achievement-card {
-  background: linear-gradient(145deg, #FFFDFB 0%, #FFF4EB 100%) !important;
-  border: 2px solid rgba(255, 255, 255, 0.95) !important;
-  border-radius: 28px !important;
-  box-shadow: 
-    inset 3px 3px 6px rgba(255, 255, 255, 0.9),
-    inset -3px -3px 6px rgba(217, 130, 95, 0.15),
-    0 10px 24px rgba(26, 17, 34, 0.28),
-    0 2px 6px rgba(0, 0, 0, 0.15) !important;
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease !important;
+  background: var(--surface) !important;
+  border: 1px solid var(--border-card) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px -4px rgba(58, 47, 75, 0.08) !important;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out !important;
   will-change: transform;
 }
 
 .clay-achievement-card:hover {
-  transform: translateY(-6px) scale(1.02) !important;
-  box-shadow: 
-    inset 3px 3px 6px rgba(255, 255, 255, 0.9),
-    inset -3px -3px 6px rgba(217, 130, 95, 0.15),
-    0 16px 36px rgba(26, 17, 34, 0.4),
-    0 0 24px rgba(240, 198, 117, 0.35) !important;
+  transform: translateY(-2px) scale(1.01) !important;
+  box-shadow: 0 8px 24px -4px rgba(58, 47, 75, 0.12) !important;
 }
 
-.night-sky-section h2,
-.night-sky-section h3,
-.night-sky-section h4 {
-  color: var(--text-dark) !important;
-}
-
-.night-sky-section p {
-  color: var(--text) !important;
-  line-height: 1.6 !important;
-}
-
-/* 🎴 Puffy Clay Cards */
-.clay-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 248, 242, 0.88) 100%) !important;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 2px solid rgba(255, 255, 255, 0.95) !important;
-  border-radius: 32px !important;
-  box-shadow: 
-    inset 4px 4px 8px rgba(255, 255, 255, 0.95),
-    inset -4px -4px 10px rgba(217, 130, 95, 0.12),
-    0 12px 28px rgba(58, 43, 43, 0.07),
-    0 2px 6px rgba(217, 130, 95, 0.04) !important;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-  will-change: auto;
-}
-
-.clay-card:hover {
-  transform: translateY(-6px) scale(1.015) !important;
-}
-
-/* 🎴 Static Clay Card without scaling */
-.clay-card-static {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 248, 242, 0.88) 100%) !important;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 2px solid rgba(255, 255, 255, 0.95) !important;
-  border-radius: 32px !important;
-  box-shadow: 
-    inset 4px 4px 8px rgba(255, 255, 255, 0.95),
-    inset -4px -4px 10px rgba(217, 130, 95, 0.12),
-    0 12px 28px rgba(58, 43, 43, 0.07) !important;
-}
-
-/* 🎴 Soft Luminous Peach & Cream Clay Card */
-.clay-card-dark {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 248, 242, 0.94) 100%) !important;
-  border: 2px solid rgba(255, 255, 255, 0.95) !important;
-  border-radius: 32px !important;
-  box-shadow: 
-    inset 4px 4px 8px rgba(255, 255, 255, 0.95),
-    inset -4px -4px 10px rgba(217, 130, 95, 0.15),
-    0 16px 36px rgba(58, 43, 43, 0.08) !important;
-}
-
-.clay-card-dark:hover {
-  transform: translateY(-6px) scale(1.01) !important;
-  border-color: rgba(240, 198, 117, 0.6) !important;
-  box-shadow: 
-    inset 5px 5px 10px rgba(255, 255, 255, 0.95),
-    inset -5px -5px 12px rgba(217, 130, 95, 0.2),
-    0 22px 45px rgba(58, 43, 43, 0.12) !important;
-}
-
-/* 🎴 Secondary Clay Card for alternating sections */
-.clay-card-secondary {
-  background: linear-gradient(135deg, rgba(250, 236, 225, 0.95) 0%, rgba(243, 221, 208, 0.9) 100%) !important;
-  backdrop-filter: blur(16px);
-  border: 2px solid rgba(255, 255, 255, 0.9) !important;
-  border-radius: 32px !important;
-  box-shadow: 
-    inset 4px 4px 8px rgba(255, 255, 255, 0.9),
-    inset -4px -4px 8px rgba(217, 130, 95, 0.14),
-    0 10px 24px rgba(58, 43, 43, 0.06) !important;
-}
-
-/* 🔘 Puffy Clay Buttons (Squish and bounce: scale 0.96 on press) */
+/* 🔘 Clay Buttons (Signature Clay on Primary, Clean on Secondary) */
 .clay-btn {
   border-radius: 9999px !important;
   font-family: var(--font-family-display) !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.02em !important;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, background 0.25s ease !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em !important;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, background-color 0.2s ease-out !important;
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .clay-btn:active {
-  transform: scale(0.96) !important;
+  transform: scale(0.98) !important;
 }
 
-/* Primary Terracotta Clay Button */
+/* Primary Terracotta Clay Button (Signature Clay) */
 .clay-btn-primary {
-  background: linear-gradient(135deg, #E28D6A 0%, #D9825F 55%, #C26F4C 100%) !important;
+  background: linear-gradient(135deg, #E28D6A 0%, #D9825F 60%, #C5714E 100%) !important;
   color: #FFFFFF !important;
-  border: 2px solid rgba(255, 255, 255, 0.5) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.4) !important;
   box-shadow: 
-    inset 3px 3px 7px rgba(255, 255, 255, 0.6),
-    inset -3px -3px 7px rgba(120, 50, 20, 0.35),
-    0 10px 24px rgba(217, 130, 95, 0.38) !important;
+    inset 2px 2px 5px rgba(255, 255, 255, 0.5),
+    inset -2px -2px 5px rgba(120, 50, 20, 0.25),
+    0 8px 20px rgba(217, 130, 95, 0.32) !important;
 }
 
 .clay-btn-primary:hover {
-  transform: translateY(-2px) scale(1.03) !important;
-  background: linear-gradient(135deg, #E89A79 0%, #E08966 55%, #CB7552 100%) !important;
+  transform: translateY(-1px) !important;
+  background: linear-gradient(135deg, #E89A79 0%, #E08966 60%, #CB7552 100%) !important;
   box-shadow: 
-    inset 4px 4px 9px rgba(255, 255, 255, 0.75),
-    inset -4px -4px 9px rgba(120, 50, 20, 0.4),
-    0 14px 30px rgba(217, 130, 95, 0.45) !important;
+    inset 2px 2px 6px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 6px rgba(120, 50, 20, 0.3),
+    0 10px 24px rgba(217, 130, 95, 0.38) !important;
 }
 
 .clay-btn-primary:active {
-  transform: scale(0.96) !important;
-  box-shadow: 
-    inset 4px 4px 8px rgba(100, 40, 15, 0.55),
-    inset -2px -2px 6px rgba(255, 255, 255, 0.3),
-    0 4px 10px rgba(217, 130, 95, 0.2) !important;
+  transform: scale(0.98) !important;
+  box-shadow: 0 4px 10px rgba(217, 130, 95, 0.2) !important;
 }
 
-/* Secondary Rose Clay / Cream Button */
+/* Secondary Cream / Neutral Button (Light Clay) */
 .clay-btn-secondary {
-  background: linear-gradient(135deg, #FFFFFF 0%, #FFF5EC 100%) !important;
-  color: #3A2B2B !important;
-  border: 2px solid rgba(255, 255, 255, 0.95) !important;
-  box-shadow: 
-    inset 3px 3px 7px rgba(255, 255, 255, 1),
-    inset -3px -3px 7px rgba(217, 130, 95, 0.15),
-    0 8px 20px rgba(58, 43, 43, 0.08) !important;
+  background: #FFFFFF !important;
+  color: var(--text-primary) !important;
+  border: 1px solid rgba(58, 47, 75, 0.15) !important;
+  box-shadow: 0 2px 8px rgba(58, 47, 75, 0.05) !important;
 }
 
 .clay-btn-secondary:hover {
-  transform: translateY(-2px) scale(1.03) !important;
-  background: #FFFFFF !important;
-  box-shadow: 
-    inset 4px 4px 9px rgba(255, 255, 255, 1),
-    inset -4px -4px 9px rgba(217, 130, 95, 0.22),
-    0 12px 26px rgba(58, 43, 43, 0.12) !important;
+  transform: translateY(-1px) !important;
+  background: #FFFDFB !important;
+  border-color: rgba(58, 47, 75, 0.25) !important;
+  box-shadow: 0 4px 12px rgba(58, 47, 75, 0.08) !important;
 }
 
 /* Honey Gold Accent Button */
 .clay-btn-accent {
   background: linear-gradient(135deg, #F8D58D 0%, #F0C675 60%, #E0B359 100%) !important;
-  color: #3A2B2B !important;
-  border: 2px solid rgba(255, 255, 255, 0.6) !important;
-  box-shadow: 
-    inset 3px 3px 7px rgba(255, 255, 255, 0.7),
-    inset -3px -3px 7px rgba(150, 110, 30, 0.3),
-    0 10px 24px rgba(240, 198, 117, 0.4) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 4px 14px rgba(240, 198, 117, 0.3) !important;
 }
 
 /* Sage Calm Button */
 .clay-btn-sage {
-  background: linear-gradient(135deg, #B9C7AC 0%, #A8B89A 60%, #95A687 100%) !important;
+  background: #456A49 !important;
   color: #FFFFFF !important;
-  border: 2px solid rgba(255, 255, 255, 0.5) !important;
-  box-shadow: 
-    inset 3px 3px 7px rgba(255, 255, 255, 0.6),
-    inset -3px -3px 7px rgba(60, 75, 50, 0.3),
-    0 10px 24px rgba(168, 184, 154, 0.35) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 4px 14px rgba(69, 106, 73, 0.3) !important;
 }
 
-/* 🏷️ Clay Badges & Pills */
+/* 🏷️ Clay Badges & Tags */
 .clay-badge {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 246, 238, 0.8) 100%) !important;
-  color: var(--primary) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: var(--brand-accent) !important;
   border-radius: 9999px !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.95) !important;
-  box-shadow: 
-    inset 2px 2px 4px rgba(255, 255, 255, 0.95),
-    inset -2px -2px 4px rgba(217, 130, 95, 0.12),
-    0 4px 12px rgba(58, 43, 43, 0.05) !important;
-  font-family: var(--font-family-display);
+  border: 1px solid rgba(217, 130, 95, 0.25) !important;
+  box-shadow: 0 2px 6px rgba(58, 47, 75, 0.04) !important;
+  font-family: var(--font-family-sans);
+  font-weight: 600;
 }
 
 .clay-badge-dark {
   background: rgba(255, 255, 255, 0.95) !important;
-  color: var(--primary) !important;
+  color: var(--brand-accent) !important;
   border-radius: 9999px !important;
-  border: 1.5px solid rgba(217, 130, 95, 0.25) !important;
-  box-shadow: 
-    inset 2px 2px 4px rgba(255, 255, 255, 0.95),
-    inset -2px -2px 4px rgba(217, 130, 95, 0.12),
-    0 4px 12px rgba(58, 43, 43, 0.05) !important;
-  font-family: var(--font-family-display);
+  border: 1px solid rgba(217, 130, 95, 0.25) !important;
+  box-shadow: 0 2px 6px rgba(58, 47, 75, 0.04) !important;
+  font-family: var(--font-family-sans);
+  font-weight: 600;
 }
 
-/* 📥 Clay Inputs */
+/* 📥 Clean 1px Form Inputs (Clear border, no faint insets) */
 .clay-input {
-  background: rgba(255, 255, 255, 0.85) !important;
-  border: 2px solid rgba(255, 255, 255, 0.95) !important;
-  border-radius: 20px !important;
-  color: var(--text-dark) !important;
-  box-shadow: 
-    inset 3px 3px 6px rgba(58, 43, 43, 0.06),
-    inset -3px -3px 6px rgba(255, 255, 255, 0.95),
-    0 2px 8px rgba(58, 43, 43, 0.03) !important;
-  transition: all 0.3s ease !important;
+  background: #FFFFFF !important;
+  border: 1px solid rgba(58, 47, 75, 0.18) !important;
+  border-radius: 12px !important;
+  color: var(--text-primary) !important;
+  box-shadow: 0 1px 3px rgba(58, 47, 75, 0.03) !important;
+  transition: border-color 0.2s ease-out, box-shadow 0.2s ease-out !important;
+  padding: 10px 16px !important;
+  font-size: 0.95rem !important;
 }
 
 .clay-input::placeholder {
-  color: #8C7A87 !important;
-  font-weight: 500 !important;
-  opacity: 0.8 !important;
+  color: #726284 !important; /* Passes 4.5:1 on #FFFFFF */
+  font-weight: 400 !important;
 }
 
 .clay-input:focus {
   background: #FFFFFF !important;
-  border-color: var(--primary) !important;
-  box-shadow: 
-    inset 3px 3px 6px rgba(58, 43, 43, 0.04),
-    inset -3px -3px 6px rgba(255, 255, 255, 0.95),
-    0 0 0 4px rgba(217, 130, 95, 0.25) !important;
-  outline: none !important;
+  border-color: var(--brand-accent) !important;
+  box-shadow: 0 0 0 3px rgba(217, 130, 95, 0.20) !important;
+  outline: 2px solid var(--brand-accent) !important;
+  outline-offset: 1px !important;
 }
 
 /* 🧭 Clay Floating Pill Navbar */
